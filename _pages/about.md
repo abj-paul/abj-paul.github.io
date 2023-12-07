@@ -40,15 +40,13 @@ Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/fi
 - Additionally, I am leading multiple projects on web3 architecture. Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/files/resume.pdf).
 
 ## 📚 Achievements & Awards
-| Year | Achievement                                            | Organization/Event                       |
-|------+--------------------------------------------------------+------------------------------------------+
-| 2023 | 1st Runners-Up in Blockchain Segment                   | ITVerse, University of Dhaka, Bangladesh |
-| 2023 | 2nd Runners-Up in Notre Dame Inter-University Ideathon | Contest, Bangladesh                      |
-| 2023 | Finalist of National Blockchain Olympiad               | Bangladesh                               |
-| 2023 | 1st Runners-Up in Deep Learning Sprint                 | BUET, Bangladesh                         |
-| 2023 | 2nd Runners-Up of IEEE BUP Project Showcasing          | Bangladesh                               |
-| 2020 | Champion of Datathon                                   | Coding Objects Private Limited, India    |
-| 2019 | Placed 70th among 86K students in DU Admission Exam    | -                                        |
+- 1st Runners-Up in Blockchain Segment, ITVerse, University of Dhaka, Bangladesh
+- 2nd Runners-Up in Notre Dame Inter-University Ideathon Contest, Bangladesh
+- Finalist of National Blockchain Olympiad, Bangladesh
+- 1st Runners-up in Deep Learning Sprint, BUET, Bangladesh
+- 2nd-Runners up of IEEE BUP Project Showcasing, Bangladesh
+- Champion of Datathon, Coding Objects Private Limited, India
+
 
 
 
