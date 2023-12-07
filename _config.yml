@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "abj-paul"
 title_separator          : "-"
-name                     : &name "Abhijit Paul"
+name                     : &name "Life means living it."
 description              : &description "A daoist and NLP/Web3 researcher from Bangladesh!"
 url                      : https://abj-paul.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
