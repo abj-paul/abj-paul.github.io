@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Boris's Homepage"
+title                    : "abj-paul"
 title_separator          : "-"
-name                     : &name "Boris Meinardus"
-description              : &description "personal description"
-url                      : https://sudo-Boris.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : &name "Abhijit Paul"
+description              : &description "A daoist and NLP/Web3 researcher from Bangladesh!"
+url                      : https://abj-paul.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "sudo-Boris/sudo-Boris.github.io"
+repository               : "abj-paul/abj-paul.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -59,8 +59,8 @@ yandex_site_verification :
 twitter:
   username               : &twitter
 facebook:
-  username               :
-  app_id                 :
+  username               : Abhijit Paul
+  app_id                 : abhijit.paul.5667901
   publisher              :
 og_image                 :  # Open Graph/Twitter default site image
 # For specifying social profiles
@@ -80,14 +80,14 @@ analytics:
 
 # Site Author
 author:
-  name             : "Boris Meinardus"
-  avatar           : "Profile_pic2.png"
+  name             : "Abhijit Paul"
+  avatar           : "https://avatars.githubusercontent.com/u/87289356?v=4"
   bio              : "Multi-Modal Learning \n under Prof. Marcus Rohrbach"
-  location         : "Berlin/ Darmstadt, Germany"
-  employer         : "TU Darmstadt"
+  location         : "Dhaka, Bangladesh"
+  employer         : 
   pubmed           : 
   googlescholar    : 
-  email            : "boris.meinardus@gmail.com"
+  email            : "bsse1201@iit.du.ac.bd"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -96,24 +96,24 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "sudo-Boris"
+  github           : "abj-paul"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "boris-meinardus-ba2302177"
+  linkedin         : "abj-paul"
   orcid            : 
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "BorisMeinardus"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
-  youtube          : "@borismeinardus"
+  youtube          : 
   wikipedia        :
 
 
