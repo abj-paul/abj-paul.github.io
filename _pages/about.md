@@ -34,9 +34,10 @@ Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/fi
 Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/files/resume.pdf).
 
 ## 👨🏻‍🔬 Professional Experience
-Currently I am working as a **Research Assistant** at the Data Science Lab at the University of Dhaka under the supervision of Dr. Ahmedul Kabir.
-Additionally, I have worked as a **Data Science Intern** at the Coding Object Private Limited in Kolkata, India.
-I have lead projects on Dhaka University Bus Tracking System which is currently at its last stage before serving 10k users. Additionally, I am leading multiple projects on web3 architecture. Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/files/resume.pdf).
+- Currently I am working as a **Research Assistant** at the Data Science Lab at the University of Dhaka under the supervision of Dr. Ahmedul Kabir.
+- Additionally, I have worked as a **Data Science Intern** at the Coding Object Private Limited in Kolkata, India.
+- I have lead projects on Dhaka University Bus Tracking System which is currently at its last stage before serving 10k users. 
+- Additionally, I am leading multiple projects on web3 architecture. Feel free to look at my specific [portfolio entry](https://abj-paul.github.io/files/resume.pdf).
 
 ## 📚 Achievements & Awards
 | Year | Achievement                                            | Organization/Event                       |
