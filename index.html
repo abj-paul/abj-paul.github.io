@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@abj-paul</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -54,11 +54,66 @@
         <p> Web development, Machine Learning, API design, linux system administration, deployment, web3 framework - you name it and I can make it! <u>Actively looking for remote positions!</u> </p>
       </div>
     </div>
+
+   <!-- New Row for Cards -->
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Winner of Datathon</h5>
+            <div class="card-content">
+              <p class="card-text">Coding Object Private Ltd., Kolkata, India organized a datathon in 2020. We won the first position!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Entreprenurship</h5>
+            <div class="card-content">
+              <p class="card-text">I lead a team of 10 motivated coders and business folks to launch the most awaited Bus Tracking Application of DU Students.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Founder of IITDU-NLP Group</h5>
+            <div class="card-content">
+              <p class="card-text">I have been leading a research group under the supervision of professors from Bangladesh and abroad. So far, I have lead collaboration with 3 independent organizations. We are currently expanding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Researcher at Samsung</h5>
+            <div class="card-content">
+              <p class="card-text">Samsung encourages research culture among testers and developers alike. After joining as a test engineer, I started innovation task on test process improvement. We currently have 2 projects running for Samsung Best Paper Award, 2024.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
   <!-- Bootstrap JS and jQuery (required for Bootstrap components) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <script>
+    // JavaScript to handle click-to-expand functionality
+    $(document).ready(function() {
+      $(".card-content").on("click", function() {
+        $(this).toggleClass("expanded");
+      });
+    });
+  </script>
 </body>
 </html>
