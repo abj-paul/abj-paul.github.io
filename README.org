@@ -4,5 +4,6 @@ If you want a full-fledged markup based blogging site with github action to auto
 We will have the following activities in this github.
 - [ ] Daily blogging in a portal /blog
 - [ ] My portfolio at root
+- [ ] And another portal on my IIT related documents e.g. shared drive, documents etc.
 
   Let us first get boiletplate for both. We will start customizing after setting up the boilerplate dummy site.
