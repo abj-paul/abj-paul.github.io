@@ -1,0 +1,8 @@
+If you want a full-fledged markup based blogging site with github action to automatically update the site, checkout ~master~ branch. This ~main~ branch is about a minimal build that I like. By emacs, for emacs.
+
+* About
+We will have the following activities in this github.
+- [ ] Daily blogging in a portal /blog
+- [ ] My portfolio at root
+
+  Let us first get boiletplate for both. We will start customizing after setting up the boilerplate dummy site.
