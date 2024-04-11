@@ -13,13 +13,18 @@ This is a brief introduction to .
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere pharetra semper. 
 
-'''
-Code block
-'''
+# Table Example
 
-| Table |
-| as |
-| sd |
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+
+# Code Example
+
+```python
+def hello_world():
+    print("Hello, world!")
 
 ## Section 2
 
