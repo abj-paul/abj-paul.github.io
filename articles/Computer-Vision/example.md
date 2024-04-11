@@ -13,6 +13,14 @@ This is a brief introduction to .
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere pharetra semper. 
 
+'''
+Code block
+'''
+
+| Table |
+| as |
+| sd |
+
 ## Section 2
 
 Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.

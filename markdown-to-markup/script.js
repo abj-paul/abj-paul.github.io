@@ -1,17 +1,52 @@
-function parse_default_md() {
-    var markdownContent = '# Hello, Markdown!\n\nThis is a paragraph of text.\n\n## Subheading\n\n- [x] Task 1\n- [ ] Task 2\n- [ ] Task 3';
+document.addEventListener("DOMContentLoaded", function() {
+    // GitHub repository information
+    var owner = 'abj-paul';
+    var repo = 'abj-paul.github.io';
 
-    var converter = new showdown.Converter({ 
-        simplifiedAutoLink: true,
-        tables: true,
-        tasklists: true,
-        simpleLineBreaks: true,
-        openLinksInNewWindow: true,
+    // Fetch and display articles for each folder
+    var folders = ['Computer-Vision', 'Formal-Method', 'Machine-Learning', 'Web3'];
+    folders.forEach(folder => {
+        fetchArticles(owner, repo, folder);
     });
+});
 
-    var htmlContent = converter.makeHtml(markdownContent);
-
-    document.getElementById('markdown-content').innerHTML = htmlContent;
+function fetchArticles(owner, repo, folder) {
+    fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/articles/' + folder)
+        .then(response => response.json())
+        .then(data => {
+            var tab = document.createElement('button');
+            tab.textContent = folder;
+            tab.addEventListener('click', function() {
+                showArticles(data, owner, repo, folder);
+            });
+            document.getElementById('tabs').appendChild(tab);
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
 
-parse_default_md(); // Call the function immediately after defining it
+function showArticles(articles, owner, repo, folder) {
+    var contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+
+    articles.forEach(article => {
+        if (article.type === 'file' && article.name.endsWith('.md')) {
+            fetch(article.download_url)
+                .then(response => response.text())
+                .then(markdown => {
+                    var converter = new showdown.Converter({ 
+                        simplifiedAutoLink: true,
+                        tables: true,
+                        tasklists: true,
+                        simpleLineBreaks: true,
+                        openLinksInNewWindow: true,
+                    });
+                    var htmlContent = converter.makeHtml(markdown);
+                    
+                    var articleDiv = document.createElement('div');
+                    articleDiv.innerHTML = htmlContent;
+
+                    contentDiv.appendChild(articleDiv);
+                });
+        }
+    });
+}
