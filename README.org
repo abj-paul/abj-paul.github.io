@@ -12,3 +12,5 @@ We will have the following activities in this github.
 We will post regularly so it is necessary to consider markdown format. We have found ~showdownjs~ that can convert markdown to js. We have also found that github api can return a file requested without requiring any backend. With these two information, following is our system design.
 
 [[file:misc/blog-plan.png]]
+
+I have hit a blocker. [[https://stackoverflow.com/questions/78311952/showdownjs-setting-flavor-to-github-doesnt-affect-markdown-to-html-conversio][Posted question in stackoverflow]], hopefully I will get a solution.

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <title>Github Flavor MD</title>
+
+</head>
+<body>
+  <div id="markdown-content" > </div>
+  <script>
+    function parse_default_md() {
+        var markdownContent = `
+# Hello, Markdown!
+
+This is a paragraph of text.
+
+## Subheading
+
+- [x] Task 1
+- [ ] Task 2
+- [ ] Task 3
+
+\`\`\`javascript
+// Sample JavaScript code block
+function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+greet("World");
+\`\`\`
+
+| Name  | Age |
+|-------|-----|
+| John  | 30  |
+| Alice | 25  |
+| Bob   | 35  |
+`;
+        var converter = new showdown.Converter({ 
+            simplifiedAutoLink: true,
+            tables: true,
+            tasklists: true,
+            simpleLineBreaks: true,
+            openLinksInNewWindow: true
+        });
+	converter.setFlavor('github');
+
+        var htmlContent = converter.makeHtml(markdownContent);
+
+        document.getElementById('markdown-content').innerHTML = htmlContent;
+    }
+
+    parse_default_md(); // Call the function immediately after defining it
+  </script>
+</body>
+</html>

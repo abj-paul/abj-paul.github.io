@@ -39,6 +39,7 @@ function showArticles(articles, owner, repo, folder) {
                         tasklists: true,
                         simpleLineBreaks: true,
                         openLinksInNewWindow: true,
+                        flavor: 'github' // Set the flavor to GitHub-flavored Markdown
                     });
                     var htmlContent = converter.makeHtml(markdown);
                     

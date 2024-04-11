@@ -25,6 +25,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere pharetr
 ```python
 def hello_world():
     print("Hello, world!")
+```
 
 ## Section 2
 
