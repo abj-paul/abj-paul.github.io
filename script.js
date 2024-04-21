@@ -14,6 +14,7 @@ function fetchArticles(owner, repo, folder) {
     fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/projects/' + folder)
         .then(response => response.json())
         .then(data => {
+	    console.log(data)
             var tab = document.createElement('button');
             tab.textContent = folder;
             tab.addEventListener('click', function() {
@@ -30,24 +31,37 @@ function showArticles(articles, owner, repo, folder) {
 
     articles.forEach(article => {
         if (article.type === 'file' && article.name.endsWith('.md')) {
-            fetch(article.download_url)
-                .then(response => response.text())
-                .then(markdown => {
-                    var converter = new showdown.Converter({ 
-                        simplifiedAutoLink: true,
-                        tables: true,
-                        tasklists: true,
-                        simpleLineBreaks: true,
-                        openLinksInNewWindow: true,
-                        flavor: 'github' // Set the flavor to GitHub-flavored Markdown
-                    });
-                    var htmlContent = converter.makeHtml(markdown);
-                    
-                    var articleDiv = document.createElement('div');
-                    articleDiv.innerHTML = htmlContent;
-
-                    contentDiv.appendChild(articleDiv);
-                });
+            var postTitle = document.createElement('h3');
+            postTitle.textContent = article.name.replace('.md', '');
+            postTitle.classList.add('post-title');
+            postTitle.addEventListener('click', function() {
+                fetchArticleContent(article.download_url);
+            });
+            contentDiv.appendChild(postTitle);
         }
     });
+}
+
+function fetchArticleContent(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(markdown => {
+            var converter = new showdown.Converter({ 
+                simplifiedAutoLink: true,
+                tables: true,
+                tasklists: true,
+                simpleLineBreaks: true,
+                openLinksInNewWindow: true,
+                flavor: 'github' // Set the flavor to GitHub-flavored Markdown
+            });
+            var htmlContent = converter.makeHtml(markdown);
+            
+            var articleDiv = document.createElement('div');
+            articleDiv.innerHTML = htmlContent;
+
+            // Clear contentDiv and append the article content
+            var contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '';
+            contentDiv.appendChild(articleDiv);
+        });
 }

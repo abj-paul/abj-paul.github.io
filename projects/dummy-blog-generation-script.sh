@@ -36,7 +36,7 @@ for dir in "${directories[@]}"; do
     fi
     
     # Create Markdown file with real content
-    echo -e "$content" > "$dir"/example.md
+    echo -e "$content" > "$dir"/article2.md
 
     echo "Created example.md in $dir"
 done
