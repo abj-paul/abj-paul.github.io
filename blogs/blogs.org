@@ -1,0 +1,44 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+
+#+TITLE: @abj-paul / blogs 
+#+OPTIONS: \n:t
+#+options: num:2
+
+
+#+BEGIN_EXPORT html
+<script type="text/javascript"> function generateMiniToc(divId) { } </script>
+
+<script>
+  $(document).ready(function() {
+    hsCollapseAll();
+  });
+</script>
+#+END_EXPORT
+
+* Techs
+** From frugal trainer to an wastrel!
+I got my hands on google colab pro+ subscription and look what I did :>
+
+#+attr_html: :width 600px;
+[[file:res/gpu_image_1.png]]
+And I got one more gpu instance for another training because why not!
+
+#+attr_html: :width 600px;
+[[file:res/gpu_img_2.png]]
+
+And with two combined, I used about 20% of my monthly available computational resource in one night :) Why is GPU so costly! I go back to good old CPU training.
+** Formal Method is interesting
+| Coference name | Rank |
+| FMcAD          | A    |
+
+And I should really read [[https://github.com/abj-paul/books/blob/master/SE/FMCAD2023.pdf][FMCAD paper]].
+*** TODO FMCAD Paper REview
+** Stanford AI Index
+I should also really give it a read when I have some leisure. Here is the [[https://github.com/abj-paul/books/blob/master/HAI_AI-Index-Report-2024.pdf][link]]
+* Life
+** What you give is what you receive
+   - Be generous with your time, kindness, and resources. The more you give, the more you'll receive in return.
+
+** Be authentic
+   - Stay true to yourself and your values. Don't compromise your integrity for the sake of others' approval.
+

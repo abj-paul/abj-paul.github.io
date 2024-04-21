@@ -1,0 +1,89 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+#+TITLE: NLP, Institute of Information Technology, University of Dhaka
+#+OPTIONS: \n:t
+#+options: num:2
+
+
+#+BEGIN_EXPORT html
+<script type="text/javascript"> function generateMiniToc(divId) { } </script>
+#+END_EXPORT
+
+* Goal
+Hello! We are a group of enthusiastic people wanting to solve the many problems around Bangla Natural Language Processing. We extensively focus on social inclusion and accessibility for universalism of human values.
+
+#+DOWNLOADED: http://www.iit.du.ac.bd/assets/img/iitlogo-blue.png @ 2022-11-18 13:00:08
+[[file:Goal/2022-11-18_13-00-08_iitlogo-blue.png]]
+* Projects
+** Bangla Hate Speech Detection
+An intriguing and challenging problem as hate speech is subjective. What appears to be hate speech to a single person may be casual chat for another. And dialects, context-based hate speech just adds more interesting issues to the problem space.
+In this project, we aim to make a hate speech detection model that can aid the society to fight online bullying and incitements.
+** Bangla Sign Language
+Social inclusion and accessibility is at the foundation of our research group. We are currently working on three projects on Bengali Sign Language.
+*** Speech to Sign Language Animation
+Instead of a human translator of speech to sign language, we are automating the process. This way, it would be cheap and easily accessible by everyone. We also wish to make this software as lightweight as possible so that rural people can access and use it even with a moderately simple device.
+*** Dynamic Sign Detection in BSL
+A lot of works has been done on detecting static sign language symbols in bangla. But few efforts were given on detecting dynamic sign language. We are preparing a dataset with collaboration with JPUF to identify dynamic sign detection in BSL.
+*** Universal Bangla Sign Language Detection
+This project aims to map the entire sign language symbol dictionary digitally. We are collecting data to build such datasets at this moment. Considering locale of one is one important aspect of this project.
+*** Fine-Tuning State-of-the-art BSL
+We have noticed that there are room for improvements in existing static sign language word and sign language alphabet detection. We also wish to make a better preprocessor for bangla sign language image processing. This is an auxiliary project to help the community.
+** Bangla Stemmer
+Stemming is considered obsolete with the advent of Word Embedding, or is it? We aim to answer such questions in this project. Stemmer is a universal preprocessing step that can help all of the existing bangla natural language processing. So we are building a stemmer for bangla following the same evolution that English stemmers did from Lovins.
+** Bangla Parts-of-Speech Tagging
+Syntactic Analysis of language is often overlooked. But if we want to reach the epitome of NLP and its sister branch - Image Processing, we need to understand both the syntax and the semantic of the language. Very few efforts have been given on syntactic aspect of BLP. In this project, we show how the syntactic aspect of BLP can greatly aid the discipline and finally present a Parts-of-speech tagger that follows the grammatical structure of Bangla.
+** Defining State-of-the-art of Bangla NLP
+We are conducting extensive literature review to define the state-of-the-art of bangla NLP. This can make the process of getting started with working on Bangla NLP easier for new researchers as well serve as a aggregation to view the progress of Bangla and scope to focus on.
+** DONE Bangla Braille
+Converting braille to bangla text. This allows faster and automated communication with people with blindness.
+github link here
+* Projects & Publications
+** Bangla Braille
+Converting braille to bangla text. This allows faster and automated communication with people with blindness.
+github link here
+* International Collaborations
+*** Dr. Shebuty Rayana
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Shebuty Rayana.jpg]]
+International Collaborator
+PhD, Computer Science
+Lecutrer, Stony Brook University.
+*** Zarif Masud
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Zarif Masud.jpg]]
+Alumni
+* Meet with the Team!
+*** Dr. Ahmedul Kabir
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Dr Ahmedul Kabir.jpg]]
+Associate Professor
+Institute of Information Technology
+University of Dhaka
+Contact information: kabir@iit.du.ac.bd
+*** Sharif Mohammad Abdullah
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Sharif Mohammad Abdullah.jpg]]
+Student of Bachelors
+Institute of Information Technology
+University of Dhaka
+Contact information: bsse1211@iit.du.ac.bd
+*** Mashiat Amin Farin
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Mashiat Amin Farin.jpg]]
+Student of Bachelors
+Institute of Information Technology
+University of Dhaka
+Contact information: bsse1202@iit.du.ac.bd
+
+*** Abhijit Paul 
+#+attr_html: :width 200px;
+[[file:Meet_with_the_teams!/Abhijit Paul.jpg]]
+Student of Bachelors
+Institute of Information Technology
+University of Dhaka
+Contact information: bsse1201@iit.du.ac.bd
+
+* Contact Us
+iitdu-nlp@gmail.com
+01968399154
+P9HX+J8H, Suhrawardi Udyan Rd, Dhaka 1200
+
