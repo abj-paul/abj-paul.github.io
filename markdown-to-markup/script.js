@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function fetchArticles(owner, repo, folder) {
-    fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/articles/' + folder)
+    fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/projects/' + folder)
         .then(response => response.json())
         .then(data => {
             var tab = document.createElement('button');
