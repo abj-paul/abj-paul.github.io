@@ -32,7 +32,7 @@ FIRE[mode:IntModeState] = (
 ```
 And the UML for Therac-25 interface is below.
 
-[](../../misc/therac25-interface.png)
+[](https://github.com/abj-paul/abj-paul.github.io/blob/main/misc/therac25-interface.png)
 So effort seems equal in this case.
 ## Therac-25 Safety Property
 The safety propert specification is very complex to understand at first sight.
