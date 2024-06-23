@@ -1,0 +1,22 @@
+#+TITLE: How to configure gnome!
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-06-23 রবি>
+
+Many go with hard-to-configure WM like EXWM, XWM or many other variants. However, almost similar WM experience can be received solely from gnome. We just need to tune the settings a bit. It takes at most an hour to configure the whole thing and there is no hacky scripts we need to write and compile. So it is my recommend go-to route for setting up your desktop environment when you don't have much time.
+** Desktop Environment
+First, we define the number of desktop environment. 4~6 is a good number. For that, go to Settings > Multitasking > Workspaces > Select Fixed number of workspaces > Set any number between 4~6 or any number of your preference.
+
+Also, to make only applications in current workspace appear on sidebar, go to Settings > Multitasking > Applications Switching > Select "Include applications from current workspace only".
+
+Finally, you can bind the workspaces to key bindings. For example, pressing super key + 3 will take you to third workspace. For it, we will need to install dconf-tools. This tool allow us to set custom keybindings in gnome.
+
+#+begin_src bash
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt install dconf-cli dconf-editor
+#+end_src
+
+Then open dconf-editor and go to ~dconf-editor > org > gnome > desktop > wm > keybindings~. From there, define keybindings for "switch-to-workspace-*". You can see some example keybindings for environment switching below.
+[[file:~/abj-paul.github.io/data/gnome-wm-keybindings.png]]
+** Sidebar
+To make sidebar appear only when we slide over it, go to Settings > Appearance > Turn on "Auto hide the dock" > Turn off "Panel mode"
