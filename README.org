@@ -1,5 +1,6 @@
 * About
 Static site generators allow easy construction of personal site and blogging activity but they come with extremely hard-to-customize problem. While web development framework allows easy customization but time-consuming-to-blog problem. We need a balance in between.
+[[file:data/demo-blog.png]]
 So in this project, we combine automated-blog-generation with custom-website-building. This project shows a easy-to-learn, easy-to-customize and easy-to-blog approach for personal site. We first discuss on our approach and then, we evaluate it against other famous personal site generation approach.
 ** Approach
 We divide personal site in two part.
