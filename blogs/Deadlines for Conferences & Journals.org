@@ -1,0 +1,9 @@
+'''
+title: "Deadlines for Conferences & Journals"
+'''
+
+The works and their corresponding deadlines can be seen below.
+
+| Research | Conference | Deadline |
+|----------+------------+----------|
+| Stemming | ACM TALIP   |          |
