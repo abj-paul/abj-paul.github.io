@@ -1,9 +1,14 @@
-'''
-title: "Deadlines for Conferences & Journals"
-'''
+#+TITLE: Deadlines for Conferences & Journals
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-06-23 রবি>
 
 The works and their corresponding deadlines can be seen below.
 
-| Research | Conference | Deadline |
-|----------+------------+----------|
-| Stemming | ACM TALIP   |          |
+| Research                      | Conference                                | Deadline          |
+|-------------------------------+-------------------------------------------+-------------------|
+| Stemming                      | ACM TALLIP                                | Anytime,July 25th |
+| UML to LTL                    | [[https://www.fmeurope.org/feature/upcoming_conferences/][ETAPS]]                                     | 10 Oct            |
+| Representation Discrimination | [[https://chi2024.acm.org/for-authors/papers/][CHI24]]                                     | 7th Sep           |
+| Fuzzy Expert System           | [[https://www.editorialmanager.com/fss/default.aspx][Fuzzy Sets & Systems]], [[https://www.scimagojr.com/journalsearch.php?q=26529&tip=sid&clean=0][Q1]]                  | Anytime           |
+| DuBTS - Bloom Filter          | [[https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=25][IEEE Transactions on Vehicular Technology]] |                   |
+| Coping Mechanism              | [[https://www.scimagojr.com/journalsearch.php?q=21101055964&tip=sid&clean=0][Journal of Health and Social Behavior]]     |                   |
