@@ -1,16 +1,46 @@
-If you want a full-fledged markup based blogging site with github action to automatically update the site, checkout ~master~ branch. This ~main~ branch is about a minimal build that I like. By emacs, for emacs.
-
 * About
-We will have the following activities in this github.
-- [ ] Daily blogging in a portal /blog
-- [ ] My portfolio at root
-- [ ] And another portal on my IIT related documents e.g. shared drive, documents etc.
+Static site generators allow easy construction of personal site and blogging activity but they come with extremely hard-to-customize problem. While web development framework allows easy customization but time-consuming-to-blog problem. We need a balance in between.
+So in this project, we combine automated-blog-generation with custom-website-building. This project shows a easy-to-learn, easy-to-customize and easy-to-blog approach for personal site. We first discuss on our approach and then, we evaluate it against other famous personal site generation approach.
+** Approach
+We divide personal site in two part.
+*** Core pages
+The home page, project page, awards page etc. are core pages of a personal website. They need high customization ability. So we use basic html-css to construct these sites. This allows easy personalization of core pages. For example, inspect our index.html, blogs.html, prizes.html pages.
+*** Template pages
+This includes daily blogging, publication posting activity. Usually, users prefer to write their blogs in some markdown format (~.md~, ~.org~ etc). Using our approach, users can then use ~pandoc~ to convert the markdown to html format using ~pandoc -s my-blog.md -o my-blog.html~. We included common blog css in blogs/blogs.css file. So simply include the css file in the exported ~my-blog.html~ to get fully formatted and also easily customizable blog export.
+** Evaluate
+We evaluate our approach in terms of setup time, learning time, blog time and customization time.
 
-  Let us first get boiletplate for both. We will start customizing after setting up the boilerplate dummy site.
+[[file:data/why-our-approach-is-best-portfolio-approach.png]]
 
-* Novel Structure
-We will post regularly so it is necessary to consider markdown format. We have found ~showdownjs~ that can convert markdown to js. We have also found that github api can return a file requested without requiring any backend. With these two information, following is our system design.
+Jekyll, hugo has extremely low blog time but extremely high customization time and learning time. NextJS has low customization time but high learning curve. As we can see, our approach ensures:
+1. Low customization time: Because we use plain css, html that everyone knows. Users can just work on top of our default css using chatGPT.
+2. Moderate blogging time: Using pandoc, users can automatically generate blogs from their markdown.
+3. Low setup time: There is nothing to setup. It is just plain html, css. We just need to install pandoc using ~sudo apt install pandoc~. 
+4. Learning curve: Users only need to read through the 10 lines of user manual shown below to learn it.
+* User Manual
+** Core Pages
+Build your own homepage or work over our current pages by just changing the contents.
+** Blogging
+   Write your blogs in md or org or any format. Then using pandoc, export it. It is recommended to have a title keyword in your markdown. For example in ~.md~, we have:
+   #+begin_src md
+---
+title: Understanding Web3
+author: Abhijit Paul
+---
+   #+end_src
 
-[[file:misc/blog-plan.png]]
+   Then you can export your markdown using pandoc:
+   #+begin_src bash
+     pandoc -s my-blog.md -o my-blog.html
+   #+end_src
 
-I have hit a blocker. [[https://stackoverflow.com/questions/78311952/showdownjs-setting-flavor-to-github-doesnt-affect-markdown-to-html-conversio][Posted question in stackoverflow]], hopefully I will get a solution.
+   After that, you need to add the blogs.css in your exported ~my-blog.html~ file.
+   #+begin_src html
+     <link rel="stylesheet" href="blogs.css">
+   #+end_src
+   And then, include the css for your body.
+   #+begin_src html
+     <body class="markdown-container">
+   #+end_src
+
+   And done! Now you have a properly formatted blog. You can link it from your, for example, blogs.html page by adding a simple ~<a> </a>~ element as usual. We recommend using our card-layout in blogs.html for easy blogging.

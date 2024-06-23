@@ -1,0 +1,16 @@
+If you want a full-fledged markup based blogging site with github action to automatically update the site, checkout ~master~ branch. This ~main~ branch is about a minimal build that I like. By emacs, for emacs.
+
+* About
+We will have the following activities in this github.
+- [ ] Daily blogging in a portal /blog
+- [ ] My portfolio at root
+- [ ] And another portal on my IIT related documents e.g. shared drive, documents etc.
+
+  Let us first get boiletplate for both. We will start customizing after setting up the boilerplate dummy site.
+
+* Novel Structure
+We will post regularly so it is necessary to consider markdown format. We have found ~showdownjs~ that can convert markdown to js. We have also found that github api can return a file requested without requiring any backend. With these two information, following is our system design.
+
+[[file:misc/blog-plan.png]]
+
+I have hit a blocker. [[https://stackoverflow.com/questions/78311952/showdownjs-setting-flavor-to-github-doesnt-affect-markdown-to-html-conversio][Posted question in stackoverflow]], hopefully I will get a solution.
