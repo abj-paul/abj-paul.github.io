@@ -8,6 +8,7 @@
   <title>Robustification of Behavioral Design against Environmental Deviation</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="blogs.css">
+
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -24,9 +25,18 @@
 <p class="date">&lt;2024-06-25 মঙ্গল&gt;</p>
 </header>
 <p>We consider the three examples available with the paper. And we will evaluate whether it is feasible to express real systems <code>formally</code> using UML diagram.</p>
+<h1 id="literature-review">Literature Review</h1>
+<h2 id="mapping-uml-to-labeled-transition-systems-for-test-case-generation">Mapping UML to Labeled Transition Systems for Test-Case Generation</h2>
+<p>It does not express UML to Formal Specification Process Algebra (FSP) that our LTSA analyzer uses. Rather it converts a subset of UML syntax into formalism of object-oriented action systems(OOAS). And it does not automatically convert UML to LTS. Rather it defines syntax, notations by extending OOAS that can be used and slowly solves the problem like a mathematician. In fact, it is more like UML –&gt; OOAS –&gt; LTS. The UML to OOAS mapping is manual so it is not much helpful.</p>
+<h2 id="models-oriented-approach-for-developing-railway-safety-critical-systems-with-uml">Models Oriented Approach for developing railway safety-critical systems with UML</h2>
+<p>It perfectly aligns with what we want. <img src="../data/uml-state-transition-train.png" /> For each class, we have state transition diagram like above. As you can see, each edge contain event/action annotation. The action annotation is used for synchorinization later on. <img src="../data/UML-LTS-train.png" /> The UML to LTL translation above is very basic. It just maps the well-documented state transition diagram annotation. No complex features.</p>
+<p>We have state transition diagram for each class. We finally combine these classes to construct the whole system by synchronizing and parallelizing them as shown above. <img src="../data/UML-LTS-System-Train.png" /></p>
+<p>Overall, this paper briefly shows a realistic way of mapping UML to LTS. We first convert state transition diagram for each class into LTS notation. After that, we combine these classes using event/action annotations shown in the class descriptions.</p>
+<h2 id="test-case-generation-by-means-of-uml-sequence-diagrams-and-labeled-transition-systems">Test Case Generation by means of UML Sequence Diagrams and Labeled Transition Systems</h2>
+<p>Similar to earlier paper, it shows how to convert a sequence diagram to UML. Also, they use special notations to describe loops and conditions in the UML diagram. <img src="../data/UML-sequence-diagram.png" /> While the paper defines some rules for UML to LTS, the rules are essentially trivial. <img src="../data/UML-LTS-rules.png"/> The notations and rules are biased towards generating test cases. And since the conversion algorithm is trivial, we support for previous paper.</p>
 <h1 id="case-study">Case Study</h1>
 <h2 id="voting-system">Voting System</h2>
-<h3 id="system-design"><span class="done DONE">DONE</span> System Design</h3>
+<h3 id="system-design">System Design</h3>
 <p>Following is the <code>sys.lts</code> for voting system from a high level of abstraction.</p>
 <pre class="LTS"><code>EM = (password -&gt; P1),
 P1 = (select -&gt; P2),
@@ -34,7 +44,7 @@ P2 = (vote -&gt; P3 | back -&gt; P1),
 P3 = (confirm -&gt; EM | back -&gt; P2).
 </code></pre>
 <p>The following is the UML diagram for it. <img src="../data/voter-sys.png" /></p>
-<h3 id="environment"><span class="done DONE">DONE</span> Environment</h3>
+<h3 id="environment">Environment</h3>
 <p>Following is the environment definition, albeit simplified from high level of abstraction.</p>
 <pre class="LTS"><code>ENV = (v.enter -&gt; VOTER | eo.enter -&gt; EO),
 VOTER = (password -&gt; VOTER1),
@@ -62,7 +72,7 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 </code></pre>
 <p>But its corresponding UML is simply not human. <img src="../data/voter-p.png" /></p>
 <h2 id="therac25-system">Therac25 System</h2>
-<h3 id="system-design-1"><span class="done DONE">DONE</span> System Design</h3>
+<h3 id="system-design-1">System Design</h3>
 <p>It comprises of three parallel parts, each can be described separately and simply.</p>
 <pre class="LTS"><code>const IntNotSet = 0
 const IntXray = 1
@@ -92,7 +102,7 @@ OUTPLACE = (e -&gt; OUTPLACE | x -&gt; SPREADER).
 ||SYS = (INTERFACE || BEAM || SPREADER).
 </code></pre>
 <p>The parallel parts can be separately described using UML. <img src="../data/therac-sys-interface.png" /> <img src="../data/therac-sys-beam.png" /> <img src="../data/therac-spreader-beam.png" /> It is easily doable in UML, as we can see above.</p>
-<h3 id="environment-1"><span class="done DONE">DONE</span> Environment</h3>
+<h3 id="environment-1">Environment</h3>
 <p>The environment defines user interaction. The user will select XRay or EBeam, continue or go back and finally press Enter.</p>
 <pre class="LTS"><code>ENV = (x -&gt; ENV_1 | e -&gt; ENV_1),
 ENV_1 = (enter -&gt; ENV_2 | up -&gt; ENV),
@@ -133,227 +143,7 @@ P[spreader:SpreaderState][power:BeamState] = (
 <h2 id="pump">Pump</h2>
 <p>It is a complex and close to realistic system design.</p>
 <h3 id="system-design-2">System Design</h3>
-<pre class="LTS"><code>//======================
-// Constants and Ranges
-//======================
-
-//
-// States of the pump alarm
-//
-const AlarmSilenced = 0
-const AlarmSounds = 1
-
-range AlarmState = AlarmSilenced .. AlarmSounds
-
-//
-// States of the pump settings
-//
-const ParamsNotSet = 2    // pump parameters not set yet
-const ParamsSet    = 3    // pump parameters already set
-
-range ParamsStateT = ParamsNotSet .. ParamsSet
-
-//
-// Locked/unlocked states of a line with respect to a pump channel
-//
-const LineUnlocked = 4  // line not locked into a pump channel 
-const LineLocked   = 5  // line locked into a pump channel
-
-range LineLockStateT = LineUnlocked .. LineLocked
-
-//
-// Locked/unlocked states of the pump unit
-//
-const UnitUnlocked = 6  // the keypad of the pump is not locked
-const UnitLocked   = 7  // the keypad of the pump is locked
-
-range UnitLockStateT = UnitUnlocked .. UnitLocked
-
-//
-//Plugged/unplugged states of the pump unit
-//
-
-const Unplugged = 8 //the pump is not plugged in
-const Plugged = 9 //the pump is plugged in 
-
-range PluggedState = Unplugged .. Plugged 
-
-//
-//Battery states of the pump unit
-//
-
-const BatteryCharge = 12 //the battery has charge
-const BatteryLow = 11
-const BatteryEmpty = 10 //battery has no charge
-
-range BatteryState = BatteryEmpty .. BatteryCharge
-
-//
-//System State
-//
-
-const SystemOff = 13
-const SystemOn = 14
-
-range SystemState = SystemOff .. SystemOn
-
-//=====================
-// Alarm Definitions
-//=====================
-
-ALARM = ALARM[AlarmSilenced],
-ALARM[alarm_state:AlarmState] =
-(
-  when (alarm_state == AlarmSounds)
-    alarm_rings -&gt; ALARM[alarm_state]
-  |
-  when (alarm_state == AlarmSounds)
-    alarm_silence -&gt; ALARM[AlarmSilenced]
-  |
-  enable_alarm -&gt; ALARM[AlarmSounds]
-  |
-  power_failure -&gt; ALARM
-).
-
-//=====================
-// Process Definitions
-//=====================
-
-//Initial Pump State
-PUMP_POWER = POWERED[Unplugged][BatteryEmpty],
-
-//Pump has power but not on -- keep track of whether there is any battery and plug state
-POWERED[plug_state:PluggedState][battery_state:BatteryState]  = 
-(
-  when (plug_state == Unplugged) 
-    plug_in -&gt; POWERED[Plugged][battery_state]
-  |
-  when (plug_state == Plugged)
-    unplug -&gt; POWERED[Unplugged][battery_state]
-  |
-  when (battery_state != BatteryEmpty)
-    turn_on -&gt; POWER_ON[plug_state][battery_state]
-  |
-  when (plug_state == Plugged &amp;&amp; battery_state != BatteryCharge)
-    battery_charge -&gt; POWERED[plug_state][battery_state+1]
-),
-
-//Pump is on
-POWER_ON[plug_state:PluggedState][battery_state:BatteryState] = 
-(
-  when (plug_state == Plugged)
-    unplug -&gt; POWER_ON[Unplugged][battery_state]
-  |
-  when (plug_state == Unplugged)
-    plug_in -&gt; POWER_ON[Plugged][battery_state]
-  |
-  turn_off -&gt; POWERED[plug_state][battery_state]
-  |
-  when (plug_state == Unplugged &amp;&amp; battery_state == BatteryCharge)
-    battery_spent -&gt; POWER_ON[plug_state][BatteryLow]
-  |
-  when (plug_state == Unplugged &amp;&amp; battery_state == BatteryLow)
-    power_failure -&gt; POWERED[Unplugged][BatteryEmpty]
-  |
-  when (plug_state == Plugged &amp;&amp; battery_state != BatteryCharge)
-    battery_charge -&gt; POWER_ON[plug_state][battery_state+1]
-  |
-  when (plug_state == Unplugged &amp;&amp; battery_state == BatteryLow)
-    enable_alarm -&gt; POWER_ON[plug_state][battery_state]
-).
-
-//
-// Dispense complete
-//
-
-const Dispensing = 15
-const DispenseDone = 16
-
-range DispenseState = Dispensing .. DispenseDone
-
-//=====================
-// Process Definitions
-//=====================
-range NUM_LINE = 1..1
-
-LINE = LINE[LineUnlocked],
-
-LINE[lineLock:LineLockStateT] = (turn_on -&gt; LINESETUP[ParamsNotSet][lineLock]), 
-
-//
-//-Setupmode for the line
-
-LINESETUP[params:ParamsStateT][lineLock:LineLockStateT] = 
-( 
-  turn_off -&gt; LINE[lineLock]
-  |
-  power_failure -&gt; LINE[lineLock]
-  |
-  when (params == ParamsNotSet &amp;&amp; lineLock == LineUnlocked)
-    set_rate -&gt; LINESETUP[ParamsSet][lineLock]
-  |
-  when (params == ParamsSet &amp;&amp; lineLock == LineUnlocked)
-    clear_rate -&gt; LINESETUP[ParamsNotSet][lineLock]
-  |
-  when (params == ParamsSet &amp;&amp; lineLock == LineUnlocked)
-    lock_line -&gt; LINESETUP[params][LineLocked]
-  |
-  when (lineLock == LineLocked)
-    erase_and_unlock_line -&gt; LINESETUP[params][LineUnlocked]
-  |
-  when (params == ParamsSet &amp;&amp; lineLock == LineLocked)
-    confirm_settings -&gt; LINEINFUSION[UnitUnlocked]
-),
-
-//
-// Pump in infusion mode:
-// - Always be able to turn the unit off, even if locked
-// - Allow the user to lock/unlock the unit
-// - Errors could occur with the pump (e.g., line became pinched or plugged)
-//
-LINEINFUSION[unitLock:UnitLockStateT] =
-(
-  turn_off -&gt; LINE[LineLocked]
-  |
-  power_failure -&gt; LINE[LineLocked]
-  |
-  when (unitLock == UnitUnlocked)
-    change_settings -&gt; LINESETUP[ParamsSet][LineLocked]
-  |
-  when (unitLock == UnitUnlocked)
-    lock_unit -&gt; LINEINFUSION[UnitLocked]
-  |
-  when (unitLock == UnitLocked)
-    unlock_unit -&gt; LINEINFUSION[UnitUnlocked]
-  |
-  when (unitLock == UnitLocked)
-    start_dispense -&gt; DISPENSE[SystemOn][Dispensing]
-),
-
-DISPENSE[system_state:SystemState][dispense:DispenseState] =
-(
-  dispense_main_med_flow -&gt; DISPENSE[system_state][DispenseDone]
-  |
-  when (system_state == SystemOn &amp;&amp; dispense == DispenseDone)
-    flow_complete -&gt; unlock_unit -&gt; LINESETUP[ParamsNotSet][LineLocked]
-  |
-  power_failure -&gt; DISPENSE[SystemOff][Dispensing]
-  |
-  when (system_state == SystemOff)
-    turn_on -&gt; LINESETUP[ParamsNotSet][LineLocked]
-  |
-  when (system_state == SystemOn)
-    turn_off -&gt; LINE[LineLocked]
-).
-
-||LINES = (line[NUM_LINE]:LINE)/{
-  turn_on/line[NUM_LINE].turn_on,
-  turn_off/line[NUM_LINE].turn_off,
-  power_failure/line[NUM_LINE].power_failure}.
-
-||SYS = (PUMP_POWER || ALARM || LINES).
-</code></pre>
-<p>And its UML is equally large. <img src="../data/pump-sys.png" /></p>
+<p>Since the code is very large, we put it in a pastebin. <a href="https://pastebin.com/DHsxKGk5">https://pastebin.com/DHsxKGk5</a> And its UML is equally large. <img src="../data/pump-sys.png" /></p>
 <h3 id="environment-2">Environment</h3>
 <p>It only considers user interaction so it is simpler.</p>
 <pre class="LTS"><code>range LINES = 1..1
@@ -395,13 +185,6 @@ RATE_SET = (line[1].set_rate -&gt; RATE_SET | power_failure -&gt; P | line[1].di
 DISPENSE = (line[1].dispense_main_med_flow -&gt; DISPENSE | line[1].flow_complete -&gt; P | power_failure -&gt; P).
 </code></pre>
 <p>The UML is: <img src="../data/pump-p.png" /></p>
-<h1 id="literature-review">Literature Review</h1>
-<h2 id="mapping-uml-to-labeled-transition-systems-for-test-case-generation">Mapping UML to Labeled Transition Systems for Test-Case Generation</h2>
-<p>It does not express UML to Formal Specification Process Algebra (FSP) that our LTSA analyzer uses. Rather it converts a subset of UML syntax into formalism of object-oriented action systems(OOAS). And it does not automatically convert UML to LTS. Rather it defines syntax, notations by extending OOAS that can be used and slowly solves the problem like a mathematician. In fact, it is more like UML –&gt; OOAS –&gt; LTS. The UML to OOAS mapping is manual so it is not much helpful.</p>
-<h2 id="models-oriented-approach-for-developing-railway-safety-critical-systems-with-uml">Models Oriented Approach for developing railway safety-critical systems with UML</h2>
-<p>It perfectly aligns with what we want. <img src="../data/uml-state-transition-train.png" /> For each class, we have state transition diagram like above. As you can see, each edge contain event/action annotation. The action annotation is used for synchorinization later on. <img src="../data/UML-LTS-train.png" /> The UML to LTL translation above is very basic. It just maps the well-documented state transition diagram annotation. No complex features.</p>
-<p>We have state transition diagram for each class. We finally combine these classes to construct the whole system by synchronizing and parallelizing them as shown above. <img src="../data/UML-LTS-System-Train.png" /></p>
-<p>Overall, this paper briefly shows a realistic way of mapping UML to LTS. We first convert state transition diagram for each class into LTS notation. After that, we combine these classes using event/action annotations shown in the class descriptions.</p>
 <h1 id="summary">Summary</h1>
 <p>The notation LTSA uses, FSP/LTS, is an expressive formal specification language. While the expressive power of UML is little in comparison.</p>
 <p>It is possible to express all UML diagrams as LTS notation, as we saw in our literature review. However, expressing many LTS notations is often infeasible, as we saw in our case study.</p>
