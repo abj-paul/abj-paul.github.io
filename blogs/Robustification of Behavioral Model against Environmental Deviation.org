@@ -4,8 +4,9 @@
 
 We consider the three examples available with the paper. And we will evaluate whether it is feasible to express real systems ~formally~ using UML diagram.
 
-* Voting System
-** DONE System Design
+* Case Study 
+** Voting System
+*** DONE System Design
 CLOSED: [2024-07-05 শুক্র 09:24]
 Following is the ~sys.lts~ for voting system from a high level of abstraction.
 #+begin_src LTS
@@ -16,7 +17,7 @@ P3 = (confirm -> EM | back -> P2).
 #+end_src
 The following is the UML diagram for it.
 [[file:~/abj-paul.github.io/data/voter-sys.png]]
-** DONE Environment
+*** DONE Environment
 CLOSED: [2024-07-05 শুক্র 09:28]
 Following is the environment definition, albeit simplified from high level of abstraction.
 #+begin_src LTS
@@ -31,7 +32,7 @@ And its UML diagram is:
 [[file:~/abj-paul.github.io/data/voter-env.png]]
 
 While complex to look at, one can argue that the process flow itself is simple. So it can also be expressed via UML
-** Requirement
+*** Requirement
 The FSP notation for requirement of voting is very simple. The one who enters the password and the one who gives the vote should be the same person.
 #+begin_src LTS
 const NoBody = 0
@@ -49,8 +50,8 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 #+end_src
 But its corresponding UML is simply not human.
 [[file:~/abj-paul.github.io/data/voter-p.png]]
-* Therac25 System
-** DONE System Design
+** Therac25 System
+*** DONE System Design
 CLOSED: [2024-07-05 শুক্র 10:24]
 It comprises of three parallel parts, each can be described separately and simply.
 #+begin_src LTS
@@ -87,7 +88,7 @@ The parallel parts can be separately described using UML.
 [[file:~/abj-paul.github.io/data/therac-sys-beam.png]]
 [[file:~/abj-paul.github.io/data/therac-spreader-beam.png]]
 It is easily doable in UML, as we can see above.
-** DONE Environment
+*** DONE Environment
 CLOSED: [2024-07-05 শুক্র 10:24]
 The environment defines user interaction. The user will select XRay or EBeam, continue or go back and finally press Enter.
 #+begin_src LTS
@@ -97,7 +98,7 @@ ENV_2 = (b -> enter -> ENV | up -> ENV_1).
 #+end_src
 The corresponding UML is also very simple.
 [[file:~/abj-paul.github.io/data/therac-env.png]]
-** Property
+*** Property
 The safety property defines different state of the spreader and the corresponding interface instruction and says that conflict should not occur.
 #+begin_src LTS
 const InPlace = 0
@@ -130,9 +131,9 @@ P[spreader:SpreaderState][power:BeamState] = (
 #+end_src
 The UML is small but quite complex to understand.
 [[file:~/abj-paul.github.io/data/therac-p.png]]
-* Pump
+** Pump
 It is a complex and close to realistic system design.
-** System Design
+*** System Design
 #+begin_src LTS
 //======================
 // Constants and Ranges
@@ -356,7 +357,7 @@ DISPENSE[system_state:SystemState][dispense:DispenseState] =
 #+end_src
 And its UML is equally large.
 [[file:~/abj-paul.github.io/data/pump-sys.png]]
-** Environment
+*** Environment
 It only considers user interaction so it is simpler.
 #+begin_src LTS
 range LINES = 1..1
@@ -393,7 +394,7 @@ RUN[i:LINES] = (
 The UML diagram is:
 [[file:~/abj-paul.github.io/data/pump-env.png]]
 Simple.
-** Requirement
+*** Requirement
 The property is also simple because it builds upon original system design.
 #+begin_src LTS
 P = (line[1].set_rate -> RATE_SET | power_failure -> P),
@@ -402,9 +403,25 @@ DISPENSE = (line[1].dispense_main_med_flow -> DISPENSE | line[1].flow_complete -
 #+end_src
 The UML is:
 [[file:~/abj-paul.github.io/data/pump-p.png]]
-* Comments
-As we can see,
-1. Simple systems can be explained but their requirements can't be explained formally via UML.
-2. For complex systems, UML creates a hard to understand system.
+* Literature Review
+** Mapping UML to Labeled Transition Systems for Test-Case Generation
+It does not express UML to Formal Specification Process Algebra (FSP) that our LTSA analyzer uses. Rather it converts a subset of UML syntax into formalism of object-oriented action systems(OOAS).
+And it does not automatically convert UML to LTS. Rather it defines syntax, notations by extending OOAS that can be used and slowly solves the problem like a mathematician.
+In fact, it is more like UML --> OOAS --> LTS. The UML to OOAS mapping is manual so it is not much helpful.
+** Models Oriented Approach for developing railway safety-critical systems with UML
+It perfectly aligns with what we want.
+[[file:~/abj-paul.github.io/data/uml-state-transition-train.png]]
+For each class, we have state transition diagram like above. As you can see, each edge contain event/action annotation. The action annotation is used for synchorinization later on.
+[[file:~/abj-paul.github.io/data/UML-LTS-train.png]]
+The UML to LTL translation above is very basic. It just maps the well-documented state transition diagram annotation. No complex features.
 
-   We will now do literature review to provide support for our findings.
+We have state transition diagram for each class. We finally combine these classes to construct the whole system by synchronizing and parallelizing them as shown above. 
+[[file:~/abj-paul.github.io/data/UML-LTS-System-Train.png]]
+
+Overall, this paper briefly shows a realistic way of mapping UML to LTS. We first convert state transition diagram for each class into LTS notation. After that, we combine these classes using event/action annotations shown in the class descriptions.
+* Summary
+The notation LTSA uses, FSP/LTS, is an expressive formal specification language. While the expressive power of UML is little in comparison.
+
+It is possible to express all UML diagrams as LTS notation, as we saw in our literature review. However, expressing many LTS notations is often infeasible, as we saw in our case study.
+
+From our SPL3 perspective, we can model the given systems as separate classes before joining them. As we already do. So our translation part is completed! However, the difficulty, again, will be finding systems where our fortis tools can give useful redesigns. We have to experiment a LOT to design such systems and define cost thresholds.
