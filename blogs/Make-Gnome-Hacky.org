@@ -20,3 +20,15 @@ Then open dconf-editor and go to ~dconf-editor > org > gnome > desktop > wm > ke
 [[file:~/abj-paul.github.io/data/gnome-wm-keybindings.png]]
 ** Sidebar
 To make sidebar appear only when we slide over it, go to Settings > Appearance > Turn on "Auto hide the dock" > Turn off "Panel mode"
+
+** System Tray
+It is a good touch to add CPU-memory information, weather etc. in system tray.
+[[file:~/abj-paul.github.io/data/gnome-systemtray.png]]
+For that, we first need to install gnome-chrome-extension. This would allow us to install gnome extensions directly from browser.
+#+begin_src bash
+  sudo apt-get install chrome-gnome-shell
+#+end_src
+
+Also, install ~GNOME Shell integration~ extension from your browser. Then for adding CPU-memory usage, simply install ~Vitas~ from browser. Vitas github shows the installation procedure in details.
+
+For weather, I installed OpenWeather extension.
