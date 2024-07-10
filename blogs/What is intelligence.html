@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>What is intelligence?</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="blogs.css">
+
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">What is intelligence?</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-07-08 সোম&gt;</p>
+</header>
+<p>In this article, we look back at a fundamental question of AI research - what is intelligence? From looking at the emergent behavior of Large Language Models, I had the notion that intelligence may have strong association with the number of neurons. So if a model or entity has few number of neurons, it is comparatively less intelligent.</p>
+<p>We see this pattern in animal kingdom. With evolution, our number of neurons increased. <img src="../data/number of neurons in animal.png" /></p>
+<p>Similarly, we see similar trend in AI model training. The model size increased faster than Moore's law. <img src="../data/increasing size of dnn.png" /></p>
+<p>And <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> also reports a correlation between Intelligence of Large Language Models and their size. <img src="../data/ai-performance-knowledge-tests-vs-parameters.png" /></p>
+<p>With these knowledge in mind, I was looking at an insect the other day. I don't know what species it belongs to or its name. It was small - If we consider "1 ant" to be our unit of measurement, then it was 2 ant long. I looked at it and thought,</p>
+<blockquote>
+<p>What difference is there between you and a lifeless object?</p>
+</blockquote>
+<p>Its head was so small. I reckon it did not even have neurons rather a crudely made sensory lines in its back. So there is really no difference between it and some robot.</p>
+<p>Or so i thought initially. However, Neurobiological research on bees, and computer models replicating their brain operations, have shown that relatively advanced levels of intelligence can naturally emerge from exceptionally small nervous circuits <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>The emergent behaviors and the tendency to prioritize long term benefits over short term benefits are common in insects. Specially the emergent behavior part is what we want to focus on. They can explore, sense their perceived world the way human does.</p>
+<p>We strongly believe that</p>
+<blockquote>
+<p>Emergent behaviors is intelligence.</p>
+</blockquote>
+<p>So we don't think intelligence is associate with large number of neurons. Because insects with much simpler structure also shows emergent behaviors. In author's opinion, number of neurons just needs to be enough to understand the distribution of the data the insect perceives. Same applies for neural networks. In other words, we can get emergent behaviors from a DNN with only 100 neurons if the data has simpler distribution. In such case, we need to figure out which behavior do we call emergent behavior? Being able to predict on the data it has not been trained on? But all neural networks do that. Then what exactly is emergent behavior?</p>
+<p>Emergent behavior is nothing but prediction capability. A model that learns many things, even if in unsupervised manner, can do many things. From this perspective, if we gather all the data an insect perceives (magnetic wave, smell etc.) and then train a transformer, it will also show us the emergent behaviors an insect can show.</p>
+<p>So what is intelligence? Haven't we already invented intelligence? Emergent behaviors IS intelligence!</p>
+<h2 id="citations">Citations</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Epoch (2023) – with minor processing by Our World in Data. “Performance on knowledge tests (MMLU)” [dataset]. Epoch, “Large Language Model Performance and Compute” [original data].<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://press.princeton.edu/ideas/insect-intelligence">https://press.princeton.edu/ideas/insect-intelligence</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
