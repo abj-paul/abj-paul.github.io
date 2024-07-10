@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>How can we formally verify a neural network?</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="blogs.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">How can we formally verify a neural network?</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-07-10 বুধ&gt;</p>
+</header>
+<p>We first start by understanding "What is Neural Network Verification?". Testing is not enough to prove the robustness of a neural network. Due to the uncertain nature of whats inside blackbox, there can always be points for which the model would misclassify. <img src="../data/can we trust models.png" /></p>
+<p>So we need to <code>prove</code> that a neural network would give certain output against certain input. More formally,</p>
+<blockquote>
+<p>We need to prove that the NN satisfies the requirements.</p>
+</blockquote>
+<p>Let us demonstrate it with a simple cat-dog classifier. We want to prove that for any input within region <code>C</code>, the model would classify <code>cat</code>. <img src="../data/What are we proving.png" /></p>
+<h2 id="literature-review">Literature Review</h2>
+<p>The current literature strongly focuses on adversarial robustness. So the robustness proving problem can be reduced to adding noise/perturbations to image and observing whether the model is robust against those perturbation. <img src="../data/noise example.png" /></p>
+<p>Here, the noise is defined as distance L<sub>0</sub> norm between original image and perturbed image. The literature starts as early as 2017 and has recently gained popularity. <img src="../data/literature review.png" /></p>
+<p>We want to make a tool that will incorporate as many methods above as possible.</p>
+<h3 id="existing-tools">Existing Tools</h3>
+<p>We will now discuss on <code>auto-LiRPA</code> first. It takes the following input.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Epsilon</td>
+<td>It indicates Perturbation level, calculated via L0 norm</td>
+<td>e.g. 0.001</td>
+</tr>
+<tr class="even">
+<td>test<sub>data</sub></td>
+<td>One image or multiple image.</td>
+<td>data/1.png</td>
+</tr>
+<tr class="odd">
+<td>Model Architecture</td>
+<td>Copy-paste model architecture</td>
+<td>layer0 = keras.conv()</td>
+</tr>
+</tbody>
+</table>
+<p>And it produces the following output.</p>
+<pre class="text"><code>Bounding method: backward (CROWN, DeepPoly)
+f_0(x_0):   -5.638 &lt;= f_0(x_0+delta) &lt;=    0.521
+f_1(x_0):  -10.532 &lt;= f_1(x_0+delta) &lt;=   -2.419
+f_2(x_0):    1.883 &lt;= f_2(x_0+delta) &lt;=    7.537
+f_3(x_0):   -5.327 &lt;= f_3(x_0+delta) &lt;=   -0.827
+f_4(x_0):   -7.217 &lt;= f_4(x_0+delta) &lt;=   -1.037
+f_5(x_0):   -5.238 &lt;= f_5(x_0+delta) &lt;=   -0.151
+f_6(x_0):   -5.686 &lt;= f_6(x_0+delta) &lt;=    0.118
+f_7(x_0):   -7.934 &lt;= f_7(x_0+delta) &lt;=   -0.303
+f_8(x_0):  -12.044 &lt;= f_8(x_0+delta) &lt;=   -3.793
+f_9(x_0):   -9.329 &lt;= f_9(x_0+delta) &lt;=   -3.074
+</code></pre>
+<p>The output proves that for that perturbation, the output matches the actual value. So it is robust to that perturbation.</p>
+<p>Collected from auto<sub>LiRPA</sub> Quick start tutorial <a href="http://PaperCode.cc/AutoLiRPA-Demo">http://PaperCode.cc/AutoLiRPA-Demo</a>.</p>
+<h2 id="proposed-system">Proposed System</h2>
+<p>We want to make the following system. <img src="../data/dnnv-spl3-gui.png" /></p>
+<p>We will implement this the following way. <img src="../data/dnnv-spl3-process.png" /></p>
+<h3 id="extension">Extension</h3>
+<ol>
+    <li>Stakeholder feedback</li>
+    <li>Handle IoT based open source models.</li>
+    <li>Allow more kinds of verification functions.</li>
+</ol>
+</body>
+</html>
