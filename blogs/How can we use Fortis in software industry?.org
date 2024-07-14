@@ -1,0 +1,68 @@
+#+TITLE: How can we adapt Fortis for Agile?
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-07-14 রবি>
+
+Given a system model, an environment model, and a safety property, the tool ~Fortis~ can be used for automated repair of a given system to improve its robustness against a set of intolerable deviations. It is a powerful generic tool but in this article, we look at Fortis from the lense of users. So we show an example of a system that is not robust against diverse user mistakes and show how Fortis can be used to generate a more robust design that addresses those user mistakes.
+
+Note that, by user, we mean software industry. Because they are a major stakeholder for any software design repair tool. 
+
+** Demo - User prefers simple graphical solutions
+Users prefer tools with little to no learning curve. That is why we designed our frontend in a manner that users are very accustomed with. They simply create a project and then upload project designs. Our model then robustifies the design and generates a report. So we can summarize user interaction in three simple tasks.
+1. Create a project
+2. Upload design files
+3. Get ~report~ after Fortis generates redesigns.
+
+   You can see a demo of our tool here.
+   [[file:~/abj-paul.github.io/data/Example - Voting.mkv]]
+
+   Since the number of redesigns can be numerous, we show the solutions in a tab-like gui. User can exapnd the tabs to see the solutions. An example report can be seen [[file:~/abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][here]].
+
+** Case Study - Voting System
+We will now look at the example of an e-voting system.
+*** System Design
+Following is the ~sys.lts~ for voting system from a high level of abstraction.
+#+begin_src LTS
+EM = (password -> P1),
+P1 = (select -> P2),
+P2 = (vote -> P3 | back -> P1),
+P3 = (confirm -> EM | back -> P2).
+#+end_src
+The following is the UML diagram for it.
+[[file:~/abj-paul.github.io/data/voter-sys.png]]
+*** Environment
+Following is the environment definition, albeit simplified from high level of abstraction.
+#+begin_src LTS
+ENV = (v.enter -> VOTER | eo.enter -> EO),
+VOTER = (password -> VOTER1),
+VOTER1 = (select -> VOTER2),
+VOTER2 = (vote -> VOTER3 | back -> VOTER1),
+VOTER3 = (confirm -> v.exit -> ENV | omit_confirm -> v.exit -> ENV | back -> VOTER2),
+EO = (select -> EO | vote -> EO | confirm -> EO | back -> EO | eo.exit -> ENV).
+#+end_src
+And its UML diagram is:
+[[file:~/abj-paul.github.io/data/voter-env.png]]
+
+While complex to look at, one can argue that the process flow itself is simple. So it can also be expressed via UML
+*** Requirement
+The FSP notation for requirement of voting is very simple. The one who enters the password and the one who gives the vote should be the same person.
+#+begin_src LTS
+const NoBody = 0
+const Voter = 1
+const EO = 2
+range WHO = NoBody..EO
+
+P = VOTE[NoBody][NoBody][NoBody],
+VOTE[in:WHO][sel:WHO][v:WHO] = (
+      v.enter -> VOTE[Voter][sel][v] | eo.enter -> VOTE[EO][sel][v]
+    | password -> VOTE[in][sel][in]
+    | select -> VOTE[in][in][v]
+    | when (sel == v) confirm -> VOTE[in][NoBody][NoBody]
+).
+#+end_src
+But its corresponding UML is simply not human.
+[[file:~/abj-paul.github.io/data/voter-p.png]]
+
+*** Redesigns
+You can see all the redesigns [[file:~/abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][here]]. We will now discuss on exactly what changed.
+*** References
+[1] Zhang, Changjian, et al. "Fortis: A tool for analysis and repair of robust software systems." 2023 Formal Methods in Computer-Aided Design (FMCAD). IEEE, 2023.
