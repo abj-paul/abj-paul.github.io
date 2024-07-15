@@ -6,6 +6,8 @@ Given a system model, an environment model, and a safety property, the tool ~For
 
 Note that, by user, we mean software industry. Because they are a major stakeholder for any software design repair tool. 
 
+A core motivation behind this work comes from [1] - the idea of considering HCI aspects of programming to ensure that people will actually use them.
+
 ** Demo - User prefers simple graphical solutions
 Users prefer tools with little to no learning curve. That is why we designed our frontend in a manner that users are very accustomed with. They simply create a project and then upload project designs. Our model then robustifies the design and generates a report. So we can summarize user interaction in three simple tasks.
 1. Create a project
@@ -15,7 +17,7 @@ Users prefer tools with little to no learning curve. That is why we designed our
    You can see a demo of our tool here.
    [[file:~/abj-paul.github.io/data/Example - Voting.mkv]]
 
-   Since the number of redesigns can be numerous, we show the solutions in a tab-like gui. User can exapnd the tabs to see the solutions. An example report can be seen [[file:~/abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][here]].
+   Since the number of redesigns can be numerous, we show the solutions in a tab-like gui. User can exapnd the tabs to see the solutions. An example report can be seen [[https://abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][here.]].
 
 ** Case Study - Voting System
 We will now look at the example of an e-voting system.
@@ -62,7 +64,19 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 But its corresponding UML is simply not human.
 [[file:~/abj-paul.github.io/data/voter-p.png]]
 
-*** Redesigns
-You can see all the redesigns [[file:~/abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][here]]. We will now discuss on exactly what changed.
+*** Understanding Redesigns
+You can see all the redesigns [[https://abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][in the generated report here.]] We will now discuss on exactly what changed. As we try to navigate through them, the diagrams are very huge and often hard to comprehend.
+We tried using ChatGPT to assist us in understanding the graphs better. However, the responses were not helpful often. So while ChatGPT has the potential to sometimes give useful results for this task, it is not reliable due to the observed inconsistency in responses.
+
+| Prompt Type              | Result      | Experiments                                                    |
+|--------------------------+-------------+----------------------------------------------------------------|
+| Compare multiple designs | Not helpful | https://chatgpt.com/share/44c07d0d-ef32-4595-9e79-474abdc61acf |
+| Describe one by one      | Not helpful | https://chatgpt.com/share/1c4388f8-7611-4870-b17b-67713219d276                                                               |
+
+Since ChatGPT was not helpful, we decided to look at it from different angles. We found inspiration for it from Visualizing Formal Specification by [[https://www.cmu.edu/scs/s3d/reuse/Research/index.html][Eunsuk Kang]]. In this ongoing undergrad project, they also agree that the built-in visualizations available in tools like Alloy, LTSA are not essentially helpful. A good diagram can help system analysts understand bugs, do better designs. With that in mind, we intend to show the redesigns through layers of abstractions.
+
+For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.
+
 *** References
 [1] Zhang, Changjian, et al. "Fortis: A tool for analysis and repair of robust software systems." 2023 Formal Methods in Computer-Aided Design (FMCAD). IEEE, 2023.
+[2] Chasins, Sarah E., Elena L. Glassman, and Joshua Sunshine. "PL and HCI: Better together." Communications of the ACM 64.8 (2021): 98-106.
