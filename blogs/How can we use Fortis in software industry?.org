@@ -77,6 +77,8 @@ Since ChatGPT was not helpful, we decided to look at it from different angles. W
 
 For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.
 
+Use cubic Bezier curves with two control points instead of quadratic Bezier curves with one control point.
+
 *** References
 [1] Zhang, Changjian, et al. "Fortis: A tool for analysis and repair of robust software systems." 2023 Formal Methods in Computer-Aided Design (FMCAD). IEEE, 2023.
 [2] Chasins, Sarah E., Elena L. Glassman, and Joshua Sunshine. "PL and HCI: Better together." Communications of the ACM 64.8 (2021): 98-106.
