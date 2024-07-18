@@ -78,7 +78,33 @@ Since ChatGPT was not helpful, we decided to look at it from different angles. W
 For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.
 
 Use cubic Bezier curves with two control points instead of quadratic Bezier curves with one control point.
+**** Hierarchical View
+We decided that the most populated nodes are the ones we should start looking from. So given a diagram, we try to find popular nodes. And this way, we try to create a general notion on what to look for, in the mind of the user.
 
+The original diagram is:
+[[file:~/abj-paul.github.io/data/orignial-diagram.png]]
+
+The following diagram is achieved by placing states in grids.
+[[file:~/abj-paul.github.io/data/voting-total-diagram.png]]
+
+
+The below diagram is mapping between core nodes and the transitions.
+[[file:~/abj-paul.github.io/data/voting-whole-diagram-2.png]]
+
+And the following gives a general notion of the graph.
+[[file:~/abj-paul.github.io/data/voting-abstracting-diagram.png]]
+
+**** User Oriented Approach
+In this approach, user first segments the diagram into multiple parts using pen-and-paper tools i.e. xournal++. We use ~divide and conquer~ strategy for better comprehension of the diagram, since understanding big diagrams, like the following, is hard at a glance.
+[[file:~/abj-paul.github.io/data/solution_13.png]]
+So we instead do this.
+[[file:~/abj-paul.github.io/data/design13-mental-mapping.png]]
+
+*** Results
+1. User oriented approach is recommended to inspect Fortis Generated Results
+2. Smallest diagram does capture sufficient details for understanding. [[file:~/abj-paul.github.io/data/smallest design gives sufficient insights.png]]
+3. All the other Fortis redesigns can be used as ~User Scenarios~ to test the system design against.
+4. Cost is an important factor.
 *** References
 [1] Zhang, Changjian, et al. "Fortis: A tool for analysis and repair of robust software systems." 2023 Formal Methods in Computer-Aided Design (FMCAD). IEEE, 2023.
 [2] Chasins, Sarah E., Elena L. Glassman, and Joshua Sunshine. "PL and HCI: Better together." Communications of the ACM 64.8 (2021): 98-106.
