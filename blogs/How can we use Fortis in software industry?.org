@@ -66,6 +66,7 @@ But its corresponding UML is simply not human.
 
 *** Understanding Redesigns
 You can see all the redesigns [[https://abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html][in the generated report here.]] We will now discuss on exactly what changed. As we try to navigate through them, the diagrams are very huge and often hard to comprehend.
+**** Using Large Language Models
 We tried using ChatGPT to assist us in understanding the graphs better. However, the responses were not helpful often. So while ChatGPT has the potential to sometimes give useful results for this task, it is not reliable due to the observed inconsistency in responses.
 
 | Prompt Type              | Result      | Experiments                                                    |
@@ -75,10 +76,10 @@ We tried using ChatGPT to assist us in understanding the graphs better. However,
 
 Since ChatGPT was not helpful, we decided to look at it from different angles. We found inspiration for it from Visualizing Formal Specification by [[https://www.cmu.edu/scs/s3d/reuse/Research/index.html][Eunsuk Kang]]. In this ongoing undergrad project, they also agree that the built-in visualizations available in tools like Alloy, LTSA are not essentially helpful. A good diagram can help system analysts understand bugs, do better designs. With that in mind, we intend to show the redesigns through layers of abstractions.
 
+**** Hierarchical View
 For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.
 
 Use cubic Bezier curves with two control points instead of quadratic Bezier curves with one control point.
-**** Hierarchical View
 We decided that the most populated nodes are the ones we should start looking from. So given a diagram, we try to find popular nodes. And this way, we try to create a general notion on what to look for, in the mind of the user.
 
 The original diagram is:
@@ -99,7 +100,16 @@ In this approach, user first segments the diagram into multiple parts using pen-
 [[file:~/abj-paul.github.io/data/solution_13.png]]
 So we instead do this.
 [[file:~/abj-paul.github.io/data/design13-mental-mapping.png]]
+*** Cost
+| Figure        | Controllable Cost                        | Observable Cost                         |
+|---------------+------------------------------------------+-----------------------------------------|
+| First Figure  | 1 ← [eo.enter, eo.exit, v.enter, v.exit] | 3: [eo.enter, eo.exit, v.enter, v.exit] |
+| Second Figure | 3 ← [eo.enter, eo.exit, v.enter, v.exit] | 2: [eo.enter, eo.exit, v.enter, v.exit] |
+[[file:~/abj-paul.github.io/data/cost_solution_1.png]]
+In the following redeesign, we assume that controlling exit-entry is less costly than observing them.
 
+In the following redesign, we assume that controlling exit-entry is more costly than observing them.
+[[file:~/abj-paul.github.io/data/orignial-diagram.png]]
 *** Results
 1. User oriented approach is recommended to inspect Fortis Generated Results
 2. Smallest diagram does capture sufficient details for understanding. [[file:~/abj-paul.github.io/data/smallest design gives sufficient insights.png]]
