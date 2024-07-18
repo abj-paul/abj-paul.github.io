@@ -17,7 +17,7 @@
     ul.task-list{list-style: none;}
   </style>
 </head>
-<body class="markdown-container">
+<body clas="markdown-container">
 <header id="title-block-header">
 <h1 class="title">How can we adapt Fortis for Agile?</h1>
 <p class="author">Abhijit Paul</p>
@@ -73,7 +73,10 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 </code></pre>
 <p>But its corresponding UML is simply not human. <img src="../data/voter-p.png" /></p>
 <h3 id="understanding-redesigns">Understanding Redesigns</h3>
-<p>You can see all the redesigns <a href="https://abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html">in the generated report here.</a> We will now discuss on exactly what changed. As we try to navigate through them, the diagrams are very huge and often hard to comprehend. We tried using ChatGPT to assist us in understanding the graphs better. However, the responses were not helpful often. So while ChatGPT has the potential to sometimes give useful results for this task, it is not reliable due to the observed inconsistency in responses.</p>
+<p>You can see all the redesigns <a href="https://abj-paul.github.io/data/EVoting/EVoting_summary_2024-07-14_18-19-55.html">in the generated report here.</a> We will now discuss on exactly what changed. As we try to navigate through them, the diagrams are very huge and often hard to comprehend.</p>
+<ol>
+<li><p>Using Large Language Models</p>
+<p>We tried using ChatGPT to assist us in understanding the graphs better. However, the responses were not helpful often. So while ChatGPT has the potential to sometimes give useful results for this task, it is not reliable due to the observed inconsistency in responses.</p>
 <table>
 <thead>
 <tr class="header">
@@ -95,12 +98,10 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 </tr>
 </tbody>
 </table>
-<p>Since ChatGPT was not helpful, we decided to look at it from different angles. We found inspiration for it from Visualizing Formal Specification by <a href="https://www.cmu.edu/scs/s3d/reuse/Research/index.html">Eunsuk Kang</a>. In this ongoing undergrad project, they also agree that the built-in visualizations available in tools like Alloy, LTSA are not essentially helpful. A good diagram can help system analysts understand bugs, do better designs. With that in mind, we intend to show the redesigns through layers of abstractions.</p>
-<p>For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.</p>
-<p>Use cubic Bezier curves with two control points instead of quadratic Bezier curves with one control point.</p>
-<ol>
+<p>Since ChatGPT was not helpful, we decided to look at it from different angles. We found inspiration for it from Visualizing Formal Specification by <a href="https://www.cmu.edu/scs/s3d/reuse/Research/index.html">Eunsuk Kang</a>. In this ongoing undergrad project, they also agree that the built-in visualizations available in tools like Alloy, LTSA are not essentially helpful. A good diagram can help system analysts understand bugs, do better designs. With that in mind, we intend to show the redesigns through layers of abstractions.</p></li>
 <li><p>Hierarchical View</p>
-<p>We decided that the most populated nodes are the ones we should start looking from. So given a diagram, we try to find popular nodes. And this way, we try to create a general notion on what to look for, in the mind of the user.</p>
+<p>For an automata, a force-directed graph layout is more suitable than a tree layout. Force-directed graphs help spread out nodes in a way that minimizes overlap and edge crossings, making it easier to visualize complex interconnections. We'll use D3.js to create an interactive force-directed graph.</p>
+<p>Use cubic Bezier curves with two control points instead of quadratic Bezier curves with one control point. We decided that the most populated nodes are the ones we should start looking from. So given a diagram, we try to find popular nodes. And this way, we try to create a general notion on what to look for, in the mind of the user.</p>
 <p>The original diagram is: <img src="../data/orignial-diagram.png" /></p>
 <p>The following diagram is achieved by placing states in grids. <img src="../data/voting-total-diagram.png" /></p>
 <p>The below diagram is mapping between core nodes and the transitions. <img src="../data/voting-whole-diagram-2.png" /></p>
@@ -108,6 +109,30 @@ VOTE[in:WHO][sel:WHO][v:WHO] = (
 <li><p>User Oriented Approach</p>
 <p>In this approach, user first segments the diagram into multiple parts using pen-and-paper tools i.e. xournal++. We use <code>divide and conquer</code> strategy for better comprehension of the diagram, since understanding big diagrams, like the following, is hard at a glance. <img src="../data/solution_13.png" /> So we instead do this. <img src="../data/design13-mental-mapping.png" /></p></li>
 </ol>
+<h3 id="cost">Cost</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Figure</th>
+<th>Controllable Cost</th>
+<th>Observable Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First Figure</td>
+<td>1 ← [eo.enter, eo.exit, v.enter, v.exit]</td>
+<td>3: [eo.enter, eo.exit, v.enter, v.exit]</td>
+</tr>
+<tr class="even">
+<td>Second Figure</td>
+<td>3 ← [eo.enter, eo.exit, v.enter, v.exit]</td>
+<td>2: [eo.enter, eo.exit, v.enter, v.exit]</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../data/cost_solution_1.png" /> In the following redeesign, we assume that controlling exit-entry is less costly than observing them.</p>
+<p>In the following redesign, we assume that controlling exit-entry is more costly than observing them. <img src="../data/orignial-diagram.png" /></p>
 <h3 id="results">Results</h3>
 <ol>
 <li>User oriented approach is recommended to inspect Fortis Generated Results</li>
