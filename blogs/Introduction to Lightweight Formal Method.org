@@ -1,0 +1,35 @@
+#+TITLE: Introduction to Lightweight Formal Method
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-07-26 শুক্র>
+
+Daniel Jackson  introduced the term lightweight formal methods. He then developed Alloy (2002) as a means for lightweight formal specification. The notion of lightweight formal method came from industry need. Because it is not possible to formally prove each lines of code or design by hand. So SMT solvers came to aid the task. Now we don't need to do the proofs. But still, full system verification remained a complex task.
+
+In most software applications, we don't require to prove the entire thing. We might only need partical code verification e.g. only verify a critical section, only verify that the microservice design is sound etc. Since complete verification is not possible in practice, we opt for partial verification. And since proving theories is hard and costly, we do model checking.
+
+Formal methods can be divided broadly into design and code verification task.
+
+*** Lightweight Formal Method in Design Verification
+We have reduced the mathematical complete verification to a model-checking based partial verification task. Nowadays, for partial verification, users only need to learn a corresponding language e.g. Alloy, DSL, LTSA. Using them, practitioners can easily validate their design against requirement.
+
+Still, the main problem is - design is minimal in local industry. Additionally, practitioners consider UML based SRS process sufficient formalism. So formal specification still has not seen much industry adoption when it comes to design verification. Authors believe that it is important to identify WHAT we can validate, as a list. This way, practitioners will know when they should use Alloy etc.
+*** Lightweight Formal Method in Code Verification
+Lightweight formal method has seen many adoptions in Amazon. Amazon solves most ~user-side pseudo-code verification~ using this approach, since the small vocabulary of such pseudo-code makes it a simple Automata. Programming language can prove syntax checking, but for reachability, dead state etc. requirements validation task, formal methods really excels.
+
+There is also another field of code verification - critical code including blockchain, compilers, algorithms in distributed system are often proved using Ada, TLA+ or similar code verification languages.
+
+
+*** Exploration
+I am brand new to this notion. So I will first enlist individuals who research on this domain. Then I will review their literature, to get a feeling of what lightweight formal method entails.
+
+| Researcher     | Affiliation               |
+|----------------+---------------------------|
+| Daniel Jackson | MIT(Ret.)                 |
+| [[https://www.cs.columbia.edu/~wing/][Jeannette Wing]] | Columbia University(Ret.) |
+| [[https://eskang.github.io/][Eunsuk Kang]]    | CMU                       |
+
+Similarly, lets collect relevant articles as well.
+| Other Resources                            | Comments     |
+|--------------------------------------------+--------------|
+| [[https://people.csail.mit.edu/dnj/publications/ieee96-roundtable.html][Link]]                                       | Introduction |
+| Formal Methods: Not Quite What You Thought |              |
+| [[https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/][Why dont people use Formal Methods?]]        | Detailed     |
