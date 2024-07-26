@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>Introduction to Lightweight Formal Method</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="blogs.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">Introduction to Lightweight Formal Method</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-07-26 শুক্র&gt;</p>
+</header>
+<p>Daniel Jackson introduced the term lightweight formal methods. He then developed Alloy (2002) as a means for lightweight formal specification. The notion of lightweight formal method came from industry need. Because it is not possible to formally prove each lines of code or design by hand. So SMT solvers came to aid the task. Now we don't need to do the proofs. But still, full system verification remained a complex task.</p>
+<p>In most software applications, we don't require to prove the entire thing. We might only need partical code verification e.g. only verify a critical section, only verify that the microservice design is sound etc. Since complete verification is not possible in practice, we opt for partial verification. And since proving theories is hard and costly, we do model checking.</p>
+<p>Formal methods can be divided broadly into design and code verification task.</p>
+<h3 id="lightweight-formal-method-in-design-verification">Lightweight Formal Method in Design Verification</h3>
+<p>We have reduced the mathematical complete verification to a model-checking based partial verification task. Nowadays, for partial verification, users only need to learn a corresponding language e.g. Alloy, DSL, LTSA. Using them, practitioners can easily validate their design against requirement.</p>
+<p>Still, the main problem is - design is minimal in local industry. Additionally, practitioners consider UML based SRS process sufficient formalism. So formal specification still has not seen much industry adoption when it comes to design verification. Authors believe that it is important to identify WHAT we can validate, as a list. This way, practitioners will know when they should use Alloy etc.</p>
+<h3 id="lightweight-formal-method-in-code-verification">Lightweight Formal Method in Code Verification</h3>
+<p>Lightweight formal method has seen many adoptions in Amazon. Amazon solves most <code>user-side pseudo-code verification</code> using this approach, since the small vocabulary of such pseudo-code makes it a simple Automata. Programming language can prove syntax checking, but for reachability, dead state etc. requirements validation task, formal methods really excels.</p>
+<p>There is also another field of code verification - critical code including blockchain, compilers, algorithms in distributed system are often proved using Ada, TLA+ or similar code verification languages.</p>
+<h3 id="exploration">Exploration</h3>
+<p>I am brand new to this notion. So I will first enlist individuals who research on this domain. Then I will review their literature, to get a feeling of what lightweight formal method entails.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Researcher</th>
+<th>Affiliation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Daniel Jackson</td>
+<td>MIT(Ret.)</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.cs.columbia.edu/~wing/">Jeannette Wing</a></td>
+<td>Columbia University(Ret.)</td>
+</tr>
+<tr class="odd">
+<td><a href="https://eskang.github.io/">Eunsuk Kang</a></td>
+<td>CMU</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly, lets collect relevant articles as well.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Other Resources</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://people.csail.mit.edu/dnj/publications/ieee96-roundtable.html">Link</a></td>
+<td>Introduction</td>
+</tr>
+<tr class="even">
+<td>Formal Methods: Not Quite What You Thought</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/">Why dont people use Formal Methods?</a></td>
+<td>Detailed</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
