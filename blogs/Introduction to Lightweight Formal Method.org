@@ -21,15 +21,17 @@ There is also another field of code verification - critical code including block
 *** Exploration
 I am brand new to this notion. So I will first enlist individuals who research on this domain. Then I will review their literature, to get a feeling of what lightweight formal method entails.
 
-| Researcher     | Affiliation               |
-|----------------+---------------------------|
-| Daniel Jackson | MIT(Ret.)                 |
-| [[https://www.cs.columbia.edu/~wing/][Jeannette Wing]] | Columbia University(Ret.) |
-| [[https://eskang.github.io/][Eunsuk Kang]]    | CMU                       |
+| Researcher                           | Affiliation               |
+|--------------------------------------+---------------------------|
+| Daniel Jackson                       | MIT(Ret.)                 |
+| [[https://www.cs.columbia.edu/~wing/][Jeannette Wing]]                       | Columbia University(Ret.) |
+| [[https://eskang.github.io/][Eunsuk Kang]]                          | CMU                       |
+| [[https://csd.cmu.edu/research/research-areas/formal-methods][CMU Professors who are working on FM]] | CMU                       |
 
 Similarly, lets collect relevant articles as well.
-| Other Resources                            | Comments     |
-|--------------------------------------------+--------------|
-| [[https://people.csail.mit.edu/dnj/publications/ieee96-roundtable.html][Link]]                                       | Introduction |
-| Formal Methods: Not Quite What You Thought |              |
-| [[https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/][Why dont people use Formal Methods?]]        | Detailed     |
+| Other Resources                                                    | Comments     |
+|--------------------------------------------------------------------+--------------|
+| [[https://people.csail.mit.edu/dnj/publications/ieee96-roundtable.html][Introducing the notion of lightweight formal methods, 1998 i think]] | Introduction |
+| Formal Methods: Not Quite What You Thought                         |              |
+| [[https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/][Why dont people use Formal Methods?]]                                | Detailed     |
+| [[https://users.ece.cmu.edu/~koopman/des_s99/formal_methods/][CMU - Formal Methods Resources]]                                     | CMU          |
