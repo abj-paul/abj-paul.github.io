@@ -42,5 +42,7 @@ The response was...garbage. It seems its bad with RAG.
 
 *** Summary
 Small chat models return good responses when we want to learn something. For prompts like "Tell me about Large Language Model", "Tell me about the history of America", the responses were ok. They can also write poems or stories to a certain extent. They can be fun toy to play around when you don't have any internet connection.
+
+~Turns out, You should use Phi 3.1 mini for something as complex as that.~ The size of Phi 3.1 Mini model is 12G and even quantized versions are 3.1GB, far beyond what my 4GB RAM pc can comfortably handle. So I will leave trying it out for a future date.
 *** Reference
 [1] https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct
