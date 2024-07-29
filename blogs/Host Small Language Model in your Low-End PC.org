@@ -1,5 +1,5 @@
 #+TITLE: Host Small Language Model in your Low-End PC
-#+AUTHOR: 
+#+AUTHOR: Abhijit Paul
 #+DATE: <2024-07-29 সোম>
 
 
