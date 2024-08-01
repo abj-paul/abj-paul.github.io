@@ -1,0 +1,66 @@
+#+TITLE: Existing work on Formal Verification of DNN
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-01 বৃহঃ>
+
+
+In this article, we perform a detailed literature review of Formal Verification of DNN methods. We first aim to list out the papers relevant to it. We plan to address all years - from 2027 to 2023. We cover a total of 9 FM and AI related conferences for it.
+
+*** 2023
+| Paper name                                                                                                     | Year | Conference |
+|----------------------------------------------------------------------------------------------------------------+------+------------|
+| Certifying the Fairness of KNN in the Presence of Dataset Bias                                                 | 2023 | CAV        |
+| Monitoring Algorithmic Fairness                                                                                | 2023 | CAV        |
+| nl2spec: Interactively Translating Unstructured Natural Language to Temporal Logics with Large Language Models | 2023 | CAV        |
+| NNV 2.0: The Neural Network Verification Tool                                                                  | 2023 | CAV        |
+| QEBVerif: Quantization Error Bound Verification of Neural Networks                                             | 2023 | CAV        |
+| Verifying Generalization in Deep Learning                                                                      | 2023 | CAV        |
+| Formal Methods for Trusted AI                                                                                  | 2023 | FMCAD      |
+| Formally Explaining Neural Networks within Reactive Systems                                                    | 2023 | FMCAD      |
+| Lightweight Online Learning for Sets of Related Problems in Automated Reasoning                                | 2023 | FMCAD      |
+| DelBugV: Delta-Debugging Neural Network Verifiers                                                              | 2023 | FMCAD      |
+| Robustness Verification of DNN using Star-based reachability analysis with variable length time-series input   | 2023 | ~FMICS~    |
+| Verifying Feed-Forward neural network for classification in Isabelle/HOL                                       | 2023 | FM         |
+| SMPT: A testbed for reachability methods in generalized petri nets                                             | 2023 | FM         |
+| The octatope abstract domain for verification of Neural Network                                                | 2023 | FM         |
+| Program semantics and verification techniques for AI-centered programs                                         | 2023 | FM         |
+| Shifting left for early detection of ML bugs                                                                   | 2023 | ~FM~       |
+| Run time monitoring for out-of-distribution detection in object-detection neural network                       | 2023 | FM         |
+| Backdoor mitigation in neural network via strategic retraining                                                 | 2023 | FM         |
+| veriFIRE: Verifying an Industrial, Learning based wild fire detection system                                   | 2023 | FM         |
+| Formalizing robustness against character level perturbations for Neural Network Language Models                | 2023 | FM         |
+| Branch and bound method for sigmoid like neural network verification                                           | 2023 | ICFEM      |
+| Certifying sequential consistency of machine learning accelerators                                             | 2023 | ICFEM      |
+| ~Verifying neural networks by approximating convex hull~                                                       | 2023 | ICFEM      |
+| Eager to stop: Efficient falsification of Deep Neural Network                                                  | 2023 | ICFEM      |
+| Unified verification of neural network's robustness and privacy verification in computer vision                | 2023 | ICFEM      |
+| IoT Software vulnerability detection through LLM (why is it FM? Check)                                         | 2023 | ICFEM      |
+| Chronosymbolic Learning: Efficient CHC Solving with Symbolic Reasoning and Inductive Learning                  | 2023 | SAIV       |
+| Error Analysis of Shapley Value-Based Model Explanations: An Informative Perspective                           | 2023 | SAIV       |
+| Concept-Based Analysis of Neural Networks via Vision-Language Models                                           | 2023 | SAIV       |
+| Parallel Verification for delta-Equivalence of Neural Network Quantization                                     | 2023 | SAIV       |
+| Verification of Neural Network Control Systems in Continuous Time                                              | 2023 | SAIV       |
+| A Preliminary Study to Examining Per-class Performance Bias via Robustness Distributions                       | 2023 | SAIV       |
+| Clover: Closed-Loop Verifiable Code Generation                                                                 | 2023 | SAIV       |
+| Provable Repair of Vision Transformers                                                                         | 2023 | SAIV       |
+| Iterative Counter-Example Guided Robustness Verification for Neural Networks                                   | 2023 | SAIV       |
+| [[https://arxiv.org/pdf/2312.16760][Alpha-beta-crown, FastBATLLNN, Marabou, NeuralSAT, nnenum, NNV, PyRAT]]                                          | 2023 | VNN        |
+| Verifying Learning-Based Robotic Navigation Systems                                                            | 2023 | FoMLAS     |
+| ​DNN Verification, Reachability, and the Exponential Function Problem                                           | 2023 | FoMLAS     |
+| Supporting Standardization of Neural Networks Verification with VNNLIB and CoCoNet​                             | 2023 | FoMLAS     |
+| A Semidefinite Relaxation Based Branch-and-Bound Method for Tight Neural Network Verification                  | 2023 | FoMLAS     |
+| Prediction and Control of Stochastic Agents Using Formal Methods                                               | 2023 | FoMLAS     |
+| Scaling Model Checking for Neural Network Analysis via State-Space Reduction and Input Segmentation            | 2023 | FoMLAS     |
+| Towards a Study of Performance for Safe Neural Network Training                                                | 2023 | FoMLAS     |
+| Verifying Global Neural Network Specifications using Hyperproperties                                           | 2023 | FoMLAS     |
+| Robust Training of Neural Networks against Bias Field Perturbations                                            | 2023 | FoMLAS     |
+| A Preliminary Study of Robustness Distributions for Neural Network Verification                                | 2023 | FoMLAS     |
+| Certified Private Inference on Neural Networks via Lipschitz-Guided Abstraction Refinement                     | 2023 | FoMLAS     |
+| Logic of Differentiable Logics: Towards a Uniform Semantics of DL                                              | 2023 | FoMLAS     |
+| ANTONIO: Towards a Systematic Method of Generating NLP Benchmarks for Verification                             | 2023 | FoMLAS     |
+| Model Checking the Optimal Behavior of Big Markov Process                                                      | 2023 | FoMLAS     |
+| [[https://deepmindsafetyresearch.medium.com/towards-robust-and-verified-ai-specification-testing-robust-training-and-formal-verification-69bd1bc48bda][Google Deepmind Article]]                                                                                                               |      |            |
+
+*** Explorer Notes
+1. FM, CAV and FMCAD has separate track for NN verification papers.
+2. I found no papers on NN in IFM2023, SAT2023, SEFM2023.
+3. Check out papers from all years on SAIV,FoMLAS and VNN.
