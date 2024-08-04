@@ -17,16 +17,15 @@
     ul.task-list{list-style: none;}
   </style>
 </head>
-<body class="markdown-container">
+<body class="markdown-container>
 <header id="title-block-header">
 <h1 class="title">Host Small Language Model in your Low-End PC</h1>
 <p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-07-29 সোম&gt;</p>
 </header>
-<p>Abhijit Paul</p>
-<p>&lt;2024-07-29 সোম&gt;</p>
-<p>OuteAI published 300M and 65M parameter models, available in both instruct and base versions. 300M models have the Mistral architecture and 65M models have LLaMa architecture <a href="#fn1" id="fnref1" class="footnote-ref"><sup>1</sup></a>. So it made me wonder - can we use it as a simple chat assistant for low-end devices?</p>
+<p>OuteAI published 300M and 65M parameter models, available in both instruct and base versions. 300M models have the Mistral architecture and 65M models have LLaMa architecture <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. So it made me wonder - can we use it as a simple chat assistant for low-end devices?</p>
 <p>So I first built a simple chat application with it. The github link is: <a href="https://github.com/abj-paul/Small-AIChat">abj-paul/SmallAi-Chat</a>.</p>
-<p><img src="../data/chat%20application.png" /></p>
+<p><img src="~/abj-paul.github.io/data/chat application.png" /></p>
 <p>We then experimented with the responses. We soon noticed one problem. Language models return response equal to its context size. So usually, last part of the response is garbage. Some examples can be:</p>
 <table>
 <tbody>
@@ -49,22 +48,27 @@
 </ol>
 <h3 id="rag-with-small-language-model">RAG with Small Language Model</h3>
 <p>To understand RAG ability, we send the following as a prompt.</p>
-<pre class="text"><code>Neil Armstrong was the first person to walk on the moon. Abhijit was the first to walk on failure. Now Who was the first person to walk on the moon?</code></pre>
+<pre class="text"><code>Neil Armstrong was the first person to walk on the moon. Abhijit was the first to walk on failure. Now Who was the first person to walk on the moon?
+</code></pre>
 <p>The response was:</p>
-<pre class="text"><code>The first person to walk on the moon was Neil Armstrong</code></pre>
+<pre class="text"><code>The first person to walk on the moon was Neil Armstrong
+</code></pre>
 <p>We then experimented with one more realistic rag scenario.</p>
-<pre class="text"><code>1Kg of potato costs 20 taka. 1Kg of guava costs 50taka. 1kg of rice costs 100taka. What is the cost of 1kg potato?</code></pre>
+<pre class="text"><code>1Kg of potato costs 20 taka. 1Kg of guava costs 50taka. 1kg of rice costs 100taka. What is the cost of 1kg potato?
+</code></pre>
 <p>The response was…garbage. It seems its bad with RAG.</p>
-<pre class="text"><code>To find the costs for potato, I can subtract the price from the cost. Since the price of a potato increases by an amount equal to 1 kg per taka, the cost of a product is $3^6 + 8 = 65$, or $7 + 9 = 49$. Using 1 million dollars and 100 taka, the product costs are $3 x (49 - 59) = 80x$, or $1,641,190 = $3 \times 75$. Therefore, the cost of 1kg of potato is $3 x 75 = 204 \times 75$. For the price of 1kg of potato, the total cost is $49 - 19 = 406$. Therefore, the price of a product is $3 x 25 = 260$.</code></pre>
+<pre class="text"><code>To find the costs for potato, I can subtract the price from the cost. Since the price of a potato increases by an amount equal to 1 kg per taka, the cost of a product is $3^6 + 8 = 65$, or $7 + 9 = 49$. Using 1 million dollars and 100 taka, the product costs are $3 x (49 - 59) = 80x$, or $1,641,190 = $3 \times 75$. Therefore, the cost of 1kg of potato is $3 x 75 = 204 \times 75$. For the price of 1kg of potato, the total cost is $49 - 19 = 406$. Therefore, the price of a product is $3 x 25 = 260$.
+</code></pre>
 <h3 id="summary">Summary</h3>
 <p>Small chat models return good responses when we want to learn something. For prompts like "Tell me about Large Language Model", "Tell me about the history of America", the responses were ok. They can also write poems or stories to a certain extent. They can be fun toy to play around when you don't have any internet connection.</p>
+<p><code>Turns out, You should use Phi 3.1 mini for something as complex as that.</code> The size of Phi 3.1 Mini model is 12G and even quantized versions are 3.1GB, far beyond what my 4GB RAM pc can comfortably handle. So I will leave trying it out for a future date.</p>
+<h3 id="update">Update!!</h3>
+<p>I observed that <a href="https://huggingface.co/google/gemma-2b-it">Gemma 2b instruct</a> model by Google Gemini performs very well in my CPU. But yah, since its 2b in size, it performs very slowly in my Corei3 4GB RAM pc.</p>
 <h3 id="reference">Reference</h3>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li><div id="fn1">
-<p><a href="https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct">https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct</a><a href="#fnref1" class="footnote-back">↩︎</a></p>
-</div></li>
+<li id="fn1" role="doc-endnote"><p><a href="https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct">https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
