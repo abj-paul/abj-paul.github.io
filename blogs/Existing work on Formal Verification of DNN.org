@@ -58,7 +58,10 @@ In this article, we perform a detailed literature review of Formal Verification 
 | Logic of Differentiable Logics: Towards a Uniform Semantics of DL                                              | 2023 | FoMLAS     |
 | ANTONIO: Towards a Systematic Method of Generating NLP Benchmarks for Verification                             | 2023 | FoMLAS     |
 | Model Checking the Optimal Behavior of Big Markov Process                                                      | 2023 | FoMLAS     |
-| [[https://deepmindsafetyresearch.medium.com/towards-robust-and-verified-ai-specification-testing-robust-training-and-formal-verification-69bd1bc48bda][Google Deepmind Article]]                                                                                                               |      |            |
+| [[https://deepmindsafetyresearch.medium.com/towards-robust-and-verified-ai-specification-testing-robust-training-and-formal-verification-69bd1bc48bda][Google Deepmind Article]]                                                                                        |      |            |
+| [[https://github.com/vtjeng/MIPVerify.jl][Evaluating robustness of NN with Mixed Integer Programming]]                                                     | 2018 |            |
+
+
 
 *** Explorer Notes
 1. FM, CAV and FMCAD has separate track for NN verification papers.
