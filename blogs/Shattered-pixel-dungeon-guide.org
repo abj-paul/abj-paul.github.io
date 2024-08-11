@@ -1,0 +1,41 @@
+#+TITLE: Shattered-pixel-dungeon-guide
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-05 সোম>
+
+1. Only eat if you need health and are starving. 
+   [[file:~/abj-paul.github.io/data/seed-tier-list-v0-n07bx6js1add1.png]]
+2. You use plants on enemies by throwing the seed under the enemy, then throwing an item (not a ranged weapon that sticks, though) at that enemy as they stand there. This will trigger the plant immediately. 
+
+ | Seed         | Potion        | Ability                               |
+ |--------------+---------------+---------------------------------------|
+ | Sungrass     | Healing       | Heal                                  |
+ | Firebloom    | Liquid Flame  | Fire                                  |
+ | Icecap       | Frost         | Freeze, ~Frozen meat~                 |
+ | Starflower   | Experience    | Bland fruit to get exp                |
+ | Earthroot    | Paralytic Gas | Defense, goo fight                    |
+ | Dreamfoil    | Purity        | Sleep                                 |
+ | Sorrowmoss   | Toxic Gas     | Removes -ve effects (bleeding, poison |
+ | Fadeleaf     | Invisibility  | Teleports, good for running away      |
+ | Stormvine    | Levitation    | Vertigo                               |
+ | Swiftthistle | Haste         | Speed. Good for DM-300, Tengu         |
+
+ They can also make exotic potions and elixirs. They can be used to tip darts with ice,frost to fight elementals.
+[[https://www.reddit.com/r/PixelDungeon/comments/kt5a2p/adventurers_guide_to_seeds/][source]]
+
+* Temp
+** Warrior
+scroll of identity
+potion of healing
+scroll of rage
+** Rogue
+Scroll of Identity
+Scroll of Invisibility
+Scroll of Magic Mapping
+** Duelist
+Scroll of Identity
+Potion of Strength
+Scroll of Mirror Image
+** Warden
+[[https://www.reddit.com/r/PixelDungeon/comments/gcr3j6/why_the_warden_with_rotberry_seed_is_op/][Why the Warden with rotberry seed is OP]]
+[[https://www.reddit.com/r/PixelDungeon/comments/1c0g6wy/please_help_im_hopelessly_addicted_to_playing/][PLEASE! HELP! I'M HOPELESSLY ADDICTED TO PLAYING WARDEN!]]
+~Come back to SHOP~

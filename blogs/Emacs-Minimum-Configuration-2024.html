@@ -85,121 +85,161 @@
 <p class="author">Abhijit Paul</p>
 <p class="date">&lt;2024-08-03 শনি&gt;</p>
 </header>
-<p><img src="../data/demo.png" /> It is a good practice to install the latest version of emacs. Currently the latest available in apt is v27 but in snap, its v29. So we will install from snap.</p>
+<p><img src="~/abj-paul.github.io/data/demo.png" /> It is a good practice to install the latest version of emacs. Currently the latest available in apt is v27 but in snap, its v29. So we will install from snap.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> snap install emacs --classic</span></code></pre></div>
 <p>Then simply put the contents of init.el in emacs.d. You can find the content of init.el at the bottom of the page.</p>
 <p>Now set up the <code>/usr/share/xsessions/exwm.desktop</code> with the contents from <a href="https://github.com/abj-paul/Emacs-EXWM-Configuration/tree/ArchLinuxSystem">here</a> and also add the start-exwm.sh from <a href="https://github.com/abj-paul/Emacs-EXWM-Configuration/tree/ArchLinuxSystem">here</a> as well. Now you have setup your desktop environment! And tada, you are now good to go. Also install the following packages.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install feh mpv compton xss-lock cmake</span></code></pre></div>
 <p>After opening EXWM, vlc-obs-brave browser etc. application will open but firefox may not open. In that case, simply execute the following command to update the dbus.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">DBUS_SESSION_BUS_ADDRESS=</span><span class="st">&quot;unix:path=</span><span class="va">$XDG_RUNTIME_DIR</span><span class="st">/bus&quot;</span></span></code></pre></div>
+<p>If firefox still does not work, do-</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">sudo</span> apt purge libatk-adaptor</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="fu">sudo</span> reboot</span></code></pre></div>
 <p>Optionally, download this <a href="https://github.com/abj-paul/Emacs-EXWM-Configuration/blob/ArchLinuxSystem/derrick-cooper-L505cPnmIds-unsplash.jpg">really beautiful background image</a> and put it in <code>/usr/share/backgrounds</code> folder.</p>
+<p>Also, note that, for installing vterm, follow their github guideline precisely since their changes are often breaking. For now,</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install libtool-bin libvterm-dev</span></code></pre></div>
 <p>The following is the init.el.</p>
-<div class="sourceCode" id="cb4" data-org-language="emacs-lisp"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>  <span class="co">;; Set up package.el to work with MELPA</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>(<span class="kw">require</span> &#39;package)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>(add-to-list &#39;package-archives</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>             &#39;(<span class="st">&quot;melpa&quot;</span> . <span class="st">&quot;https://melpa.org/packages/&quot;</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>(package-initialize)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>(package-refresh-contents)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">;; Download Evil</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;evil)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>  (package-install &#39;evil))</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="co">;; Enable Evil</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>(<span class="kw">require</span> &#39;evil)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a>(evil-mode <span class="dv">1</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">;; EXWM Installation</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>(<span class="kw">require</span> &#39;exwm)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>(<span class="kw">require</span> &#39;exwm-config)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>(exwm-config-example)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>(load-theme &#39;deeper-blue)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;company)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a>  (package-install &#39;company))</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="co">;; Enable Company mode globally</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a>(add-hook &#39;after-init-hook &#39;global-company-mode)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a>(<span class="kw">require</span> &#39;org)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a>(add-hook &#39;org-mode-hook</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a>          (<span class="kw">lambda</span> ()</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a>            (local-set-key (kbd <span class="st">&quot;&lt;tab&gt;&quot;</span>) &#39;org-cycle)))</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a>(global-visual-line-mode <span class="kw">t</span>)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a>(<span class="kw">defun</span><span class="fu"> my-org-collapse-all </span>()</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true"></a>  <span class="st">&quot;Collapse all headings in the current Org buffer.&quot;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true"></a>  (interactive)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true"></a>  (org-shifttab <span class="kw">t</span>))</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true"></a>(add-hook &#39;org-mode-hook &#39;my-org-collapse-all)</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true"></a><span class="co">;; Centering text</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;visual-fill-column)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true"></a>  (package-install &#39;visual-fill-column))</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true"></a>(<span class="kw">require</span> &#39;visual-fill-column)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true"></a>(visual-line-mode <span class="kw">t</span>)</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true"></a>(global-visual-fill-column-mode <span class="kw">t</span>)</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;ivy)</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true"></a>  (package-install &#39;ivy))</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true"></a>(ivy-mode <span class="dv">1</span>) <span class="co">; Enable Ivy globally</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true"></a><span class="co">;; Installing swiper</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;swiper)</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true"></a>  (package-install &#39;swiper))</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true"></a><span class="co">;; Optionally, you can customize the keybindings.</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-s&quot;</span>) &#39;swiper) <span class="co">; Bind swiper to Ctrl + s</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-r&quot;</span>) &#39;swiper) <span class="co">; Use Ctrl + r for reverse searching</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true"></a></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true"></a>(show-paren-mode <span class="kw">t</span>)</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true"></a><span class="co">;; USE PACKAGE STARTS HERE</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true"></a>(<span class="kw">use-package</span> org-roam</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true"></a>  :ensure <span class="kw">t</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true"></a>  :init</span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true"></a>  (<span class="kw">setq</span> org-roam-v2-ack <span class="kw">t</span>)</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true"></a>  :custom</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true"></a>  (org-roam-directory <span class="st">&quot;~/Org-Roam-Files/&quot;</span>)</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true"></a>  :bind ((<span class="st">&quot;C-c n l&quot;</span> . org-roam-buffer-toggle)</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true"></a>         (<span class="st">&quot;C-c n f&quot;</span> . org-roam-node-find)</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true"></a>         (<span class="st">&quot;C-c n i&quot;</span> . org-roam-node-insert))</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true"></a>  :config</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true"></a>  (org-roam-setup))</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true"></a>(<span class="kw">use-package</span> vterm</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true"></a>    :ensure <span class="kw">t</span>)</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true"></a></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true"></a>(<span class="kw">use-package</span> multi-vterm :ensure <span class="kw">t</span>)</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true"></a></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true"></a>(<span class="kw">setq</span> display-time-12hr-format <span class="kw">nil</span>)</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true"></a>(<span class="kw">setq</span> display-time-format <span class="st">&quot;%H:%M - %d %B %Y&quot;</span>)</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true"></a>(display-time-mode <span class="dv">1</span>)</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true"></a><span class="co">;; Retain history</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true"></a>(<span class="kw">use-package</span> smex</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true"></a>  :ensure <span class="kw">t</span>)</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true"></a>(smex-initialize)</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true"></a><span class="co">; Transparency</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true"></a>(set-frame-parameter (selected-frame) &#39;alpha `(<span class="dv">90</span>,<span class="dv">90</span>))</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true"></a>(add-to-list &#39;default-frame-alist `(alpha . (<span class="dv">90</span>, <span class="dv">90</span>)))</span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true"></a>(set-frame-parameter (selected-frame) &#39;fullscreen &#39;maximized)</span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true"></a>(add-to-list &#39;default-frame-alist &#39;(fullscreen . maximized))</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true"></a></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true"></a><span class="co">;; Wallpaper</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true"></a>(<span class="kw">defun</span><span class="fu"> efs/set-wallpaper </span>()</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true"></a>    (interactive)</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true"></a>    <span class="co">;; NOTE: You will need to update this to a valid background path!</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true"></a>    (start-process-shell-command</span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true"></a>        <span class="st">&quot;feh&quot;</span> <span class="kw">nil</span>  <span class="st">&quot;feh --bg-scale /usr/share/backgrounds/derrick-cooper-L505cPnmIds-unsplash.jpg&quot;</span>))</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true"></a>(efs/set-wallpaper)</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true"></a></span></code></pre></div>
+<div class="sourceCode" id="cb6" data-org-language="emacs-lisp"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>  <span class="co">;; Set up package.el to work with MELPA</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>(<span class="kw">require</span> &#39;package)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>(add-to-list &#39;package-archives</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>             &#39;(<span class="st">&quot;melpa&quot;</span> . <span class="st">&quot;https://melpa.org/packages/&quot;</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>(package-initialize)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>(package-refresh-contents)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="co">;; Download Evil</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;evil)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>  (package-install &#39;evil))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a><span class="co">;; Enable Evil</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>(<span class="kw">require</span> &#39;evil)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>(evil-mode <span class="dv">1</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a><span class="co">;; EXWM Installation</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a>(<span class="kw">require</span> &#39;exwm)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a>(<span class="kw">require</span> &#39;exwm-config)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a>(exwm-config-example)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true"></a>(load-theme &#39;deeper-blue)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;company)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true"></a>  (package-install &#39;company))</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true"></a><span class="co">;; Enable Company mode globally</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true"></a>(add-hook &#39;after-init-hook &#39;global-company-mode)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true"></a>(<span class="kw">require</span> &#39;org)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true"></a>(add-hook &#39;org-mode-hook</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true"></a>          (<span class="kw">lambda</span> ()</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true"></a>            (local-set-key (kbd <span class="st">&quot;&lt;tab&gt;&quot;</span>) &#39;org-cycle)))</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true"></a>(global-visual-line-mode <span class="kw">t</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true"></a>(<span class="kw">defun</span><span class="fu"> my-org-collapse-all </span>()</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true"></a>  <span class="st">&quot;Collapse all headings in the current Org buffer.&quot;</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true"></a>  (interactive)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true"></a>  (org-shifttab <span class="kw">t</span>))</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true"></a>(add-hook &#39;org-mode-hook &#39;my-org-collapse-all)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true"></a><span class="co">;; Centering text</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;visual-fill-column)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true"></a>  (package-install &#39;visual-fill-column))</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true"></a>(<span class="kw">require</span> &#39;visual-fill-column)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true"></a>(visual-line-mode <span class="kw">t</span>)</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true"></a>(global-visual-fill-column-mode <span class="kw">t</span>)</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;ivy)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true"></a>  (package-install &#39;ivy))</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true"></a>(ivy-mode <span class="dv">1</span>) <span class="co">; Enable Ivy globally</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true"></a></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true"></a><span class="co">;; Installing swiper</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true"></a>(<span class="kw">unless</span> (package-installed-p &#39;swiper)</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true"></a>  (package-install &#39;swiper))</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true"></a><span class="co">;; Optionally, you can customize the keybindings.</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-s&quot;</span>) &#39;swiper) <span class="co">; Bind swiper to Ctrl + s</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-r&quot;</span>) &#39;swiper) <span class="co">; Use Ctrl + r for reverse searching</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true"></a>(show-paren-mode <span class="kw">t</span>)</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true"></a></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true"></a><span class="co">;; USE PACKAGE STARTS HERE</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true"></a>(<span class="kw">use-package</span> org-roam</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true"></a>  :ensure <span class="kw">t</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true"></a>  :init</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true"></a>  (<span class="kw">setq</span> org-roam-v2-ack <span class="kw">t</span>)</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true"></a>  :custom</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true"></a>  (org-roam-directory <span class="st">&quot;~/Org-Roam-Files/&quot;</span>)</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true"></a>  :bind ((<span class="st">&quot;C-c n l&quot;</span> . org-roam-buffer-toggle)</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true"></a>         (<span class="st">&quot;C-c n f&quot;</span> . org-roam-node-find)</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true"></a>         (<span class="st">&quot;C-c n i&quot;</span> . org-roam-node-insert))</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true"></a>  :config</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true"></a>  (org-roam-setup))</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true"></a></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true"></a>(<span class="kw">use-package</span> vterm</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true"></a>    :ensure <span class="kw">t</span>)</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true"></a>(<span class="kw">use-package</span> multi-vterm :ensure <span class="kw">t</span>)</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true"></a>(<span class="kw">setq</span> display-time-12hr-format <span class="kw">nil</span>)</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true"></a>(<span class="kw">setq</span> display-time-format <span class="st">&quot;%H:%M - %d %B %Y&quot;</span>)</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true"></a>(display-time-mode <span class="dv">1</span>)</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true"></a><span class="co">;; Retain history</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true"></a>(<span class="kw">use-package</span> smex</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true"></a>  :ensure <span class="kw">t</span>)</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true"></a>(smex-initialize)</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true"></a></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true"></a><span class="co">; Transparency</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true"></a>(set-frame-parameter (selected-frame) &#39;alpha `(<span class="dv">90</span>,<span class="dv">90</span>))</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true"></a>(add-to-list &#39;default-frame-alist `(alpha . (<span class="dv">90</span>, <span class="dv">90</span>)))</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true"></a>(set-frame-parameter (selected-frame) &#39;fullscreen &#39;maximized)</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true"></a>(add-to-list &#39;default-frame-alist &#39;(fullscreen . maximized))</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true"></a></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true"></a><span class="co">;; Wallpaper</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true"></a>(<span class="kw">defun</span><span class="fu"> efs/set-wallpaper </span>()</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true"></a>    (interactive)</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true"></a>    <span class="co">;; NOTE: You will need to update this to a valid background path!</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true"></a>    (start-process-shell-command</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true"></a>        <span class="st">&quot;feh&quot;</span> <span class="kw">nil</span>  <span class="st">&quot;feh --bg-scale /usr/share/backgrounds/derrick-cooper-L505cPnmIds-unsplash.jpg&quot;</span>))</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true"></a></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true"></a>(efs/set-wallpaper)</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true"></a></span></code></pre></div>
+<h3 id="screenshots">Screenshots</h3>
+<p>To enable screenshto feature in EXWM, i have written a simple python script. Place this script in any file. Also, do create the <code>inbox/screenshots</code> folder for maim to work.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> subprocess</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="im">import</span> argparse</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>my_parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">&quot;Take Screenshot of a selected area.&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>my_parser.add_argument(<span class="st">&quot;ImageName&quot;</span>,metavar<span class="op">=</span><span class="st">&quot;image_name&quot;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&quot;The name of the screenshot.&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#my_parser.add_argument(&quot;ImagePath&quot;,metavar=&quot;image_path&quot;, type=str, help=&quot;Path to the directory where the image will be saved&quot;)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>args <span class="op">=</span> my_parser.parse_args()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>image_name <span class="op">=</span> args.ImageName</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#image_dir=args.ImagePath+&quot;/&quot;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#ps_image_dir = subprocess.run(&quot;pwd&quot;, stdout=subprocess.PIPE,text=True)</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#image_dir=ps_image_dir.stdout.rstrip()+&quot;/&quot;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a>image_dir <span class="op">=</span> <span class="st">&quot;/home/abhijit/inbox/screenshots/&quot;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a>subprocess.run([<span class="st">&quot;maim&quot;</span>,<span class="st">&quot;-s&quot;</span>,image_dir<span class="op">+</span>image_name])</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#subprocess.run([&quot;google-chrome&quot;, image_dir+image_name])</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Screenshor saved in &quot;</span><span class="op">+</span>image_dir)</span></code></pre></div>
+<p>And we use this script in our emacs like so.</p>
+<div class="sourceCode" id="cb8" data-org-language="emacs-lisp"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">defun</span><span class="fu"> abj/take-ss</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  (interactive)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>  (<span class="kw">setq</span> screenshot-command (<span class="kw">format</span> <span class="st">&quot;python3 /home/abhijit/manual-installation/take-ss.py rename-image.png&quot;</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  (shell-command screenshot-command)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>(<span class="kw">defun</span><span class="fu"> abj/rename-ss</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>  (interactive)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>  (<span class="kw">setq</span> screenshot-image-name (read-string <span class="st">&quot;Enter file name: &quot;</span>))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>  (shell-command (format<span class="st">&quot;mv /home/abhijit/inbox/screenshots/rename-image.png %s&quot;</span> screenshot-image-name))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-c s s&quot;</span>) &#39;abj/take-ss)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a>(global-set-key (kbd <span class="st">&quot;C-c s r&quot;</span>) &#39;abj/rename-ss)</span></code></pre></div>
+<p>First, press s-r to go to char-mode if you are on a x-app buffer. Then use the set keybindings to first take ss and rename it. It works fabulously.</p>
 </body>
 </html>

@@ -21,7 +21,19 @@ After opening EXWM, vlc-obs-brave browser etc. application will open but firefox
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 #+end_src
 
+If firefox still does not work, do-
+#+begin_src bash
+sudo apt purge libatk-adaptor
+sudo reboot
+#+end_src
+
 Optionally, download this [[https://github.com/abj-paul/Emacs-EXWM-Configuration/blob/ArchLinuxSystem/derrick-cooper-L505cPnmIds-unsplash.jpg][really beautiful background image]] and put it in ~/usr/share/backgrounds~ folder.
+
+
+Also, note that, for installing vterm, follow their github guideline precisely since their changes are often breaking. For now,
+#+begin_src bash
+  sudo apt install libtool-bin libvterm-dev
+#+end_src
 
 The following is the init.el.
 #+begin_src emacs-lisp
@@ -133,3 +145,45 @@ The following is the init.el.
 (efs/set-wallpaper)
 
 #+end_src
+
+*** Screenshots
+To enable screenshto feature in EXWM, i have written a simple python script. Place this script in any file. Also, do create the ~inbox/screenshots~ folder for maim to work.
+#+begin_src python
+import subprocess
+import argparse
+
+my_parser = argparse.ArgumentParser(description="Take Screenshot of a selected area.")
+my_parser.add_argument("ImageName",metavar="image_name", type=str, help="The name of the screenshot.")
+#my_parser.add_argument("ImagePath",metavar="image_path", type=str, help="Path to the directory where the image will be saved")
+args = my_parser.parse_args()
+
+image_name = args.ImageName
+#image_dir=args.ImagePath+"/"
+#ps_image_dir = subprocess.run("pwd", stdout=subprocess.PIPE,text=True)
+#image_dir=ps_image_dir.stdout.rstrip()+"/"
+image_dir = "/home/abhijit/inbox/screenshots/"
+subprocess.run(["maim","-s",image_dir+image_name])
+
+#subprocess.run(["google-chrome", image_dir+image_name])
+print("Screenshor saved in "+image_dir)
+#+end_src
+
+And we use this script in our emacs like so.
+#+begin_src emacs-lisp
+defun abj/take-ss()
+  (interactive)
+  (setq screenshot-command (format "python3 /home/abhijit/manual-installation/take-ss.py rename-image.png"))
+  (shell-command screenshot-command)
+)
+
+(defun abj/rename-ss()
+  (interactive)
+  (setq screenshot-image-name (read-string "Enter file name: "))
+  (shell-command (format"mv /home/abhijit/inbox/screenshots/rename-image.png %s" screenshot-image-name))
+)
+
+(global-set-key (kbd "C-c s s") 'abj/take-ss)
+(global-set-key (kbd "C-c s r") 'abj/rename-ss)
+#+end_src
+
+First, press s-r to go to char-mode if you are on a x-app buffer. Then use the set keybindings to first take ss and rename it. It works fabulously.
