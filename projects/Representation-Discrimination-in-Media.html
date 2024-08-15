@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="project.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>Representation Discrimination in Media</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">Representation Discrimination in Media</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-07-28 রবি&gt; - &lt;2024-08-15 বৃহঃ&gt;</p>
+</header>
+<h2 id="literature-review">Literature Review</h2>
+<p>You can find the <a href="https://www.overleaf.com/project/6633a3c24c44378a593d48e3">shared overleaf for literature review here.</a></p>
+<h3 id="computational-analysis">Computational Analysis</h3>
+<ol>
+<li><p>Word Embedding</p>
+<p>Fonseca et al explored caste discrimination in indian liteature. They first trained a word2vec model using the newspaper article and then they mapped a correlation graph with the word "Caste" based on cosine similarity. After that, they estimated relative frequence of the word caste in easy article by summing the occurence of the words in each article. They did not sum 1 for each occurence, rather the cosine similarity score. After that, they picked the top 7\% articles and performed LDA on them <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
+<li><p><span class="todo TODO">TODO</span> Word Count</p>
+<p>It counted the keywords against a demography as part of their detailed sociological analysis on the view of that demography in news.</p></li>
+</ol>
+<h3 id="sociological-analysis">Sociological Analysis</h3>
+<ol>
+<li><p>Perspective: Why not talk about our sufferings?</p>
+<p>Saleem &amp; Ramasubramanian found that Muslim American students who viewed negative media representations of their religious ingroup, relative to a control video, were less likely to desire acceptance by other Americans and more likely to avoid interactions with majority members. Such representation discrimination incease inter-group distance <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Haraldsson showcased the way media discrimination hinders progress towards putting femininity on an equal footing with masculinity in the political domain in her theisis <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Ittefaq et al. revealed that sanitary workers in Pakistan believe that they do not have any representation in Pakistan’s mainstream media to voice their issues. Moreover, they have serious reservations about their polemic social representation and voice concerns regarding the media that often amplify such depictions <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
+<li><p>Perspective: Racist Stereotypical Representation</p>
+<p>In this amazing work, Galdi et al showed through social experiments how stereotypical gay men representation increases social bias about them. Heterosexual Italian men (N = 158) were exposed to a clip portraying (i) a stereotypical feminine gay male character, (ii) a counter-stereotypical masculine gay male character, or (iii) a nature documentary. Compared to the other conditions, exposure to the counter-stereotypical gay character increased discrimination toward gay men, in the form of anti-gay jokes, the higher the level of participants’ prejudice against gay men. Results further demonstrated that this effect was explained by reduced perceived stereotypicality of the character <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p></li>
+<li><p>Perpective: Under-representation hurts</p>
+<p>Balasubramaniam et al shows how representation discrimination affects the dalit community. They argue that under-representation of Dalits of Dalits leads to news exclusion related to dalits <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
+</ol>
+<h3 id="journalism"><span class="todo TODO">TODO</span> Journalism</h3>
+<h2 id="experiment">Experiment</h2>
+<p>We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Experiment details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Experiment name</td>
+</tr>
+<tr class="even">
+<td>Date</td>
+</tr>
+<tr class="odd">
+<td>Objective</td>
+</tr>
+<tr class="even">
+<td>Result</td>
+</tr>
+<tr class="odd">
+<td>Future Work</td>
+</tr>
+<tr class="even">
+<td>Artifacts (code, input data)</td>
+</tr>
+</tbody>
+</table>
+<p>Observe that, we do not stoe the output of the experiment because once can find that simply by running the code with that input data. Also, you can find our codebase <a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/tree/main">in this github repository.</a></p>
+<h3 id="task---keyword-based-data-collection">Task - Keyword Based Data Collection</h3>
+<p>This our curated dataset]] of ethnic word-contained articles from <a href="https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset">ebD- Bangla newspaper dataset.</a> We have curated ethnic people related dataset using simply keyword based extraction. We considered the following keywords to filter out the articles.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>  ethnic_tribe_names <span class="op">=</span> [</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="st">&quot;চাকমা&quot;</span>, <span class="st">&quot;মারমা&quot;</span>, <span class="st">&quot;সাঁওতাল&quot;</span>, <span class="st">&quot;ত্রিপুরা&quot;</span>, <span class="st">&quot;গারো&quot;</span>, <span class="st">&quot;ওঁরাও&quot;</span>, <span class="st">&quot;তঞ্চ্যঙ্গা&quot;</span>, <span class="st">&quot;ম্রো&quot;</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;পাংখো&quot;</span>, <span class="st">&quot;চাক&quot;</span>, <span class="st">&quot;খেয়াং&quot;</span>, <span class="st">&quot;খুমি&quot;</span>, <span class="st">&quot;লুসাই&quot;</span>,<span class="st">&quot;কুকি&quot;</span>, <span class="st">&quot;রাখাইন&quot;</span>, <span class="st">&quot;মণিপুরী&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="st">&quot;হাজং&quot;</span>, <span class="st">&quot;খাসিয়া&quot;</span>, <span class="st">&quot;মং&quot;</span>, <span class="st">&quot;বর্মন&quot;</span>, <span class="st">&quot;পাহাড়ি&quot;</span>, <span class="st">&quot;মালপাহাড়ি&quot;</span>, <span class="st">&quot;মুন্ডা&quot;</span>, <span class="st">&quot;ভূমিজ&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="st">&quot;কন্দ&quot;</span>, <span class="st">&quot;পাঙন&quot;</span>, <span class="st">&quot;লাওরা&quot;</span>, <span class="st">&quot;মুরং&quot;</span>, <span class="st">&quot;বাগদী&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>] <span class="co">#&quot;বম&quot;,&quot;কোচ&quot;,&quot;ডালু&quot;,&quot;কোল&quot;, &quot;রাজবংশী&quot;, &quot;পাত্র&quot;, &quot;ভিল&quot;, &quot;গণ্ড&quot;, &quot;খাসি&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>ethnicity_directed_words <span class="op">=</span> [</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="st">&quot;আদিবাসী&quot;</span> , <span class="st">&quot;আদিবাসি&quot;</span> , <span class="st">&quot;উপজাতি&quot;</span>, <span class="st">&quot;নৃগোষ্ঠী&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>]</span></code></pre></div>
+<p>Following are the dimensions of resulting datasets.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Dataset</td>
+<td>Size</td>
+<td>Approach</td>
+<td>Comment</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset">eBD Bangla news</a></td>
+<td>2294710 articles</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Curated Ethnic Word Dataset</td>
+<td>337793 articles</td>
+<td>Keyword Extraction</td>
+<td>Buggy, For list of articles, same list is added continuously.</td>
+</tr>
+<tr class="even">
+<td>Target Ethnic Articles</td>
+<td>14000</td>
+<td>5 Keyword</td>
+<td>Topic modeling result came out bad due to repetition.</td>
+</tr>
+<tr class="odd">
+<td>Curated Ethnic Word Dataset</td>
+<td><a href="https://drive.google.com/file/d/1xiJXor4yKYnEyNPEdFhAQfOkl8tf4Gsz/view?usp=drive_link">10187</a></td>
+<td>Keyword Extraction</td>
+<td>Fixed the bug where same article was being added for each of its words</td>
+</tr>
+<tr class="even">
+<td>Most Relevant Articles</td>
+<td>221</td>
+<td>5 Keywords</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="failed-attempts"><span class="todo TODO">TODO</span> Failed Attempts</h3>
+<p>Word embedding model training on the whole dataset. This was a MAJOR blockage in our earlier work.</p>
+<h3 id="experiment---supervised-topic-modeling-on-ethnic-with-stemming">Experiment - Supervised Topic Modeling on Ethnic with Stemming</h3>
+<p>The only preprocessing we did was this -&gt; <code>to_remove = ['email\xa0protected', '\n\n\n\xa0\n\n\n\n\n', '\u200c্', '\n\n', '\xa0', '\n']</code>. These are the top 10 topics we found in the articles.</p>
+<pre class="text"><code>Topic 0: &quot;পার্বত্য&quot; &quot;চট্টগ্রাম&quot; &quot;উপজেলার&quot; &quot;ত্রিপুরা&quot; &quot;প্রাথমিক&quot; &quot;শিশুদের&quot; &quot;বিভিন্ন&quot; &quot;উন্নয়ন&quot; &quot;পাঠ্যপুস্তক&quot; &quot;চেয়ারম্যান&quot;
+Topic 1: &quot;তঞ্চঙ্গ্যা&quot; &quot;সম্প্রদায়&quot; &quot;উৎসবকে&quot; &quot;তরুণীরা&quot; &quot;পাহাড়ের&quot; &quot;পুরাতন&quot; &quot;নেওয়ার&quot; &quot;লকডাউন&quot; &quot;বান্দরবানে&quot; &quot;সাঙ্গু&quot;
+Topic 2: &quot;আদিবাসী&quot; &quot;পরিষদের&quot; &quot;আওয়ামী&quot; &quot;সভাপতি&quot; &quot;সম্পাদক&quot; &quot;বক্তব্য&quot; &quot;পার্বত্য&quot; &quot;আদিবাসীদের&quot; &quot;সাধারণ&quot; &quot;চেয়ারম্যান&quot;
+Topic 3: &quot;বৈসাবি&quot; &quot;সাংগ্রাই&quot; &quot;সম্প্রদায়ের&quot; &quot;পাহাড়ি&quot; &quot;ঐতিহ্যবাহী&quot; &quot;এপ্রিল&quot; &quot;অনুষ্ঠান&quot; &quot;উৎসবের&quot; &quot;অনুষ্ঠিত&quot; &quot;প্রধান&quot;
+Topic 4: &quot;জন্মদিনকে&quot; &quot;ছোটাছুটি&quot; &quot;নালন্দার&quot; &quot;দলবদ্ধ&quot; &quot;দলগতভাবে&quot; &quot;নৃত্যকলা&quot; &quot;জন্মদিন&quot; &quot;গ্যালারির&quot; &quot;চতুর্থতলায়&quot; &quot;নৃত্যসহ&quot;
+Topic 5: &quot;বাংলাদেশে&quot; &quot;হিন্দু&quot; &quot;সাম্প্রদায়িক&quot; &quot;আক্রমণ&quot; &quot;সাম্প্রদায়িকতা&quot; &quot;ধর্মীয়&quot; &quot;কিন্তু&quot; &quot;লোকদের&quot; &quot;মুসলমান&quot; &quot;সাম্প্রদায়িকতার&quot;
+Topic 6: &quot;গ্রামের&quot; &quot;উপজেলার&quot; &quot;মেহেরপুর&quot; &quot;জয়পুরহাট&quot; &quot;উদ্দিনের&quot; &quot;বেনাপোল&quot; &quot;পাঁচবিবি&quot; &quot;সাতক্ষীরা&quot; &quot;চুয়াডাঙ্গা&quot; &quot;নববর্ষ&quot;
+Topic 7: &quot;পার্বত্য&quot; &quot;বিরুদ্ধে&quot; &quot;ভারতের&quot; &quot;বাহিনীর&quot; &quot;হিসেবে&quot; &quot;বাংলাদেশ&quot; &quot;উপজাতি&quot; &quot;সরকারের&quot; &quot;প্রবেশ&quot; &quot;নির্বাচিত&quot;
+Topic 8: &quot;ক্ষুদ্র&quot; &quot;গোষ্ঠীর&quot; &quot;বাঙালি&quot; &quot;সংস্কৃতি&quot; &quot;বিভিন্ন&quot; &quot;ত্রিপুরা&quot; &quot;নিজস্ব&quot; &quot;বাংলাদেশ&quot; &quot;কিন্তু&quot; &quot;বাংলাদেশের&quot;
+Topic 9: &quot;বাংলাদেশের&quot; &quot;আমাদের&quot; &quot;বাঙালি&quot; &quot;বাংলাদেশে&quot; &quot;বিভিন্ন&quot; &quot;বাংলাদেশ&quot; &quot;ধর্মের&quot; &quot;মানুষের&quot; &quot;ত্রিপুরা&quot; &quot;প্রশ্ন&quot;
+</code></pre>
+<p>Clearly, stemming is needed here. We used <a href="https://github.com/Foysal87/sbnltk/blob/main/docs/Stemmer.md">SBNLTK</a> Stemmer here because this project is the largest BNLP library and the developer seems pretty active. After stemming, we got the following topics.</p>
+<pre class="text"><code>Topic 0: &quot;গোষ্ঠী&quot; &quot;আমা&quot; &quot;ক্ষুদ্&quot; &quot;পৃথিবী&quot; &quot;মেয়ে&quot; &quot;অধিকাংশ&quot; &quot;গুরুত্ব&quot; &quot;মানুষ&quot; &quot;অধিবাসী&quot; &quot;ত্রিপুরা&quot;
+Topic 1: &quot;পার্বত্য&quot; &quot;চট্টগ্রাম&quot; &quot;আদিবাসী&quot; &quot;শিক্ষার্থী&quot; &quot;পরিষদ&quot; &quot;চেয়ারম্যান&quot; &quot;প্রাথমিক&quot; &quot;ক্ষুদ্&quot; &quot;সভাপতি&quot; &quot;শিশু&quot;
+Topic 2: &quot;বাংলাদেশ&quot; &quot;হিন্দু&quot; &quot;ভারত&quot; &quot;বিরুদ্ধ&quot; &quot;সংখ্যালঘু&quot; &quot;নির্যাতন&quot; &quot;প্রশ্ন&quot; &quot;আক্রমণ&quot; &quot;কিন্তু&quot; &quot;সাম্প্রদায়িক&quot;
+Topic 3: &quot;মুক্তিযোদ্ধা&quot; &quot;স্বাধীনতাযুদ্ধে&quot; &quot;জামুকা&quot; &quot;পদ্ধতিগত&quot; &quot;শিববাড়ি&quot; &quot;লক্ষ্যবস্তু&quot; &quot;কাক্সিক্ষত&quot; &quot;ইদ্রিস&quot; &quot;অ্যাম্বুশ&quot; &quot;করোইয়ে&quot;
+Topic 4: &quot;উপজেল&quot; &quot;আওয়ামী&quot; &quot;ইউনিয়ন&quot; &quot;পরিবার&quot; &quot;উদ্দিন&quot; &quot;এলাকা&quot; &quot;সাম্প্রদায়িকতা&quot; &quot;স্থানীয়&quot; &quot;উপজেলা&quot; &quot;বিএনপি&quot;
+Topic 5: &quot;সম্প্রদায়&quot; &quot;পাহাড়&quot; &quot;ত্রিপুরা&quot; &quot;অনুষ্ঠান&quot; &quot;শ্রেণি&quot; &quot;উৎসব&quot; &quot;সাংস্কৃতিক&quot; &quot;প্রধান&quot; &quot;তঞ্চঙ্গ্যা&quot; &quot;বাস্তবায়ন&quot;
+Topic 6: &quot;পাহাড়&quot; &quot;আশ্রম&quot; &quot;বান্দরবান&quot; &quot;পরিবহন&quot; &quot;ব্যাখ্যা&quot; &quot;সাঙ্গু&quot; &quot;প্রকৃতি&quot; &quot;যাত্&quot; &quot;দূরত্ব&quot; &quot;ধর্মমত&quot;
+Topic 7: &quot;অনেকদিন&quot; &quot;অভিনয়ের&quot; &quot;রফিকুন&quot; &quot;সনদপত্র&quot; &quot;সাইফু&quot; &quot;স্মৃতিকাতর&quot; &quot;স্লাইড&quot; &quot;হুটোপুটি&quot; &quot;অধ্যবসায়ী&quot; &quot;অনেককিছু&quot;
+Topic 8: &quot;বাংলাদেশ&quot; &quot;বাঙা&quot; &quot;আমা&quot; &quot;বিভিন্ন&quot; &quot;মানুষ&quot; &quot;আদিবাসী&quot; &quot;ক্ষুদ্&quot; &quot;সাঁওতাল&quot; &quot;নিজস্ব&quot; &quot;জনগোষ্ঠী&quot;
+Topic 9: &quot;গ্রাম&quot; &quot;সীমান্ত&quot; &quot;বিহার&quot; &quot;বর্ণমালা&quot; &quot;পদ্ধতি&quot; &quot;প্রাচীন&quot; &quot;দক্ষিণ&quot; &quot;মেহেরপুর&quot; &quot;ব্যবহার&quot; &quot;জয়পুরহাট&quot;
+DataFrame shape(10, 2)
+</code></pre>
+<p>Also, the following is our list of initial keywords.</p>
+<pre class="text"><code>ethnic_tribe_names = [
+    &quot;চাকমা&quot;, &quot;মারমা&quot;, &quot;সাঁওতাল&quot;, &quot;ত্রিপুরা&quot;, &quot;গারো&quot;, &quot;ওঁরাও&quot;, &quot;তঞ্চ্যঙ্গা&quot;, &quot;ম্রো&quot;, 
+    &quot;পাংখো&quot;, &quot;চাক&quot;, &quot;খেয়াং&quot;, &quot;খুমি&quot;, &quot;লুসাই&quot;,&quot;কুকি&quot;, &quot;রাখাইন&quot;, &quot;মণিপুরী&quot;,
+    &quot;হাজং&quot;, &quot;খাসিয়া&quot;, &quot;মং&quot;, &quot;বর্মন&quot;, &quot;পাহাড়ি&quot;, &quot;মালপাহাড়ি&quot;, &quot;মুন্ডা&quot;, &quot;ভূমিজ&quot;,
+    &quot;কন্দ&quot;, &quot;পাঙন&quot;, &quot;লাওরা&quot;, &quot;মুরং&quot;, &quot;বাগদী&quot;
+] #&quot;বম&quot;,&quot;কোচ&quot;,&quot;ডালু&quot;,&quot;কোল&quot;, &quot;রাজবংশী&quot;, &quot;পাত্র&quot;, &quot;ভিল&quot;, &quot;গণ্ড&quot;, &quot;খাসি&quot;
+
+ethnicity_directed_words = [
+    &quot;আদিবাসী&quot; , &quot;আদিবাসি&quot; , &quot;উপজাতি&quot;, &quot;নৃগোষ্ঠী&quot;
+]
+</code></pre>
+<h3 id="experiment---supervised-topic-modeling-to-find-best-alpha-score">Experiment - Supervised Topic Modeling to find best Alpha score</h3>
+<p>We modeled coherence score against different alpha values of LDA model. For 10187 dataset, <img src="../data/alpha_value_10187.png" /> We had the highest coherence score for alpha value around 73. So we get our final topic list from an LDA with coherence score = 0.7394. The topic list is below.</p>
+<pre class="text"><code>Topic 0: &quot;গ্রেফতার&quot; &quot;পুলিশ&quot; &quot;অভিযান&quot; &quot;গ্রাম&quot; &quot;উদ্ধ&quot; &quot;উপজেল&quot; &quot;অভিযোগ&quot; &quot;ব্যবসায়ী&quot; &quot;বিরুদ্ধ&quot; &quot;এলাক&quot;
+Topic 1: &quot;বিচারপতি&quot; &quot;হাইকোর্ট&quot; &quot;আইনজীবী&quot; &quot;কর&quot; &quot;আবেদন&quot; &quot;পুলিশ&quot; &quot;কর্মকর্তা&quot; &quot;মন্ত্রণালয়ের&quot; &quot;ওবায়দুল&quot; &quot;জেনার&quot;
+Topic 2: &quot;পরিবার&quot; &quot;আক্রান্ত&quot; &quot;স্বাস্থ্য&quot; &quot;ত্রিপুরা&quot; &quot;হাসপাতাল&quot; &quot;ইউনিয়ন&quot; &quot;মৃত্যু&quot; &quot;বান্দরবান&quot; &quot;দুর্গম&quot; &quot;কর্মকর্তা&quot;
+Topic 3: &quot;সম্পাদক&quot; &quot;সাধারণ&quot; &quot;সভাপতি&quot; &quot;পাপিয়া&quot; &quot;ছাত্রলীগ&quot; &quot;আওয়ামী&quot; &quot;সম্মেলন&quot; &quot;বর্তমান&quot; &quot;নরসিংদী&quot; &quot;কেন্দ্রীয়&quot;
+Topic 4: &quot;আন্দোলন&quot; &quot;ছাত্রলীগ&quot; &quot;শিক্ষার্থী&quot; &quot;প্রধানমন্ত্রী&quot; &quot;দাবি&quot; &quot;সাধারণ&quot; &quot;বিশ্ববিদ্যালয়ের&quot; &quot;আন্দোলনকারী&quot; &quot;বিক্ষোভ&quot; &quot;বিশ্ববিদ্যাল&quot;
+Topic 5: &quot;ব্যবস্থা&quot; &quot;সরকারি&quot; &quot;ক্ষেত্র&quot; &quot;বিসিএমসি&quot; &quot;মুক্তিযোদ্ধা&quot; &quot;নিশ্চিত&quot; &quot;প্রধানমন্ত্রী&quot; &quot;বাংলাদেশ&quot; &quot;সরকার&quot; &quot;মাধ্যম&quot;
+Topic 6: &quot;পাহাড়&quot; &quot;পর্যটন&quot; &quot;পর্যটক&quot; &quot;বিভিন্ন&quot; &quot;কক্সবাজার&quot; &quot;পর্যন্ত&quot; &quot;স্থানীয়&quot; &quot;কর্মকর্তা&quot; &quot;নির্মাণ&quot; &quot;এলাকা&quot;
+Topic 7: &quot;কাশ্মীর&quot; &quot;ভারত&quot; &quot;বাংলাদেশ&quot; &quot;ভারতী&quot; &quot;পাকিস্তান&quot; &quot;দি&quot; &quot;সংবিধান&quot; &quot;অনুচ্ছেদ&quot; &quot;মর্যাদা&quot; &quot;রাজ্য&quot;
+Topic 8: &quot;ব্যাংক&quot; &quot;গ্রাম&quot; &quot;প্রকল্প&quot; &quot;বিভিন্ন&quot; &quot;বিক্র&quot; &quot;ব্যবস্থা&quot; &quot;কোম্পানি&quot; &quot;পর্যন্ত&quot; &quot;বিদ্যুৎ&quot; &quot;ব্যবস্থাপনা&quot;
+Topic 9: &quot;চট্টগ্রাম&quot; &quot;আক্তার&quot; &quot;অভিযোগ&quot; &quot;পরিবার&quot; &quot;বিরুদ্ধ&quot; &quot;ব্যবস্থা&quot; &quot;কর্মকর্তা&quot; &quot;অফিস&quot; &quot;পুলিশ&quot; &quot;মামল&quot;
+Topic 10:&quot;শিক্ষার্থী&quot; &quot;শিক্ষা&quot; &quot;আমা&quot; &quot;ইঞ্জিনিয়ারিং&quot; &quot;অ্যান্ড&quot; &quot;বিভাগ&quot; &quot;প্রতিষ্ঠান&quot; &quot;শিক্ষক&quot; &quot;পরীক্ষা&quot; &quot;ক্যাম্পাস&quot;
+Topic 11:&quot;রোহিঙ্গা&quot; &quot;রাখাইন&quot; &quot;মিয়ানমারের&quot; &quot;সেনাবাহিনী&quot; &quot;বাংলাদেশ&quot; &quot;মিয়ানমার&quot; &quot;ক্যাম্প&quot; &quot;দেশ&quot; &quot;সীমান্ত&quot; &quot;জাতিসংঘ&quot;
+Topic 12:&quot;এলাকা&quot; &quot;হাসপাতাল&quot; &quot;সন্ত্রাসী&quot; &quot;চাকমা&quot; &quot;ইউপিডিএফ&quot; &quot;খাগড়াছড়ি&quot; &quot;উপজেল&quot; &quot;ঘটনাস্থল&quot; &quot;উদ্ধ&quot; &quot;উপজেলা&quot;
+Topic 13:&quot;প্রার্থী&quot; &quot;আওয়ামী&quot; &quot;বিএনপি&quot; &quot;নির্বাচন&quot; &quot;চেয়ারম্যান&quot; &quot;ইউনিয়ন&quot; &quot;উপজেলা&quot; &quot;উপজেল&quot; &quot;স্বতন্ত্র&quot; &quot;হয়েছেন&quot;
+Topic 14:&quot;কিন্তু&quot; &quot;আমা&quot; &quot;মানুষ&quot; &quot;কর&quot; &quot;প্রশ্ন&quot; &quot;সেখান&quot; &quot;যা&quot; &quot;হিস&quot; &quot;সম্পর্ক&quot; &quot;দি&quot;
+Topic 15:&quot;বাংলাদেশ&quot; &quot;বঙ্গবন্ধু&quot; &quot;মাধ্যম&quot; &quot;বিভিন্ন&quot; &quot;নাগরিক&quot; &quot;উন্নয়ন&quot; &quot;অনুষ্ঠান&quot; &quot;মুক্তিযুদ্ধ&quot; &quot;সমাজ&quot; &quot;আন্দোলন&quot;
+Topic 16:&quot;উপজেলা&quot; &quot;চেয়ারম্যান&quot; &quot;কর্মকর্তা&quot; &quot;সভাপতি&quot; &quot;প্রধান&quot; &quot;বক্তব্য&quot; &quot;সভাপতিত্ব&quot; &quot;প্রশাসন&quot; &quot;সম্পাদক&quot; &quot;উপস্থিত&quot;
+Topic 17:&quot;পার্বত্য&quot; &quot;চট্টগ্রাম&quot; &quot;আদিবাসী&quot; &quot;রাঙ্গামাট&quot; &quot;পাহাড়&quot; &quot;পরিষদ&quot; &quot;প্রধান&quot; &quot;ত্রিপুরা&quot; &quot;অনুষ্ঠান&quot; &quot;আঞ্চলিক&quot;
+Topic 18:&quot;সম্পাদক&quot; &quot;চৌধুরী&quot; &quot;উদ্দিন&quot; &quot;অ্যাডভোকেট&quot; &quot;মোহাম্মদ&quot; &quot;প্রমুখ&quot; &quot;কুমিল্লা&quot; &quot;বক্তব্য&quot; &quot;সমাবেশ&quot; &quot;চট্টগ্রাম&quot;
+Topic 19:&quot;সাংস্কৃতিক&quot; &quot;প্রশিক্ষণ&quot; &quot;অধ্যাপক&quot; &quot;পরিচালক&quot; &quot;অনুষ্ঠান&quot; &quot;শ্রদ্ধা&quot; &quot;শিল্পী&quot; &quot;একাডেমি&quot; &quot;কুমিল্লা&quot; &quot;মোজাফফর&quot;
+</code></pre>
+<p>It is experiment on 5130 ethnic article. The topics are:</p>
+<pre class="text"><code>Topic 0 &quot;প্রার্থী&quot; &quot;বান্দরবান&quot; &quot;নির্বাচন&quot; &quot;উন্নয়ন&quot; &quot;প্রতিবেদন&quot; &quot;নির্মাণ&quot; &quot;বিএনপি&quot; &quot;হয়েছেন&quot; &quot;মারমা&quot; &quot;প্রকল্প&quot;
+Topic 1 &quot;বাংলাদেশ&quot; &quot;শ্রেণি&quot; &quot;আমা&quot; &quot;কিন্তু&quot; &quot;ক্ষুদ্&quot; &quot;ক্ষেত্র&quot; &quot;বিভিন্ন&quot; &quot;মানুষ&quot; &quot;সেখান&quot; &quot;হিস&quot;
+Topic 2 &quot;মোহাম্মদ&quot; &quot;কক্সবাজার&quot; &quot;অতিরিক্ত&quot; &quot;কেন্দ্র&quot; &quot;আক্রান্ত&quot; &quot;পরিচালনা&quot; &quot;তাদের&quot; &quot;স্থান&quot; &quot;প্রস্তুত&quot; &quot;যুগান্তর&quot;
+Topic 3 &quot;মামলায়&quot; &quot;চৌধুরী&quot; &quot;উদ্দিন&quot; &quot;আক্তার&quot; &quot;আব্দুল&quot; &quot;বঙ্গবন্ধু&quot; &quot;উদ্দীন&quot; &quot;আসামি&quot; &quot;সুলতানা&quot; &quot;উল্লাহ&quot;
+Topic 4 &quot;আওয়ামী&quot; &quot;জেএসএস&quot; &quot;নেতৃত্ব&quot; &quot;জনসংহতি&quot; &quot;সমিতি&quot; &quot;নেতাকর্মী&quot; &quot;কাপ্তাই&quot; &quot;ছাত্রলীগ&quot; &quot;মহানগর&quot; &quot;সাধারণ&quot;
+Topic 5 &quot;তঞ্চঙ্গ্যা&quot; &quot;বিশ্ববিদ্যাল&quot; &quot;বিশ্ববিদ্যালয়ের&quot; &quot;প্রবন্ধ&quot; &quot;ভূঁইয়া&quot; &quot;সার্বিক&quot; &quot;প্রকৌশলী&quot; &quot;সম্প্রসারণ&quot; &quot;নিজ&quot; &quot;কলকাতা&quot;
+Topic 6 &quot;উপজেলা&quot; &quot;চেয়ারম্যান&quot; &quot;সম্পাদক&quot; &quot;সভাপতি&quot; &quot;কমি&quot; &quot;প্রধান&quot; &quot;অনুষ্ঠান&quot; &quot;পরিষদ&quot; &quot;বক্তব্য&quot; &quot;কেন্দ্রীয়&quot;
+Topic 7 &quot;রোহিঙ্গা&quot; &quot;ঘটনাস্থল&quot; &quot;সেনাবাহিনী&quot; &quot;বাহিনী&quot; &quot;রাখাইন&quot; &quot;ক্যাম্প&quot; &quot;নিহত&quot; &quot;সশস্ত্&quot; &quot;সীমান্ত&quot; &quot;মিয়ানমারের&quot;
+Topic 8 &quot;উপজেল&quot; &quot;ইউনিয়ন&quot; &quot;স্থানীয়&quot; &quot;এলাকা&quot; &quot;গ্রাম&quot; &quot;হাসপাতাল&quot; &quot;উদ্ধ&quot; &quot;প্রধানমন্ত্রী&quot; &quot;অভিযান&quot; &quot;পরিবার&quot;
+Topic 9 &quot;আদিবাসী&quot; &quot;নির্দেশ&quot; &quot;সাঁওতাল&quot; &quot;গাইবান্ধা&quot; &quot;শ্রমিক&quot; &quot;বিক্ষোভ&quot; &quot;পশ্চিম&quot; &quot;উচ্ছেদ&quot; &quot;কর্মচারী&quot; &quot;পল্লী&quot;
+Topic 10 &quot;২শালবন&quot; &quot;১৯১টি১&quot; &quot;৫মুক্তিযুদ্ধের&quot; &quot;৪বুদ্ধিজীবী&quot; &quot;৩৮উপরের&quot; &quot;৩৭কাকে&quot; &quot;২১বাংলায়&quot; &quot;২০মুক্তিবাহিনীর&quot; &quot;অনুমোদনকমলগঞ্জ&quot; &quot;১০জাতিসংঘের&quot;
+Topic 11 &quot;পার্বত্য&quot; &quot;চাকমা&quot; &quot;চট্টগ্রাম&quot; &quot;পাহাড়&quot; &quot;সন্ত্রাসী&quot; &quot;ইউপিডিএফ&quot; &quot;ত্রিপুরা&quot; &quot;খাগড়াছড়ি&quot; &quot;রাঙ্গামাট&quot; &quot;শুক্রবার&quot;
+Topic 12 &quot;সরকারি&quot; &quot;মাধ্যম&quot; &quot;শিক্ষার্থী&quot; &quot;রিপোর্ট&quot; &quot;বিভিন্ন&quot; &quot;পাশাপাশি&quot; &quot;সংগ্রহ&quot; &quot;কার্যক্রম&quot; &quot;সংগঠন&quot; &quot;প্রতিষ্ঠান&quot;
+Topic 13 &quot;২শালবন&quot; &quot;১৯১টি১&quot; &quot;৫মুক্তিযুদ্ধের&quot; &quot;৪বুদ্ধিজীবী&quot; &quot;৩৮উপরের&quot; &quot;৩৭কাকে&quot; &quot;২১বাংলায়&quot; &quot;২০মুক্তিবাহিনীর&quot; &quot;অনুমোদনকমলগঞ্জ&quot; &quot;১০জাতিসংঘের&quot;
+Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুমিল্লা&quot; &quot;নারী&quot; &quot;গাজীপুর&quot; &quot;ধর্ষণ&quot; &quot;ভ্রাম্যমাণ&quot; &quot;কিশোরী&quot; &quot;কারাদণ্ড&quot; &quot;ইনচার্জ&quot;
+</code></pre>
+<ol>
+<li><p>Issues</p>
+<ul>
+<li>[ ] The topic did not seem coherent. However, maybe we can try ChatGPT4o help to better understand the topics</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/initial_topic_modeling_10187.ipynb">ethnic<sub>5342corex</sub>.ipynb</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link">etnic<sub>5342data</sub></a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---semi-supervised-topic-modeling-on-ethnic-nonethnic">Experiment - Semi Supervised Topic Modeling on Ethnic, nonethnic</h3>
+<p>&lt;2024-07-28 রবি&gt; Objective: Since supervised topic modeling gave bad topics, let us try corex.</p>
+<p>We collected 5342 ethnic articles from (4.4M-&gt;10132) news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
+<p>Later, we also collected exactly 5342 nonethnic articles for an equal comparison. The results are in result section below.</p>
+<ol>
+<li><p>Result</p>
+<p>The topic coherence (tc) score is 137.05506096485365. We also required 50 topics due to the sheer size of dataset. For doc<sub>prob</sub> &gt; 20.0, we found the following distribution of docs for 50 topics, summarized under 15 genre using ChatGPT-4o and manual supervision. <img src="../data/ethnic_corex_5132_distribution.png" /></p>
+<p>For 5342 nonethnic articles, the topic coherence score and individual doc<sub>prob</sub> score came out very low. So for the SAME doc<sub>prob</sub> &gt; 20.0, we only got 1891 articles that are</p>
+<p><img src="../data/nonethnic_corex_5132_distribution.png" /></p></li>
+<li><p>Issues</p>
+<ul>
+<li>[ ] why is tourism genre empty?</li>
+<li>[X] CoRex does NOT automatically assign docs to topics. It's a problem. So we had to do thresholding.</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Corex_Exp1_Keyword_based_5342.ipynb">ethnic<sub>5342corex</sub>.ipynb</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link">etnic<sub>5342data</sub></a> , <a href="https://drive.google.com/file/d/1esoenVc90ZAn0fPf-kz6U_ThcA8f7zQ6/view?usp=drive_link">nonethnic<sub>5342data</sub></a> , <a href="https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing">Excel containing genre distribution</a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="task---mass-annotation-of-5342-ethnic-articles">Task - Mass Annotation of 5342 Ethnic Articles</h3>
+<p>&lt;2024-08-09 শুক্র&gt; Objective: Quality data is necessary so we need to annotate to clean the data. Its also because of our definition of <code>exact article</code>.</p>
+<p>I first did an exploratory analysis of the articles. When annotating, we paid close attention to why we are annotating the data as such by noting down the reason. It increased our understanding of the underlying data. We used the following interface for this stage of annotation and ended up annotating around <a href="https://drive.google.com/file/d/1LYRQDj_N2fMkipXaQIvm4N1Dzfr_cAZN/view?usp=drive_link">100 data.</a></p>
+<p><img src="../data/Exploratory annotation.png" /></p>
+<p>If we remember, we only did keyword based extraction to collect ethnic article dataset. To make it cleaner, we decided to annotate them manually and identify the exact articles which are about ethnic people. But annotating 5000+ articles is a mammoth undertaking. So we considerd keybinding - user will just see the article and press E/N to annotate ethnic, nonethnic. Usage of keybinding increase annotation speed significantly. But still, we annotated around 150 nonethnic articles. <img src="../data/annotating-ethnic-article_fast.png" /></p>
+<p>We also made one tool for easy understanding of <code>Topics in Topic modeling</code> by inspecting the documents in each topic.</p>
+<ol>
+<li><p>Result</p>
+<ul>
+<li>Annotated 100 data with "why they are ethnic article or why not".</li>
+<li>Fast annotated 150 data with E or N.</li>
+<li>Simple annotation tool development</li>
+<li>Data understanding</li>
+</ul></li>
+<li><p>Issues</p>
+<ul>
+<li>[ ] Finding literature on exact definition and loose definition</li>
+<li>[ ] Lets say, we annotate 5000 data. But there is no way to find another annotator to annotate 5000 data.</li>
+<li>[ ] I should use the topic document annotation tool more frequently</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/tree/main/annotation-tool">Annotation tool code</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/drive/u/2/folders/14R__tgI9iCXZc0RcbMIbhS9g2KWpqIlB">ethnic<sub>datasetexp05342annotated1</sub>-151.csv</a> , <a href="https://drive.google.com/file/d/1LYRQDj_N2fMkipXaQIvm4N1Dzfr_cAZN/view?usp=drive_link">exploratory<sub>100annotation</sub></a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---ethnic-100-articles-with-gemini-1.5-flash">Experiment - Ethnic 100 articles with Gemini-1.5 Flash</h3>
+<p>&lt;2024-08-14 বুধ&gt; Objective: Seeing if gemini-1.5 flash free tier can be used for annotation</p>
+<p>A major part of our experiment is genre classification. We have identified the following 15 genres: Crime, Politics, Natual Disaster, Sciene &amp; Environment, Government actions, Business &amp; Economy, International Affairs, Education, Health, Sports, Protests, Culture, Entertainment, Lifestyle, Discourse. Additionally, we also wanna find if the description is Straight, Investigation, Commentary.</p>
+<p>Human are biased at annotating things they relate to. According to a journalist on his comment about LLM for news analysis, he said and I quote, "LLMs are the least biased journalist". So even without rigourous validation, we went with experimenting with Gemini-1.5 for news genre and news style annotation.</p>
+<ol>
+<li><p>Result</p>
+<p>We picked 100 articles from our 5132 ethnic news articles (which we extracted using keywords) and as we can see, most articles are on crime and discourse.</p>
+<p><img src="../data/genre_frequency_ethnic5132_100.png" /></p>
+<p>We tried to annotate non-ethnic articles as well but i think we soon ran out of free usage limit.</p></li>
+<li><p>Issues</p>
+<ul>
+<li>[X] We observed that the keyword "Rakhain" resulted in the inclusion of Rohingya issue related articles. So we further cleaned our 5132 ethnic articles and ended up with around <a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 articles</a>.</li>
+<li>[ ] We need to scale gemini based annotation. We need to understand what is the free tier limit and then, use multiple accounts to do it.</li>
+<li>[ ] We need to finalize on our few shot prompt instruction.</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/few-shot-classification/Gemini_1_5.ipynb">Gemini<sub>15</sub>.ipynb</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link">ethnic<sub>datasetexp05342</sub></a></td>
+</tr>
+<tr class="odd">
+<td>Gemini Annotations</td>
+<td><a href="https://drive.google.com/file/d/1wtYU0iwh5U8z6QH6e4e7ZUjZPKNOjToa/view?usp=drive_link">Gemini 100 Annotations in Drive</a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---nonethnic-100k-articles-with-corex">Experiment - Nonethnic 100k articles with Corex</h3>
+<p>&lt;2024-08-15 বৃহঃ&gt; Objective: Seeing if using more articles gives us a more complete distribution of usual news genre.</p>
+<p>We collected 100k nonethnic articles from 4.4M news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
+<ol>
+<li><p>Result</p>
+<p>The topic coherence (tc) score is 52.49676727298845. We also required 50 topics due to the sheer size of dataset. For doc<sub>prob</sub> &gt; 20.0, we found the following distribution of docs for 50 topics, summarized under 15 genre using ChatGPT-4o and manual supervision. <img src="../data/nonethnic_news_corex_100k_genres.png" /></p></li>
+<li><p>Issues</p>
+<ul>
+<li>[X] Increased max<sub>vocabsize</sub> to 50k.</li>
+<li>[ ] Is topic coherence score low? If yes, why.</li>
+<li>[ ] The 15 genres we selected are not all-encompassing. Need to find some literature on it. Specially the <code>discourse</code> genre. It is as if every news is a discourse.</li>
+<li>[ ] Need to pick better <code>Anchor words</code> for each of the 15 genre.</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/collecting-ethnic-articles/collecting_nonethnic_articles_from_4-4M_articles.ipynb">collecting<sub>100knonethnicarticles</sub>.ipynb</a> , <a href="https://www.kaggle.com/code/abjpaul/representation-discrimination-of-ethnic-people">Kaggle link</a> , <a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/semi_supervised_topic_modeling_nonethnic_100k.ipynb">CoRex code</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link">100k nonethnic articles in drive</a> , <a href="https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing">Excel containing genre distribution</a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Saleem, Muniba, and Srividya Ramasubramanian. "Muslim Americans’ responses to social identity threats: Effects of media representations and experiences of discrimination." Media Psychology 22.3 (2019): 373-393.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Haraldsson, Amanda. Media discrimination and women's political representation: experimental evidence of media effects on the supply-side. Diss. European University Institute, 2022.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Ittefaq, Muhammad, et al. "Discriminated in society and marginalized in media: Social representation of Christian sanitary workers in Pakistan." Journalism Practice 17.1 (2023): 66-84.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Galdi, Silvia, Francesca Guizzo, and Fabio Fasoli. "Media representation matters: The effects of exposure to counter-stereotypical gay male characters on heterosexual men’s expressions of discrimination." Group Processes &amp; Intergroup Relations 26.6 (2023): 1329-1350.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
