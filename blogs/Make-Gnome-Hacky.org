@@ -32,3 +32,8 @@ For that, we first need to install gnome-chrome-extension. This would allow us t
 Also, install ~GNOME Shell integration~ extension from your browser. Then for adding CPU-memory usage, simply install ~Vitas~ from browser. Vitas github shows the installation procedure in details.
 
 For weather, I installed OpenWeather extension.
+
+** Firefox
+Firefox browser is a key experience for a sound desktop usage. So we need to tweak it a little. First, install the ~tabliss~ for a minimal home.
+
+Then to remove the topbar, [[https://www.reddit.com/r/kde/comments/10ckq05/how_do_i_remove_firefox_title_bar/][click on the space after tabs (right side)]]and from the customize toolbar menu, uncheck ~toolbar~ from bottom-left.
