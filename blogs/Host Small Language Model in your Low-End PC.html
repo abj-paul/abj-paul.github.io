@@ -17,7 +17,7 @@
     ul.task-list{list-style: none;}
   </style>
 </head>
-<body class="markdown-container>
+<body class="markdown-container">
 <header id="title-block-header">
 <h1 class="title">Host Small Language Model in your Low-End PC</h1>
 <p class="author">Abhijit Paul</p>
@@ -63,7 +63,11 @@
 <p>Small chat models return good responses when we want to learn something. For prompts like "Tell me about Large Language Model", "Tell me about the history of America", the responses were ok. They can also write poems or stories to a certain extent. They can be fun toy to play around when you don't have any internet connection.</p>
 <p><code>Turns out, You should use Phi 3.1 mini for something as complex as that.</code> The size of Phi 3.1 Mini model is 12G and even quantized versions are 3.1GB, far beyond what my 4GB RAM pc can comfortably handle. So I will leave trying it out for a future date.</p>
 <h3 id="update">Update!!</h3>
-<p>I observed that <a href="https://huggingface.co/google/gemma-2b-it">Gemma 2b instruct</a> model by Google Gemini performs very well in my CPU. But yah, since its 2b in size, it performs very slowly in my Corei3 4GB RAM pc.</p>
+<ol>
+<li>I observed that <a href="https://huggingface.co/google/gemma-2b-it">Gemma 2b instruct</a> model by Google Gemini performs very well in my CPU. But yah, since its 2b in size, it performs very slowly in my Corei3 4GB RAM pc.</li>
+<li>The joint research of Microsoft and Harvard showed a promising research that can increase the performance of most LLM using simple SLMs, titled <a href="https://arxiv.org/pdf/2408.06195">MUTUAL REASONING MAKES SMALLER LLMS STRONGER PROBLEM-SOLVERS</a>.</li>
+<li>Grokking researches also suggest that generalization does not come from training larger and larger models. Rather generalization comes after overfitting and regularizing the LLMs.</li>
+</ol>
 <h3 id="reference">Reference</h3>
 <section class="footnotes" role="doc-endnotes">
 <hr />

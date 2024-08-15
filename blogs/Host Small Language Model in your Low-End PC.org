@@ -46,6 +46,8 @@ Small chat models return good responses when we want to learn something. For pro
 ~Turns out, You should use Phi 3.1 mini for something as complex as that.~ The size of Phi 3.1 Mini model is 12G and even quantized versions are 3.1GB, far beyond what my 4GB RAM pc can comfortably handle. So I will leave trying it out for a future date.
 
 *** Update!!
-I observed that [[https://huggingface.co/google/gemma-2b-it][Gemma 2b instruct]] model by Google Gemini performs very well in my CPU. But yah, since its 2b in size, it performs very slowly in my Corei3 4GB RAM pc.
+1. I observed that [[https://huggingface.co/google/gemma-2b-it][Gemma 2b instruct]] model by Google Gemini performs very well in my CPU. But yah, since its 2b in size, it performs very slowly in my Corei3 4GB RAM pc.
+2. The joint research of Microsoft and Harvard showed a promising research that can increase the performance of most LLM using simple SLMs, titled [[https://arxiv.org/pdf/2408.06195][MUTUAL REASONING MAKES SMALLER LLMS STRONGER PROBLEM-SOLVERS]].
+3. Grokking researches also suggest that generalization does not come from training larger and larger models. Rather generalization comes after overfitting and regularizing the LLMs.
 *** Reference
 [1] https://huggingface.co/OuteAI/Lite-Oute-1-300M-Instruct
