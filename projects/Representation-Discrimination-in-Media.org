@@ -1,0 +1,270 @@
+#+TITLE: Representation Discrimination in Media
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-07-28 রবি> - <2024-08-15 বৃহঃ>
+
+
+** Literature Review
+You can find the [[https://www.overleaf.com/project/6633a3c24c44378a593d48e3][shared overleaf for literature review here.]]
+*** Computational Analysis
+**** Word Embedding
+Fonseca et al explored caste discrimination in indian liteature. They first trained a word2vec model using the newspaper article and then they mapped a correlation graph with the word "Caste" based on cosine similarity. After that, they estimated relative frequence of the word caste in easy article by summing the occurence of the words in each article. They did not sum 1 for each occurence, rather the cosine similarity score. After that, they picked the top 7\% articles and performed LDA on them [1].
+**** TODO Word Count
+It counted the keywords against a demography as part of their detailed sociological analysis on the view of that demography in news.
+*** Sociological Analysis
+**** Perspective: Why not talk about our sufferings?
+Saleem & Ramasubramanian found that Muslim American students who viewed negative media representations of their religious ingroup, relative to a control video, were less likely to desire acceptance by other Americans and more likely to avoid interactions with majority members. Such representation discrimination incease inter-group distance [3].
+Haraldsson showcased the way media discrimination hinders progress towards putting femininity on an equal footing with masculinity in the political domain in her theisis [4].
+Ittefaq et al. revealed that sanitary workers in Pakistan believe that they do not have any representation in Pakistan’s mainstream media to voice their issues. Moreover, they have serious reservations about their polemic social representation and voice concerns regarding the media that often amplify such depictions [5]. 
+**** Perspective: Racist Stereotypical Representation
+In this amazing work, Galdi et al showed through social experiments how stereotypical gay men representation increases social bias about them. Heterosexual Italian men (N = 158) were exposed to a clip portraying (i) a stereotypical feminine gay male character, (ii) a counter-stereotypical masculine gay male character, or (iii) a nature documentary. Compared to the other conditions, exposure to the counter-stereotypical gay character increased discrimination toward gay men, in the form of anti-gay jokes, the higher the level of participants’ prejudice against gay men. Results further demonstrated that this effect was explained by reduced perceived stereotypicality of the character [6].
+**** Perpective: Under-representation hurts
+Balasubramaniam et al shows how representation discrimination affects the dalit community. They argue that under-representation of Dalits of Dalits leads to news exclusion related to dalits [2].
+*** TODO Journalism
+** Experiment
+We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.
+
+| Experiment details           |
+|------------------------------|
+| Experiment name              |
+| Date                         |
+| Objective                    |
+| Result                       |
+| Future Work                  |
+| Artifacts (code, input data) |
+
+Observe that, we do not stoe the output of the experiment because once can find that simply by running the code with that input data.
+Also, you can find our codebase [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/tree/main][in this github repository.]]
+*** Task - Keyword Based Data Collection
+This our curated dataset]] of ethnic word-contained articles from [[https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset][ebD- Bangla newspaper dataset.]] We have curated ethnic people related dataset using simply keyword based extraction. We considered the following keywords to filter out the articles.
+#+begin_src python
+  ethnic_tribe_names = [
+    "চাকমা", "মারমা", "সাঁওতাল", "ত্রিপুরা", "গারো", "ওঁরাও", "তঞ্চ্যঙ্গা", "ম্রো", 
+    "পাংখো", "চাক", "খেয়াং", "খুমি", "লুসাই","কুকি", "রাখাইন", "মণিপুরী",
+    "হাজং", "খাসিয়া", "মং", "বর্মন", "পাহাড়ি", "মালপাহাড়ি", "মুন্ডা", "ভূমিজ",
+    "কন্দ", "পাঙন", "লাওরা", "মুরং", "বাগদী"
+] #"বম","কোচ","ডালু","কোল", "রাজবংশী", "পাত্র", "ভিল", "গণ্ড", "খাসি"
+
+ethnicity_directed_words = [
+    "আদিবাসী" , "আদিবাসি" , "উপজাতি", "নৃগোষ্ঠী"
+]
+#+end_src
+
+Following are the dimensions of resulting datasets.
+| Dataset                     |             Size | Approach           | Comment                                                                |
+| [[https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset][eBD Bangla news]]             | 2294710 articles | -                  | -                                                                      |
+| Curated Ethnic Word Dataset |  337793 articles | Keyword Extraction | Buggy, For list of articles, same list is added continuously.          |
+| Target Ethnic Articles      |            14000 | 5 Keyword          | Topic modeling result came out bad due to repetition.                  |
+| Curated Ethnic Word Dataset |            [[https://drive.google.com/file/d/1xiJXor4yKYnEyNPEdFhAQfOkl8tf4Gsz/view?usp=drive_link][10187]] | Keyword Extraction | Fixed the bug where same article was being added for each of its words |
+| Most Relevant Articles      |              221 | 5 Keywords         |                                                                        |
+*** TODO Failed Attempts
+Word embedding model training on the whole dataset. This was a MAJOR blockage in our earlier work.
+*** Experiment - Supervised Topic Modeling on Ethnic with Stemming
+The only preprocessing we did was this -> ~to_remove = ['email\xa0protected', '\n\n\n\xa0\n\n\n\n\n', '\u200c্', '\n\n', '\xa0', '\n']~. These are the top 10 topics we found in the articles.
+#+begin_src text
+Topic 0: "পার্বত্য" "চট্টগ্রাম" "উপজেলার" "ত্রিপুরা" "প্রাথমিক" "শিশুদের" "বিভিন্ন" "উন্নয়ন" "পাঠ্যপুস্তক" "চেয়ারম্যান"
+Topic 1: "তঞ্চঙ্গ্যা" "সম্প্রদায়" "উৎসবকে" "তরুণীরা" "পাহাড়ের" "পুরাতন" "নেওয়ার" "লকডাউন" "বান্দরবানে" "সাঙ্গু"
+Topic 2: "আদিবাসী" "পরিষদের" "আওয়ামী" "সভাপতি" "সম্পাদক" "বক্তব্য" "পার্বত্য" "আদিবাসীদের" "সাধারণ" "চেয়ারম্যান"
+Topic 3: "বৈসাবি" "সাংগ্রাই" "সম্প্রদায়ের" "পাহাড়ি" "ঐতিহ্যবাহী" "এপ্রিল" "অনুষ্ঠান" "উৎসবের" "অনুষ্ঠিত" "প্রধান"
+Topic 4: "জন্মদিনকে" "ছোটাছুটি" "নালন্দার" "দলবদ্ধ" "দলগতভাবে" "নৃত্যকলা" "জন্মদিন" "গ্যালারির" "চতুর্থতলায়" "নৃত্যসহ"
+Topic 5: "বাংলাদেশে" "হিন্দু" "সাম্প্রদায়িক" "আক্রমণ" "সাম্প্রদায়িকতা" "ধর্মীয়" "কিন্তু" "লোকদের" "মুসলমান" "সাম্প্রদায়িকতার"
+Topic 6: "গ্রামের" "উপজেলার" "মেহেরপুর" "জয়পুরহাট" "উদ্দিনের" "বেনাপোল" "পাঁচবিবি" "সাতক্ষীরা" "চুয়াডাঙ্গা" "নববর্ষ"
+Topic 7: "পার্বত্য" "বিরুদ্ধে" "ভারতের" "বাহিনীর" "হিসেবে" "বাংলাদেশ" "উপজাতি" "সরকারের" "প্রবেশ" "নির্বাচিত"
+Topic 8: "ক্ষুদ্র" "গোষ্ঠীর" "বাঙালি" "সংস্কৃতি" "বিভিন্ন" "ত্রিপুরা" "নিজস্ব" "বাংলাদেশ" "কিন্তু" "বাংলাদেশের"
+Topic 9: "বাংলাদেশের" "আমাদের" "বাঙালি" "বাংলাদেশে" "বিভিন্ন" "বাংলাদেশ" "ধর্মের" "মানুষের" "ত্রিপুরা" "প্রশ্ন"
+#+end_src
+
+Clearly, stemming is needed here. We used [[https://github.com/Foysal87/sbnltk/blob/main/docs/Stemmer.md][SBNLTK]] Stemmer here because this project is the largest BNLP library and the developer seems pretty active. After stemming, we got the following topics.
+#+begin_src text
+Topic 0: "গোষ্ঠী" "আমা" "ক্ষুদ্" "পৃথিবী" "মেয়ে" "অধিকাংশ" "গুরুত্ব" "মানুষ" "অধিবাসী" "ত্রিপুরা"
+Topic 1: "পার্বত্য" "চট্টগ্রাম" "আদিবাসী" "শিক্ষার্থী" "পরিষদ" "চেয়ারম্যান" "প্রাথমিক" "ক্ষুদ্" "সভাপতি" "শিশু"
+Topic 2: "বাংলাদেশ" "হিন্দু" "ভারত" "বিরুদ্ধ" "সংখ্যালঘু" "নির্যাতন" "প্রশ্ন" "আক্রমণ" "কিন্তু" "সাম্প্রদায়িক"
+Topic 3: "মুক্তিযোদ্ধা" "স্বাধীনতাযুদ্ধে" "জামুকা" "পদ্ধতিগত" "শিববাড়ি" "লক্ষ্যবস্তু" "কাক্সিক্ষত" "ইদ্রিস" "অ্যাম্বুশ" "করোইয়ে"
+Topic 4: "উপজেল" "আওয়ামী" "ইউনিয়ন" "পরিবার" "উদ্দিন" "এলাকা" "সাম্প্রদায়িকতা" "স্থানীয়" "উপজেলা" "বিএনপি"
+Topic 5: "সম্প্রদায়" "পাহাড়" "ত্রিপুরা" "অনুষ্ঠান" "শ্রেণি" "উৎসব" "সাংস্কৃতিক" "প্রধান" "তঞ্চঙ্গ্যা" "বাস্তবায়ন"
+Topic 6: "পাহাড়" "আশ্রম" "বান্দরবান" "পরিবহন" "ব্যাখ্যা" "সাঙ্গু" "প্রকৃতি" "যাত্" "দূরত্ব" "ধর্মমত"
+Topic 7: "অনেকদিন" "অভিনয়ের" "রফিকুন" "সনদপত্র" "সাইফু" "স্মৃতিকাতর" "স্লাইড" "হুটোপুটি" "অধ্যবসায়ী" "অনেককিছু"
+Topic 8: "বাংলাদেশ" "বাঙা" "আমা" "বিভিন্ন" "মানুষ" "আদিবাসী" "ক্ষুদ্" "সাঁওতাল" "নিজস্ব" "জনগোষ্ঠী"
+Topic 9: "গ্রাম" "সীমান্ত" "বিহার" "বর্ণমালা" "পদ্ধতি" "প্রাচীন" "দক্ষিণ" "মেহেরপুর" "ব্যবহার" "জয়পুরহাট"
+DataFrame shape(10, 2)
+#+end_src
+
+Also, the following is our list of initial keywords.
+#+begin_src text
+ethnic_tribe_names = [
+    "চাকমা", "মারমা", "সাঁওতাল", "ত্রিপুরা", "গারো", "ওঁরাও", "তঞ্চ্যঙ্গা", "ম্রো", 
+    "পাংখো", "চাক", "খেয়াং", "খুমি", "লুসাই","কুকি", "রাখাইন", "মণিপুরী",
+    "হাজং", "খাসিয়া", "মং", "বর্মন", "পাহাড়ি", "মালপাহাড়ি", "মুন্ডা", "ভূমিজ",
+    "কন্দ", "পাঙন", "লাওরা", "মুরং", "বাগদী"
+] #"বম","কোচ","ডালু","কোল", "রাজবংশী", "পাত্র", "ভিল", "গণ্ড", "খাসি"
+
+ethnicity_directed_words = [
+    "আদিবাসী" , "আদিবাসি" , "উপজাতি", "নৃগোষ্ঠী"
+]
+#+end_src
+*** Experiment - Supervised Topic Modeling to find best Alpha score
+We modeled coherence score against different alpha values of LDA model. For 10187 dataset,
+[[file:~/abj-paul.github.io/data/alpha_value_10187.png]]
+We had the highest coherence score for alpha value around 73. So we get our final topic list from an LDA with coherence score = 0.7394. The topic list is below.
+#+begin_src text
+Topic 0: "গ্রেফতার" "পুলিশ" "অভিযান" "গ্রাম" "উদ্ধ" "উপজেল" "অভিযোগ" "ব্যবসায়ী" "বিরুদ্ধ" "এলাক"
+Topic 1: "বিচারপতি" "হাইকোর্ট" "আইনজীবী" "কর" "আবেদন" "পুলিশ" "কর্মকর্তা" "মন্ত্রণালয়ের" "ওবায়দুল" "জেনার"
+Topic 2: "পরিবার" "আক্রান্ত" "স্বাস্থ্য" "ত্রিপুরা" "হাসপাতাল" "ইউনিয়ন" "মৃত্যু" "বান্দরবান" "দুর্গম" "কর্মকর্তা"
+Topic 3: "সম্পাদক" "সাধারণ" "সভাপতি" "পাপিয়া" "ছাত্রলীগ" "আওয়ামী" "সম্মেলন" "বর্তমান" "নরসিংদী" "কেন্দ্রীয়"
+Topic 4: "আন্দোলন" "ছাত্রলীগ" "শিক্ষার্থী" "প্রধানমন্ত্রী" "দাবি" "সাধারণ" "বিশ্ববিদ্যালয়ের" "আন্দোলনকারী" "বিক্ষোভ" "বিশ্ববিদ্যাল"
+Topic 5: "ব্যবস্থা" "সরকারি" "ক্ষেত্র" "বিসিএমসি" "মুক্তিযোদ্ধা" "নিশ্চিত" "প্রধানমন্ত্রী" "বাংলাদেশ" "সরকার" "মাধ্যম"
+Topic 6: "পাহাড়" "পর্যটন" "পর্যটক" "বিভিন্ন" "কক্সবাজার" "পর্যন্ত" "স্থানীয়" "কর্মকর্তা" "নির্মাণ" "এলাকা"
+Topic 7: "কাশ্মীর" "ভারত" "বাংলাদেশ" "ভারতী" "পাকিস্তান" "দি" "সংবিধান" "অনুচ্ছেদ" "মর্যাদা" "রাজ্য"
+Topic 8: "ব্যাংক" "গ্রাম" "প্রকল্প" "বিভিন্ন" "বিক্র" "ব্যবস্থা" "কোম্পানি" "পর্যন্ত" "বিদ্যুৎ" "ব্যবস্থাপনা"
+Topic 9: "চট্টগ্রাম" "আক্তার" "অভিযোগ" "পরিবার" "বিরুদ্ধ" "ব্যবস্থা" "কর্মকর্তা" "অফিস" "পুলিশ" "মামল"
+Topic 10:"শিক্ষার্থী" "শিক্ষা" "আমা" "ইঞ্জিনিয়ারিং" "অ্যান্ড" "বিভাগ" "প্রতিষ্ঠান" "শিক্ষক" "পরীক্ষা" "ক্যাম্পাস"
+Topic 11:"রোহিঙ্গা" "রাখাইন" "মিয়ানমারের" "সেনাবাহিনী" "বাংলাদেশ" "মিয়ানমার" "ক্যাম্প" "দেশ" "সীমান্ত" "জাতিসংঘ"
+Topic 12:"এলাকা" "হাসপাতাল" "সন্ত্রাসী" "চাকমা" "ইউপিডিএফ" "খাগড়াছড়ি" "উপজেল" "ঘটনাস্থল" "উদ্ধ" "উপজেলা"
+Topic 13:"প্রার্থী" "আওয়ামী" "বিএনপি" "নির্বাচন" "চেয়ারম্যান" "ইউনিয়ন" "উপজেলা" "উপজেল" "স্বতন্ত্র" "হয়েছেন"
+Topic 14:"কিন্তু" "আমা" "মানুষ" "কর" "প্রশ্ন" "সেখান" "যা" "হিস" "সম্পর্ক" "দি"
+Topic 15:"বাংলাদেশ" "বঙ্গবন্ধু" "মাধ্যম" "বিভিন্ন" "নাগরিক" "উন্নয়ন" "অনুষ্ঠান" "মুক্তিযুদ্ধ" "সমাজ" "আন্দোলন"
+Topic 16:"উপজেলা" "চেয়ারম্যান" "কর্মকর্তা" "সভাপতি" "প্রধান" "বক্তব্য" "সভাপতিত্ব" "প্রশাসন" "সম্পাদক" "উপস্থিত"
+Topic 17:"পার্বত্য" "চট্টগ্রাম" "আদিবাসী" "রাঙ্গামাট" "পাহাড়" "পরিষদ" "প্রধান" "ত্রিপুরা" "অনুষ্ঠান" "আঞ্চলিক"
+Topic 18:"সম্পাদক" "চৌধুরী" "উদ্দিন" "অ্যাডভোকেট" "মোহাম্মদ" "প্রমুখ" "কুমিল্লা" "বক্তব্য" "সমাবেশ" "চট্টগ্রাম"
+Topic 19:"সাংস্কৃতিক" "প্রশিক্ষণ" "অধ্যাপক" "পরিচালক" "অনুষ্ঠান" "শ্রদ্ধা" "শিল্পী" "একাডেমি" "কুমিল্লা" "মোজাফফর"
+#+end_src
+
+
+It is experiment on 5130 ethnic article. The topics are:
+#+begin_src text
+Topic 0 "প্রার্থী" "বান্দরবান" "নির্বাচন" "উন্নয়ন" "প্রতিবেদন" "নির্মাণ" "বিএনপি" "হয়েছেন" "মারমা" "প্রকল্প"
+Topic 1 "বাংলাদেশ" "শ্রেণি" "আমা" "কিন্তু" "ক্ষুদ্" "ক্ষেত্র" "বিভিন্ন" "মানুষ" "সেখান" "হিস"
+Topic 2 "মোহাম্মদ" "কক্সবাজার" "অতিরিক্ত" "কেন্দ্র" "আক্রান্ত" "পরিচালনা" "তাদের" "স্থান" "প্রস্তুত" "যুগান্তর"
+Topic 3 "মামলায়" "চৌধুরী" "উদ্দিন" "আক্তার" "আব্দুল" "বঙ্গবন্ধু" "উদ্দীন" "আসামি" "সুলতানা" "উল্লাহ"
+Topic 4 "আওয়ামী" "জেএসএস" "নেতৃত্ব" "জনসংহতি" "সমিতি" "নেতাকর্মী" "কাপ্তাই" "ছাত্রলীগ" "মহানগর" "সাধারণ"
+Topic 5 "তঞ্চঙ্গ্যা" "বিশ্ববিদ্যাল" "বিশ্ববিদ্যালয়ের" "প্রবন্ধ" "ভূঁইয়া" "সার্বিক" "প্রকৌশলী" "সম্প্রসারণ" "নিজ" "কলকাতা"
+Topic 6 "উপজেলা" "চেয়ারম্যান" "সম্পাদক" "সভাপতি" "কমি" "প্রধান" "অনুষ্ঠান" "পরিষদ" "বক্তব্য" "কেন্দ্রীয়"
+Topic 7 "রোহিঙ্গা" "ঘটনাস্থল" "সেনাবাহিনী" "বাহিনী" "রাখাইন" "ক্যাম্প" "নিহত" "সশস্ত্" "সীমান্ত" "মিয়ানমারের"
+Topic 8 "উপজেল" "ইউনিয়ন" "স্থানীয়" "এলাকা" "গ্রাম" "হাসপাতাল" "উদ্ধ" "প্রধানমন্ত্রী" "অভিযান" "পরিবার"
+Topic 9 "আদিবাসী" "নির্দেশ" "সাঁওতাল" "গাইবান্ধা" "শ্রমিক" "বিক্ষোভ" "পশ্চিম" "উচ্ছেদ" "কর্মচারী" "পল্লী"
+Topic 10 "২শালবন" "১৯১টি১" "৫মুক্তিযুদ্ধের" "৪বুদ্ধিজীবী" "৩৮উপরের" "৩৭কাকে" "২১বাংলায়" "২০মুক্তিবাহিনীর" "অনুমোদনকমলগঞ্জ" "১০জাতিসংঘের"
+Topic 11 "পার্বত্য" "চাকমা" "চট্টগ্রাম" "পাহাড়" "সন্ত্রাসী" "ইউপিডিএফ" "ত্রিপুরা" "খাগড়াছড়ি" "রাঙ্গামাট" "শুক্রবার"
+Topic 12 "সরকারি" "মাধ্যম" "শিক্ষার্থী" "রিপোর্ট" "বিভিন্ন" "পাশাপাশি" "সংগ্রহ" "কার্যক্রম" "সংগঠন" "প্রতিষ্ঠান"
+Topic 13 "২শালবন" "১৯১টি১" "৫মুক্তিযুদ্ধের" "৪বুদ্ধিজীবী" "৩৮উপরের" "৩৭কাকে" "২১বাংলায়" "২০মুক্তিবাহিনীর" "অনুমোদনকমলগঞ্জ" "১০জাতিসংঘের"
+Topic 14 "হত্য" "স্ত্রী" "কুমিল্লা" "নারী" "গাজীপুর" "ধর্ষণ" "ভ্রাম্যমাণ" "কিশোরী" "কারাদণ্ড" "ইনচার্জ"
+#+end_src
+**** Issues
+- [ ] The topic did not seem coherent. However, maybe we can try ChatGPT4o help to better understand the topics
+**** Artifacts
+| Artifact | Link                    |
+|----------+-------------------------|
+| Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/initial_topic_modeling_10187.ipynb][ethnic_5342_corex.ipynb]] |
+| Data     | [[https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link][etnic_5342_data]]         |
+
+*** Experiment - Semi Supervised Topic Modeling on Ethnic, nonethnic
+<2024-07-28 রবি>
+Objective: Since supervised topic modeling gave bad topics, let us try corex.
+
+We collected 5342 ethnic articles from (4.4M->10132) news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.
+#+begin_src python
+  anchors = [["ক্রীড়া", "রুপা", "স্বর্ণপদক",  "ব্রোঞ্জপদক"], ["নির্বাচন","প্রার্থী", "চেয়ারম্যান"], ["পর্যটক"], ["উদযাপন", "নবান্ন", "উৎসব"], ["বিদ্রোহ", "কল্পনা"], ["মামলা"] , ["সরকার", "লুটপাট", "দুর্নীতি", "প্রশিক্ষণ"], [ "সেতু", "সংস্কার", "সংকট", "পানি"], ["বাংলাদেশ", "বিমানবাহিনী", "অফিসার", "ক্যাডেট"] ]
+#+end_src
+
+Later, we also collected exactly 5342 nonethnic articles for an equal comparison. The results are in result section below.
+**** Result
+The topic coherence (tc) score is 137.05506096485365. We also required 50 topics due to the sheer size of dataset. For doc_prob > 20.0, we found the following distribution of docs for 50 topics, summarized under 15 genre using ChatGPT-4o and manual supervision.
+[[file:~/abj-paul.github.io/data/ethnic_corex_5132_distribution.png]]
+
+For 5342 nonethnic articles, the topic coherence score and individual doc_prob score came out very low. So for the SAME doc_prob > 20.0, we only got 1891 articles that are
+
+[[file:~/abj-paul.github.io/data/nonethnic_corex_5132_distribution.png]]
+
+**** Issues
+- [ ] why is tourism genre empty?
+- [X] CoRex does NOT automatically assign docs to topics. It's a problem. So we had to do thresholding.
+**** Artifacts
+| Artifact | Link                                                                        |
+|----------+-----------------------------------------------------------------------------|
+| Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Corex_Exp1_Keyword_based_5342.ipynb][ethnic_5342_corex.ipynb]]                                                     |
+| Data     | [[https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link][etnic_5342_data]] , [[https://drive.google.com/file/d/1esoenVc90ZAn0fPf-kz6U_ThcA8f7zQ6/view?usp=drive_link][nonethnic_5342_data]] , [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][Excel containing genre distribution]] |
+
+*** Task - Mass Annotation of 5342 Ethnic Articles
+<2024-08-09 শুক্র>
+Objective: Quality data is necessary so we need to annotate to clean the data. Its also because of our definition of ~exact article~.
+
+I first did an exploratory analysis of the articles. When annotating, we paid close attention to why we are annotating the data as such by noting down the reason. It increased our understanding of the underlying data. We used the following interface for this stage of annotation and ended up annotating around [[https://drive.google.com/file/d/1LYRQDj_N2fMkipXaQIvm4N1Dzfr_cAZN/view?usp=drive_link][100 data.]]
+
+[[file:~/abj-paul.github.io/data/Exploratory annotation.png]]
+
+
+If we remember, we only did keyword based extraction to collect ethnic article dataset. To make it cleaner, we decided to annotate them manually and identify the exact articles which are about ethnic people. But annotating 5000+ articles is a mammoth undertaking. So we considerd keybinding - user will just see the article and press E/N to annotate ethnic, nonethnic. Usage of keybinding increase annotation speed significantly. But still, we annotated around 150 nonethnic articles.
+[[file:~/abj-paul.github.io/data/annotating-ethnic-article_fast.png]]
+
+We also made one tool for easy understanding of ~Topics in Topic modeling~ by inspecting the documents in each topic.
+
+**** Result
+- Annotated 100 data with "why they are ethnic article or why not".
+- Fast annotated 150 data with E or N.
+- Simple annotation tool development
+- Data understanding
+
+**** Issues
+- [ ] Finding literature on exact definition and loose definition
+- [ ] Lets say, we annotate 5000 data. But there is no way to find another annotator to annotate 5000 data.
+- [ ] I should use the topic document annotation tool more frequently
+**** Artifacts
+| Artifact | Link                                                                      |
+|----------+---------------------------------------------------------------------------|
+| Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/tree/main/annotation-tool][Annotation tool code]]                                                      |
+| Data     | [[https://drive.google.com/drive/u/2/folders/14R__tgI9iCXZc0RcbMIbhS9g2KWpqIlB][ethnic_dataset_exp0_5342_annotated_1-151.csv]] , [[https://drive.google.com/file/d/1LYRQDj_N2fMkipXaQIvm4N1Dzfr_cAZN/view?usp=drive_link][exploratory_100_annotation]] |
+
+*** Experiment - Ethnic 100 articles with Gemini-1.5 Flash
+<2024-08-14 বুধ>
+Objective: Seeing if gemini-1.5 flash free tier can be used for annotation
+
+A major part of our experiment is genre classification. We have identified the following 15 genres: Crime, Politics, Natual Disaster, Sciene & Environment, Government actions, Business & Economy, International Affairs, Education, Health, Sports, Protests, Culture, Entertainment, Lifestyle, Discourse. Additionally, we also wanna find if the description is Straight, Investigation, Commentary.
+
+Human are biased at annotating things they relate to. According to a journalist on his comment about LLM for news analysis, he said and I quote, "LLMs are the least biased journalist". So even without rigourous validation, we went with experimenting with Gemini-1.5 for news genre and news style annotation.
+
+**** Result
+We picked 100 articles from our 5132 ethnic news articles (which we extracted using keywords) and as we can see, most articles are on crime and discourse.
+
+[[file:~/abj-paul.github.io/data/genre_frequency_ethnic5132_100.png]]
+
+We tried to annotate non-ethnic articles as well but i think we soon ran out of free usage limit.
+**** Issues
+- [X] We observed that the keyword "Rakhain" resulted in the inclusion of Rohingya issue related articles. So we further cleaned our 5132 ethnic articles and ended up with around [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 articles]].
+- [ ] We need to scale gemini based annotation. We need to understand what is the free tier limit and then, use multiple accounts to do it.
+- [ ] We need to finalize on our few shot prompt instruction.
+
+**** Artifacts
+| Artifact           | Link                            |
+|--------------------+---------------------------------|
+| Code               | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/few-shot-classification/Gemini_1_5.ipynb][Gemini_1_5.ipynb]]                |
+| Data               | [[https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link][ethnic_dataset_exp0_5342]]        |
+| Gemini Annotations | [[https://drive.google.com/file/d/1wtYU0iwh5U8z6QH6e4e7ZUjZPKNOjToa/view?usp=drive_link][Gemini 100 Annotations in Drive]] |
+
+*** Experiment - Nonethnic 100k articles with Corex
+<2024-08-15 বৃহঃ>
+Objective: Seeing if using more articles gives us a more complete distribution of usual news genre.
+
+We collected 100k nonethnic articles from 4.4M news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.
+#+begin_src python
+  anchors = [["ক্রীড়া", "রুপা", "স্বর্ণপদক",  "ব্রোঞ্জপদক"], ["নির্বাচন","প্রার্থী", "চেয়ারম্যান"], ["পর্যটক"], ["উদযাপন", "নবান্ন", "উৎসব"], ["বিদ্রোহ", "কল্পনা"], ["মামলা"] , ["সরকার", "লুটপাট", "দুর্নীতি", "প্রশিক্ষণ"], [ "সেতু", "সংস্কার", "সংকট", "পানি"], ["বাংলাদেশ", "বিমানবাহিনী", "অফিসার", "ক্যাডেট"] ]
+#+end_src
+**** Result
+The topic coherence (tc) score is 52.49676727298845. We also required 50 topics due to the sheer size of dataset. For doc_prob > 20.0, we found the following distribution of docs for 50 topics, summarized under 15 genre using ChatGPT-4o and manual supervision.
+[[file:~/abj-paul.github.io/data/nonethnic_news_corex_100k_genres.png]]
+
+**** Issues
+- [X] Increased max_vocab_size to 50k.
+- [ ] Is topic coherence score low? If yes, why.
+- [ ] The 15 genres we selected are not all-encompassing. Need to find some literature on it. Specially the ~discourse~ genre. It is as if every news is a discourse.
+- [ ] Need to pick better ~Anchor words~ for each of the 15 genre.
+**** Artifacts
+| Artifact | Link                                                                   |
+|----------+------------------------------------------------------------------------|
+| Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/collecting-ethnic-articles/collecting_nonethnic_articles_from_4-4M_articles.ipynb][collecting_100k_nonethnic_articles.ipynb]] , [[https://www.kaggle.com/code/abjpaul/representation-discrimination-of-ethnic-people][Kaggle link]] , [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/semi_supervised_topic_modeling_nonethnic_100k.ipynb][CoRex code]]    |
+| Data     | [[https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link][100k nonethnic articles in drive]] , [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][Excel containing genre distribution]] |
+
+** References
+[1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.
+[2] Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.
+[3] Saleem, Muniba, and Srividya Ramasubramanian. "Muslim Americans’ responses to social identity threats: Effects of media representations and experiences of discrimination." Media Psychology 22.3 (2019): 373-393.
+[4] Haraldsson, Amanda. Media discrimination and women's political representation: experimental evidence of media effects on the supply-side. Diss. European University Institute, 2022.
+[5] Ittefaq, Muhammad, et al. "Discriminated in society and marginalized in media: Social representation of Christian sanitary workers in Pakistan." Journalism Practice 17.1 (2023): 66-84.
+[6] Galdi, Silvia, Francesca Guizzo, and Fabio Fasoli. "Media representation matters: The effects of exposure to counter-stereotypical gay male characters on heterosexual men’s expressions of discrimination." Group Processes & Intergroup Relations 26.6 (2023): 1329-1350.
