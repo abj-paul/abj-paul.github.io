@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Abhijit Paul" />
   <title>Robustification of Behavioral Design against Environmental Deviation</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="blogs.css">
-
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -33,7 +32,7 @@
 <p>We have state transition diagram for each class. We finally combine these classes to construct the whole system by synchronizing and parallelizing them as shown above. <img src="../data/UML-LTS-System-Train.png" /></p>
 <p>Overall, this paper briefly shows a realistic way of mapping UML to LTS. We first convert state transition diagram for each class into LTS notation. After that, we combine these classes using event/action annotations shown in the class descriptions.</p>
 <h2 id="test-case-generation-by-means-of-uml-sequence-diagrams-and-labeled-transition-systems">Test Case Generation by means of UML Sequence Diagrams and Labeled Transition Systems</h2>
-<p>Similar to earlier paper, it shows how to convert a sequence diagram to UML. Also, they use special notations to describe loops and conditions in the UML diagram. <img src="../data/UML-sequence-diagram.png" /> While the paper defines some rules for UML to LTS, the rules are essentially trivial. <img src="../data/UML-LTS-rules.png"/> The notations and rules are biased towards generating test cases. And since the conversion algorithm is trivial, we support for previous paper.</p>
+<p>Similar to earlier paper, it shows how to convert a sequence diagram to UML. Also, they use special notations to describe loops and conditions in the UML diagram. <img src="../data/UML-sequence-diagram.png" /> While the paper defines some rules for UML to LTS, the rules are essentially trivial. <img src="../data/UML-LTS-rules.png" /> The notations and rules are biased towards generating test cases. And since the conversion algorithm is trivial, we support for previous paper.</p>
 <h1 id="case-study">Case Study</h1>
 <h2 id="voting-system">Voting System</h2>
 <h3 id="system-design">System Design</h3>

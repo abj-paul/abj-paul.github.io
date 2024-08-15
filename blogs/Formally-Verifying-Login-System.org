@@ -1,3 +1,94 @@
 #+TITLE: Formally Verifying Login System
 #+AUTHOR: Abhijit Paul
 #+DATE: <2024-08-15 বৃহঃ>
+
+
+We first define a simple login system using LTS notation. Following is a typical login system design.
+#+begin_src LTS
+MACHINE = ( enter -> P0 ),
+P0 = ( uname -> P1 ),
+P1 = ( pwd -> P2 ),
+P2 = ( otpsent -> P3 | wrong_pwd -> P1 ),
+P3 = ( otpentered -> P4 ),
+P4 = ( success -> P5 | failure -> P0 ),
+P5 = ( activity -> P5 | complete -> P6 ),
+P6 = ( logout -> MACHINE ).
+#+end_src
+[[file:~/abj-paul.github.io/data/login_sys_lts.png]]
+
+Now let us look at users - the users can get up at any time during their interaction with the computer. It can result from network unavailability or from user ignroance from rural communities (Research suggest that the latter is very common). So we plot a similar definition for environment under which login system is used.
+#+begin_src LTS
+ENV = (u.enter -> USER | adv.enter -> ADVERSARY),
+USER = ( uname -> USER | pwd -> USER | otpentered -> USER | success -> USER | activity -> USER | complete -> USER | u.logout -> ENV ),
+ADVERSARY = (  success -> ADVERSARY | activity -> ADVERSARY | complete -> ADVERSARY | adv.logout -> ENV ).
+#+end_src
+[[file:~/abj-paul.github.io/data/login_env_lts.png]]
+
+
+Now we define a safety property - the person who confirms OTP is the only that person can do activity in that account. We take inspiration from voting example to write down this safety property.
+
+#+begin_src LTS
+const NoBody = 0
+const User = 1
+const Adversary = 2
+range WHO = NoBody..Adversary
+
+P = ACTIVITY[NoBody][NoBody][NoBody],
+ACTIVITY[in:WHO][otp:WHO][act:WHO] = (
+      u.enter -> ACTIVITY[User][otp][act] | adv.enter -> ACTIVITY[Adversary][otp][act]
+    | success -> ACTIVITY[in][otp][in]
+    | activity -> ACTIVITY[in][in][act]
+    | when (otp == act) complete -> ACTIVITY[in][NoBody][NoBody]
+).
+#+end_src
+
+Later we will also explore some simpler safety property like the following. We introduce process to monitor that the sequence of events follows the rule: If a user logs in (success), then that user must perform the activity before logging out (complete).
+#+begin_src LTS
+SAFE = (login -> monitor_login),
+monitor_login = (activity -> monitor_activity),
+monitor_activity = (complete -> SAFE | activity -> monitor_activity),
+monitor_login = (failure -> SAFE).
+#+end_src
+
+Finally, we use Fortis to generate redesigns for it. But for it, we have to define the observable and controllable events and their corresponding costs (optional). Let us use ChatGPT4o to help us with that.
+#+begin_src LTS
+{
+  "sys": ["sys.lts"],
+  "env": [],
+  "dev": ["env.lts"],
+  "safety": ["p.lts"],
+  "method": "supervisory",
+  "options": {
+    "progress": ["complete"],
+    "preferredMap": {
+      "3": [ ["enter", "uname", "pwd", "otpsent", "otpentered", "success", "activity", "complete"] ]
+    },
+    "controllableMap": {
+      "1": ["uname", "pwd", "otpsent", "otpentered", "success", "activity", "complete", "logout"],
+      "3": ["u.enter", "u.logout", "adv.enter", "adv.logout"]
+    },
+    "observableMap": {
+      "0": ["uname", "pwd", "otpsent", "otpentered", "success", "activity", "complete", "logout"],
+      "2": ["u.enter", "u.logout", "adv.enter", "adv.logout"]
+    },
+    "algorithm": "Pareto"
+  }
+}
+
+#+end_src
+
+The cost management by ChatGPT4o looks very good. We had to, however, manually adjust the scoring a bit. It should be within 0-3 but chatGPT assigned larger priority for some events.  Now let us execute the tool Fortis using the following command.
+#+begin_src bash
+cd examples/Login  
+java -jar ../../bin/fortis.jar robustify config-pareto.json
+#+end_src
+
+The redesigns [[file:~/abj-paul.github.io/data/login/login_summary_2024-08-15_14-47-16.html][are many]]. We show a part of solution 3 below.
+[[file:~/abj-paul.github.io/data/part of solution.png]]
+
+This solution can be interpreted in two ways.
+1. Observing who is using the system. If any non-user/adversary comes, the system goes into a loop until the valid user enters the system. This can be easily done using existing computer vision and biometrics based authentication techniques that is cheap and already available in devices.
+2. After a user is inactive for some time, transition the system into a loop/deactivate it. This way, the adversary won't be able to use the system. This is similar to session timeout at user inactivity.
+
+** Todo
+- [ ] Bug fix: Safety property is buggy. So the solutions are not as perfect as we would like them to be.

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Abhijit Paul" />
   <title>Emacs Minimum Configuration for 2024</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="blogs.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@
 <p class="author">Abhijit Paul</p>
 <p class="date">&lt;2024-08-03 শনি&gt;</p>
 </header>
-<p><img src="~/abj-paul.github.io/data/demo.png" /> It is a good practice to install the latest version of emacs. Currently the latest available in apt is v27 but in snap, its v29. So we will install from snap.</p>
+<p><img src="../data/demo.png" /> It is a good practice to install the latest version of emacs. Currently the latest available in apt is v27 but in snap, its v29. So we will install from snap.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> snap install emacs --classic</span></code></pre></div>
 <p>Then simply put the contents of init.el in emacs.d. You can find the content of init.el at the bottom of the page.</p>
 <p>Now set up the <code>/usr/share/xsessions/exwm.desktop</code> with the contents from <a href="https://github.com/abj-paul/Emacs-EXWM-Configuration/tree/ArchLinuxSystem">here</a> and also add the start-exwm.sh from <a href="https://github.com/abj-paul/Emacs-EXWM-Configuration/tree/ArchLinuxSystem">here</a> as well. Now you have setup your desktop environment! And tada, you are now good to go. Also install the following packages.</p>

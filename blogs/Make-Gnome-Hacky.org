@@ -19,7 +19,12 @@ sudo apt install dconf-cli dconf-editor
 Then open dconf-editor and go to ~dconf-editor > org > gnome > desktop > wm > keybindings~. From there, define keybindings for "switch-to-workspace-*". You can see some example keybindings for environment switching below.
 [[file:~/abj-paul.github.io/data/gnome-wm-keybindings.png]]
 ** Sidebar
-To make sidebar appear only when we slide over it, go to Settings > Appearance > Turn on "Auto hide the dock" > Turn off "Panel mode"
+To make sidebar appear only when we slide over it, go to Settings > Appearance > Turn on "Auto hide the dock" > Turn off "Panel mode".
+
+Also, Ubuntu 22.0 comes with screenshot tool integrated with gnome-shell. So we can't pin it separately in our dock. For that, we need to install the old gnome-screenshot and then we can easily add it to favorite and dock it in our sidebar.
+#+begin_src bash
+  sudo apt install gnome-screenshot
+#+end_src
 
 ** System Tray
 It is a good touch to add CPU-memory information, weather etc. in system tray.
