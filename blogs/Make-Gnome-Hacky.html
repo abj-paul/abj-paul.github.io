@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Abhijit Paul" />
   <title>How to configure gnome!</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="blogs.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -93,12 +93,14 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> add-apt-repository universe</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install dconf-cli dconf-editor</span></code></pre></div>
-<p>Then open dconf-editor and go to <code>dconf-editor &gt; org &gt; gnome &gt; desktop &gt; wm &gt; keybindings</code>. From there, define keybindings for "switch-to-workspace-*". You can see some example keybindings for environment switching below. <img src="~/abj-paul.github.io/data/gnome-wm-keybindings.png" /></p>
+<p>Then open dconf-editor and go to <code>dconf-editor &gt; org &gt; gnome &gt; desktop &gt; wm &gt; keybindings</code>. From there, define keybindings for "switch-to-workspace-*". You can see some example keybindings for environment switching below. <img src="../data/gnome-wm-keybindings.png" /></p>
 <h2 id="sidebar">Sidebar</h2>
-<p>To make sidebar appear only when we slide over it, go to Settings &gt; Appearance &gt; Turn on "Auto hide the dock" &gt; Turn off "Panel mode"</p>
+<p>To make sidebar appear only when we slide over it, go to Settings &gt; Appearance &gt; Turn on "Auto hide the dock" &gt; Turn off "Panel mode".</p>
+<p>Also, Ubuntu 22.0 comes with screenshot tool integrated with gnome-shell. So we can't pin it separately in our dock. For that, we need to install the old gnome-screenshot and then we can easily add it to favorite and dock it in our sidebar.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install gnome-screenshot</span></code></pre></div>
 <h2 id="system-tray">System Tray</h2>
-<p>It is a good touch to add CPU-memory information, weather etc. in system tray. <img src="~/abj-paul.github.io/data/gnome-systemtray.png" /> For that, we first need to install gnome-chrome-extension. This would allow us to install gnome extensions directly from browser.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install chrome-gnome-shell</span></code></pre></div>
+<p>It is a good touch to add CPU-memory information, weather etc. in system tray. <img src="../data/gnome-systemtray.png" /> For that, we first need to install gnome-chrome-extension. This would allow us to install gnome extensions directly from browser.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install chrome-gnome-shell</span></code></pre></div>
 <p>Also, install <code>GNOME Shell integration</code> extension from your browser. Then for adding CPU-memory usage, simply install <code>Vitas</code> from browser. Vitas github shows the installation procedure in details.</p>
 <p>For weather, I installed OpenWeather extension.</p>
 <h2 id="firefox">Firefox</h2>

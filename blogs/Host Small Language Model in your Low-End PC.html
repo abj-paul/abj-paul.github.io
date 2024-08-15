@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Abhijit Paul" />
   <title>Host Small Language Model in your Low-End PC</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="blogs.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@
 </header>
 <p>OuteAI published 300M and 65M parameter models, available in both instruct and base versions. 300M models have the Mistral architecture and 65M models have LLaMa architecture <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. So it made me wonder - can we use it as a simple chat assistant for low-end devices?</p>
 <p>So I first built a simple chat application with it. The github link is: <a href="https://github.com/abj-paul/Small-AIChat">abj-paul/SmallAi-Chat</a>.</p>
-<p><img src="~/abj-paul.github.io/data/chat application.png" /></p>
+<p><img src="../data/chat application.png" /></p>
 <p>We then experimented with the responses. We soon noticed one problem. Language models return response equal to its context size. So usually, last part of the response is garbage. Some examples can be:</p>
 <table>
 <tbody>
