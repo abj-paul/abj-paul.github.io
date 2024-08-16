@@ -1,7 +1,0 @@
-#+TITLE: Formally Verifying Neural Network
-#+AUTHOR: Abhijit Paul
-#+DATE: <2024-07-05 শুক্র>
-
-In this project, we wish to make a tool that will incorporate most existing methods for Neural Network Verification into one single tool.
-* Plan
-* Literature Review
