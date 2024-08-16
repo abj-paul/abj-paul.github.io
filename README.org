@@ -44,4 +44,4 @@ author: Abhijit Paul
      <body class="markdown-container">
    #+end_src
 
-   And done! Now you have a properly formatted blog. You can link it from your, for example, blogs.html page by adding a simple ~<a> </a>~ element as usual. We recommend using our card-layout in blogs.html for easy blogging.
+   And Done! Now you have a properly formatted blog. You can link it from your, for example, blogs.html page by adding a simple ~<a> </a>~ element as usual. We recommend using our card-layout in blogs.html for easy blogging.
