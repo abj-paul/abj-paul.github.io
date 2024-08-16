@@ -19,7 +19,70 @@ Ittefaq et al. revealed that sanitary workers in Pakistan believe that they do n
 In this amazing work, Galdi et al showed through social experiments how stereotypical gay men representation increases social bias about them. Heterosexual Italian men (N = 158) were exposed to a clip portraying (i) a stereotypical feminine gay male character, (ii) a counter-stereotypical masculine gay male character, or (iii) a nature documentary. Compared to the other conditions, exposure to the counter-stereotypical gay character increased discrimination toward gay men, in the form of anti-gay jokes, the higher the level of participants’ prejudice against gay men. Results further demonstrated that this effect was explained by reduced perceived stereotypicality of the character [6].
 **** Perpective: Under-representation hurts
 Balasubramaniam et al shows how representation discrimination affects the dalit community. They argue that under-representation of Dalits of Dalits leads to news exclusion related to dalits [2].
-*** TODO Journalism
+*** Journalism
+AP News Taxonomy is a classification system for English-language news content that includes standardized subjects, geographic locations, people, organizations and publicly traded companies. This search- and SEO-friendly taxonomy is designed to support digital news products [7]. Their classifications are globally recognized and utilized by numerous media outlets.
+
+1. Business
+2. Climate and environment
+3. Education
+4. Entertainment
+5. General news
+   - U.S. news
+   - World news
+   - Washington news
+6. Health
+7. Lifestyle
+8. Media
+9. Obituaries
+10. Oddities
+11. Politics
+12. Race and ethnicity
+13. Religion
+14. Science
+15. Sports
+16. Technology
+
+    But these genres don't necessarily reflect in our culture. For example, Washington news is not part of our general news, neither is race-ethnicity a significant topic in our news. So we now go through Bangladesh press media to list their genres.
+
+    | Newspaper           | genre                                                                                                                                                                                                                                                                                             |
+    | Prothom Alo         | Politics, Crime, International, Business, Sports, Entertainment, Jobs, Lifestyle, ~Local news, Health, Environmental Concern~, Education, Technology, Gadgets, Religion, Science, Comic                                                                                                           |
+    | The daily Star      | Sports, Business, Entertainment, Life&Living, Youth, Tech&Startup, Environment, Education, Career, Fashion & Beauty, Food & Recipes, Health & Fitness, Lifehacks, Relationships & Family, Travel, TV & Film, Music, Theatre & Arts, Satire, Featured, Heritage, GADGETS, GAMING, GUIDES, STARTUPS |
+    | Bangladesh Protidin | Local news, Lifestyle, Business, Religion, International, Sports, National news, Campus, Corporate corner, health, Tech world, politics, Chitaggong, Science, Facebook corner, Foreign bangladeshi, Oddities |
+
+We combine these genres and find the following genres. Our detailed combining procedure can be found in this [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][google sheets file.]]
+
+#+begin_src text
+  Politics, Crime, International, Business & Economics, Sports, Entertainment, Jobs, Lifestyle, Health, Environment, Local news, Education, Technology, Religion, Science
+#+end_src
+
+Additionally, we consider the news genre ~Protests and Social Movements, Human rights~ since that is what we wish to investigate.
+
+We finally match these 17 topics with our earlier trial-and-error news topics and find two mismatch (natural disaster, govt action). We strongly feel that ~govt action~ should be a field instead of human rights or Local news.
+
+[8] shows an interesting approach. It first discoveres the news genre distributon of newspaper and then compares it with female population.
+[[file:~/abj-paul.github.io/data/news-category-by-medium.png]]
+**** Defining Selected 17 News Genre
+I have taken the definitions from ChatGPT. But maybe, we need to take it from some journal. Well, we will need it later on for ChatGPT based news classfication so we won't need such exact definition now.
+
+1. Politics: Covers political news, including national and regional politics, elections, government policies, and political analysis.
+2. Crime: Reports on criminal activities, law enforcement, legal proceedings, and related issues.
+3. Economy and Business: Focuses on economic policies, market trends, business developments, and financial news.
+4. Sports: News related to sports, including coverage of local and international sports events, player profiles, and analyses.
+5. International Affairs: Reports on global events and how they impact Bangladesh, including international politics, conflicts, and diplomatic relations.
+6. Health: Covers health-related news, including public health issues, medical advancements, and health policies.
+7. Education: News on the education system, policy changes, academic achievements, and issues affecting students and institutions.
+8. Culture and Entertainment: Includes news about the entertainment industry, cultural events, music, films, and celebrity news.
+9. Environment: Focuses on environmental issues, climate change, and natural disasters, with a strong emphasis on how these issues affect Bangladesh.
+10. Lifestyle: Covers topics related to everyday life, such as fashion, food, travel, and personal development.
+11. Technology: Reports on technological advancements, digital transformation, and tech-related news relevant to Bangladesh.
+12. Protests and Social Movements: News on civil unrest, protests, social movements, and public demonstrations.
+13. Human Rights: Focuses on issues related to human rights, including reports on abuses, advocacy, and related legal matters.
+14. Local News: Regional or local news that covers events and issues specific to different parts of Bangladesh.
+15. Religion: News related to religious events, practices, and issues affecting religious communities.
+16. Job: Discusses on career guidance, job postings and motivations.
+17. Science: Discusses scientific discovery, science for children and oddities.
+
+    
 ** Experiment
 We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.
 
@@ -261,6 +324,15 @@ The topic coherence (tc) score is 52.49676727298845. We also required 50 topics 
 | Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/collecting-ethnic-articles/collecting_nonethnic_articles_from_4-4M_articles.ipynb][collecting_100k_nonethnic_articles.ipynb]] , [[https://www.kaggle.com/code/abjpaul/representation-discrimination-of-ethnic-people][Kaggle link]] , [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/semi_supervised_topic_modeling_nonethnic_100k.ipynb][CoRex code]]    |
 | Data     | [[https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link][100k nonethnic articles in drive]] , [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][Excel containing genre distribution]] |
 
+** Survey
+Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.
+
+When applied to the study of ethnic minorities, CDA often focuses on how these groups are represented in the media, politics, and public discourse. Key questions might include:
+
+1. How are ethnic minorities depicted in news stories? Are they portrayed in a negative or stereotypical manner? Are they underrepresented or misrepresented?
+2. What language is used to describe ethnic minorities? Are certain words or phrases consistently used to marginalize or otherize these groups?
+3. What ideologies are at play? How does the discourse reflect broader societal attitudes towards ethnic minorities? Does it challenge or reinforce existing power structures?
+
 ** References
 [1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.
 [2] Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.
@@ -268,3 +340,5 @@ The topic coherence (tc) score is 52.49676727298845. We also required 50 topics 
 [4] Haraldsson, Amanda. Media discrimination and women's political representation: experimental evidence of media effects on the supply-side. Diss. European University Institute, 2022.
 [5] Ittefaq, Muhammad, et al. "Discriminated in society and marginalized in media: Social representation of Christian sanitary workers in Pakistan." Journalism Practice 17.1 (2023): 66-84.
 [6] Galdi, Silvia, Francesca Guizzo, and Fabio Fasoli. "Media representation matters: The effects of exposure to counter-stereotypical gay male characters on heterosexual men’s expressions of discrimination." Group Processes & Intergroup Relations 26.6 (2023): 1329-1350.
+[7] http://api.ap.org/media/v/docs/AP_Classification_Metadata.htm
+[8] Women, men and news: it’s life, Jim, but not as we know it Authors: Karen Ross, Karen Boyle, Cynthia Carter & Debbie Gin
