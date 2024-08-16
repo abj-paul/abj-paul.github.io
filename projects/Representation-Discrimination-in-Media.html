@@ -103,7 +103,80 @@
 <li><p>Perpective: Under-representation hurts</p>
 <p>Balasubramaniam et al shows how representation discrimination affects the dalit community. They argue that under-representation of Dalits of Dalits leads to news exclusion related to dalits <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
 </ol>
-<h3 id="journalism"><span class="todo TODO">TODO</span> Journalism</h3>
+<h3 id="journalism">Journalism</h3>
+<p>AP News Taxonomy is a classification system for English-language news content that includes standardized subjects, geographic locations, people, organizations and publicly traded companies. This search- and SEO-friendly taxonomy is designed to support digital news products <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. Their classifications are globally recognized and utilized by numerous media outlets.</p>
+<ol>
+<li><p>Business</p></li>
+<li><p>Climate and environment</p></li>
+<li><p>Education</p></li>
+<li><p>Entertainment</p></li>
+<li><p>General news</p>
+<ul>
+<li>U.S. news</li>
+<li>World news</li>
+<li>Washington news</li>
+</ul></li>
+<li><p>Health</p></li>
+<li><p>Lifestyle</p></li>
+<li><p>Media</p></li>
+<li><p>Obituaries</p></li>
+<li><p>Oddities</p></li>
+<li><p>Politics</p></li>
+<li><p>Race and ethnicity</p></li>
+<li><p>Religion</p></li>
+<li><p>Science</p></li>
+<li><p>Sports</p></li>
+<li><p>Technology</p>
+<p>But these genres don't necessarily reflect in our culture. For example, Washington news is not part of our general news, neither is race-ethnicity a significant topic in our news. So we now go through Bangladesh press media to list their genres.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Newspaper</td>
+<td>genre</td>
+</tr>
+<tr class="even">
+<td>Prothom Alo</td>
+<td>Politics, Crime, International, Business, Sports, Entertainment, Jobs, Lifestyle, <code>Local news, Health, Environmental Concern</code>, Education, Technology, Gadgets, Religion, Science, Comic</td>
+</tr>
+<tr class="odd">
+<td>The daily Star</td>
+<td>Sports, Business, Entertainment, Life&amp;Living, Youth, Tech&amp;Startup, Environment, Education, Career, Fashion &amp; Beauty, Food &amp; Recipes, Health &amp; Fitness, Lifehacks, Relationships &amp; Family, Travel, TV &amp; Film, Music, Theatre &amp; Arts, Satire, Featured, Heritage, GADGETS, GAMING, GUIDES, STARTUPS</td>
+</tr>
+<tr class="even">
+<td>Bangladesh Protidin</td>
+<td>Local news, Lifestyle, Business, Religion, International, Sports, National news, Campus, Corporate corner, health, Tech world, politics, Chitaggong, Science, Facebook corner, Foreign bangladeshi, Oddities</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>We combine these genres and find the following genres. Our detailed combining procedure can be found in this <a href="https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing">google sheets file.</a></p>
+<pre class="text"><code>Politics, Crime, International, Business &amp; Economics, Sports, Entertainment, Jobs, Lifestyle, Health, Environment, Local news, Education, Technology, Religion, Science
+</code></pre>
+<p>Additionally, we consider the news genre <code>Protests and Social Movements, Human rights</code> since that is what we wish to investigate.</p>
+<p>We finally match these 17 topics with our earlier trial-and-error news topics and find two mismatch (natural disaster, govt action). We strongly feel that <code>govt action</code> should be a field instead of human rights or Local news.</p>
+<ol>
+<li><p>Defining Selected 17 News Genre</p>
+<p>I have taken the definitions from ChatGPT. But maybe, we need to take it from some journal. Well, we will need it later on for ChatGPT based news classfication so we won't need such exact definition now.</p>
+<ol>
+<li>Politics: Covers political news, including national and regional politics, elections, government policies, and political analysis.</li>
+<li>Crime: Reports on criminal activities, law enforcement, legal proceedings, and related issues.</li>
+<li>Economy and Business: Focuses on economic policies, market trends, business developments, and financial news.</li>
+<li>Sports: News related to sports, including coverage of local and international sports events, player profiles, and analyses.</li>
+<li>International Affairs: Reports on global events and how they impact Bangladesh, including international politics, conflicts, and diplomatic relations.</li>
+<li>Health: Covers health-related news, including public health issues, medical advancements, and health policies.</li>
+<li>Education: News on the education system, policy changes, academic achievements, and issues affecting students and institutions.</li>
+<li>Culture and Entertainment: Includes news about the entertainment industry, cultural events, music, films, and celebrity news.</li>
+<li>Environment: Focuses on environmental issues, climate change, and natural disasters, with a strong emphasis on how these issues affect Bangladesh.</li>
+<li>Lifestyle: Covers topics related to everyday life, such as fashion, food, travel, and personal development.</li>
+<li>Technology: Reports on technological advancements, digital transformation, and tech-related news relevant to Bangladesh.</li>
+<li>Protests and Social Movements: News on civil unrest, protests, social movements, and public demonstrations.</li>
+<li>Human Rights: Focuses on issues related to human rights, including reports on abuses, advocacy, and related legal matters.</li>
+<li>Local News: Regional or local news that covers events and issues specific to different parts of Bangladesh.</li>
+<li>Religion: News related to religious events, practices, and issues affecting religious communities.</li>
+<li>Job: Discusses on career guidance, job postings and motivations.</li>
+<li>Science: Discusses scientific discovery, science for children and oddities.</li>
+</ol></li>
+</ol>
 <h2 id="experiment">Experiment</h2>
 <p>We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.</p>
 <table>
@@ -136,16 +209,16 @@
 <p>Observe that, we do not stoe the output of the experiment because once can find that simply by running the code with that input data. Also, you can find our codebase <a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/tree/main">in this github repository.</a></p>
 <h3 id="task---keyword-based-data-collection">Task - Keyword Based Data Collection</h3>
 <p>This our curated dataset]] of ethnic word-contained articles from <a href="https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset">ebD- Bangla newspaper dataset.</a> We have curated ethnic people related dataset using simply keyword based extraction. We considered the following keywords to filter out the articles.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>  ethnic_tribe_names <span class="op">=</span> [</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="st">&quot;চাকমা&quot;</span>, <span class="st">&quot;মারমা&quot;</span>, <span class="st">&quot;সাঁওতাল&quot;</span>, <span class="st">&quot;ত্রিপুরা&quot;</span>, <span class="st">&quot;গারো&quot;</span>, <span class="st">&quot;ওঁরাও&quot;</span>, <span class="st">&quot;তঞ্চ্যঙ্গা&quot;</span>, <span class="st">&quot;ম্রো&quot;</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;পাংখো&quot;</span>, <span class="st">&quot;চাক&quot;</span>, <span class="st">&quot;খেয়াং&quot;</span>, <span class="st">&quot;খুমি&quot;</span>, <span class="st">&quot;লুসাই&quot;</span>,<span class="st">&quot;কুকি&quot;</span>, <span class="st">&quot;রাখাইন&quot;</span>, <span class="st">&quot;মণিপুরী&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="st">&quot;হাজং&quot;</span>, <span class="st">&quot;খাসিয়া&quot;</span>, <span class="st">&quot;মং&quot;</span>, <span class="st">&quot;বর্মন&quot;</span>, <span class="st">&quot;পাহাড়ি&quot;</span>, <span class="st">&quot;মালপাহাড়ি&quot;</span>, <span class="st">&quot;মুন্ডা&quot;</span>, <span class="st">&quot;ভূমিজ&quot;</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="st">&quot;কন্দ&quot;</span>, <span class="st">&quot;পাঙন&quot;</span>, <span class="st">&quot;লাওরা&quot;</span>, <span class="st">&quot;মুরং&quot;</span>, <span class="st">&quot;বাগদী&quot;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>] <span class="co">#&quot;বম&quot;,&quot;কোচ&quot;,&quot;ডালু&quot;,&quot;কোল&quot;, &quot;রাজবংশী&quot;, &quot;পাত্র&quot;, &quot;ভিল&quot;, &quot;গণ্ড&quot;, &quot;খাসি&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>ethnicity_directed_words <span class="op">=</span> [</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="st">&quot;আদিবাসী&quot;</span> , <span class="st">&quot;আদিবাসি&quot;</span> , <span class="st">&quot;উপজাতি&quot;</span>, <span class="st">&quot;নৃগোষ্ঠী&quot;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>]</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>  ethnic_tribe_names <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="st">&quot;চাকমা&quot;</span>, <span class="st">&quot;মারমা&quot;</span>, <span class="st">&quot;সাঁওতাল&quot;</span>, <span class="st">&quot;ত্রিপুরা&quot;</span>, <span class="st">&quot;গারো&quot;</span>, <span class="st">&quot;ওঁরাও&quot;</span>, <span class="st">&quot;তঞ্চ্যঙ্গা&quot;</span>, <span class="st">&quot;ম্রো&quot;</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    <span class="st">&quot;পাংখো&quot;</span>, <span class="st">&quot;চাক&quot;</span>, <span class="st">&quot;খেয়াং&quot;</span>, <span class="st">&quot;খুমি&quot;</span>, <span class="st">&quot;লুসাই&quot;</span>,<span class="st">&quot;কুকি&quot;</span>, <span class="st">&quot;রাখাইন&quot;</span>, <span class="st">&quot;মণিপুরী&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="st">&quot;হাজং&quot;</span>, <span class="st">&quot;খাসিয়া&quot;</span>, <span class="st">&quot;মং&quot;</span>, <span class="st">&quot;বর্মন&quot;</span>, <span class="st">&quot;পাহাড়ি&quot;</span>, <span class="st">&quot;মালপাহাড়ি&quot;</span>, <span class="st">&quot;মুন্ডা&quot;</span>, <span class="st">&quot;ভূমিজ&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="st">&quot;কন্দ&quot;</span>, <span class="st">&quot;পাঙন&quot;</span>, <span class="st">&quot;লাওরা&quot;</span>, <span class="st">&quot;মুরং&quot;</span>, <span class="st">&quot;বাগদী&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>] <span class="co">#&quot;বম&quot;,&quot;কোচ&quot;,&quot;ডালু&quot;,&quot;কোল&quot;, &quot;রাজবংশী&quot;, &quot;পাত্র&quot;, &quot;ভিল&quot;, &quot;গণ্ড&quot;, &quot;খাসি&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>ethnicity_directed_words <span class="op">=</span> [</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>    <span class="st">&quot;আদিবাসী&quot;</span> , <span class="st">&quot;আদিবাসি&quot;</span> , <span class="st">&quot;উপজাতি&quot;</span>, <span class="st">&quot;নৃগোষ্ঠী&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>]</span></code></pre></div>
 <p>Following are the dimensions of resulting datasets.</p>
 <table>
 <tbody>
@@ -295,7 +368,7 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <h3 id="experiment---semi-supervised-topic-modeling-on-ethnic-nonethnic">Experiment - Semi Supervised Topic Modeling on Ethnic, nonethnic</h3>
 <p>&lt;2024-07-28 রবি&gt; Objective: Since supervised topic modeling gave bad topics, let us try corex.</p>
 <p>We collected 5342 ethnic articles from (4.4M-&gt;10132) news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
 <p>Later, we also collected exactly 5342 nonethnic articles for an equal comparison. The results are in result section below.</p>
 <ol>
 <li><p>Result</p>
@@ -409,7 +482,7 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <h3 id="experiment---nonethnic-100k-articles-with-corex">Experiment - Nonethnic 100k articles with Corex</h3>
 <p>&lt;2024-08-15 বৃহঃ&gt; Objective: Seeing if using more articles gives us a more complete distribution of usual news genre.</p>
 <p>We collected 100k nonethnic articles from 4.4M news articles. We then used semi-supervised CoRex topic modeling. We used the following words as anchors.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>anchors <span class="op">=</span> [[<span class="st">&quot;ক্রীড়া&quot;</span>, <span class="st">&quot;রুপা&quot;</span>, <span class="st">&quot;স্বর্ণপদক&quot;</span>,  <span class="st">&quot;ব্রোঞ্জপদক&quot;</span>], [<span class="st">&quot;নির্বাচন&quot;</span>,<span class="st">&quot;প্রার্থী&quot;</span>, <span class="st">&quot;চেয়ারম্যান&quot;</span>], [<span class="st">&quot;পর্যটক&quot;</span>], [<span class="st">&quot;উদযাপন&quot;</span>, <span class="st">&quot;নবান্ন&quot;</span>, <span class="st">&quot;উৎসব&quot;</span>], [<span class="st">&quot;বিদ্রোহ&quot;</span>, <span class="st">&quot;কল্পনা&quot;</span>], [<span class="st">&quot;মামলা&quot;</span>] , [<span class="st">&quot;সরকার&quot;</span>, <span class="st">&quot;লুটপাট&quot;</span>, <span class="st">&quot;দুর্নীতি&quot;</span>, <span class="st">&quot;প্রশিক্ষণ&quot;</span>], [ <span class="st">&quot;সেতু&quot;</span>, <span class="st">&quot;সংস্কার&quot;</span>, <span class="st">&quot;সংকট&quot;</span>, <span class="st">&quot;পানি&quot;</span>], [<span class="st">&quot;বাংলাদেশ&quot;</span>, <span class="st">&quot;বিমানবাহিনী&quot;</span>, <span class="st">&quot;অফিসার&quot;</span>, <span class="st">&quot;ক্যাডেট&quot;</span>] ]</span></code></pre></div>
 <ol>
 <li><p>Result</p>
 <p>The topic coherence (tc) score is 52.49676727298845. We also required 50 topics due to the sheer size of dataset. For doc<sub>prob</sub> &gt; 20.0, we found the following distribution of docs for 50 topics, summarized under 15 genre using ChatGPT-4o and manual supervision. <img src="../data/nonethnic_news_corex_100k_genres.png" /></p></li>
@@ -440,6 +513,14 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table></li>
 </ol>
+<h2 id="survey">Survey</h2>
+<p>Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.</p>
+<p>When applied to the study of ethnic minorities, CDA often focuses on how these groups are represented in the media, politics, and public discourse. Key questions might include:</p>
+<ol>
+<li>How are ethnic minorities depicted in news stories? Are they portrayed in a negative or stereotypical manner? Are they underrepresented or misrepresented?</li>
+<li>What language is used to describe ethnic minorities? Are certain words or phrases consistently used to marginalize or otherize these groups?</li>
+<li>What ideologies are at play? How does the discourse reflect broader societal attitudes towards ethnic minorities? Does it challenge or reinforce existing power structures?</li>
+</ol>
 <h2 id="references">References</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr />
@@ -450,6 +531,7 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <li id="fn4" role="doc-endnote"><p>Ittefaq, Muhammad, et al. "Discriminated in society and marginalized in media: Social representation of Christian sanitary workers in Pakistan." Journalism Practice 17.1 (2023): 66-84.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>Galdi, Silvia, Francesca Guizzo, and Fabio Fasoli. "Media representation matters: The effects of exposure to counter-stereotypical gay male characters on heterosexual men’s expressions of discrimination." Group Processes &amp; Intergroup Relations 26.6 (2023): 1329-1350.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="http://api.ap.org/media/v/docs/AP_Classification_Metadata.htm">http://api.ap.org/media/v/docs/AP_Classification_Metadata.htm</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
