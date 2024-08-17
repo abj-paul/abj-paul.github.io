@@ -345,7 +345,7 @@ We achieved a topic correlation score of ~143.63331714565578~. Following is our 
 **** Result
 Following is our result for CoRex Semi-Supervisd topic modeling on 100k sample articles from our original 4.4M articles. We achieved a topic correlation score of ~55.4916729561928~.
 [[file:~/abj-paul.github.io/data/nonethnic_corex_100k_final.png]]
-We validate our news genre distribution against work by Ross, Karen, et al. Their news genre distribution strongly correlates with our findings [8], except Sports genre. BD culture have strong feelings regarding sports, speciall football and cricket. So it explains away our distriution.
+We validate our news genre distribution against work by Ross, Karen, et al. Their news genre distribution strongly correlates with our findings, except Sports genre [8]. BD culture have strong feelings regarding sports, speciall football and cricket. So it explains away our distriution.
 [[file:~/abj-paul.github.io/data/news-category-by-medium.png]]
 
 **** Issue
