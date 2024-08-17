@@ -59,7 +59,7 @@ Additionally, we consider the news genre ~Protests and Social Movements, Human r
 
 We finally match these 17 topics with our earlier trial-and-error news topics and find two mismatch (natural disaster, govt action). We strongly feel that ~govt action~ should be a field instead of human rights or Local news.
 
-[8] shows an interesting approach. It first discoveres the news genre distributon of newspaper and then compares it with female population.
+Ross, Karen, et al. shows an interesting approach. It first discoveres the news genre distributon of newspaper and then compares it with female population [8].
 [[file:~/abj-paul.github.io/data/news-category-by-medium.png]]
 **** Defining Selected 17 News Genre
 I have taken the definitions from ChatGPT. But maybe, we need to take it from some journal. Well, we will need it later on for ChatGPT based news classfication so we won't need such exact definition now.
