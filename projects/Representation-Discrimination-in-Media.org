@@ -82,7 +82,6 @@ I have taken the definitions from ChatGPT. But maybe, we need to take it from so
 16. Job: Discusses on career guidance, job postings and motivations.
 17. Science: Discusses scientific discovery, science for children and oddities.
 
-    
 ** Experiment
 We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.
 
@@ -324,6 +323,22 @@ The topic coherence (tc) score is 52.49676727298845. We also required 50 topics 
 | Code     | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/collecting-ethnic-articles/collecting_nonethnic_articles_from_4-4M_articles.ipynb][collecting_100k_nonethnic_articles.ipynb]] , [[https://www.kaggle.com/code/abjpaul/representation-discrimination-of-ethnic-people][Kaggle link]] , [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/semi_supervised_topic_modeling_nonethnic_100k.ipynb][CoRex code]]    |
 | Data     | [[https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link][100k nonethnic articles in drive]] , [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][Excel containing genre distribution]] |
 
+*** Experiment - Ethnic (4893) with Corex 
+~Objective:~ Getting a final result on ethnic people related articles' topic distribution.
+
+Since we are using CoRex, anchor words selection is an important phase. So we first select generic words as anchor words and then select ethnicity specific ethnic words. We will see what performance difference there is. Note: We did not do it. Because it would add bias to the process. For such a critical topic, we want to do it as unbiased as possible.
+
+Note that, we increased threshold to ~25.0~ here since doc_prob was higher for overall distribution.
+**** Result
+Following is our result for CoRex Semi-Supervisd topic modeling on 4893 ethnic data.
+[[file:~/abj-paul.github.io/data/ethnic_corex_4898.png]]
+
+**** Issue
+- [ ] Do I need to use multiple annotator for topic interpretation? 
+**** Artifacts
+| Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb][4893 ethnic corex.ipynb]] |
+| Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].   |
+*** Experiment - Nonethnic (100k) with Corex
 ** Survey
 Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.
 

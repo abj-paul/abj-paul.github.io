@@ -513,6 +513,32 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table></li>
 </ol>
+<h3 id="experiment---ethnic-4893-with-corex">Experiment - Ethnic (4893) with Corex</h3>
+<p><code>Objective:</code> Getting a final result on ethnic people related articles' topic distribution.</p>
+<p>Since we are using CoRex, anchor words selection is an important phase. So we first select generic words as anchor words and then select ethnicity specific ethnic words. We will see what performance difference there is. Note: We did not do it. Because it would add bias to the process. For such a critical topic, we want to do it as unbiased as possible.</p>
+<p>Note that, we increased threshold to <code>25.0</code> here since doc<sub>prob</sub> was higher for overall distribution.</p>
+<ol>
+<li><p>Result</p>
+<p>Following is our result for CoRex Semi-Supervisd topic modeling on 4893 ethnic data. <img src="../data/ethnic_corex_4898.png" /></p></li>
+<li><p>Issue</p>
+<ul>
+<li>[ ] Do I need to use multiple annotator for topic interpretation?</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb">4893 ethnic corex.ipynb</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 ethnic articles</a>.</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---nonethnic-100k-with-corex">Experiment - Nonethnic (100k) with Corex</h3>
 <h2 id="survey">Survey</h2>
 <p>Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.</p>
 <p>When applied to the study of ethnic minorities, CDA often focuses on how these groups are represented in the media, politics, and public discourse. Key questions might include:</p>
