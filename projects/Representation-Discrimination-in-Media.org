@@ -61,6 +61,7 @@ We finally match these 17 topics with our earlier trial-and-error news topics an
 
 Ross, Karen, et al. shows an interesting approach. It first discoveres the news genre distributon of newspaper and then compares it with female population [8].
 [[file:~/abj-paul.github.io/data/news-category-by-medium.png]]
+
 **** Defining Selected 17 News Genre
 I have taken the definitions from ChatGPT. But maybe, we need to take it from some journal. Well, we will need it later on for ChatGPT based news classfication so we won't need such exact definition now.
 
@@ -344,6 +345,8 @@ We achieved a topic correlation score of ~143.63331714565578~. Following is our 
 **** Result
 Following is our result for CoRex Semi-Supervisd topic modeling on 100k sample articles from our original 4.4M articles. We achieved a topic correlation score of ~55.4916729561928~.
 [[file:~/abj-paul.github.io/data/nonethnic_corex_100k_final.png]]
+We validate our news genre distribution against work by Ross, Karen, et al. Their news genre distribution strongly correlates with our findings [8], except Sports genre. BD culture have strong feelings regarding sports, speciall football and cricket. So it explains away our distriution.
+[[file:~/abj-paul.github.io/data/news-category-by-medium.png]]
 
 **** Issue
 - [ ] A lot of articles were discarded later on (From 100k documents, only 33k documents had doc_prob > 25.0. After removing garbage topics, the number of final documents in consideration decreased even further. Ig those are good data? Or is it a flaw? In fact, among 50 topics, 22 topics were garbage.
