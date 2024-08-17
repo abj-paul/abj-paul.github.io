@@ -330,7 +330,7 @@ Since we are using CoRex, anchor words selection is an important phase. So we fi
 
 Note that, we increased threshold to ~25.0~ here since doc_prob was higher for overall distribution.
 **** Result
-Following is our result for CoRex Semi-Supervisd topic modeling on 4893 ethnic data.
+We achieved a topic correlation score of ~143.63331714565578~. Following is our result for CoRex Semi-Supervisd topic modeling on 4893 ethnic data.
 [[file:~/abj-paul.github.io/data/ethnic_corex_4898.png]]
 
 **** Issue
@@ -338,7 +338,18 @@ Following is our result for CoRex Semi-Supervisd topic modeling on 4893 ethnic d
 **** Artifacts
 | Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb][4893 ethnic corex.ipynb]] |
 | Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].   |
-*** Experiment - Nonethnic (100k) with Corex
+*** Experiment - Bangla news distribution (100k) with Corex
+~Objective:~ Getting a final result on usual news topic distribution in Bangla.
+
+**** Result
+Following is our result for CoRex Semi-Supervisd topic modeling on 100k sample articles from our original 4.4M articles. We achieved a topic correlation score of ~55.4916729561928~.
+[[file:~/abj-paul.github.io/data/nonethnic_corex_100k_final.png]]
+
+**** Issue
+- [ ] A lot of articles were discarded later on (From 100k documents, only 33k documents had doc_prob > 25.0. After removing garbage topics, the number of final documents in consideration decreased even further. Ig those are good data? Or is it a flaw? In fact, among 50 topics, 22 topics were garbage.
+**** Artifacts
+| Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb][4893 ethnic corex.ipynb]] |
+| Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].   |
 ** Survey
 Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.
 
