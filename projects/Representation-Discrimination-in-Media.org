@@ -20,6 +20,7 @@ In this amazing work, Galdi et al showed through social experiments how stereoty
 **** Perpective: Under-representation hurts
 Balasubramaniam et al shows how representation discrimination affects the dalit community. They argue that under-representation of Dalits of Dalits leads to news exclusion related to dalits [2].
 *** Journalism
+**** Finding news genre
 AP News Taxonomy is a classification system for English-language news content that includes standardized subjects, geographic locations, people, organizations and publicly traded companies. This search- and SEO-friendly taxonomy is designed to support digital news products [7]. Their classifications are globally recognized and utilized by numerous media outlets.
 
 1. Business
@@ -82,6 +83,13 @@ I have taken the definitions from ChatGPT. But maybe, we need to take it from so
 15. Religion: News related to religious events, practices, and issues affecting religious communities.
 16. Job: Discusses on career guidance, job postings and motivations.
 17. Science: Discusses scientific discovery, science for children and oddities.
+
+**** Finding usual perspective from which newspaper articles are analyzed
+For the longest time, newspaper articles have been analyzed manually by researchers. This has restricted the size of data they can process. So in this work, we identify the most famous perspectives from which newspaper articles are analyzed to detect discrimination.
+
+1. Presence of ethnography in major news area [9]
+2. Straight, Investigative, Commentary
+3. Source of news information: subject, spokeperson, expert or commentator, personal experience, popular opinion, eye witness [9]. or spokeperson, expert, victim [10].
 
 ** Experiment
 We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.
@@ -353,7 +361,47 @@ We validate our news genre distribution against work by Ross, Karen, et al. Thei
 **** Artifacts
 | Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb][4893 ethnic corex.ipynb]] |
 | Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].   |
+*** Experiment - Combined 100 articles with Gemini-1.5 Flash after defining each genre.
+<2024-08-14 বুধ>
+Objective: Seeing if gemini-1.5 flash free tier can be used for annotation Because all ethnic news articles can be called local news and that is not meaningful for us. So we add ""
+
+   #+begin_src text
+     You are a Bangla news article analyzer. I will give you a news article and you will say which genre(s) it belongs to. The genres are:  Politics, Crime, International Affairs,  Business & Economy,  Sports,  Culture & Entertainment,  Jobs,  Lifestyle,  Health,  Environment,  Local news,  Education,  Technology,  Religion,  Science,  Protests and Social Movements, Govt Actions.  Additionally, you will also say if the description is Straight, Investigation, Commentary. Identify the perspective of any ethnic person mentioned in the article, choosing from the following categories: Subject, Spokesperson, Expert or Commentator, Personal Experience, Popular Opinion, Eyewitness. Return me just a json of {\"genre\": GENRE, \"description_style\": STYLE, \"perspective\": PERSPECTIVE}. Note that, each news will have at most 3 genres, ideally 1.
+   #+end_src
+
+**** Result
+Failed! Because of quota limit. Gemini would stop after processing 15 articles. (IDK why).
+**** Issues
+- [ ] Should i get one genre or multiple genre?
+- [ ] Try chatGPT and Gemini to compare which is better.
+
+**** Artifacts
+| Artifact           | Link                            |
+|--------------------+---------------------------------|
+| Code               | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/few-shot-classification/Gemini_1_5.ipynb][Gemini_1_5.ipynb]]                |
+| Data               | [[https://drive.google.com/file/d/1XP9-PvFAwhOl5ZJ915XYNwXjFDj7_Fh2/view?usp=drive_link][ethnic_dataset_exp0_5342]]        |
+| Gemini Annotations | [[https://drive.google.com/file/d/1wtYU0iwh5U8z6QH6e4e7ZUjZPKNOjToa/view?usp=drive_link][Gemini 100 Annotations in Drive]] |
+*** Experiment - H0: There is no difference in size between ethnic and normal articles.
+Atuel, Hazel et al provided a work very similar to ours in their work on ~majority and minority representation~ [11]. They showed topic distribution, ethnic article count and ethnic article size as a means to understand media representation. So we now try to find prove the hypothesis.
+
+| Group     | Total Articles |            Average |
+|-----------+----------------+--------------------|
+| Ethnic    | 4893           | 440.65563049254035 |
+| Nonethnic | 100k           | 124.93548193554193 |
+
+Using Welch's t-test, p-value = 1.840763388749358e-195. For level of significance 0.05, we reject the H0.
+
+We also do some wordclouds here.
+For ~remove_stopword~ phase, we used a dictionary of stop_words, along with ~len(word)>3~.
+[[file:~/abj-paul.github.io/data/word_cloud_threshold_3.png]]
+
 ** Survey
+*** Literature
+Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
+Georgiou, Myria et al first performs interviews and then summarizes their findings by quoting what particiapnts have said about certain topics [12]. However, they do support those participants' claims empirically.
+
+Bryant et al discussed the effects of media under-representation on minority groups. The findings indicate that televised portrayals of racial/ ethnic minorities influence majority group members’ real-world perceptions about minority groups as well as minority group members’ evaluations of self. The factors facilitating this learning process (perception) include frequency of television exposure, characteristics of the content/message, realism of the portrayal, similarity to the model, identification with the model, and level of individual cognitive ability (Bandura, 1986; Potter, 1986). Taken together, these variables provide one framework for understanding the extent to which the content and number of portrayals of minorities on television may result in judgment formation [13].
+*** CDA
 Critical Discourse Analysis (CDA) is a popular methodology for identifying discriminatory language and bias in news reporting. Researchers like Teun A. van Dijk have applied CDA to study racism in the press. His book, "Racism and the Press," analyzes how newspapers in different countries report on ethnic minorities and how this can perpetuate discriminatory attitudes.
 
 When applied to the study of ethnic minorities, CDA often focuses on how these groups are represented in the media, politics, and public discourse. Key questions might include:
@@ -361,7 +409,8 @@ When applied to the study of ethnic minorities, CDA often focuses on how these g
 1. How are ethnic minorities depicted in news stories? Are they portrayed in a negative or stereotypical manner? Are they underrepresented or misrepresented?
 2. What language is used to describe ethnic minorities? Are certain words or phrases consistently used to marginalize or otherize these groups?
 3. What ideologies are at play? How does the discourse reflect broader societal attitudes towards ethnic minorities? Does it challenge or reinforce existing power structures?
-
+*** Plan
+1. Ask bengali folks what they think when they listen to the term "ethnic people". It will help us find a stereotypical thought on this group.
 ** References
 [1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.
 [2] Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.
@@ -371,3 +420,8 @@ When applied to the study of ethnic minorities, CDA often focuses on how these g
 [6] Galdi, Silvia, Francesca Guizzo, and Fabio Fasoli. "Media representation matters: The effects of exposure to counter-stereotypical gay male characters on heterosexual men’s expressions of discrimination." Group Processes & Intergroup Relations 26.6 (2023): 1329-1350.
 [7] http://api.ap.org/media/v/docs/AP_Classification_Metadata.htm
 [8] Women, men and news: it’s life, Jim, but not as we know it Authors: Karen Ross, Karen Boyle, Cynthia Carter & Debbie Gin
+[9] Ross, Karen, and Cynthia Carter. "Women and news: A long and winding road." Media, Culture & Society 33.8 (2011): 1148-1165.
+[10] Nziza, Elva. Representation of women in the news: An analysis of the New Times and Imvaho Nshya Newspapers in Rwanda. MS thesis. 2018.
+[11] Atuel, Hazel, Viviane Seyranian, and William D. Crano. "Media representations of majority and minority groups." European Journal of Social Psychology 37.3 (2007): 561-572.
+[12] Georgiou, Myria. "Diaspora in the digital era: Minorities and media representation." Jemie 12 (2013): 80.
+[13] Minorities and the mass media: Television into the 21st century, BS Greenberg, D Mastro, JE Brand - Media effects, 2002 - taylorfrancis.com http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344
