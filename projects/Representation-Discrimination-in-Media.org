@@ -406,16 +406,21 @@ Topic based word cloud did not work as expected, even though we rechecked stop w
 | Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]]              |
 | Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Word_Cloud_for_Topic.ipynb][Bangla word cloud for topic.ipynb]] |
 *** Experiment - Bangla News Sentiment Analysis
-We use pretrained models from hugging face for this task. CSEBuetnlp published a similar Sentiment analysis using LLM paper recently [15].
+We use pretrained models from hugging face for this task. CSEBuetnlp published a similar Sentiment analysis using LLM paper recently [15]. CUET also has a very nice data crawler and sentiment analysis code [16].
 **** Result
+It was a failure. We could not run any reliable model. We also think that sentiment won't give us any interesting result. Because it is not that bengali is extremely prejudiced towards Ethnic minorities, which is the case for western racism and such. They are just under-represented, often without malicious intent from publisher's part and more due to ignorance.
+For skl25/banglabert-sentiment,
+[[file:~/abj-paul.github.io/data/skl25-banglabert-sentiment.png]]
+This model underfits for ~Negative~ sentiment. Even for "I hate you", it returns positive sentiment. 
 **** Issues
 - [ ] How to cite hugging face models?
 - [ ] Do we need to evaluate existing pretrained model?
+- [ ] Tensorflow version conflict in SBNLTK. Also GDown not working in SBNLTK since the referred model files dont exist anymore.
 **** Artifacts
-| Artifact Type | Link                  |
-|---------------+-----------------------|
-| Code          |                       |
-| Data          | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]]. |
+| Artifact Type | Link                            |
+|---------------+---------------------------------|
+| Code          | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Sentiment_Analysis.ipynb][Bangla Sentiment Analysis.ipynb]] |
+| Data          | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].           |
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
@@ -509,3 +514,4 @@ This survey/interview aims to understand the effects of under-representation in 
 [13] Minorities and the mass media: Television into the 21st century, BS Greenberg, D Mastro, JE Brand - Media effects, 2002 - taylorfrancis.com http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344
 [14] Ramanathan, Renugah, and Tan Bee Hoon. "Application of Critical Discourse Analysis in Media Discourse Studies." 3L: Southeast Asian Journal of English Language Studies 21.3 (2015).
 [15] https://github.com/csebuetnlp/BanglaEmotionBias
+[16] https://sentiment.bangla.gov.bd/sentiment-emotion-analysis
