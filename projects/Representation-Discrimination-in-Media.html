@@ -646,8 +646,25 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table></li>
 </ol>
+<h3 id="experiment---word-cloud-for-each-topic">Experiment - Word Cloud for each Topic</h3>
+<p>Topic based word cloud did not work as expected, even though we rechecked stop word removal step. We think word cloud won't give us useful insight here because we use keyword based approach to select the ethnic articles. And thanks to that, not all articles are entirely ABOUT ethnic people. They just contain the name of ethnic minorities. <img src="../data/topic_based_word_cloud.png" /></p>
+<ol>
+<li><p>Artifacts</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 ethnic articles</a></td>
+</tr>
+<tr class="even">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Word_Cloud_for_Topic.ipynb">Bangla word cloud for topic.ipynb</a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
 <h3 id="experiment---bangla-news-sentiment-analysis">Experiment - Bangla News Sentiment Analysis</h3>
-<p>We use pretrained models from hugging face for this task.</p>
+<p>We use pretrained models from hugging face for this task. CSEBuetnlp published a similar Sentiment analysis using LLM paper recently <a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p>
 <ol>
 <li><p>Result</p></li>
 <li><p>Issues</p>
@@ -675,11 +692,10 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table></li>
 </ol>
-<h3 id="experiment---word-cloud-for-each-topic">Experiment - Word Cloud for each Topic</h3>
 <h2 id="survey">Survey</h2>
 <h3 id="literature">Literature</h3>
-<p>Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature <a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. Georgiou, Myria et al first performs interviews and then summarizes their findings by quoting what particiapnts have said about certain topics <a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. However, they do support those participants' claims empirically.</p>
-<p>Bryant et al discussed the effects of media under-representation on minority groups. The findings indicate that televised portrayals of racial/ ethnic minorities influence majority group members’ real-world perceptions about minority groups as well as minority group members’ evaluations of self. The factors facilitating this learning process (perception) include frequency of television exposure, characteristics of the content/message, realism of the portrayal, similarity to the model, identification with the model, and level of individual cognitive ability (Bandura, 1986; Potter, 1986). Taken together, these variables provide one framework for understanding the extent to which the content and number of portrayals of minorities on television may result in judgment formation <a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
+<p>Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature <a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. Georgiou, Myria et al first performs interviews and then summarizes their findings by quoting what particiapnts have said about certain topics <a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>. However, they do support those participants' claims empirically.</p>
+<p>Bryant et al discussed the effects of media under-representation on minority groups. The findings indicate that televised portrayals of racial/ ethnic minorities influence majority group members’ real-world perceptions about minority groups as well as minority group members’ evaluations of self. The factors facilitating this learning process (perception) include frequency of television exposure, characteristics of the content/message, realism of the portrayal, similarity to the model, identification with the model, and level of individual cognitive ability (Bandura, 1986; Potter, 1986). Taken together, these variables provide one framework for understanding the extent to which the content and number of portrayals of minorities on television may result in judgment formation <a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>.</p>
 <h3 id="cda">CDA</h3>
 <p>It focuses on linguistic devices or speech acts and how they serve powerful social groups to fulfill their interest</p>
 <p>Van Dijk’S ideological square allows subtle analysis to express various ideological stances. It includes:</p>
@@ -690,7 +706,7 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <li>De-emphasise positive things about Them</li>
 </ul>
 <p>Behnam and Mahmoudy (2013) discovered the political ideology in Iran’s nuclear report through discourse structure. In determining the ideological structures, the presupposition concept was employed leading to a specific ideological structure. This can be depicted through the phrase: “Iran has not provided requested information…” (Kerr 2009, p.2). The phrase denotes a negative belief in Iran. Besides, another preference in which ideology can be determined is through repetitive words in the report such as undeclared, uncertainties, inconsistencies, and contamination. These words depict a destructive image for the country such as: a) Iran is trying to conceal information from the world view, and b) Iran is inconsistent in its nuclear program.</p>
-<p>Ramanathan et al provided many more examples of CDA in their paper on "Applications of CDA" where researchers manually inspect articles to find bias towards certain idelogical stance <a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>.</p>
+<p>Ramanathan et al provided many more examples of CDA in their paper on "Applications of CDA" where researchers manually inspect articles to find bias towards certain idelogical stance <a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>.</p>
 <p>When applied to the study of ethnic minorities, CDA often focuses on how these groups are represented in the media, politics, and public discourse. Key questions might include:</p>
 <ol>
 <li>How are ethnic minorities depicted in news stories? Are they portrayed in a negative or stereotypical manner? Are they underrepresented or misrepresented?</li>
@@ -773,10 +789,11 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <li id="fn11" role="doc-endnote"><p>Nziza, Elva. Representation of women in the news: An analysis of the New Times and Imvaho Nshya Newspapers in Rwanda. MS thesis. 2018.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12" role="doc-endnote"><p>Women, men and news: it’s life, Jim, but not as we know it Authors: Karen Ross, Karen Boyle, Cynthia Carter &amp; Debbie Gin<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13" role="doc-endnote"><p>Atuel, Hazel, Viviane Seyranian, and William D. Crano. "Media representations of majority and minority groups." European Journal of Social Psychology 37.3 (2007): 561-572.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14" role="doc-endnote"><p>Atuel, Hazel, Viviane Seyranian, and William D. Crano. "Media representations of majority and minority groups." European Journal of Social Psychology 37.3 (2007): 561-572.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15" role="doc-endnote"><p>Georgiou, Myria. "Diaspora in the digital era: Minorities and media representation." Jemie 12 (2013): 80.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16" role="doc-endnote"><p>Minorities and the mass media: Television into the 21st century, BS Greenberg, D Mastro, JE Brand - Media effects, 2002 - taylorfrancis.com <a href="http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344">http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344</a><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17" role="doc-endnote"><p>Ramanathan, Renugah, and Tan Bee Hoon. "Application of Critical Discourse Analysis in Media Discourse Studies." 3L: Southeast Asian Journal of English Language Studies 21.3 (2015).<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a href="https://github.com/csebuetnlp/BanglaEmotionBias">https://github.com/csebuetnlp/BanglaEmotionBias</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>Atuel, Hazel, Viviane Seyranian, and William D. Crano. "Media representations of majority and minority groups." European Journal of Social Psychology 37.3 (2007): 561-572.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p>Georgiou, Myria. "Diaspora in the digital era: Minorities and media representation." Jemie 12 (2013): 80.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p>Minorities and the mass media: Television into the 21st century, BS Greenberg, D Mastro, JE Brand - Media effects, 2002 - taylorfrancis.com <a href="http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344">http://ndl.ethernet.edu.et/bitstream/123456789/58135/1/15.Jennings%20Bryant.pdf#page=344</a><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p>Ramanathan, Renugah, and Tan Bee Hoon. "Application of Critical Discourse Analysis in Media Discourse Studies." 3L: Southeast Asian Journal of English Language Studies 21.3 (2015).<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
