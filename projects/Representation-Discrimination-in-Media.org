@@ -359,9 +359,9 @@ We validate our news genre distribution against work by Ross, Karen, et al. Thei
 **** Issue
 - [ ] A lot of articles were discarded later on (From 100k documents, only 33k documents had doc_prob > 25.0. After removing garbage topics, the number of final documents in consideration decreased even further. Ig those are good data? Or is it a flaw? In fact, among 50 topics, 22 topics were garbage.
 **** Artifacts
-| Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb][4893 ethnic corex.ipynb]] |
-| Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].   |
-*** Experiment - Combined 100 articles with Gemini-1.5 Flash after defining each genre.
+| Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla%20news%20distribution%20(100k)%20with%20Corex.ipynb][Bangla news distribution (100K) with CoRex.ipynb]]                        |
+| Data | [[https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link][100k nonethnic articles in drive]] ,  [[https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing][Excel containing genre distribution]] |
+*** TODO Experiment - Combined 100 articles with Gemini-1.5 Flash after defining each genre.
 <2024-08-14 বুধ>
 Objective: Seeing if gemini-1.5 flash free tier can be used for annotation Because all ethnic news articles can be called local news and that is not meaningful for us. So we add ""
 
@@ -394,7 +394,23 @@ Using Welch's t-test, p-value = 1.840763388749358e-195. For level of significanc
 We also do some wordclouds here.
 For ~remove_stopword~ phase, we used a dictionary of stop_words, along with ~len(word)>3~.
 [[file:~/abj-paul.github.io/data/word_cloud_threshold_3.png]]
-
+For ~len(word)>5~, the word cloud is:
+[[file:~/abj-paul.github.io/data/word_cloud_threshold_5.png]]
+**** Artifacts
+| Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/data_analysis.ipynb][data_analysis.ipynb]] , [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Word_Cloud.ipynb][Bangla Word Cloud.ipynb]]              |
+| Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]].,  [[https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link][100k nonethnic articles in drive]] , |
+*** Experiment - Bangla News Sentiment Analysis
+We use pretrained models from hugging face for this task.
+**** Result
+**** Issues
+- [ ] How to cite hugging face models?
+- [ ] Do we need to evaluate existing pretrained model?
+**** Artifacts
+| Artifact Type | Link                  |
+|---------------+-----------------------|
+| Code          |                       |
+| Data          | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]]. |
+*** Experiment - Word Cloud for each Topic
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
@@ -471,7 +487,6 @@ This survey/interview aims to understand the effects of under-representation in 
 9. **Final Thoughts:**
    - Is there anything else you would like to share about the impact of news media on your community?
    - What message would you like to send to news organizations about the importance of representing Indigenous people fairly and accurately?
-
 
 ** References
 [1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.

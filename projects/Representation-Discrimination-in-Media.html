@@ -561,16 +561,16 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <tbody>
 <tr class="odd">
 <td>Code</td>
-<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Ethnic%20(4893)%20with%20Corex.ipynb">4893 ethnic corex.ipynb</a></td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla%20news%20distribution%20(100k)%20with%20Corex.ipynb">Bangla news distribution (100K) with CoRex.ipynb</a></td>
 </tr>
 <tr class="even">
 <td>Data</td>
-<td><a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 ethnic articles</a>.</td>
+<td><a href="https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link">100k nonethnic articles in drive</a> , <a href="https://docs.google.com/spreadsheets/d/1YKAvQ_nCDkW7_27Yi7C7rR9yb8BU7ontKYhm1N2RE_4/edit?usp=sharing">Excel containing genre distribution</a></td>
 </tr>
 </tbody>
 </table></li>
 </ol>
-<h3 id="experiment---combined-100-articles-with-gemini-1.5-flash-after-defining-each-genre.">Experiment - Combined 100 articles with Gemini-1.5 Flash after defining each genre.</h3>
+<h3 id="experiment---combined-100-articles-with-gemini-1.5-flash-after-defining-each-genre."><span class="todo TODO">TODO</span> Experiment - Combined 100 articles with Gemini-1.5 Flash after defining each genre.</h3>
 <p>&lt;2024-08-14 বুধ&gt; Objective: Seeing if gemini-1.5 flash free tier can be used for annotation Because all ethnic news articles can be called local news and that is not meaningful for us. So we add ""</p>
 <pre class="text"><code>You are a Bangla news article analyzer. I will give you a news article and you will say which genre(s) it belongs to. The genres are:  Politics, Crime, International Affairs,  Business &amp; Economy,  Sports,  Culture &amp; Entertainment,  Jobs,  Lifestyle,  Health,  Environment,  Local news,  Education,  Technology,  Religion,  Science,  Protests and Social Movements, Govt Actions.  Additionally, you will also say if the description is Straight, Investigation, Commentary. Identify the perspective of any ethnic person mentioned in the article, choosing from the following categories: Subject, Spokesperson, Expert or Commentator, Personal Experience, Popular Opinion, Eyewitness. Return me just a json of {\&quot;genre\&quot;: GENRE, \&quot;description_style\&quot;: STYLE, \&quot;perspective\&quot;: PERSPECTIVE}. Note that, each news will have at most 3 genres, ideally 1.
 </code></pre>
@@ -630,7 +630,52 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table>
 <p>Using Welch's t-test, p-value = 1.840763388749358e-195. For level of significance 0.05, we reject the H0.</p>
-<p>We also do some wordclouds here. For <code>remove_stopword</code> phase, we used a dictionary of stop<sub>words</sub>, along with <code>len(word)&gt;3</code>. <img src="../data/word_cloud_threshold_3.png" /></p>
+<p>We also do some wordclouds here. For <code>remove_stopword</code> phase, we used a dictionary of stop<sub>words</sub>, along with <code>len(word)&gt;3</code>. <img src="../data/word_cloud_threshold_3.png" /> For <code>len(word)&gt;5</code>, the word cloud is: <img src="../data/word_cloud_threshold_5.png" /></p>
+<ol>
+<li><p>Artifacts</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td><a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/data_analysis.ipynb">data<sub>analysis</sub>.ipynb</a> , <a href="https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Word_Cloud.ipynb">Bangla Word Cloud.ipynb</a></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 ethnic articles</a>., <a href="https://drive.google.com/file/d/1lvQHQlAuu4ZeVOWnKC7jRpWxkCUh47fL/view?usp=drive_link">100k nonethnic articles in drive</a> ,</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---bangla-news-sentiment-analysis">Experiment - Bangla News Sentiment Analysis</h3>
+<p>We use pretrained models from hugging face for this task.</p>
+<ol>
+<li><p>Result</p></li>
+<li><p>Issues</p>
+<ul>
+<li>[ ] How to cite hugging face models?</li>
+<li>[ ] Do we need to evaluate existing pretrained model?</li>
+</ul></li>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Artifact Type</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Data</td>
+<td><a href="https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link">4893 ethnic articles</a>.</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---word-cloud-for-each-topic">Experiment - Word Cloud for each Topic</h3>
 <h2 id="survey">Survey</h2>
 <h3 id="literature">Literature</h3>
 <p>Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature <a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. Georgiou, Myria et al first performs interviews and then summarizes their findings by quoting what particiapnts have said about certain topics <a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. However, they do support those participants' claims empirically.</p>
