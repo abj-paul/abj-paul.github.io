@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>Automated Detection of AI Algorithms in Web Applications.</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">Automated Detection of AI Algorithms in Web Applications.</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-08-24 শনি&gt;</p>
+</header>
+<p>The proliferation of AI algorithms in web applications has made it increasingly difficult for users to understand the decision-making processes behind the services they interact with. This lack of transparency can lead to concerns about bias, privacy, and accountability.</p>
+<h3 id="literature-review">Literature Review</h3>
+<p>Doosti et al, in their 2017 work, also provides a similar distribution of websites based on genre <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <img src="../data/Frequency-of-website-genres-in-our-dataset.png" /> Shen, Meng, et al. proposed a literature review on use of AI in web 3.0 which identifies use cases of AI in all layers of Web 3.0. It can serve as a starting point for us to understand the use of AI in web applications <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Sajja et al wrote a book in 2012 which goes in-depth on AI in Web applications. While old, it can still provide us insights <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. For example, we should pick a domain of websites and then, start finding AI patterns on them.</p>
+<h3 id="detection-techniques---lets-think">Detection Techniques - Lets think</h3>
+<p>We can find the following techniques for detecting AI usage in a website, using ChatGPT4o.</p>
+<ol>
+<li><p>Statistical Analysis</p>
+<ul>
+<li>Pattern Recognition: Identifying unusual patterns or anomalies in data that suggest the presence of an AI algorithm.</li>
+<li>Correlation Analysis: Examining correlations between input and output data to determine if a complex relationship exists.</li>
+</ul></li>
+<li><p>Machine Learning Model Fingerprinting</p>
+<ul>
+<li>Model Architecture: Analyzing the underlying architecture of a machine learning model to identify specific algorithms.</li>
+<li>Model Parameters: Examining the parameters and weights used in a model to distinguish it from other types.</li>
+</ul></li>
+<li><p>API Analysis</p>
+<ul>
+<li>API Calls: Monitoring API calls made by a web application to identify cloud-based AI services.</li>
+<li>API Documentation: Analyzing API documentation to determine if it describes AI-related functionalities.</li>
+</ul></li>
+<li><p>Natural Language Processing (NLP)</p>
+<ul>
+<li>Text Analysis: Analyzing textual content within a web application to identify keywords or phrases associated with AI.</li>
+<li>Sentiment Analysis: Determining the sentiment expressed in text to gauge the level of AI involvement.</li>
+</ul></li>
+<li><p>Behavior Analysis</p>
+<ul>
+<li>User Interactions: Observing user interactions with a web application to identify patterns that suggest AI-driven personalization.</li>
+<li>Dynamic Content: Analyzing the dynamic nature of content to determine if it is being generated or curated by AI.</li>
+</ul></li>
+</ol>
+<h3 id="data-collection">Data Collection</h3>
+<p>We pick <code>Beauty</code> as our target genre. Let us now list some websites on Beauty.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Site Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><strong>General Lifestyle Websites</strong></strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Allure</td>
+<td><a href="https://www.allure.com/">allure.com</a></td>
+</tr>
+<tr class="odd">
+<td>Cosmopolitan</td>
+<td><a href="https://www.cosmopolitan.com/">cosmopolitan.com</a></td>
+</tr>
+<tr class="even">
+<td>Elle</td>
+<td><a href="https://www.elle.com/">elle.com</a></td>
+</tr>
+<tr class="odd">
+<td>Fitness Magazine</td>
+<td><a href="https://www.fitnessmag.co.za/">fitnessmag.co.za</a></td>
+</tr>
+<tr class="even">
+<td>Men's Health</td>
+<td><a href="https://www.menshealth.com/">menshealth.com</a></td>
+</tr>
+<tr class="odd">
+<td>Shape</td>
+<td><a href="https://www.shape.com/">shape.com</a></td>
+</tr>
+<tr class="even">
+<td>Women's Health</td>
+<td><a href="https://www.womenshealthmag.com/">womenshealthmag.com</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><strong>Beauty-Specific Websites</strong></strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Beautylish</td>
+<td><a href="https://www.beautylish.com/">beautylish.com</a></td>
+</tr>
+<tr class="odd">
+<td>Into the Gloss</td>
+<td><a href="https://intothegloss.com/">intothegloss.com</a></td>
+</tr>
+<tr class="even">
+<td>Refinery29</td>
+<td><a href="https://www.refinery29.com/en-us">refinery29.com/en-us</a></td>
+</tr>
+<tr class="odd">
+<td>Sephora</td>
+<td><a href="https://www.sephora.com/">sephora.com</a></td>
+</tr>
+<tr class="even">
+<td>Ulta Beauty</td>
+<td><a href="https://www.ulta.com/">ulta.com</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><strong>Niche Beauty and Fitness Websites</strong></strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Birchbox</td>
+<td><a href="https://www.birchbox.com/">birchbox.com</a></td>
+</tr>
+<tr class="odd">
+<td>Glossier</td>
+<td><a href="https://www.glossier.com/">glossier.com</a></td>
+</tr>
+<tr class="even">
+<td>Lululemon</td>
+<td><a href="https://shop.lululemon.com/">shop.lululemon.com</a></td>
+</tr>
+<tr class="odd">
+<td>Peloton</td>
+<td><a href="https://www.onepeloton.com/">onepeloton.com</a></td>
+</tr>
+<tr class="even">
+<td>Yoga Journal</td>
+<td><a href="https://www.yogajournal.com/">yogajournal.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>AI usage in Beauty websites include:</p>
+<ol>
+<li><p>Personalized Recommendations: AI algorithms analyze user preferences and behaviors to recommend skincare products, makeup items, or beauty routines tailored to individual needs.</p></li>
+<li><p>Virtual Try-ons: AI-powered augmented reality (AR) allows users to virtually try on makeup or hairstyles using their device’s camera.</p></li>
+<li><p>Image recognition: AI analyzes user photos to provide personalized beauty advice, such as identifying skin issues or suggesting suitable products.</p></li>
+<li><p>Chatbots and Virtual Assistants: AI chatbots offer personalized beauty tips, answer product-related questions, and assist with customer service.</p></li>
+<li><p>Trend Analysis: AI tracks and analyzes beauty trends and customer feedback to help brands adapt their product offerings and marketing strategies.</p>
+<p>We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites.</p></li>
+</ol>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Doosti, Bardia &amp; Crandall, David &amp; Su, Norman. (2017). A Deep Study into the History of Web Design. 329-338. 10.1145/3091478.3091503.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Shen, Meng, et al. "Artificial Intelligence for Web 3.0: A Comprehensive Survey." ACM Computing Surveys 56.10 (2024): 1-39.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Sajja, Priti Srinivas, and Rajendra Akerkar. Intelligent technologies for Web applications. CRC Press, 2012.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

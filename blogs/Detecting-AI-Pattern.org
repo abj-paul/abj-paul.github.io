@@ -1,0 +1,72 @@
+#+TITLE: Automated Detection of AI Algorithms in Web Applications.
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-24 শনি>
+
+The proliferation of AI algorithms in web applications has made it increasingly difficult for users to understand the decision-making processes behind the services they interact with. This lack of transparency can lead to concerns about bias, privacy, and accountability.
+
+*** Literature Review
+Doosti et al, in their 2017 work, also provides a similar distribution of websites based on genre [3].
+[[file:~/abj-paul.github.io/data/Frequency-of-website-genres-in-our-dataset.png]]
+Shen, Meng, et al. proposed a literature review on use of AI in web 3.0 which identifies use cases of AI in all layers of Web 3.0. It can serve as a starting point for us to understand the use of AI in web applications [1]. Sajja et al wrote a book in 2012 which goes in-depth on AI in Web applications. While old, it can still provide us insights [2]. For example, we should pick a domain of websites and then, start finding AI patterns on them.
+
+*** Detection Techniques - Lets think
+We can find the following techniques for detecting AI usage in a website, using ChatGPT4o.
+**** Statistical Analysis
+- Pattern Recognition: Identifying unusual patterns or anomalies in data that suggest the presence of an AI algorithm.
+- Correlation Analysis: Examining correlations between input and output data to determine if a complex relationship exists.
+**** Machine Learning Model Fingerprinting
+- Model Architecture: Analyzing the underlying architecture of a machine learning model to identify specific algorithms.
+- Model Parameters: Examining the parameters and weights used in a model to distinguish it from other types.
+**** API Analysis
+- API Calls: Monitoring API calls made by a web application to identify cloud-based AI services.
+- API Documentation: Analyzing API documentation to determine if it describes AI-related functionalities.
+
+**** Natural Language Processing (NLP)
+- Text Analysis: Analyzing textual content within a web application to identify keywords or phrases associated with AI.
+- Sentiment Analysis: Determining the sentiment expressed in text to gauge the level of AI involvement.
+**** Behavior Analysis
+- User Interactions: Observing user interactions with a web application to identify patterns that suggest AI-driven personalization.
+- Dynamic Content: Analyzing the dynamic nature of content to determine if it is being generated or curated by AI.
+
+*** Data Collection
+We pick ~Beauty~ as our target genre. Let us now list some websites on Beauty.
+
+| Name                           | Site Link           |
+|--------------------------------+---------------------|
+| **General Lifestyle Websites** |                     |
+| Allure                         | [[https://www.allure.com/][allure.com]]          |
+| Cosmopolitan                   | [[https://www.cosmopolitan.com/][cosmopolitan.com]]    |
+| Elle                           | [[https://www.elle.com/][elle.com]]            |
+| Fitness Magazine               | [[https://www.fitnessmag.co.za/][fitnessmag.co.za]]    |
+| Men's Health                   | [[https://www.menshealth.com/][menshealth.com]]      |
+| Shape                          | [[https://www.shape.com/][shape.com]]           |
+| Women's Health                 | [[https://www.womenshealthmag.com/][womenshealthmag.com]] |
+|                                |                     |
+
+| **Beauty-Specific Websites** |                      |
+| Beautylish                   | [[https://www.beautylish.com/][beautylish.com]]       |
+| Into the Gloss               | [[https://intothegloss.com/][intothegloss.com]]     |
+| Refinery29                   | [[https://www.refinery29.com/en-us][refinery29.com/en-us]] |
+| Sephora                      | [[https://www.sephora.com/][sephora.com]]          |
+| Ulta Beauty                  | [[https://www.ulta.com/][ulta.com]]             |
+
+| **Niche Beauty and Fitness Websites** |                    |
+| Birchbox                              | [[https://www.birchbox.com/][birchbox.com]]       |
+| Glossier                              | [[https://www.glossier.com/][glossier.com]]       |
+| Lululemon                             | [[https://shop.lululemon.com/][shop.lululemon.com]] |
+| Peloton                               | [[https://www.onepeloton.com/][onepeloton.com]]     |
+| Yoga Journal                          | [[https://www.yogajournal.com/][yogajournal.com]]    |
+
+AI usage in Beauty websites include:
+1. Personalized Recommendations: AI algorithms analyze user preferences and behaviors to recommend skincare products, makeup items, or beauty routines tailored to individual needs.
+2. Virtual Try-ons: AI-powered augmented reality (AR) allows users to virtually try on makeup or hairstyles using their device’s camera.
+3. Image recognition: AI analyzes user photos to provide personalized beauty advice, such as identifying skin issues or suggesting suitable products.
+4. Chatbots and Virtual Assistants: AI chatbots offer personalized beauty tips, answer product-related questions, and assist with customer service.
+5. Trend Analysis: AI tracks and analyzes beauty trends and customer feedback to help brands adapt their product offerings and marketing strategies.
+
+   We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites.
+   
+** References
+[1] Shen, Meng, et al. "Artificial Intelligence for Web 3.0: A Comprehensive Survey." ACM Computing Surveys 56.10 (2024): 1-39.
+[2] Sajja, Priti Srinivas, and Rajendra Akerkar. Intelligent technologies for Web applications. CRC Press, 2012.
+[3] Doosti, Bardia & Crandall, David & Su, Norman. (2017). A Deep Study into the History of Web Design. 329-338. 10.1145/3091478.3091503. 
