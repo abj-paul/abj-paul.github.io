@@ -90,7 +90,13 @@ For the longest time, newspaper articles have been analyzed manually by research
 1. Presence of ethnography in major news area [9]
 2. Straight, Investigative, Commentary
 3. Source of news information: subject, spokeperson, expert or commentator, personal experience, popular opinion, eye witness [9]. or spokeperson, expert, victim [10].
+*** Terminology
+**** Under-representation, mis-representation or Representation Discrimination?
+Let us look at existing literature to understand what is usually meant by under-representation and mis-representation.
+1. Under-representation occurs when a particular group is not depicted in media, politics, or other public arenas in proportion to their actual numbers in the population.
+2. Misrepresentation involves depicting a group in an inaccurate, stereotypical, or negative way. It refers to false or misleading portrayals that do not reflect the true nature, culture, or circumstances of the group.
 
+   Neither is happening from our findings so far. We found difference in news genre. We have not found any proof of negative stereotypes yet. So The term ~Representation Discrimination~ feels more accurate.
 ** Experiment
 We conduct numerous experiments since it is a sensitive topic to make claims on. The experiments are done over a long period of time so we follow the following meta data to store their results.
 
@@ -448,55 +454,29 @@ When applied to the study of ethnic minorities, CDA often focuses on how these g
 
 I think we can't use it because frankly, analyzing articles manually is time-consuming and will include my bias.
 
-*** Questions
-We ask the following questions to ethnic people. Our goal is understanding ~News media Under-Representations and its Impact on the Lives of Indigenous people~.
-
+*** Question
 ~Survey/Interview Topic: "Under-Representation in News Media and Its Impact on the Lives of Indigenous People in Bangladesh"~
 
-This survey/interview aims to understand the effects of under-representation in news media on the lives, identity, and societal perceptions of Indigenous people in Bangladesh.
+We intend to conduct a focus group discussion.
 
-1. **Demographic Information:**
-   - What is your ethnicity?
-   - What is your age?
-   - What is your gender?
-   - Where do you reside in Bangladesh?
-   - What is your occupation or role within your community?
+[[https://docs.google.com/document/d/1Sm8ozXdx6lNyWwjVpn3FcHHnLZ2nCse5m2nQS8I9RA8/edit?usp=sharing][This is the informed consent form]] for the FGD.
+And [[https://docs.google.com/document/d/1YfWYmmgePASEEZijH2zIJrtvsBAaR4pgtXEnLuJu5g4/edit?usp=sharing][This is the questionnaire for the FGD]].
+And [[https://docs.google.com/presentation/d/1B6a3RI_Ag5mr6-zg9pgam2D4mpDUrt6I/edit?usp=sharing&ouid=116173976886393365649&rtpof=true&sd=true][This is the presentation]] for guiding the FGD in an open-ended manner.
 
-2. **Media Consumption Habits:**
-   - How often do you consume news media (daily, weekly, rarely)?
-   - What types of news media do you typically follow (TV, newspapers, online news, social media)?
-   - How important is news media in your daily life?
+*** Case Finding
+We need to delve deeper into analyzing the ethnic articles to find case studies to demonstrate clear discrimination. For it, we need to do the following tasks.
 
-3. **Perception of Media Representation:**
-   - How often do you see news stories featuring your ethnic group in Bangladeshi media?
-   - Do you feel that your community is under-represented in the news media? Why or why not?
-   - When your community is represented in the news, what is the typical context (e.g., cultural events, conflicts, political issues)?
+| Task                                                       | Dependency      |
+|------------------------------------------------------------+-----------------|
+| Filtering only ethnicity related articles (OERA)           | ChatGPT         |
+| Finding sentiment in OERA                                  | Bangla, ChatGPT |
+| Retracing article name, author and category for case study | -               |
+| Use journalism domain analysis i.e. spokeperson, tone      | ChatGPT         |
 
-4. **Impact of Under-Representation:**
-   - How does the lack of representation in news media affect your sense of identity and belonging?
-   - Have you noticed any social or cultural impacts in your community due to under-representation in the news?
-   - Do you think under-representation affects how other communities in Bangladesh view your ethnic group? If so, how?
+We can combine all of it into a single ChatGPT response. However, imo, this can be extended to our next task.
 
-5. **Cultural Impact:**
-   - Does the under-representation of your community in news media contribute to the loss or marginalization of your cultural practices?
-   - How does the media’s focus (or lack thereof) on your community affect the younger generation's understanding of their heritage?
-
-6. **Media and Stereotyping:**
-   - Do you think that the limited representation your community receives in the media reinforces stereotypes? If yes, what kind of stereotypes?
-   - Have you or your community members experienced any negative consequences (e.g., discrimination, misunderstanding) due to these stereotypes?
-
-7. **Community Responses and Actions:**
-   - Has your community taken any steps to address the issue of under-representation in the news media?
-   - Are there any media initiatives within your community to improve visibility? If so, can you describe them?
-
-8. **Recommendations for News Media:**
-   - What changes would you like to see in how the news media covers stories related to Indigenous people?
-   - How can news media contribute to better representation and understanding of Indigenous communities in Bangladesh?
-   - Do you think that involving Indigenous voices in the news production process would lead to better representation? How?
-
-9. **Final Thoughts:**
-   - Is there anything else you would like to share about the impact of news media on your community?
-   - What message would you like to send to news organizations about the importance of representing Indigenous people fairly and accurately?
+Additionally, finding case studies can greatly benefit from volunteers who are already working on it. They should already possess a large collection of such cases of discrimination, like the following.
+[[file:~/abj-paul.github.io/data/case studies from fb.png]]
 
 ** References
 [1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.

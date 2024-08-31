@@ -57,15 +57,28 @@ We pick ~Beauty~ as our target genre. Let us now list some websites on Beauty.
 | Peloton                               | [[https://www.onepeloton.com/][onepeloton.com]]     |
 | Yoga Journal                          | [[https://www.yogajournal.com/][yogajournal.com]]    |
 
-AI usage in Beauty websites include:
-1. Personalized Recommendations: AI algorithms analyze user preferences and behaviors to recommend skincare products, makeup items, or beauty routines tailored to individual needs.
-2. Virtual Try-ons: AI-powered augmented reality (AR) allows users to virtually try on makeup or hairstyles using their device’s camera.
-3. Image recognition: AI analyzes user photos to provide personalized beauty advice, such as identifying skin issues or suggesting suitable products.
-4. Chatbots and Virtual Assistants: AI chatbots offer personalized beauty tips, answer product-related questions, and assist with customer service.
-5. Trend Analysis: AI tracks and analyzes beauty trends and customer feedback to help brands adapt their product offerings and marketing strategies.
+   We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites. However, annotating beauty sites is hard for me, since i have no idea on them. So let me instead do a pilot study with ecommerce data.
 
-   We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites.
-   
+*** Code Progress
+- [X] Download sites
+- [X] Detect AI keyword: BUG-> Inside words
+- [X] Separate segment where AI is mentioned.
+- [X] Mark in website where AI is mentioned (for annotation and understanding).
+- [X] Do it for 100 websites
+- [ ] Use word-embedding instead of keyword matching
+- [X] gpt.js , otSDKStub.js
+- [X] commoncrawl
+
+  The above code analysis approach does not work well since word-embedding can't be used in code variable-function names.
+
+*** Patterns
+We have identified the following patterns.
+1. Search
+2. Recommendation / Trend (e.g. Rising star, Popular this week, best completed )
+3. Personalization 
+4. Chatbot
+
+We can alternatively list all features a website has using fuzzing and chatGPT to interpret the contents.
 ** References
 [1] Shen, Meng, et al. "Artificial Intelligence for Web 3.0: A Comprehensive Survey." ACM Computing Surveys 56.10 (2024): 1-39.
 [2] Sajja, Priti Srinivas, and Rajendra Akerkar. Intelligent technologies for Web applications. CRC Press, 2012.

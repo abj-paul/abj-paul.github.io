@@ -1,0 +1,92 @@
+#+TITLE: Introduction to TLA+
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-26 সোম>
+
+** Non-deterministic C Code
+Let us write our first program after installing TLA+ toolbox and opening the ~toolbox~. We try to write the following C code segment in TLA+.
+
+#+begin_src C
+  void main(){
+    int x;
+    x = someNumber();
+    x = x+1;
+  }
+#+end_src
+
+To write it into TLA+,
+[[file:~/abj-paul.github.io/data/pretty-printed-tla+-first.png]]
+
+And the ASCII version for it is:
+#+begin_src TLA+
+------------------------------- MODULE first -------------------------------
+EXTENDS integers
+VARIABLE x, pc
+
+init == (x=0) /\ (pc = "start")
+
+next == \/ /\ pc = "start"
+           /\ x' \in 1..1000
+           /\ pc' = "middle"
+        \/ /\ pc = "middle"
+           /\ x' = x + 1
+           /\ pc' = "exit" 
+        
+
+=============================================================================
+\* Modification History
+\* Last modified Mon Aug 26 20:42:38 BDT 2024 by abhijit
+\* Created Mon Aug 26 20:15:57 BDT 2024 by abhijit
+#+end_src
+
+** Die Hard
+It is interesting how many different solution the invariants ~bigjar /= 4~ can come up with!
+#+begin_src
+------------------------------ MODULE diehard ------------------------------
+EXTENDS Integers
+VARIABLES bigjar, smalljar
+
+TypeOK == bigjar \in 0..5 /\ smalljar \in 0..3
+
+Init == bigjar = 0 /\ smalljar = 0
+
+BigToSmall == IF bigjar + smalljar <= 3
+                THEN 
+                    /\ smalljar' = bigjar + smalljar 
+                    /\ bigjar' = 0
+              ELSE 
+                    /\ bigjar' = bigjar - (3-smalljar) 
+                    /\ smalljar' = 3
+               
+SmallToBig == IF bigjar + smalljar <= 5
+                THEN 
+                /\ bigjar' = bigjar + smalljar 
+                /\ smalljar' = 0
+              ELSE 
+               /\ smalljar' = smalljar - (5-bigjar) 
+               /\ bigjar' = 5
+                     
+EmptySmall == smalljar' = 0 /\ bigjar' = bigjar
+EmptyBig == bigjar' = 0 /\ smalljar' = smalljar 
+FillSmall == smalljar' = 3 /\ bigjar' = bigjar
+FillBig == bigjar' = 5 /\ smalljar' = smalljar
+
+Next == BigToSmall \/ SmallToBig \/ EmptySmall \/ EmptyBig \/ FillSmall \/ FillBig
+=============================================================================
+#+end_src
+
+** Transaction Commit
+A marriage or love consists of the followings steps (Hey, i won't know about it. This is what the books says >:3
+1. Unprepared stage
+2. Prepared stage
+3. Committed or aborted stage (hmm cheating perhaps)
+
+This wedding can be compared to a database transaction. A transactions can commit if all resource managers (RM) are prepared to commit and is aborted otherwise. However, the unsure state is usually called ~working~ state of RM.
+   [[file:~/abj-paul.github.io/data/state transition diagram of marriage TLA.png]]
+
+Now let us write a spec for it.
+
+
+** TLA+ niche
+1. In TLA, every variable is a set
+2. In $B' = A + 3 \land A' = 4  \iff   A' = 4 \land B' = A + 3$. This is unlike programming languages. Its because TLA is not programming language. Its Math and in math, $X \land Y Y = Y \land X$.
+3. In TLA, array is mathematical function, index set is domain and values are range. So its defined like. e.g. $sqr = [ i \in 1..42  \rightarrow  i^2 ]$. So $sqr[3] = 9$. 
