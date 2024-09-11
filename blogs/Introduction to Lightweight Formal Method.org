@@ -35,3 +35,5 @@ Similarly, lets collect relevant articles as well.
 | Formal Methods: Not Quite What You Thought                         |              |
 | [[https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/][Why dont people use Formal Methods?]]                                | Detailed     |
 | [[https://users.ece.cmu.edu/~koopman/des_s99/formal_methods/][CMU - Formal Methods Resources]]                                     | CMU          |
+
+Additionally, there are works on [[https://www.youtube.com/watch?v=wBRtEQ02-HI][HCI aspect of formal methods. See this youtube video.]]
