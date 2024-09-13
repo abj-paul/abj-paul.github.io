@@ -185,6 +185,21 @@
 <li>Straight, Investigative, Commentary or straight vs commentary <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
 <li>Source of news information: subject, spokeperson, expert or commentator, personal experience, popular opinion, eye witness <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. or spokeperson, expert, victim <a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</li>
 <li>Agenda setting, framing, priming, mobilizing <a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></li>
+</ol>
+<p>We have also identified the following NLP metrics that require no validation to use them.</p>
+<ol>
+<li>Word Cloud: Words are displayed in various sizes, with more frequent words appearing larger. Useful for quickly identifying prominent terms in a text corpus.</li>
+<li>Term Frequency (TF): Simply counts the occurrences of each term. It's a straightforward way to assess which words are most common without needing a complex evaluation.</li>
+<li>Document Length: Useful for understanding the length of documents without requiring any complex processing.</li>
+<li>Word Length Distribution: Displays how many words of each length exist in the text, offering a glimpse into the text’s complexity.</li>
+<li>Vocabulary Richness: Measures the number of unique words relative to the total number of words. This can be a simple ratio (e.g., type-token ratio) and doesn't require complex evaluation.</li>
+<li>Keyword Extraction (without weighting): Extracts keywords based on basic criteria (e.g., frequency, presence in titles) without needing further validation.</li>
+<li>Basic Readability Scores: Calculated using simple formulas based on sentence length and word syllables (e.g., Flesch Reading Ease). These are standardized metrics and require no further validation.</li>
+<li>N-Gram Frequency: Useful for identifying common phrases or collocations without needing complex interpretation.</li>
+<li>Basic Sentiment Distribution: Shows the proportion of positive, negative, and neutral sentiments in the data, typically using a predefined dictionary or simple model.</li>
+<li>Topic Modeling (without validation): Using methods like LDA (Latent Dirichlet Allocation) to discover topics without detailed evaluation. The results can be interpreted as is.</li>
+<li>Part-of-Speech (POS) Tagging Distribution: Simple frequency counts of POS tags give an overview of the linguistic structure of the text.</li>
+<li>Basic Term Co-Occurrence: Provides insight into term associations without needing deep analysis.</li>
 </ol></li>
 </ol>
 <h3 id="terminology">Terminology</h3>
@@ -727,29 +742,7 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 </tbody>
 </table></li>
 </ol>
-<h3 id="annotation"><span class="todo TODO">TODO</span> Annotation</h3>
-<ul>
-<li>For perspective, we need the name of the author.</li>
-<li>I myself do not know what each class represents when doing manual annotation. We need to define each class.</li>
-<li>Is Sentiment relevant for newspaper data analysis? Most news are about poitics, crime and sus. VERY few are about happy news. So we should not notice any difference between two groups' sentiment distribution.</li>
-<li>Turbo may perform bad for zero-shot. Let us try few-shot prompting.</li>
-</ul>
 <h3 id="experiment---finding-ethnic-articles-using-chatgpt-turbo">Experiment - Finding ethnic articles using ChatGPT Turbo</h3>
-<p>We first identify NLP metrics that require no validation to use them.</p>
-<ol>
-<li>Word Cloud: Words are displayed in various sizes, with more frequent words appearing larger. Useful for quickly identifying prominent terms in a text corpus.</li>
-<li>Term Frequency (TF): Simply counts the occurrences of each term. It's a straightforward way to assess which words are most common without needing a complex evaluation.</li>
-<li>Document Length: Useful for understanding the length of documents without requiring any complex processing.</li>
-<li>Word Length Distribution: Displays how many words of each length exist in the text, offering a glimpse into the text’s complexity.</li>
-<li>Vocabulary Richness: Measures the number of unique words relative to the total number of words. This can be a simple ratio (e.g., type-token ratio) and doesn't require complex evaluation.</li>
-<li>Keyword Extraction (without weighting): Extracts keywords based on basic criteria (e.g., frequency, presence in titles) without needing further validation.</li>
-<li>Basic Readability Scores: Calculated using simple formulas based on sentence length and word syllables (e.g., Flesch Reading Ease). These are standardized metrics and require no further validation.</li>
-<li>N-Gram Frequency: Useful for identifying common phrases or collocations without needing complex interpretation.</li>
-<li>Basic Sentiment Distribution: Shows the proportion of positive, negative, and neutral sentiments in the data, typically using a predefined dictionary or simple model.</li>
-<li>Topic Modeling (without validation): Using methods like LDA (Latent Dirichlet Allocation) to discover topics without detailed evaluation. The results can be interpreted as is.</li>
-<li>Part-of-Speech (POS) Tagging Distribution: Simple frequency counts of POS tags give an overview of the linguistic structure of the text.</li>
-<li>Basic Term Co-Occurrence: Provides insight into term associations without needing deep analysis.</li>
-</ol>
 <p>Our performance of is<sub>ethnic</sub>:</p>
 <table>
 <thead>
@@ -873,7 +866,79 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <td>23/25 , 5/14</td>
 <td><a href="https://docs.google.com/spreadsheets/d/1kqfzyrj0xhy4yjf9frkddz9fkad011blgoivni4uqr0/edit?usp=sharing">result</a></td>
 </tr>
+</tbody>
+</table>
+<p>So we pick gpt-3.5-turbo ctx10k finally.</p>
+<h3 id="annotation">Annotation</h3>
+<p>&lt;2024-09-13 শুক্র&gt;</p>
+<ul>
+<li>For perspective, we need the name of the author.</li>
+<li>I myself do not know what each class represents when doing manual annotation. We need to define each class.</li>
+<li>Is Sentiment relevant for newspaper data analysis? Most news are about poitics, crime and sus. VERY few are about happy news. So we should not notice any difference between two groups' sentiment distribution.</li>
+<li>Turbo may perform bad for zero-shot. Let us try few-shot prompting.</li>
+</ul>
+<p>We finally ended up annotating is<sub>ethnic</sub> label only. We had an aggrement score of 75% between 2 authors over 100 articles. The conflicts were resolved through manual supervision. The resulting final annotation is here. The conflict was mainly in terms of whether ethnic awami league news are ethnic news or not. They ARE ethnic news since they represent the political aspect of their life.</p>
+<ol>
+<li><p>Artifacts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Annotated Dataset</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Annotated Dataset</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">Link</a></td>
+</tr>
 <tr class="even">
+<td>Abhi annotation</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">Link</a></td>
+</tr>
+<tr class="odd">
+<td>Sharif annotation</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">Link</a></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h3 id="experiment---finalizing-chatgpt-turbo">Experiment - Finalizing ChatGPT Turbo</h3>
+<p>&lt;2024-09-13 শুক্র&gt;</p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Prompt</th>
+<th>Accuracy</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1 score</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gpt-3.5-turbo, ctx10k</td>
+<td>ethnic-only-prompt-v2.txt</td>
+<td>62.0</td>
+<td>71.9</td>
+<td>65.1</td>
+<td>68.3</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">annotated<sub>100articles</sub></a></td>
+</tr>
+<tr class="even">
+<td>gpt-4o-mini</td>
+<td>ethnic-only-prompt-v2.txt</td>
+<td>78</td>
+<td>81.5</td>
+<td>84.12</td>
+<td>82.8</td>
+<td>[annotated<sub>100articles</sub>]]</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>

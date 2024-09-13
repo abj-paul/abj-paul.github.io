@@ -91,6 +91,22 @@ For the longest time, newspaper articles have been analyzed manually by research
 2. Straight, Investigative, Commentary or straight vs commentary [18]
 3. Source of news information: subject, spokeperson, expert or commentator, personal experience, popular opinion, eye witness [9]. or spokeperson, expert, victim [10].
 4. Agenda setting, framing, priming, mobilizing [17]
+
+We have also identified the following NLP metrics that require no validation to use them.
+
+1. Word Cloud: Words are displayed in various sizes, with more frequent words appearing larger. Useful for quickly identifying prominent terms in a text corpus.
+2. Term Frequency (TF): Simply counts the occurrences of each term. It's a straightforward way to assess which words are most common without needing a complex evaluation.
+3. Document Length: Useful for understanding the length of documents without requiring any complex processing.
+4. Word Length Distribution: Displays how many words of each length exist in the text, offering a glimpse into the text’s complexity.
+5. Vocabulary Richness: Measures the number of unique words relative to the total number of words. This can be a simple ratio (e.g., type-token ratio) and doesn't require complex evaluation.
+6. Keyword Extraction (without weighting): Extracts keywords based on basic criteria (e.g., frequency, presence in titles) without needing further validation.
+7. Basic Readability Scores: Calculated using simple formulas based on sentence length and word syllables (e.g., Flesch Reading Ease). These are standardized metrics and require no further validation.
+8. N-Gram Frequency: Useful for identifying common phrases or collocations without needing complex interpretation.
+9. Basic Sentiment Distribution: Shows the proportion of positive, negative, and neutral sentiments in the data, typically using a predefined dictionary or simple model.
+10. Topic Modeling (without validation): Using methods like LDA (Latent Dirichlet Allocation) to discover topics without detailed evaluation. The results can be interpreted as is.
+11. Part-of-Speech (POS) Tagging Distribution: Simple frequency counts of POS tags give an overview of the linguistic structure of the text.
+12. Basic Term Co-Occurrence: Provides insight into term associations without needing deep analysis.
+
 *** Terminology
 **** Under-representation, mis-representation or Representation Discrimination?
 Let us look at existing literature to understand what is usually meant by under-representation and mis-representation.
@@ -442,27 +458,7 @@ For protests topic:
 **** Artifacts
 | Data | [[https://drive.google.com/file/d/1PijubT8OPxtakV07lqGuIGx8wvm8CkoR/view?usp=drive_link][4893 ethnic articles]]                 |
 | Code | [[https://github.com/abj-paul/Representation-Discrimination-of-Ethnic-People-in-Bangladesh/blob/main/experiment_results/Bangla_Word_Cloud_for_topic_v2.ipynb][Bangla word cloud for topic_v2.ipynb]] |
-*** TODO Annotation
-- For perspective, we need the name of the author.
-- I myself do not know what each class represents when doing manual annotation. We need to define each class.
-- Is Sentiment relevant for newspaper data analysis? Most news are about poitics, crime and sus. VERY few are about happy news. So we should not notice any difference between two groups' sentiment distribution.
-- Turbo may perform bad for zero-shot. Let us try few-shot prompting.
 *** Experiment - Finding ethnic articles using ChatGPT Turbo
-We first identify NLP metrics that require no validation to use them.
-
-1. Word Cloud: Words are displayed in various sizes, with more frequent words appearing larger. Useful for quickly identifying prominent terms in a text corpus.
-2. Term Frequency (TF): Simply counts the occurrences of each term. It's a straightforward way to assess which words are most common without needing a complex evaluation.
-3. Document Length: Useful for understanding the length of documents without requiring any complex processing.
-4. Word Length Distribution: Displays how many words of each length exist in the text, offering a glimpse into the text’s complexity.
-5. Vocabulary Richness: Measures the number of unique words relative to the total number of words. This can be a simple ratio (e.g., type-token ratio) and doesn't require complex evaluation.
-6. Keyword Extraction (without weighting): Extracts keywords based on basic criteria (e.g., frequency, presence in titles) without needing further validation.
-7. Basic Readability Scores: Calculated using simple formulas based on sentence length and word syllables (e.g., Flesch Reading Ease). These are standardized metrics and require no further validation.
-8. N-Gram Frequency: Useful for identifying common phrases or collocations without needing complex interpretation.
-9. Basic Sentiment Distribution: Shows the proportion of positive, negative, and neutral sentiments in the data, typically using a predefined dictionary or simple model.
-10. Topic Modeling (without validation): Using methods like LDA (Latent Dirichlet Allocation) to discover topics without detailed evaluation. The results can be interpreted as is.
-11. Part-of-Speech (POS) Tagging Distribution: Simple frequency counts of POS tags give an overview of the linguistic structure of the text.
-12. Basic Term Co-Occurrence: Provides insight into term associations without needing deep analysis.
-
 Our performance of is_ethnic:
 | Model                  | is_ethnic | Featured     | Style    | Sentiment    | Genre | Experiment      |
 |------------------------+-----------+--------------+----------+--------------+-------+-----------------|
@@ -487,8 +483,30 @@ From above table, we are sure that we can use gpt-3.5-turbo efficiently for our 
 | Model                             | Accuracy  | Prompt                      | CM           | Result |
 |-----------------------------------+-----------+-----------------------------+--------------+--------|
 | gpt-3.5-turbo, ctx10k, with other | 0.72 (40) | gpt-3_5-turbo-prompt-v2.txt | 23/25 , 5/14 | [[https://docs.google.com/spreadsheets/d/1kqfzyrj0xhy4yjf9frkddz9fkad011blgoivni4uqr0/edit?usp=sharing][result]] |
-|                                   |           |                             |              |        |
+So we pick gpt-3.5-turbo ctx10k finally.
 
+*** Annotation
+<2024-09-13 শুক্র>
+- For perspective, we need the name of the author.
+- I myself do not know what each class represents when doing manual annotation. We need to define each class.
+- Is Sentiment relevant for newspaper data analysis? Most news are about poitics, crime and sus. VERY few are about happy news. So we should not notice any difference between two groups' sentiment distribution.
+- Turbo may perform bad for zero-shot. Let us try few-shot prompting.
+
+We finally ended up annotating is_ethnic label only. We had an aggrement score of 75% between 2 authors over 100 articles. The conflicts were resolved through manual supervision. The resulting final annotation is here. The conflict was mainly in terms of whether ethnic awami league news are ethnic news or not. They ARE ethnic news since they represent the political aspect of their life.
+**** Artifacts
+| Annotated Dataset | Link |
+|-------------------+------|
+| Annotated Dataset | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][Link]] |
+| Abhi annotation   | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][Link]] |
+| Sharif annotation | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][Link]] |
+
+*** Experiment - Finalizing ChatGPT Turbo
+<2024-09-13 শুক্র>
+| Model                 | Prompt                    | Accuracy | Precision | Recall | F1 score | Result                    |
+|-----------------------+---------------------------+----------+-----------+--------+----------+---------------------------|
+| gpt-3.5-turbo, ctx10k | ethnic-only-prompt-v2.txt |     62.0 |      71.9 |   65.1 |     68.3 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][annotated_100_articles]]    |
+| gpt-4o-mini           | ethnic-only-prompt-v2.txt |       78 |      81.5 |  84.12 |     82.8 | [annotated_100_articles]] |
+|                       |                           |          |           |        |          |                           |
 **** Issues
 - Prompt engineering is a hard trial-and-error practice.
 
