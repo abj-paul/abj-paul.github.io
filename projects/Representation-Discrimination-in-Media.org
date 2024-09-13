@@ -493,6 +493,11 @@ So we pick gpt-3.5-turbo ctx10k finally.
 - Turbo may perform bad for zero-shot. Let us try few-shot prompting.
 
 We finally ended up annotating is_ethnic label only. We had an aggrement score of 75% between 2 authors over 100 articles. The conflicts were resolved through manual supervision. The resulting final annotation is here. The conflict was mainly in terms of whether ethnic awami league news are ethnic news or not. They ARE ethnic news since they represent the political aspect of their life.
+
+| Annotation | Count |
+|------------+-------|
+| Yes        |    63 |
+| No         |    37 |
 **** Artifacts
 | Annotated Dataset | Link |
 |-------------------+------|
@@ -502,11 +507,18 @@ We finally ended up annotating is_ethnic label only. We had an aggrement score o
 
 *** Experiment - Finalizing ChatGPT Turbo
 <2024-09-13 শুক্র>
-| Model                 | Prompt                    | Accuracy | Precision | Recall | F1 score | Result                    |
-|-----------------------+---------------------------+----------+-----------+--------+----------+---------------------------|
-| gpt-3.5-turbo, ctx10k | ethnic-only-prompt-v2.txt |     62.0 |      71.9 |   65.1 |     68.3 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][annotated_100_articles]]    |
-| gpt-4o-mini           | ethnic-only-prompt-v2.txt |       78 |      81.5 |  84.12 |     82.8 | [annotated_100_articles]] |
-|                       |                           |          |           |        |          |                           |
+| Model                 | Prompt                         | Accuracy | Precision | Recall | F1 score | Result             |
+|-----------------------+--------------------------------+----------+-----------+--------+----------+--------------------|
+| gpt-3.5-turbo, ctx10k | ethnic-only-prompt-v2.txt      |      62% |      71.9 |   65.1 |     68.3 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]]               |
+| gpt-4o-mini, ctx 10k  | ethnic-only-prompt-v2.txt      |      78% |      81.5 |  84.12 |     82.8 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]]               |
+| gpt-3.5-turbo, ctx10k | combined and formal prompt.txt |      72% |     72.15 |   90.5 |     80.2 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] , [[https://drive.google.com/file/d/1sJacSTq4jkW15MT8IGtH2Zou9lFH-tcH/view?usp=drive_link][all metrics]] |
+| gpt-4o-mini           | combined and formal prompt.txt |      67% |      65.5 |    100 |   79.24% | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] , [[https://drive.google.com/file/d/1-1qsHQiaH2duwZ0UIsXDB8kzIAZCpyu3/view?usp=drive_link][all metrics]] |
+| gpt-4o-mini, ctx 10k  | combined and formal prompt.txt |      69% |     67.02 |    100 |    80.25 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] , [[https://drive.google.com/file/d/1sgnldRcK4lfshGZsVOd4zvhat2MHCRV_/view?usp=drive_link][all metrics]] |
+| gpt-4o-mini, ctx 10k  | chatgpt4o-mini-prompt-v1.txt   |      70% |      67.7 |    100 |     80.7 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] , [[https://drive.google.com/file/d/16DuQaCuKfsP0V-cW3Tte04a3j5ewM7Cq/view?usp=drive_link][all metrics]] |
+| gpt-3.5-turbo, ctx10k | chatgpt4o-mini-prompt-v1.txt   |      72% |      76.9 |   79.4 |    78.13 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] , [[https://drive.google.com/file/d/1dJicnnePSbajYwO8Ibt6euZM7-SI7TtZ/view?usp=drive_link][all metrics]] |
+| gpt-3.5-turbo, ctx10k | combined and indigenous.txt    |      77% |      81.3 |   82.5 |   ~81.9~ | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]] ,[[https://drive.google.com/file/d/1Lqn-5_sWwZ5urIVFnjcddrIcQMg_J4ch/view?usp=drive_link][all metrics]]  |
+
+GPT 4o greatly overfit to TRUE class for combined prompt v1, hence performing terribly.
 **** Issues
 - Prompt engineering is a hard trial-and-error practice.
 
@@ -580,3 +592,6 @@ Additionally, finding case studies can greatly benefit from volunteers who are a
 [16] https://sentiment.bangla.gov.bd/sentiment-emotion-analysis
 [17] https://mlpp.pressbooks.pub/pol111mhs/chapter/1-2-news/
 [18] Bal, Haluk Mert, and Lemi Baruh. "Citizen involvement in emergency reporting: A study on witnessing and citizen journalism." Interactions: Studies in Communication & Culture 6.2 (2015): 213-231.
+
+
+

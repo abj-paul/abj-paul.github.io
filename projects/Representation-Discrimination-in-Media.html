@@ -878,6 +878,24 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <li>Turbo may perform bad for zero-shot. Let us try few-shot prompting.</li>
 </ul>
 <p>We finally ended up annotating is<sub>ethnic</sub> label only. We had an aggrement score of 75% between 2 authors over 100 articles. The conflicts were resolved through manual supervision. The resulting final annotation is here. The conflict was mainly in terms of whether ethnic awami league news are ethnic news or not. They ARE ethnic news since they represent the political aspect of their life.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Annotation</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Yes</td>
+<td>63</td>
+</tr>
+<tr class="even">
+<td>No</td>
+<td>37</td>
+</tr>
+</tbody>
+</table>
 <ol>
 <li><p>Artifacts</p>
 <table>
@@ -921,32 +939,78 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <tr class="odd">
 <td>gpt-3.5-turbo, ctx10k</td>
 <td>ethnic-only-prompt-v2.txt</td>
-<td>62.0</td>
+<td>62%</td>
 <td>71.9</td>
 <td>65.1</td>
 <td>68.3</td>
-<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">annotated<sub>100articles</sub></a></td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a></td>
 </tr>
 <tr class="even">
-<td>gpt-4o-mini</td>
+<td>gpt-4o-mini, ctx 10k</td>
 <td>ethnic-only-prompt-v2.txt</td>
-<td>78</td>
+<td>78%</td>
 <td>81.5</td>
 <td>84.12</td>
 <td>82.8</td>
-<td>[annotated<sub>100articles</sub>]]</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>gpt-3.5-turbo, ctx10k</td>
+<td>combined and formal prompt.txt</td>
+<td>72%</td>
+<td>72.15</td>
+<td>90.5</td>
+<td>80.2</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> , <a href="https://drive.google.com/file/d/1sJacSTq4jkW15MT8IGtH2Zou9lFH-tcH/view?usp=drive_link">all metrics</a></td>
+</tr>
+<tr class="even">
+<td>gpt-4o-mini</td>
+<td>combined and formal prompt.txt</td>
+<td>67%</td>
+<td>65.5</td>
+<td>100</td>
+<td>79.24%</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> , <a href="https://drive.google.com/file/d/1-1qsHQiaH2duwZ0UIsXDB8kzIAZCpyu3/view?usp=drive_link">all metrics</a></td>
+</tr>
+<tr class="odd">
+<td>gpt-4o-mini, ctx 10k</td>
+<td>combined and formal prompt.txt</td>
+<td>69%</td>
+<td>67.02</td>
+<td>100</td>
+<td>80.25</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> , <a href="https://drive.google.com/file/d/1sgnldRcK4lfshGZsVOd4zvhat2MHCRV_/view?usp=drive_link">all metrics</a></td>
+</tr>
+<tr class="even">
+<td>gpt-4o-mini, ctx 10k</td>
+<td>chatgpt4o-mini-prompt-v1.txt</td>
+<td>70%</td>
+<td>67.7</td>
+<td>100</td>
+<td>80.7</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> , <a href="https://drive.google.com/file/d/16DuQaCuKfsP0V-cW3Tte04a3j5ewM7Cq/view?usp=drive_link">all metrics</a></td>
+</tr>
+<tr class="odd">
+<td>gpt-3.5-turbo, ctx10k</td>
+<td>chatgpt4o-mini-prompt-v1.txt</td>
+<td>72%</td>
+<td>76.9</td>
+<td>79.4</td>
+<td>78.13</td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> , <a href="https://drive.google.com/file/d/1dJicnnePSbajYwO8Ibt6euZM7-SI7TtZ/view?usp=drive_link">all metrics</a></td>
+</tr>
+<tr class="even">
+<td>gpt-3.5-turbo, ctx10k</td>
+<td>combined and indigenous.txt</td>
+<td>77%</td>
+<td>81.3</td>
+<td>82.5</td>
+<td><code>81.9</code></td>
+<td><a href="https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing">link</a> ,<a href="https://drive.google.com/file/d/1Lqn-5_sWwZ5urIVFnjcddrIcQMg_J4ch/view?usp=drive_link">all metrics</a></td>
 </tr>
 </tbody>
 </table>
+<p>GPT 4o greatly overfit to TRUE class for combined prompt v1, hence performing terribly.</p>
 <ol>
 <li><p>Issues</p>
 <ul>
