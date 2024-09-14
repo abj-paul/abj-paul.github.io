@@ -159,15 +159,28 @@
 </tr>
 </tbody>
 </table>
-<p>AI usage in Beauty websites include:</p>
+<p>We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites. However, annotating beauty sites is hard for me, since i have no idea on them. So let me instead do a pilot study with ecommerce data.</p>
+<h3 id="code-progress">Code Progress</h3>
+<ul>
+<li><p>[X] Download sites</p></li>
+<li><p>[X] Detect AI keyword: BUG-&gt; Inside words</p></li>
+<li><p>[X] Separate segment where AI is mentioned.</p></li>
+<li><p>[X] Mark in website where AI is mentioned (for annotation and understanding).</p></li>
+<li><p>[X] Do it for 100 websites</p></li>
+<li><p>[ ] Use word-embedding instead of keyword matching</p></li>
+<li><p>[X] gpt.js , otSDKStub.js</p></li>
+<li><p>[X] commoncrawl</p>
+<p>The above code analysis approach does not work well since word-embedding can't be used in code variable-function names.</p></li>
+</ul>
+<h3 id="patterns">Patterns</h3>
+<p>We have identified the following patterns.</p>
 <ol>
-<li><p>Personalized Recommendations: AI algorithms analyze user preferences and behaviors to recommend skincare products, makeup items, or beauty routines tailored to individual needs.</p></li>
-<li><p>Virtual Try-ons: AI-powered augmented reality (AR) allows users to virtually try on makeup or hairstyles using their device’s camera.</p></li>
-<li><p>Image recognition: AI analyzes user photos to provide personalized beauty advice, such as identifying skin issues or suggesting suitable products.</p></li>
-<li><p>Chatbots and Virtual Assistants: AI chatbots offer personalized beauty tips, answer product-related questions, and assist with customer service.</p></li>
-<li><p>Trend Analysis: AI tracks and analyzes beauty trends and customer feedback to help brands adapt their product offerings and marketing strategies.</p>
-<p>We now need to annotate the websites to understand the places where AI is actually used. For that, we need to use the sites.</p></li>
+<li>Search</li>
+<li>Recommendation / Trend (e.g. Rising star, Popular this week, best completed )</li>
+<li>Personalization</li>
+<li>Chatbot</li>
 </ol>
+<p>We can alternatively list all features a website has using fuzzing and chatGPT to interpret the contents.</p>
 <h2 id="references">References</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr />
