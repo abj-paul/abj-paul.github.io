@@ -507,6 +507,7 @@ We finally ended up annotating is_ethnic label only. We had an aggrement score o
 
 *** Experiment - Finalizing ChatGPT Turbo
 <2024-09-13 শুক্র>
+annotation data: 100, two annotator, 75% agreement score, (Yes=63, No=37)
 | Model                 | Prompt                         | Accuracy | Precision | Recall | F1 score | Result             |
 |-----------------------+--------------------------------+----------+-----------+--------+----------+--------------------|
 | gpt-3.5-turbo, ctx10k | ethnic-only-prompt-v2.txt      |      62% |      71.9 |   65.1 |     68.3 | [[https://docs.google.com/spreadsheets/d/1KQfZyRj0xhY4yjf9frkddz9FKAd011BlGOIvNI4Uqr0/edit?usp=sharing][link]]               |
@@ -573,6 +574,8 @@ We can combine all of it into a single ChatGPT response. However, imo, this can 
 Additionally, finding case studies can greatly benefit from volunteers who are already working on it. They should already possess a large collection of such cases of discrimination, like the following.
 [[file:~/abj-paul.github.io/data/case studies from fb.png]]
 
+1. [[https://www.facebook.com/tufansArtbin][News source 1]]
+2. [[https://www.facebook.com/sathi.chakma.5/posts/pfbid0CDLNZEV1i58aqnrX4yAcRJUSQPx3DdtZgJbXuwRtK5wudTzD6GpuWbuBLdkKcFwzl?rdid=pWo5kKcGx157oYKg][News source 2]]
 ** References
 [1] Fonseca, António Filipe, et al. "Caste in the news: A computational analysis of Indian newspapers." Social Media+ Society 5.4 (2019): 2056305119896057.
 [2] Balasubramaniam, J. "Dalits and a Lack of Diversity in the Newsroom." Economic and Political Weekly (2011): 21-23.
