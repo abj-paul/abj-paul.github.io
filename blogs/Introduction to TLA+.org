@@ -2,6 +2,10 @@
 #+AUTHOR: Abhijit Paul
 #+DATE: <2024-08-26 সোম>
 
+** TLA+ niche
+1. In TLA, every variable is a set
+2. In $B' = A + 3 \land A' = 4  \iff   A' = 4 \land B' = A + 3$. This is unlike programming languages. Its because TLA is not programming language. Its Math and in math, $X \land Y Y = Y \land X$.
+3. In TLA, array is mathematical function, index set is domain and values are range. So its defined like. e.g. $sqr = [ i \in 1..42  \rightarrow  i^2 ]$. So $sqr[3] = 9$. 
 ** Non-deterministic C Code
 Let us write our first program after installing TLA+ toolbox and opening the ~toolbox~. We try to write the following C code segment in TLA+.
 
@@ -85,8 +89,15 @@ This wedding can be compared to a database transaction. A transactions can commi
 
 Now let us write a spec for it.
 
+1. In TLA+, every value is a set. Even 42 and "abc" are sets. But TLA+ does not know what their elements are. So it can't evaluate 42 \E "abc" as True or False.
+2. rmState is an array indexed by RMs. So rmState[r] is the state of RM r.
+3. In TLA+, arrays are functions. So array is defined as [domain -> range]. e.g. $[ rmState \in \{ \text{"working"}, \text{"prepared"}, \text{"committed"}, \text{"aborted"} \}]$.
+4. Some harder definitions of functions/array can be: $rmState = [r \in RM \rightarrow \text{"working"}]$. Note that we use ~|->~ symbol since we are ~assigning~ value.
+5. Similar to above $[variable \in set \rightarrow expression]$ notation, we can write $[i \in 1..42 \rightarrow i^2]$
+6. canCommit: One can commit if all RMs are already committed or prepared to commit.
+7. notCommitted: RM r can abort only when no other RM is committed.
 
-** TLA+ niche
-1. In TLA, every variable is a set
-2. In $B' = A + 3 \land A' = 4  \iff   A' = 4 \land B' = A + 3$. This is unlike programming languages. Its because TLA is not programming language. Its Math and in math, $X \land Y Y = Y \land X$.
-3. In TLA, array is mathematical function, index set is domain and values are range. So its defined like. e.g. $sqr = [ i \in 1..42  \rightarrow  i^2 ]$. So $sqr[3] = 9$. 
+   The final code is:
+   [[file:~/abj-paul.github.io/data/tcomit-code.png]]
+** Resources
+[[https://github.com/tlaplus/Examples/blob/master/specifications/transaction_commit/TCommit.tla][100 TLA+ exercise]]

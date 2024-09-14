@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -77,12 +79,18 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
-<body>
+<body class="markdown-container">
 <header id="title-block-header">
 <h1 class="title">Introduction to TLA+</h1>
 <p class="author">Abhijit Paul</p>
 <p class="date">&lt;2024-08-26 সোম&gt;</p>
 </header>
+<h2 id="tla-niche">TLA+ niche</h2>
+<ol>
+<li>In TLA, every variable is a set</li>
+<li>In <span class="math inline"><em>B</em>′ = <em>A</em> + 3 ∧ <em>A</em>′ = 4 ⇔ <em>A</em>′ = 4 ∧ <em>B</em>′ = <em>A</em> + 3</span>. This is unlike programming languages. Its because TLA is not programming language. Its Math and in math, <span class="math inline"><em>X</em> ∧ <em>Y</em><em>Y</em> = <em>Y</em> ∧ <em>X</em></span>.</li>
+<li>In TLA, array is mathematical function, index set is domain and values are range. So its defined like. e.g. <span class="math inline"><em>s</em><em>q</em><em>r</em> = [<em>i</em> ∈ 1..42 → <em>i</em><sup>2</sup>]</span>. So <span class="math inline"><em>s</em><em>q</em><em>r</em>[3] = 9</span>.</li>
+</ol>
 <h2 id="non-deterministic-c-code">Non-deterministic C Code</h2>
 <p>Let us write our first program after installing TLA+ toolbox and opening the <code>toolbox</code>. We try to write the following C code segment in TLA+.</p>
 <div class="sourceCode" id="cb1" data-org-language="C"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="dt">void</span> main(){</span>
@@ -90,7 +98,7 @@
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>  x = someNumber();</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  x = x+<span class="dv">1</span>;</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>}</span></code></pre></div>
-<p>To write it into TLA+, <img src="~/abj-paul.github.io/data/pretty-printed-tla+-first.png" /></p>
+<p>To write it into TLA+, <img src="../data/pretty-printed-tla+-first.png" /></p>
 <p>And the ASCII version for it is:</p>
 <pre><code>------------------------------- MODULE first -------------------------------
 EXTENDS integers
@@ -152,13 +160,19 @@ Next == BigToSmall \/ SmallToBig \/ EmptySmall \/ EmptyBig \/ FillSmall \/ FillB
 <li>Prepared stage</li>
 <li>Committed or aborted stage (hmm cheating perhaps)</li>
 </ol>
-<p>This wedding can be compared to a database transaction. A transactions can commit if all resource managers (RM) are prepared to commit and is aborted otherwise. However, the unsure state is usually called <code>working</code> state of RM. <img src="~/abj-paul.github.io/data/state transition diagram of marriage TLA.png" /></p>
+<p>This wedding can be compared to a database transaction. A transactions can commit if all resource managers (RM) are prepared to commit and is aborted otherwise. However, the unsure state is usually called <code>working</code> state of RM. <img src="../data/state transition diagram of marriage TLA.png" /></p>
 <p>Now let us write a spec for it.</p>
-<h2 id="tla-niche">TLA+ niche</h2>
 <ol>
-<li>In TLA, every variable is a set</li>
-<li>In <span class="math inline"><em>B</em>′ = <em>A</em> + 3 ∧ <em>A</em>′ = 4 ⇔ <em>A</em>′ = 4 ∧ <em>B</em>′ = <em>A</em> + 3</span>. This is unlike programming languages. Its because TLA is not programming language. Its Math and in math, <span class="math inline"><em>X</em>/ <em>Y</em><em>Y</em> = <em>Y</em>/ <em>X</em></span>.</li>
-<li>In TLA, array is mathematical set. So its defined like a set. e.g. <span class="math inline">[<em>i</em> ∈ 1..42] → <em>i</em><sup>2</sup>]</span>.</li>
+<li><p>In TLA+, every value is a set. Even 42 and "abc" are sets. But TLA+ does not know what their elements are. So it can't evaluate 42  "abc" as True or False.</p></li>
+<li><p>rmState is an array indexed by RMs. So rmState[r] is the state of RM r.</p></li>
+<li><p>In TLA+, arrays are functions. So array is defined as [domain -&gt; range]. e.g. <span class="math inline">[<em>r</em><em>m</em><em>S</em><em>t</em><em>a</em><em>t</em><em>e</em> ∈ {"working", "prepared", "committed", "aborted"}]</span>.</p></li>
+<li><p>Some harder definitions of functions/array can be: <span class="math inline"><em>r</em><em>m</em><em>S</em><em>t</em><em>a</em><em>t</em><em>e</em> = [<em>r</em> ∈ <em>R</em><em>M</em> → "working"]</span>. Note that we use <code>|-&gt;</code> symbol since we are <code>assigning</code> value.</p></li>
+<li><p>Similar to above <span class="math inline">[<em>v</em><em>a</em><em>r</em><em>i</em><em>a</em><em>b</em><em>l</em><em>e</em> ∈ <em>s</em><em>e</em><em>t</em> → <em>e</em><em>x</em><em>p</em><em>r</em><em>e</em><em>s</em><em>s</em><em>i</em><em>o</em><em>n</em>]</span> notation, we can write <span class="math inline">[<em>i</em> ∈ 1..42 → <em>i</em><sup>2</sup>]</span></p></li>
+<li><p>canCommit: One can commit if all RMs are already committed or prepared to commit.</p></li>
+<li><p>notCommitted: RM r can abort only when no other RM is committed.</p>
+<p>The final code is: <img src="../data/tcomit-code.png" /></p></li>
 </ol>
+<h2 id="resources">Resources</h2>
+<p><a href="https://github.com/tlaplus/Examples/blob/master/specifications/transaction_commit/TCommit.tla">100 TLA+ exercise</a></p>
 </body>
 </html>
