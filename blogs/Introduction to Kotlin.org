@@ -1,0 +1,13 @@
+#+TITLE: Getting started with Kotlin
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-09-16 সোম>
+
+Kotlin : To provide a safer and more expressive alternative to Java without compromising on Java interoperability.
+
+** History
+Kotlin's first version ever was released in 2016. It was designed as an extension of Java. It can be incorporated in any Java project without any issues. The reason Kotlin was invented are many. Few are:
+1. Boilerplate code: Java needs a LOT OF boilerplate code (remember the agony of design patterns. It always felt like to do 2+2, we need to write 50 LoC). To address it, Kotlin was designed. It allowed developers to write code without boilerplates due to their built in supports for it e.g. data classes are one liners in Kotlin.
+2. Null pointer exception: It is a major issue in Java. Kotlin provides null safety.
+3. Type inference for easy programming.
+
+   The first version (1.0)included null safety, concise syntax, and extension functions. Kotlin 1.1 included functions for asyncrhonous programming. With v1.2, Kotlin started its journey of supporting OS natively without relying on middleman like JVM. It first provided native support in IoS.
