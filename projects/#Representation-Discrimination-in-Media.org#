@@ -524,51 +524,14 @@ DONE ANNOTATING! There was a small mishap midway, anyway, [[https://drive.google
 **** Issues
 - Prompt engineering is a hard trial-and-error practice.
 
-*** Experiment - EDA on ChatGPT Turbo Annotation
+*** TODO Experiment - EDA on ChatGPT Turbo Annotation
 The topic distribution is as follows:
 [[file:~/abj-paul.github.io/data/genre_frequency_ethnic2873_chatgpt35turbo.png]]
-
-For description stye:
-[[file:~/abj-paul.github.io/data/repdisc_description_style.png]]
-
-For featured:
-[[file:~/abj-paul.github.io/data/repdisc_featured.png]]
-
-For sentiment:
-[[file:~/abj-paul.github.io/data/repdisc_sentiment.png]]
-
-Top 40 agenda setting:
-[[file:~/abj-paul.github.io/data/repdisc_agenda_setting.png]]
-
-Top 40 framing :
-[[file:~/abj-paul.github.io/data/repdisc_framing.png]]
-
-Top 40 priming:
-[[file:~/abj-paul.github.io/data/repdisc_priming.png]]
-
-Top 40 mobilization:
-[[file:~/abj-paul.github.io/data/repdisc_mobilization.png]]
 *** Experiment - Topic modeling, word cloud in curated dataset
 The topic coherence score was high (114.78088415347356) and we used the same threshold as usual. And ~sports, health, local news, science, religion~ contents are not ABOUT ethnic people, they are just part of it.
 [[file:~/abj-paul.github.io/data/genre_frequency_ethnic2873.png]]
 This topic distribution provides stronger support against our hypothesis. Now let us do word cloud. For protest and conflict, we got the following word cloud.
 [[file:~/abj-paul.github.io/data/repdisc_protest-conflict.png]]
-
-For govt actions:
-[[file:~/abj-paul.github.io/data/repdisc_govt_actions.png]]
-
-For crime:
-[[file:~/abj-paul.github.io/data/repdisc_crime.png]]
-
-For politics:
-[[file:~/abj-paul.github.io/data/repdisc_politics.png]]
-
-For education:
-[[file:~/abj-paul.github.io/data/repdisc_education.png]]
-
-For technology (Observe "Mobile terrorist"):
-[[file:~/abj-paul.github.io/data/repdisc_technology.png]]
-
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
