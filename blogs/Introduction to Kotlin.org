@@ -10,4 +10,360 @@ Kotlin's first version ever was released in 2016. It was designed as an extensio
 2. Null pointer exception: It is a major issue in Java. Kotlin provides null safety.
 3. Type inference for easy programming.
 
-   The first version (1.0)included null safety, concise syntax, and extension functions. Kotlin 1.1 included functions for asyncrhonous programming. With v1.2, Kotlin started its journey of supporting OS natively without relying on middleman like JVM. It first provided native support in IoS.
+   The first version (1.0)included null safety, concise syntax, and extension functions. Kotlin 1.1 included functions for asyncrhonous programming. With v1.2, Kotlin started its journey of supporting OS natively without relying on middleman like JVM. It first provided native support in IoS. v1.3 -1.5improved support for coroutines, added the suspend modifier for functions and improved type inference and compilation performance. 1.6-1.7 are adding experimental features like Kotlin/JS backend, functional programming, scripting etc.
+
+** Installation
+Install in ubuntu using ~sudo snap install --classic kotlin~.
+
+To test your installation, write and compile the sample code below.
+#+begin_src kotlin
+  fun main() {
+    println("Hello, World!")
+}
+#+end_src
+Save it in a filename.kt and compile using:
+#+begin_src bash
+  kotlinc filename.kt -include-runtime -d filename.jar
+  java -jar filename.jar
+#+end_src
+The ~-include-runtime~ option makes the resulting .jar file self-contained and runnable by including the Kotlin runtime library in it.
+
+** Basic Syntax
+We will see kotlin-specific syntax. Note that since java is interoperable with Kotlin, Kotlin supports all java syntax as well.
+*** Hello World
+The first program in any language:
+#+begin_src Kotlin
+  fun main(){
+    println("Hello world!")
+  }
+#+end_src
+Like other language, Kotlin also need a main function.
+*** Variables
+Kotlin uses val for immutable (read-only) variables and var for mutable ones.
+#+begin_src kotlin
+  fun test_variables(){
+    val c = 10
+    var x = "Abhijit"
+  }
+#+end_src
+*** Data Types
+Kotlin has built-in types like: Int, Double, String, Boolean
+#+begin_src kotlin
+  fun test_datatypes(){
+    val number : Int = 10
+    var name : String = "Abhijit"
+    val isCool : Boolean = true
+  }
+#+end_src
+
+*** Control Flow
+Kotlin’s if can return values.
+#+begin_src kotlin
+  fun ifelse(){
+    val number = 10;
+    val message = if (number > 5) "Greater than 5" else "Less than or equal 5"
+  }
+#+end_src
+The when statement is Kotlin’s alternative to switch in Java.
+#+begin_src kotlin
+  fun testwhen(){
+    val number = 14;
+    var result = when (number) {
+            1 -> "One"
+            2 -> "Two"
+            else -> "Unknown"
+     }
+  }
+#+end_src
+
+*** Loops
+#+begin_src kotlin
+  fun testloops(){
+    for(i in 1..4){
+      println(i)
+    }
+
+    var i = 10;
+    while(i>10){
+      println(i)
+      i--
+    }
+  }
+#+end_src
+
+*** Functions
+Functions in Kotlin are defined with fun:
+#+begin_src kotlin
+  fun addtwo(a: Int, b: Int) :Int{
+    return a + b 
+  }
+#+end_src
+
+*** Classes
+  Kotlin is object-oriented, so you can define classes:
+#+begin_src kotlin
+  class Person(name: String, age: Int) {
+    fun greet(){
+      println("I am $name and I am $age years old")
+    }
+  }
+
+  val person = Person("Alice", 30)
+  person.greet()
+#+end_src
+*** Null Pointer Exception
+Kotlin is designed to avoid null pointer exceptions:
+#+begin_src kotlin
+var name: String? = "Kotlin"  // Nullable type
+name = null
+
+// Safe call operator (?.)
+println(name?.length)  // Returns null if name is null
+#+end_src
+
+The question mark means ~nullable type~. And ~?.~ is safe call operator.
+
+Question: Then why isn't ?. the default?
+*** Extension Funcion
+You can extend existing classes with new functions.
+#+begin_src kotlin
+ fun String.lastChar(): Int = this[this.length-1] 
+
+ var lastChar = "Kotlin".lastChar()
+#+end_src
+
+Ques: How about multiline functions?
+*** Coroutines
+Kotlin provides coroutines for asynchronous programming:
+#+begin_src kotlin
+ import kotlinx.coroutines.*
+
+ fun main() = runBlocking(){
+    launch{
+      delay(1000L);
+      println(" World!")
+    }
+    println("Hello, ")
+ }
+#+end_src
+
+Ques: What does ~runBlocking~ do.
+1. In Kotlin, you can assign a function body as an expression when there's only one statement or block. For example,
+   #+begin_src kotlin
+     fun main(){
+       fun addTwo(a: Int, b: Int) : Int = a+b
+       println(addTwo(1,2))
+     }
+   #+end_src
+2. The code inside the runBlocking block will run in the current thread, and it will wait for the completion of the launch coroutine.
+3. Coroutines are Kotlin's way of handling asynchronous programming, allowing you to run tasks concurrently without creating separate threads.
+4. 1000L: The L suffix denotes that the number is a Long data type in Kotlin. The default time unit is ms so 1000L is 1000ms = 1s
+
+****  How It Works
+- The runBlocking block starts, and the program executes synchronously.
+- The launch coroutine starts running asynchronously but immediately hits a delay(1000L) and suspends for 1 second.
+- The println("Hello,") line executes right away, printing Hello, to the console.
+- After 1 second, the coroutine resumes and prints World! to the console.
+*** Data Classes
+Java: More verbose and requires boilerplate code.
+Kotlin: More concise and expressive, reducing boilerplate and improving readability.
+#+begin_src kotlin
+  data class Person(val name: String, var age: Int)
+#+end_src
+*** Default argument
+Java: Requires multiple overloaded methods for default arguments.
+Kotlin: Supports default arguments and named parameters directly.
+#+begin_src kotlin
+  fun greet(name: String = "Guest") {
+    println("Hello, $name!")
+}
+greet()             // Outputs: Hello, Guest!
+greet("Alice")      // Outputs: Hello, Alice!
+#+end_src
+
+** Maven
+Maven is a powerful build automation tool primarily used for Java projects, but it can be used with Kotlin and other JVM languages as well. It simplifies dependency management, project structure, and build tasks.
+
+You can install maven using ~sudo apt install maven~.
+*** Step 1: Generate a Maven Project
+Maven provides a simple way to generate a new project from scratch using archetypes.
+#+begin_src bash
+  mvn archetype:generate -DgroupId=com.example -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+#+end_src
+Explanation:
+- DgroupId: This is the base package name, like com.example.
+- DartifactId: The name of your project (e.g., my-app).
+- DarchetypeArtifactId: Specifies the template for a basic project structure.
+- DinteractiveMode=false: Runs the command without prompting for user input.
+
+Note: Remove the -DarcheTypeArtifactId if you want to create a custom project.
+
+This would create the following project structure.
+#+begin_src text
+  my-app/
+ ├── pom.xml
+ └── src/
+     ├── main/
+     │   └── java/
+     │       └── com/
+     │           └── example/
+     │               └── App.java
+     └── test/
+         └── java/
+             └── com/
+                 └── example/
+                     └── AppTest.java
+#+end_src
+
+Ques: Why maven creates such a complex structure?
+*** Step 2: Understanding pom.xml
+The pom.xml (Project Object Model) is the core file in any Maven project, containing configurations and dependencies. Here is a basic pom.xml
+#+begin_src xml
+  <project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>abj.paul</groupId>
+    <artifactId>simple-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- Dependencies go here -->
+    </dependencies>
+
+</project>
+#+end_src
+The Key components are:
+- groupId: Unique identifier for your project’s group (like a package name).
+- artifactId: Project name.
+- version: Project version, typically 1.0-SNAPSHOT for development.
+
+Ques: Why the early fluffs
+*** Step 3: Adding dependencies
+You can add external libraries (dependencies) using the pom.xml. For example, to add JUnit (for unit testing), you would include:
+#+begin_src xml
+  <dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.1</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+#+end_src
+*** Step 4: Building the Project
+To build your project and compile the code, run the following command in the project directory (where pom.xml is located):
+
+#+begin_src bash
+mvn compile
+#+end_src
+
+This will compile the source code in src/main/java.
+*** Step 5: Running the Project
+To execute the project, you can use the exec plugin. Add this plugin to your pom.xml:
+#+begin_src xml
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <mainClass>com.example.App</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+#+end_src
+
+Then, run the project using:
+
+#+begin_src bash
+mvn exec:java
+#+end_src
+
+This will execute the main method in the com.example.App class.
+*** Step 6: Other
+1. Maven also supports running tests automatically. If you have unit tests in src/test/java, you can run them using ~mvn test~.
+2. Maven can package your project into a JAR (Java ARchive) file. To do this, use the following command ~mvn package~. This command compiles the code, runs tests, and packages the project into a JAR file located in the target/ directory.
+3. To clean up the compiled files and reset the project directory, run ~mvn clean~. This deletes the target/ directory where compiled files and packages are stored.
+*** Kotlin
+For building project:
+#+begin_src bash
+mvn archetype:generate -DgroupId=iit.du -DartifactId=agile-fortis -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+#+end_src
+
+Modify the pom.xml to include Kotlin-specific configurations. You will need to:
+- Add the Kotlin dependencies.
+- Configure the Kotlin Maven plugin to compile Kotlin code.
+#+begin_src xml
+  <project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.kotlin</groupId>
+    <artifactId>kotlin-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Define the Kotlin version -->
+        <kotlin.version>1.8.0</kotlin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Kotlin Standard Library -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <!-- JUnit for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Kotlin Maven Plugin -->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+#+end_src
+
+Explanation of the pom.xml:
+
+- Kotlin Version: The <kotlin.version> property defines which version of Kotlin is being used.
+- Kotlin Dependency: The kotlin-stdlib dependency is required for any Kotlin project. This is Kotlin’s standard library.
+- JUnit Dependency: This is added for unit testing.
+- Kotlin Maven Plugin: This plugin is used to compile Kotlin code in Maven.
+  

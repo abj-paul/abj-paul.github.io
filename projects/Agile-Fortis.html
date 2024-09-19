@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="project.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Abhijit Paul" />
+  <title>Automating Cost Concerns of Fortis Redesigns</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<header id="title-block-header">
+<h1 class="title">Automating Cost Concerns of Fortis Redesigns</h1>
+<p class="author">Abhijit Paul</p>
+<p class="date">&lt;2024-09-17 মঙ্গল&gt;</p>
+</header>
+<h2 id="update-optimization-function-to-address-cost-concerns">Update Optimization function to address cost concerns</h2>
+<p>I am trying to change codebase of Fortis - a research paper made by a PhD student in CMU. So I need to run that codebase for that, firstly.</p>
+<h3 id="dependency-not-found">Dependency not found!</h3>
+<p>These dependencies are not available in maven repository. So they must be available as jar files online. But I could not find any such jar files! And I checked .gitignore file of the <a href="https://github.com/cmu-soda/fortis-core">fortis-core</a> repository and it excluded <code>bin</code> folder that includes the jar files. <img src="../data/fortis-depedency-issue.png" /></p>
+<p>Possible reasons:</p>
+<ol>
+<li>It is available somewhere online and I cannot find it, yet.</li>
+<li>It is an internal file of cmu.soda</li>
+<li>Remove those dependencies and see what happens: Many other issues are still there, sigh</li>
+</ol>
+<h3 id="common-package-not-found">common package not found!</h3>
+<p>As you can see in the list of packages, there is no <code>common</code> package. I checked last 30 commits randomly and did not find this folder in ANY of the commits! Its also not in .gitignore <img src="../data/common folder not found.png" /></p>
+<p>Possible solutions:</p>
+<ol>
+<li>My friend Radium found this <a href="https://github.com/cmu-soda/fortis-api.git">fortis-api</a> repository. It has THE common package! It worked!</li>
+</ol>
+<h2 id="use-chatgpt-to-generate-costs">Use ChatGPT to generate costs</h2>
+<p>The goal is to generate costs and use that to generate graphs. Then we will inspect how effective those generations are.</p>
+<p>The input should be:</p>
+<pre class="text"><code>  Controllable states are which that machine can control. And obserables are which that machine can observe. Give a list of states, you will return me the controllableMap and obseravbleMap. Assign a cost between 0-4 to them. Keep sum of cost within total_cost.
+
+Example input:
+ states: [&quot;eo.enter&quot;, &quot;eo.exit&quot;, &quot;v.enter&quot;, &quot;v.exit&quot;, &quot;password&quot;, &quot;select&quot;, &quot;vote&quot;, &quot;back&quot;, &quot;back&quot;, &quot;confirm&quot;]
+description: It is a voting system. In the environment, both EO and voter can enter anytime. The individual gives password, selects a vote and confirms. He can go back anytime. It is crucial that the person who entered the password is the person who confirms the vote.
+total_cost: 30
+
+
+Example output:
+    &quot;controllableMap&quot;: {
+  &quot;1&quot;: [
+      &quot;back&quot;,
+      &quot;confirm&quot;,
+      &quot;password&quot;,
+      &quot;select&quot;,
+      &quot;vote&quot;
+  ],
+  &quot;3&quot;: [
+      &quot;eo.enter&quot;,
+      &quot;eo.exit&quot;,
+      &quot;v.enter&quot;,
+      &quot;v.exit&quot;
+  ]
+  },
+  &quot;observableMap&quot;: {
+  &quot;0&quot;: [
+      &quot;back&quot;,
+      &quot;confirm&quot;,
+      &quot;password&quot;,
+      &quot;select&quot;,
+      &quot;vote&quot;
+  ],
+  &quot;2&quot;: [
+      &quot;eo.enter&quot;,
+      &quot;eo.exit&quot;,
+      &quot;v.enter&quot;,
+      &quot;v.exit&quot;
+  ]
+  }
+</code></pre>
+<p>Now let us consutrct a dataset.</p>
+</body>
+</html>

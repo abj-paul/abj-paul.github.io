@@ -1,0 +1,46 @@
+#+TITLE: Automating Cost Concerns of Fortis Redesigns
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-09-17 মঙ্গল>
+
+** Update Optimization function to address cost concerns
+I am trying to change codebase of Fortis - a research paper made by a PhD student in CMU. So I need to run that codebase for that, firstly.
+
+*** Dependency not found!
+These dependencies are not available in maven repository. So they must be available as jar files online. But I could not find any such jar files! And I checked .gitignore file of the [[https://github.com/cmu-soda/fortis-core][fortis-core]] repository and it excluded ~bin~ folder that includes the jar files.
+[[file:~/abj-paul.github.io/data/fortis-depedency-issue.png]]
+
+Possible reasons:
+1. It is available somewhere online and I cannot find it, yet.
+2. It is an internal file of cmu.soda
+3. Remove those dependencies and see what happens: Many other issues are still there, sigh
+
+*** common package not found!
+As you can see in the list of packages, there is no ~common~ package. I checked last 30 commits randomly and did not find this folder in ANY of the commits! Its also not in .gitignore
+[[file:~/abj-paul.github.io/data/common folder not found.png]]
+
+Possible solutions:
+1. My friend Radium found this [[https://github.com/cmu-soda/fortis-api.git][fortis-api]] repository. It has THE common package! It worked!
+2. And here is [[https://github.com/SteveZhangBit/LTL-Learning][LTL Learning]] repository.
+3. And here is [[https://github.com/LearnLib/automatalib?tab=readme-ov-file][automatalib-core]] repository. It did not work so we [[https://central.sonatype.com/artifact/net.automatalib/automata-core][found this]].
+4. Also, automatalib-common may also be needed.
+
+
+Their pom file is also incomplete! We had to manually add 1 dependency, but it still shows error. The eternally long list of errors can be found [[file:~/abj-paul.github.io/data/errors][here]]
+
+** Use ChatGPT to generate costs
+The goal is to generate costs and use that to generate graphs. Then we will inspect how effective those generations are. 
+
+The input and prompts can be found in the dataset.
+
+Now let us consutrct a dataset.
+| Dataset   | Size      | Result                     | ChatGPT      |
+|-----------+-----------+----------------------------+--------------|
+| [[https://docs.google.com/document/d/1b-P9ouC9n9LPoleihJi20zfxn_1ZUm6D0snTOn9kCtM/edit?usp=sharing][Prompt_v1]] | 5 systems | Failed to find a solution. | [[https://chatgpt.com/share/66ea5931-daf0-8007-8250-eb7db4f186cd][chatGPT logs]] |
+|           |           |                            |              |
+
+We skip total_cost for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.
+
+
+*** Issues
+- [ ] JSON issue
+- [ ] Other
