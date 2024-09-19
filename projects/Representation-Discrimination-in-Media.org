@@ -521,6 +521,8 @@ annotation data: 100, two annotator, 75% agreement score, (Yes=63, No=37)
 
 GPT 4o greatly overfit to TRUE class for combined prompt v1, hence performing terribly.
 DONE ANNOTATING! There was a small mishap midway, anyway, [[https://drive.google.com/file/d/1t6M4qZo9OEiArjSdS4YcjEG51Gr3SF4s/view?usp=drive_link][here is the 4893 annotated ethnic article]]
+
+DONE ANNOTATING! [[https://drive.google.com/file/d/1dtJVRgsZSdt16HFKJStLUohpsDlfLu2D/view?usp=drive_link][Here is the 5k regular news articles with some missing values]].
 **** Issues
 - Prompt engineering is a hard trial-and-error practice.
 

@@ -1,0 +1,5 @@
+#+TITLE: Exploring Fortis codebase
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-06-23 রবি>
+
+** Weakest Assumption
