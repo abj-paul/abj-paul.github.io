@@ -38,50 +38,44 @@
 <p>Possible solutions:</p>
 <ol>
 <li>My friend Radium found this <a href="https://github.com/cmu-soda/fortis-api.git">fortis-api</a> repository. It has THE common package! It worked!</li>
+<li>And here is <a href="https://github.com/SteveZhangBit/LTL-Learning">LTL Learning</a> repository.</li>
+<li>And here is <a href="https://github.com/LearnLib/automatalib?tab=readme-ov-file">automatalib-core</a> repository. It did not work so we <a href="https://central.sonatype.com/artifact/net.automatalib/automata-core">found this</a>.</li>
+<li>Also, automatalib-common may also be needed.</li>
 </ol>
+<p>Their pom file is also incomplete! We had to manually add 1 dependency, but it still shows error. The eternally long list of errors can be found <a href="../data/errors">here</a></p>
 <h2 id="use-chatgpt-to-generate-costs">Use ChatGPT to generate costs</h2>
 <p>The goal is to generate costs and use that to generate graphs. Then we will inspect how effective those generations are.</p>
-<p>The input should be:</p>
-<pre class="text"><code>  Controllable states are which that machine can control. And obserables are which that machine can observe. Give a list of states, you will return me the controllableMap and obseravbleMap. Assign a cost between 0-4 to them. Keep sum of cost within total_cost.
-
-Example input:
- states: [&quot;eo.enter&quot;, &quot;eo.exit&quot;, &quot;v.enter&quot;, &quot;v.exit&quot;, &quot;password&quot;, &quot;select&quot;, &quot;vote&quot;, &quot;back&quot;, &quot;back&quot;, &quot;confirm&quot;]
-description: It is a voting system. In the environment, both EO and voter can enter anytime. The individual gives password, selects a vote and confirms. He can go back anytime. It is crucial that the person who entered the password is the person who confirms the vote.
-total_cost: 30
-
-
-Example output:
-    &quot;controllableMap&quot;: {
-  &quot;1&quot;: [
-      &quot;back&quot;,
-      &quot;confirm&quot;,
-      &quot;password&quot;,
-      &quot;select&quot;,
-      &quot;vote&quot;
-  ],
-  &quot;3&quot;: [
-      &quot;eo.enter&quot;,
-      &quot;eo.exit&quot;,
-      &quot;v.enter&quot;,
-      &quot;v.exit&quot;
-  ]
-  },
-  &quot;observableMap&quot;: {
-  &quot;0&quot;: [
-      &quot;back&quot;,
-      &quot;confirm&quot;,
-      &quot;password&quot;,
-      &quot;select&quot;,
-      &quot;vote&quot;
-  ],
-  &quot;2&quot;: [
-      &quot;eo.enter&quot;,
-      &quot;eo.exit&quot;,
-      &quot;v.enter&quot;,
-      &quot;v.exit&quot;
-  ]
-  }
-</code></pre>
+<p>The input and prompts can be found in the dataset.</p>
 <p>Now let us consutrct a dataset.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size</th>
+<th>Result</th>
+<th>ChatGPT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://docs.google.com/document/d/1b-P9ouC9n9LPoleihJi20zfxn_1ZUm6D0snTOn9kCtM/edit?usp=sharing">Prompt<sub>v1</sub></a></td>
+<td>5 systems</td>
+<td>Failed to find a solution.</td>
+<td><a href="https://chatgpt.com/share/66ea5931-daf0-8007-8250-eb7db4f186cd">chatGPT logs</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>We skip total<sub>cost</sub> for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.</p>
+<h3 id="issues">Issues</h3>
+<ul>
+<li>[ ] JSON issue</li>
+<li>[ ] Other</li>
+</ul>
 </body>
 </html>

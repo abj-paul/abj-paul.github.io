@@ -570,6 +570,42 @@ For education:
 
 For technology (Observe "Mobile terrorist"):
 [[file:~/abj-paul.github.io/data/repdisc_technology.png]]
+*** Experiment - EDA on both ChatGPT Turbo Annotation
+For news genre:
+| Dataset | Top 40 topics |
+|---------+---------------|
+| Ethnic  |         0.67% |
+| Usual   |         0.70% |
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_genre.png]]
+
+However, we observed no difference in journalism style!
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_journalism_style.png]]
+
+Who is featured? The answer feels noisy due to prompting issue.
+[[file:~/abj-paul.github.io/data/chatgptturbo_comparison_who_is_features.png]]
+
+Most posts on ethnic people have negative sentiment.
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_sentiment.png]]
+
+Agenda setting for ethnic people is violence.
+Dataset 1: 36.50%
+Dataset 2: 53.89%
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_agenda_setting.png]]
+
+For framing, Conflict is the main frame.
+Dataset 1: 48.87%
+Dataset 2: 65.56%
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_framing.png]]
+
+For priming, Violence is the major priming for ethnic article while investigation is the major priming for normal articles.
+Dataset 1: 19.44%
+Dataset 2: 33.22%
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_priming.png]]
+
+For mobilizing, there is not much difference.
+Dataset 1: 19.44%
+Dataset 2: 33.22%
+[[file:~/abj-paul.github.io/data/chatgpturbo_comparison_mobilizing.png]]
 
 ** Survey
 *** Literature
