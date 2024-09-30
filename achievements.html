@@ -6,51 +6,69 @@
     <title>@abj-paul</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom Card Styles */
+        .card-grid .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .card-content {
+            height: 130px;
+            overflow: hidden;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-      <header>
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-          
-          <a class="navbar-brand" href="#">@abj-paul - UNDER Construction!</a>
-  
-          <!-- Toggler/collapsible Button -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <!-- Navbar links -->
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="data/cv.pdf">My CV</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="achievements.html">Achievements</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="projects.html">Projects</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blogs.html">Blogs</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+        <header>
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a class="navbar-brand" href="#">@abj-paul - UNDER Construction!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="data/cv.pdf">My CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="achievements.html">Achievements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blogs.html">Blogs</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
         <!-- New Row for Cards -->
         <div class="row mt-4 card-grid">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://cdn2.hubspot.net/hubfs/129073/shutterstock_1115742200.jpg" alt="Dubts" class="card-img-top">
+                    <img src="https://cdn2.hubspot.net/hubfs/129073/shutterstock_1115742200.jpg" alt="DuBTS" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">(Latest) Received Seed Funding for project DuBTS</h5>
                         <div class="card-content">
-                            <p class="card-text">A preliminary grant sufficient for one quarter of R&D was provided to the team of DuBTS (DU Bus Tracking System) by Dr. Naushin Nower, University of Dhaka. </p>
+                            <p class="card-text">A preliminary grant sufficient for one quarter of R&D was provided to the team of DuBTS (DU Bus Tracking System) by Dr. Naushin Nower, University of Dhaka.</p>
                        </div>
                     </div>
                 </div>
@@ -61,7 +79,7 @@
                     <div class="card-body">
                         <h5 class="card-title">(Latest) Received Advanced Research Fund from Samsung</h5>
                         <div class="card-content">
-                            <p class="card-text">A grant of 3MM/year was approved against my project proposal, which is equivalent to ~2700000 Taka. Further details are classified. </p>
+                            <p class="card-text">A grant of 3MM/year was approved for my project proposal, which is equivalent to ~2,700,000 Taka. Further details are classified.</p>
                        </div>
                     </div>
                 </div>
@@ -72,20 +90,22 @@
                     <div class="card-body">
                         <h5 class="card-title">Working on NSF Funded Project</h5>
                         <div class="card-content">
-                            <p class="card-text">NSF provides a grant on "An AI-driven COunseling System for Underrepresented Transfer Students". I was fortunate enough to have the opportunity to work on this project under the supervision of Dr. Shebuti Rayana, Old Westbury SUNY. <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2219623&HistoricalAwards=false">Grant details</a> can be found here.</p>
+                            <p class="card-text">NSF provides a grant for "An AI-driven Counseling System for Underrepresented Transfer Students." I worked on this project under Dr. Shebuti Rayana, SUNY Old Westbury. <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2219623&HistoricalAwards=false">Grant details</a> available here.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Second Row for Cards -->
         <div class="row mt-4 card-grid">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://it.mitsubishielectric.com/sites/it_ssl/en/news-events/releases/global/2018/1220-a/img/sp_pic_181220-a.jpg" alt="prize photo" class="card-img-top">
+                    <img src="https://it.mitsubishielectric.com/sites/it_ssl/en/news-events/releases/global/2018/1220-a/img/sp_pic_181220-a.jpg" alt="Mitsubishi UFJ Foundation Scholarship" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="https://www.scholarship.or.jp/english/program/contents/en_application.html">  Mitsubishi UFJ Foundation Scholarship</a> Program FY 2024.</h5>
+                        <h5 class="card-title"><a href="https://www.scholarship.or.jp/english/program/contents/en_application.html">Mitsubishi UFJ Foundation Scholarship</a> Program FY 2024</h5>
                         <div class="card-content">
-                            <p class="card-text">(September 19, 2024) The selection criteria often emphasize academic merit, extracurricular involvement, and sometimes a vision for future contributions to the community or specific fields. </p>
+                            <p class="card-text">(September 19, 2024) The selection criteria emphasized academic merit, extracurricular involvement, and vision for future contributions to the field.</p>
                         </div>
                     </div>
                 </div>
@@ -96,23 +116,25 @@
                     <div class="card-body">
                         <h5 class="card-title">2nd Runners-Up in Notre Dame Inter-University Ideathon Contest</h5>
                         <div class="card-content">
-                            <p class="card-text">In this prestigious ideathon contest 2023, we propose a solution to alleviating traffic jam problem by combinig existing solutions. Great team work and amazing hosts. </p>
+                            <p class="card-text">We proposed a solution to alleviate traffic congestion by combining existing solutions. Great teamwork and amazing hosts.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/367465264_691763452990736_3473055270327168481_n.jpg?stp=cp6_dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHx_m0pHdmEA6GZUmyJMJJVprIHZuQ1G4Omsgdm5DUbg0atFftYqVTo4Q4mBQZhQCvyx-6ELI4i0tQy265xPjJc&_nc_ohc=EABz9AVf0-MQ7kNvgGTQtKo&_nc_ht=scontent.fdac41-1.fna&oh=00_AYB7tQyvf42vpFo2MEoWbYegjsrCZYXT1HKlJG9ougc5Cg&oe=668F22EB" alt="DL Sprint Picture" class="card-img-top">
+                    <img src="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/367465264_691763452990736_3473055270327168481_n.jpg" alt="Deep Learning Sprint" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">1st Runners-up in Deep Learning Sprint, BUET, Bangladesh</h5>
+                        <h5 class="card-title">1st Runners-up in Deep Learning Sprint, BUET</h5>
                         <div class="card-content">
-                            <p class="card-text">Our team placed 2nd in DL Sprint 2.0, organized by BUET 2023. We designed an ensemble for Bangla document layout parsing on BaDLAD dataset.</p>
+                            <p class="card-text">We placed 2nd in DL Sprint 2.0, organized by BUET. We designed an ensemble for Bangla document layout parsing on the BaDLAD dataset.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Third Row for Cards -->
         <div class="row mt-4 card-grid">
             <div class="col-md-4">
                 <div class="card">
@@ -120,65 +142,54 @@
                     <div class="card-body">
                         <h5 class="card-title">Rising Star in Internal Chess Contest</h5>
                         <div class="card-content">
-                            <p class="card-text">IIT, University of Dhaka organized an internal chess contest in 2020. I received the prize of Rising Star. It was my first achievement after entering university so its precious to me.</p>
+                            <p class="card-text">IIT, University of Dhaka organized an internal chess contest in 2020, where I won the Rising Star award. This was my first university achievement, making it particularly special.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        <div class="col-md-4">
-            <div class="card">
-                <img src="https://via.placeholder.com/250x200.png?text=ITVerse2.0" alt="Chess prize" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Organizer Souvenir, ITVerse 2.0</h5>
-                    <div class="card-content">
-                        <p class="card-text">Our sponsor in ITVerse 2.0, Streamstech Private Ltd. gifted the organizers an amazing handkit. Very grateful for it!</p>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/250x200.png?text=ITVerse2.0" alt="ITVerse2.0" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Organizer Souvenir, ITVerse 2.0</h5>
+                        <div class="card-content">
+                            <p class="card-text">Our sponsor, Streamstech Private Ltd., gifted the organizers a handkit for ITVerse 2.0. I'm very grateful for this token of appreciation!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <img src="https://via.placeholder.com/250x200.png?text=Datathon+2020" alt="Datathon" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Champion of Datathon, Coding Object Private Limited, India</h5>
-                    <div class="card-content">
-                        <p class="card-text">In this day long datathong in 2020, invoving data processing and whitebox model training. My solution placed first among contestants from both Bangladesh and India.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4 card-grid">
-        <div class="col-md-4">
-            <div class="card">
-                <img src="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/398549755_1511682462961621_7590666262167286177_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHq8QlhLUEy6QuLJ4YLzr3yBdUsZ0VJosMF1SxnRUmiwx4labowq1GGbdvXhRVWE4K1ekkOD44Roc21Wjq94qnj&_nc_ohc=PSAprFF-o0sQ7kNvgH45Ceo&_nc_ht=scontent.fdac41-1.fna&oh=00_AYBVHT8ZVvdWyiUJRRwrnDYEtYO4P1UqMwr2XZKibRCjEg&oe=668F3541" alt="Event prize photo" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">1st Runners-Up in Blockchain Segment, ITVerse</h5>
-                    <div class="card-content">
-                        <p class="card-text">In November, 2023, a inter-university event called ITVerse2.0 was organized in University of Dhaka, Bangladesh. My team placed 2nd in the Blockchain segment. </p>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/250x200.png?text=Datathon+2020" alt="Datathon 2020" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Champion of Datathon, Coding Object Private Limited, India</h5>
+                        <div class="card-content">
+                            <p class="card-text">In this day-long datathon in 2020, involving data processing and model training, my solution placed first among contestants from both Bangladesh and India.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Fourth Row for Cards -->
+        <div class="row mt-4 card-grid">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/398549755_1511682462961621_7590666262167286177_n.jpg" alt="ITVerse2.0 Blockchain" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">1st Runners-Up in Blockchain Segment, ITVerse 2.0</h5>
+                        <div class="card-content">
+                            <p class="card-text">In November 2023, my team placed 2nd in the Blockchain segment at ITVerse2.0, organized at the University of Dhaka, Bangladesh.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-
-    </div>
-
-    <!-- Bootstrap JS and jQuery (required for Bootstrap components) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-  <script>
-    // JavaScript to handle click-to-expand functionality
-    $(document).ready(function() {
-      $(".card-content").on("click", function() {
-        $(this).toggleClass("expanded");
-      });
-    });
-  </script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
