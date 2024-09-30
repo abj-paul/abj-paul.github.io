@@ -5,6 +5,30 @@
 ** Update Optimization function to address cost concerns
 I am trying to change codebase of Fortis - a research paper made by a PhD student in CMU. So I need to run that codebase for that, firstly.
 
+We mainly encounter these issues after somehow resolving dependency issue.
+| Error type                                    |
+|-----------------------------------------------|
+| Unresolved reference                          |
+| Cannot infer a type for this parameter        |
+| Not enough information to infer type variable |
+| Overload resolution ambiguity                 |
+
+And they occur from:
+| Unresolved reference: X | Count |
+|-------------------------+-------|
+| Word                    |   306 |
+| NFA                     |   108 |
+| Alphabets               |    34 |
+| Util                    |   108 |
+| automaton               |   120 |
+| variable S              |    70 |
+| AutomatonBuilders       |    22 |
+| TSTraversal             |   976 |
+
+These classes are in ~net.automatalib~. It imports properly and we have also tried with v0.9.0-0.11.0. And most importantly, it does not show dependency error that it can't find a library. It just says:
+- SimpleInvariantWeakener.kt:[27,36] Unresolved reference: Word
+- NFAParallelComposition.kt:[61,31] Cannot infer a type for this parameter
+
 *** Dependency not found!
 These dependencies are not available in maven repository. So they must be available as jar files online. But I could not find any such jar files! And I checked .gitignore file of the [[https://github.com/cmu-soda/fortis-core][fortis-core]] repository and it excluded ~bin~ folder that includes the jar files.
 [[file:~/abj-paul.github.io/data/fortis-depedency-issue.png]]
@@ -40,7 +64,27 @@ Now let us consutrct a dataset.
 
 We skip total_cost for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.
 
+** Eye gaze tracking
+There are existing works that uses eye gaze tracking to assess the human comprehension complexity of a diagram.
+[1] https://www.cs.kent.edu/~sdawoodi/pubs/icpc07-umlstudy.pdf
+[2] Influence of diagram layout and scrolling on understandability of BPMN processes: an eye tracking experiment with BPMN diagrams
 
-*** Issues
+However, they are manual. We need to automate them. We can automate them via KNN - we will compare normalized vector embedding of new diagram with old ones' and assess complexity.
+
+We will save the following [1]:
+1. Fixation is the stabilization of eyes on an object of interest for a period of time.
+2. Saccades are quick movements of the eyes that move interest from one location to the next (i.e., refixates).
+3. Scanpath is a directed path formed by saccades between fixations.
+
+Average Fixations on diagrams was used to approximate efforts needed to understand the diagram [1].
+   
+** Issues
 - [ ] JSON issue
-- [ ] Other
+- [X] Minimized
+- [X] Compile: Failed
+- [X] Cost handling
+- [ ] Good UML
+- [ ] Estimate design comprehension ease
+- [ ] Cost optimization algorithm
+- [ ] Mutation test
+- [ ] Design complexity
