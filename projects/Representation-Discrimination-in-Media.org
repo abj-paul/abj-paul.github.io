@@ -2,7 +2,7 @@
 #+AUTHOR: Abhijit Paul
 #+DATE: <2024-07-28 রবি> - <2024-08-15 বৃহঃ>
 
-
+[[https://docs.google.com/presentation/d/18syIlySzpIR6Iz_-mhbKBuBNo4YKxg0R/edit?usp=sharing&ouid=116173976886393365649&rtpof=true&sd=true][Findings of the experiment can be found here]].
 ** Literature Review
 You can find the [[https://www.overleaf.com/project/6633a3c24c44378a593d48e3][shared overleaf for literature review here.]]
 *** Computational Analysis
@@ -606,7 +606,8 @@ For mobilizing, there is not much difference.
 Dataset 1: 19.44%
 Dataset 2: 33.22%
 [[file:~/abj-paul.github.io/data/chatgpturbo_comparison_mobilizing.png]]
-
+*** Annotation
+We now need to annotate sentiment, agenda setting, framing, priming, mobilizing.
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
