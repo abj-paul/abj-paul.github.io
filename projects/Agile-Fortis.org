@@ -78,6 +78,19 @@ We will save the following [1]:
 
 Average Fixations on diagrams was used to approximate efforts needed to understand the diagram [1].
    
+** More case studies
+R. Wang, Y. Zhou, S. Chen, S. Qadeer, D. Evans, and Y. Gurevich,
+“Explicating sdks: Uncovering assumptions underlying secure authenti-
+cation and authorization,” in Proceedings of the 22th USENIX Security
+Symposium, Washington, DC, USA, August 14-16, 2013, 2013, pp. 399–
+314.
+[7] S. Sun and K. Beznosov, “The devil is in the (implementation) details:
+an empirical analysis of OAuth SSO systems,” in the ACM Conference
+on Computer and Communications Security, CCS’12, Raleigh, NC, USA,
+October 16-18, 2012, 2012, pp. 378–390.
+
+supervisory control theory: C. G. Cassandras and S. Lafortune, Introduction to Discrete Event
+Systems, 3rd ed. Springer, Cham, 202
 ** Issues
 - [ ] JSON issue
 - [X] Minimized
