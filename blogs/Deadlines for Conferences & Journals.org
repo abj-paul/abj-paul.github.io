@@ -4,10 +4,8 @@
 
 The works and their corresponding deadlines can be seen below.
 
-| Research                      | Conference                                | Deadline |
-|-------------------------------+-------------------------------------------+----------|
-| Stemming                      | ACM TALLIP                                |          |
-| UML to LTL                    | [[https://www.fmeurope.org/feature/upcoming_conferences/][ETAPS]]                                     | 10 Oct   |
-| Representation Discrimination | [[https://chi2024.acm.org/for-authors/papers/][CHI24]]                                     | 7th Sep  |
-| DuBTS - Bloom Filter          | [[https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=25][IEEE Transactions on Vehicular Technology]] |          |
-| Coping Mechanism              | [[https://www.scimagojr.com/journalsearch.php?q=21101055964&tip=sid&clean=0][Journal of Health and Social Behavior]]     |          |
+| Research             | Conference                                | Deadline     |
+|----------------------+-------------------------------------------+--------------|
+| DuBTS - Bloom Filter | [[https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=25][IEEE Transactions on Vehicular Technology]] |              |
+| Coping Mechanism     | [[https://www.scimagojr.com/journalsearch.php?q=21101055964&tip=sid&clean=0][Journal of Health and Social Behavior]]     |              |
+| LTL and LLMs         | NFM                                       | Dec13, Nov11 |
