@@ -608,6 +608,8 @@ Dataset 2: 33.22%
 [[file:~/abj-paul.github.io/data/chatgpturbo_comparison_mobilizing.png]]
 *** Annotation
 We now need to annotate sentiment, agenda setting, framing, priming, mobilizing.
+*** Experiment - Clustering on Framing
+ For that, we consider universal sentence encoder (USE) to encode frames. Because frames are noun phrases, as evident from the frames identified in \cite{morstatter2018identifying} and \cite{pew2009framing}. And according to Ajallouda et al., the best technique that can be used to represent noun phrases is USE \cite{ajallouda2022doc2vec}. Next, we cluster these frames into a hierarchical structure using Agglomerative Clustering, ultimately isolating X top-level frames. We use silhouette score to find the optimal number of clusters to be X. 
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
