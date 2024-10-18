@@ -610,6 +610,29 @@ Dataset 2: 33.22%
 We now need to annotate sentiment, agenda setting, framing, priming, mobilizing.
 *** Experiment - Clustering on Framing
  For that, we consider universal sentence encoder (USE) to encode frames. Because frames are noun phrases, as evident from the frames identified in \cite{morstatter2018identifying} and \cite{pew2009framing}. And according to Ajallouda et al., the best technique that can be used to represent noun phrases is USE \cite{ajallouda2022doc2vec}. Next, we cluster these frames into a hierarchical structure using Agglomerative Clustering, ultimately isolating X top-level frames. We use silhouette score to find the optimal number of clusters to be X. 
+*** Experiment - Framing
+We annotated 109 articles for 5-type framing. Our agreement score was around 86.23%. Our result in 5-type framing using LLM is:
+| Model                    | Acc | Precision | Recall | F1-score |
+|--------------------------+-----+-----------+--------+----------|
+| gpt-3.5-turbo, llm-paper |  50 |        49 |     50 |       47 |
+| gpt-4o-mini, combined    |  58 |        55 |     58 |       56 |
+
+We now annoate 109 articles for 16 core frames we identified earlier from 1626 frames. The agreement score was ~ADITY~. Our result using LLM is:
+| Model                 | Jaccard Index |
+|-----------------------+---------------|
+| gpt-4o-mini, combined |         0.371 |
+
+This metric measures the similarity between the predicted frame set and the actual frame set. Its also called Intersection over Union.
+#+begin_src text
+Jaccard Index=Number of common frames / Number of frames in union of actual and predicted sets.
+#+end_src
+The Jaccard Index ranges from 0 (no overlap) to 1 (perfect overlap), making it suitable for fuzzy evaluations. We use Jaccard Index because this scenario can be considered a fuzzy or soft evaluation problem since the predicted frames are not required to exactly match the actual frame list but are instead considered correct if they are present within the actual frames. To evaluate such scenarios, you can use metrics that account for partial matches and the degree of overlap between the predicted and actual frame lists.
+
+Despite the moderate Jaccard Index score, we still use LLM for frame identification because LLM can find most frames from an article. A human often overlooks and can't identify most frames, only focuses on few frames.
+
+We now annotate 10k articles to find these frames.
+| [[https://drive.google.com/file/d/1lON-jhQ0I8VSz8a1lFO-Lh8niSg6hqGB/view?usp=sharing][General articles]]    | 5000 |
+| [[https://drive.google.com/file/d/1MJbsSGJjmWByBJNePJ6ETDs9dLiXLv82/view?usp=drive_link][Indigenous articles]] | 4892 |
 ** Survey
 *** Literature
 Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature [11].
