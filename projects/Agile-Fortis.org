@@ -80,13 +80,27 @@ Average Fixations on diagrams was used to approximate efforts needed to understa
 ** Experiment 1: Creating Eye Gaze Tracking validation dataset
 We now start collecting data for evaluating it. Our possible data sources are:
 
-| Dataset source                                         | N           | Comments          |
-|--------------------------------------------------------+-------------+-------------------|
-| Fortis Codebase                                        | 7 systems   | Big and complex   |
-| LTSA tool examples                                     | 12 chapters | Simple to complex |
-| 2 papers using LTL systems as part of process [1], [2] |             |                   |
+| Dataset source                                         | N           | Challenge            |
+|--------------------------------------------------------+-------------+----------------------|
+| Fortis Codebase                                        | 7 systems   | Big and complex      |
+| LTSA tool examples                                     | 97 examples | Algorithmic examples |
+| 2 papers using LTL systems as part of process [1], [2] | 2 systems   | Extremely complex    |
 
-But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help..
+But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help. We found a solution! LTSA tool has a feature of exporting LTL code to aut format, which is basically transitions between states. Using that, we can draw the UML diagrams. The graph itself is enough!
+
+*** Pairwise Comparison Method
+Techniques from psychometrics and cognitive psychology, such as the paired comparison method, can be utilized. This approach has been used to assess preferences or perceived complexity between design alternatives. Participants are asked to assess which item in each pair is preferred, better, or in this context, more complex. For each design, count how many times it was preferred over others. This count will be the design's score. Rank the designs based on their scores from highest to lowest. The higher the score, the more complex the design is perceived to be.
+
+*** A/B Testing in Design
+We can use it to estimate design comprehension of users - what do they understand by reading the problem details and the design?
+
+A/B testing, also known as split testing, is a method used to compare two or more variations of a design (such as a website, user interface, or product feature) to determine which one performs better based on specific metrics.Hypothesis here can be: "Changing the button color from blue to green will increase click-through rates." We can use it in our case with the hypothesis, "Which design takes longer to understand?". Annotators will annotate and note down their understanding. Using original problem definition (hidden) and user's understanding, we will analyze how well they understood the design within that time. If a design takes long time to understand but still the user understands it wrong, then its probably a bad design.
+
+*** Planning
+Now we need to formalize the annotation process.
+1. Pairwise Comparison Methods or A/B Testing in Design?
+2. Show 2 design and user will select which he finds easier. So it will be fast but need to create a tool for it.
+3. For the second one, we first need to scrape example definition from the book for increasing problem definition accuracy. But I can't [[https://libgen.is/book/index.php?md5=5F84986BEFCC12930EC241ED3DAA2EAD][seem to download the book from libgen! :(]]
    
 ** References
 [1] R. Wang, Y. Zhou, S. Chen, S. Qadeer, D. Evans, and Y. Gurevich, “Explicating sdks: Uncovering assumptions underlying secure authenti- cation and authorization,” in Proceedings of the 22th USENIX Security Symposium, Washington, DC, USA, August 14-16, 2013, 2013, pp. 399– 314.

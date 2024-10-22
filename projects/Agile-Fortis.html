@@ -145,7 +145,7 @@
 <tr class="header">
 <th>Dataset source</th>
 <th>N</th>
-<th>Comments</th>
+<th>Challenge</th>
 </tr>
 </thead>
 <tbody>
@@ -156,17 +156,29 @@
 </tr>
 <tr class="even">
 <td>LTSA tool examples</td>
-<td>12 chapters</td>
-<td>Simple to complex</td>
+<td>97 examples</td>
+<td>Algorithmic examples</td>
 </tr>
 <tr class="odd">
 <td>2 papers using LTL systems as part of process <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
-<td></td>
-<td></td>
+<td>2 systems</td>
+<td>Extremely complex</td>
 </tr>
 </tbody>
 </table>
-<p>But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help..</p>
+<p>But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help. We found a solution! LTSA tool has a feature of exporting LTL code to aut format, which is basically transitions between states. Using that, we can draw the UML diagrams. The graph itself is enough!</p>
+<h3 id="pairwise-comparison-method">Pairwise Comparison Method</h3>
+<p>Techniques from psychometrics and cognitive psychology, such as the paired comparison method, can be utilized. This approach has been used to assess preferences or perceived complexity between design alternatives. Participants are asked to assess which item in each pair is preferred, better, or in this context, more complex. For each design, count how many times it was preferred over others. This count will be the design's score. Rank the designs based on their scores from highest to lowest. The higher the score, the more complex the design is perceived to be.</p>
+<h3 id="ab-testing-in-design">A/B Testing in Design</h3>
+<p>We can use it to estimate design comprehension of users - what do they understand by reading the problem details and the design?</p>
+<p>A/B testing, also known as split testing, is a method used to compare two or more variations of a design (such as a website, user interface, or product feature) to determine which one performs better based on specific metrics.Hypothesis here can be: "Changing the button color from blue to green will increase click-through rates." We can use it in our case with the hypothesis, "Which design takes longer to understand?". Annotators will annotate and note down their understanding. Using original problem definition (hidden) and user's understanding, we will analyze how well they understood the design within that time. If a design takes long time to understand but still the user understands it wrong, then its probably a bad design.</p>
+<h3 id="planning">Planning</h3>
+<p>Now we need to formalize the annotation process.</p>
+<ol>
+<li>Pairwise Comparison Methods or A/B Testing in Design?</li>
+<li>Show 2 design and user will select which he finds easier. So it will be fast but need to create a tool for it.</li>
+<li>For the second one, we first need to scrape example definition from the book for increasing problem definition accuracy. But I can't <a href="https://libgen.is/book/index.php?md5=5F84986BEFCC12930EC241ED3DAA2EAD">seem to download the book from libgen! :(</a></li>
+</ol>
 <h2 id="references">References</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr />
