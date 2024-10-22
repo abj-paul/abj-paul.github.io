@@ -23,8 +23,79 @@
 <p class="author">Abhijit Paul</p>
 <p class="date">&lt;2024-09-17 মঙ্গল&gt;</p>
 </header>
-<h2 id="update-optimization-function-to-address-cost-concerns">Update Optimization function to address cost concerns</h2>
+<p>We completed 3 approaches before, involving UML to LTL parsing, converting big formally defined systems into UML and finding more case studies. We document the next approaches here.</p>
+<h2 id="approach-1-update-optimization-function-to-address-cost-concerns">Approach 1: Update Optimization function to address cost concerns</h2>
 <p>I am trying to change codebase of Fortis - a research paper made by a PhD student in CMU. So I need to run that codebase for that, firstly.</p>
+<p>We mainly encounter these issues after somehow resolving dependency issue.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Error type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unresolved reference</td>
+</tr>
+<tr class="even">
+<td>Cannot infer a type for this parameter</td>
+</tr>
+<tr class="odd">
+<td>Not enough information to infer type variable</td>
+</tr>
+<tr class="even">
+<td>Overload resolution ambiguity</td>
+</tr>
+</tbody>
+</table>
+<p>And they occur from:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Unresolved reference: X</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Word</td>
+<td>306</td>
+</tr>
+<tr class="even">
+<td>NFA</td>
+<td>108</td>
+</tr>
+<tr class="odd">
+<td>Alphabets</td>
+<td>34</td>
+</tr>
+<tr class="even">
+<td>Util</td>
+<td>108</td>
+</tr>
+<tr class="odd">
+<td>automaton</td>
+<td>120</td>
+</tr>
+<tr class="even">
+<td>variable S</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>AutomatonBuilders</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td>TSTraversal</td>
+<td>976</td>
+</tr>
+</tbody>
+</table>
+<p>These classes are in <code>net.automatalib</code>. It imports properly and we have also tried with v0.9.0-0.11.0. And most importantly, it does not show dependency error that it can't find a library. It just says:</p>
+<ul>
+<li>SimpleInvariantWeakener.kt:[27,36] Unresolved reference: Word</li>
+<li>NFAParallelComposition.kt:[61,31] Cannot infer a type for this parameter</li>
+</ul>
 <h3 id="dependency-not-found">Dependency not found!</h3>
 <p>These dependencies are not available in maven repository. So they must be available as jar files online. But I could not find any such jar files! And I checked .gitignore file of the <a href="https://github.com/cmu-soda/fortis-core">fortis-core</a> repository and it excluded <code>bin</code> folder that includes the jar files. <img src="../data/fortis-depedency-issue.png" /></p>
 <p>Possible reasons:</p>
@@ -43,10 +114,9 @@
 <li>Also, automatalib-common may also be needed.</li>
 </ol>
 <p>Their pom file is also incomplete! We had to manually add 1 dependency, but it still shows error. The eternally long list of errors can be found <a href="../data/errors">here</a></p>
-<h2 id="use-chatgpt-to-generate-costs">Use ChatGPT to generate costs</h2>
+<h2 id="approach-2-use-chatgpt-to-generate-costs">Approach 2: Use ChatGPT to generate costs</h2>
 <p>The goal is to generate costs and use that to generate graphs. Then we will inspect how effective those generations are.</p>
-<p>The input and prompts can be found in the dataset.</p>
-<p>Now let us consutrct a dataset.</p>
+<p>The input and prompts can be found in the dataset. Now let us consutrct a dataset.</p>
 <table>
 <thead>
 <tr class="header">
@@ -63,19 +133,47 @@
 <td>Failed to find a solution.</td>
 <td><a href="https://chatgpt.com/share/66ea5931-daf0-8007-8250-eb7db4f186cd">chatGPT logs</a></td>
 </tr>
+</tbody>
+</table>
+<p>We skip total<sub>cost</sub> for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.</p>
+<h2 id="approach-3-eye-gaze-tracking-literature-review">Approach 3: Eye gaze tracking Literature Review</h2>
+<p>There are existing works that uses eye gaze tracking to assess the human comprehension complexity of a diagram.</p>
+<h2 id="experiment-1-creating-eye-gaze-tracking-validation-dataset">Experiment 1: Creating Eye Gaze Tracking validation dataset</h2>
+<p>We now start collecting data for evaluating it. Our possible data sources are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dataset source</th>
+<th>N</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fortis Codebase</td>
+<td>7 systems</td>
+<td>Big and complex</td>
+</tr>
 <tr class="even">
-<td></td>
-<td></td>
+<td>LTSA tool examples</td>
+<td>12 chapters</td>
+<td>Simple to complex</td>
+</tr>
+<tr class="odd">
+<td>2 papers using LTL systems as part of process <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>We skip total<sub>cost</sub> for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.</p>
-<h3 id="issues">Issues</h3>
-<ul>
-<li>[ ] JSON issue</li>
-<li>[ ] Other</li>
-</ul>
+<p>But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help..</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>R. Wang, Y. Zhou, S. Chen, S. Qadeer, D. Evans, and Y. Gurevich, “Explicating sdks: Uncovering assumptions underlying secure authenti- cation and authorization,” in Proceedings of the 22th USENIX Security Symposium, Washington, DC, USA, August 14-16, 2013, 2013, pp. 399– 314.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>S. Sun and K. Beznosov, “The devil is in the (implementation) details: an empirical analysis of OAuth SSO systems,” in the ACM Conference on Computer and Communications Security, CCS’12, Raleigh, NC, USA, October 16-18, 2012, 2012, pp. 378–390.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 </body>
 </html>

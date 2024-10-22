@@ -3,6 +3,18 @@
 #+DATE: <2024-07-28 রবি> - <2024-08-15 বৃহঃ>
 
 [[https://docs.google.com/presentation/d/18syIlySzpIR6Iz_-mhbKBuBNo4YKxg0R/edit?usp=sharing&ouid=116173976886393365649&rtpof=true&sd=true][Findings of the experiment can be found here]].
+We have the following tasks in this project.
+1. Use narrow definition and broad definition to define the subjection concept of "indigenous article".
+2. Use of LLM to identify indigenous articles.
+3. We then estimate news genre distribution using semi-supervised topic modeling.
+4. We also estimate news sentiment and average article length to get more data on news representation.
+5. Approximate agenda setting from news genre distribution.
+6. 5-frame clasification and frame identification.
+7. Use word cloud to approximate priming. NO PREVIOUS WORK.
+8. FGD
+
+
+
 ** Literature Review
 You can find the [[https://www.overleaf.com/project/6633a3c24c44378a593d48e3][shared overleaf for literature review here.]]
 *** Computational Analysis
@@ -608,8 +620,24 @@ Dataset 2: 33.22%
 [[file:~/abj-paul.github.io/data/chatgpturbo_comparison_mobilizing.png]]
 *** Annotation
 We now need to annotate sentiment, agenda setting, framing, priming, mobilizing.
-*** Experiment - Clustering on Framing
+*** Paper dumps - Framing Evaluation and Noun encoding
  For that, we consider universal sentence encoder (USE) to encode frames. Because frames are noun phrases, as evident from the frames identified in \cite{morstatter2018identifying} and \cite{pew2009framing}. And according to Ajallouda et al., the best technique that can be used to represent noun phrases is USE \cite{ajallouda2022doc2vec}. Next, we cluster these frames into a hierarchical structure using Agglomerative Clustering, ultimately isolating X top-level frames. We use silhouette score to find the optimal number of clusters to be X. 
+
+ According to \cite{morstatter2018identifying}, framing is inherently nuanced. The intertwined nature of frames often leads to confusion among annotators, as a single news piece can contain multiple frames \cite{del2024human}. This complexity makes it challenging to ensure that all frames are accurately captured during annotation. Additionally, a machine may detect a subset of frames or identify an overlapping but distinct set of frames. This scenario is best treated as a fuzzy or soft evaluation problem. A "soft match" occurs when a machine's prediction is considered correct if it matches any of the multiple frames identified by human annotators, even if the match is not exact or comprehensive. The Jaccard Index is used to estimate similarity between sets or sequences \cite{salvatore2020beware}. And Binary indicators are also used across domains to represent true or false in a relationship between sets \cite{salvatore2020beware}, \cite{baharav2020spectral}. So we use Jaccard Index and Binary Indicator for match, here-forth called Binary Match Indicator as soft evaluation metric. In our case, BMI can be represented as:
+    \[
+        \text{Binary Match Indicator} =
+        \begin{cases}
+        1, & \text{if } \text{FrameX} \in \{ \text{Frame1}, \text{Frame2}, \ldots, \text{FrameN} \} \\
+        0, & \text{otherwise}
+        \end{cases}
+    \]
+
+    This metric represents match or non-match between machine and human annotation. So we can now use regular formula to calculate human-machine agreement rate \cite{del2024human}. In our case, if we evaluate over M articles, we can calculate the Average Agreement Rate using the binary match as follows:
+    \[
+        \text{Agreement Rate} = \quad \frac{1}{M} \sum_{i=1}^{M} \text{Binary Match Indicator}_i
+    \]
+        
+    Our human-machine agreement using Binary Match Indicator was 0.43. We also calculated Jaccard score to be 0.26. T
 *** Experiment - Framing
 We annotated 109 articles for 5-type framing. Our agreement score was around 86.23%. Our result in 5-type framing using LLM is:
 | Model                    | Acc | Precision | Recall | F1-score |
