@@ -2,7 +2,9 @@
 #+AUTHOR: Abhijit Paul
 #+DATE: <2024-09-17 মঙ্গল>
 
-** Update Optimization function to address cost concerns
+We completed 3 approaches before, involving UML to LTL parsing, converting big formally defined systems into UML and finding more case studies. We document the next approaches here.
+
+** Approach 1: Update Optimization function to address cost concerns
 I am trying to change codebase of Fortis - a research paper made by a PhD student in CMU. So I need to run that codebase for that, firstly.
 
 We mainly encounter these issues after somehow resolving dependency issue.
@@ -51,20 +53,17 @@ Possible solutions:
 
 Their pom file is also incomplete! We had to manually add 1 dependency, but it still shows error. The eternally long list of errors can be found [[file:~/abj-paul.github.io/data/errors][here]]
 
-** Use ChatGPT to generate costs
+** Approach 2: Use ChatGPT to generate costs
 The goal is to generate costs and use that to generate graphs. Then we will inspect how effective those generations are. 
 
-The input and prompts can be found in the dataset.
-
-Now let us consutrct a dataset.
+The input and prompts can be found in the dataset. Now let us consutrct a dataset.
 | Dataset   | Size      | Result                     | ChatGPT      |
 |-----------+-----------+----------------------------+--------------|
 | [[https://docs.google.com/document/d/1b-P9ouC9n9LPoleihJi20zfxn_1ZUm6D0snTOn9kCtM/edit?usp=sharing][Prompt_v1]] | 5 systems | Failed to find a solution. | [[https://chatgpt.com/share/66ea5931-daf0-8007-8250-eb7db4f186cd][chatGPT logs]] |
-|           |           |                            |              |
 
 We skip total_cost for now. It makes the process complex. Now we need to run Fortis to understand how good the cost assignments are.
 
-** Eye gaze tracking
+** Approach 3: Eye gaze tracking Literature Review
 There are existing works that uses eye gaze tracking to assess the human comprehension complexity of a diagram.
 [1] https://www.cs.kent.edu/~sdawoodi/pubs/icpc07-umlstudy.pdf
 [2] Influence of diagram layout and scrolling on understandability of BPMN processes: an eye tracking experiment with BPMN diagrams
@@ -77,27 +76,22 @@ We will save the following [1]:
 3. Scanpath is a directed path formed by saccades between fixations.
 
 Average Fixations on diagrams was used to approximate efforts needed to understand the diagram [1].
-   
-** More case studies
-R. Wang, Y. Zhou, S. Chen, S. Qadeer, D. Evans, and Y. Gurevich,
-“Explicating sdks: Uncovering assumptions underlying secure authenti-
-cation and authorization,” in Proceedings of the 22th USENIX Security
-Symposium, Washington, DC, USA, August 14-16, 2013, 2013, pp. 399–
-314.
-[7] S. Sun and K. Beznosov, “The devil is in the (implementation) details:
-an empirical analysis of OAuth SSO systems,” in the ACM Conference
-on Computer and Communications Security, CCS’12, Raleigh, NC, USA,
-October 16-18, 2012, 2012, pp. 378–390.
 
-supervisory control theory: C. G. Cassandras and S. Lafortune, Introduction to Discrete Event
+** Experiment 1: Creating Eye Gaze Tracking validation dataset
+We now start collecting data for evaluating it. Our possible data sources are:
+
+| Dataset source                                         | N           | Comments          |
+|--------------------------------------------------------+-------------+-------------------|
+| Fortis Codebase                                        | 7 systems   | Big and complex   |
+| LTSA tool examples                                     | 12 chapters | Simple to complex |
+| 2 papers using LTL systems as part of process [1], [2] |             |                   |
+
+But now we do have a a confusion. How do express the LTL codebase as a graph? Perhaps Finite State Machine translations can help..
+   
+** References
+[1] R. Wang, Y. Zhou, S. Chen, S. Qadeer, D. Evans, and Y. Gurevich, “Explicating sdks: Uncovering assumptions underlying secure authenti- cation and authorization,” in Proceedings of the 22th USENIX Security Symposium, Washington, DC, USA, August 14-16, 2013, 2013, pp. 399– 314.
+
+[2] S. Sun and K. Beznosov, “The devil is in the (implementation) details: an empirical analysis of OAuth SSO systems,” in the ACM Conference on Computer and Communications Security, CCS’12, Raleigh, NC, USA, October 16-18, 2012, 2012, pp. 378–390.
+
+[3] supervisory control theory: C. G. Cassandras and S. Lafortune, Introduction to Discrete Event
 Systems, 3rd ed. Springer, Cham, 202
-** Issues
-- [ ] JSON issue
-- [X] Minimized
-- [X] Compile: Failed
-- [X] Cost handling
-- [ ] Good UML
-- [ ] Estimate design comprehension ease
-- [ ] Cost optimization algorithm
-- [ ] Mutation test
-- [ ] Design complexity

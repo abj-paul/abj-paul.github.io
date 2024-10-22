@@ -85,6 +85,17 @@
 <p class="author">Abhijit Paul</p>
 <p class="date">&lt;2024-07-28 রবি&gt; - &lt;2024-08-15 বৃহঃ&gt;</p>
 </header>
+<p><a href="https://docs.google.com/presentation/d/18syIlySzpIR6Iz_-mhbKBuBNo4YKxg0R/edit?usp=sharing&amp;ouid=116173976886393365649&amp;rtpof=true&amp;sd=true">Findings of the experiment can be found here</a>. We have the following tasks in this project.</p>
+<ol>
+<li>Use narrow definition and broad definition to define the subjection concept of "indigenous article".</li>
+<li>Use of LLM to identify indigenous articles.</li>
+<li>We then estimate news genre distribution using semi-supervised topic modeling.</li>
+<li>We also estimate news sentiment and average article length to get more data on news representation.</li>
+<li>Approximate agenda setting from news genre distribution.</li>
+<li>5-frame clasification and frame identification.</li>
+<li>Use word cloud to approximate priming. NO PREVIOUS WORK.</li>
+<li>FGD</li>
+</ol>
 <h2 id="literature-review">Literature Review</h2>
 <p>You can find the <a href="https://www.overleaf.com/project/6633a3c24c44378a593d48e3">shared overleaf for literature review here.</a></p>
 <h3 id="computational-analysis">Computational Analysis</h3>
@@ -1062,6 +1073,83 @@ Topic 14 &quot;হত্য&quot; &quot;স্ত্রী&quot; &quot;কুম
 <p>For framing, Conflict is the main frame. Dataset 1: 48.87% Dataset 2: 65.56% <img src="../data/chatgpturbo_comparison_framing.png" /></p>
 <p>For priming, Violence is the major priming for ethnic article while investigation is the major priming for normal articles. Dataset 1: 19.44% Dataset 2: 33.22% <img src="../data/chatgpturbo_comparison_priming.png" /></p>
 <p>For mobilizing, there is not much difference. Dataset 1: 19.44% Dataset 2: 33.22% <img src="../data/chatgpturbo_comparison_mobilizing.png" /></p>
+<h3 id="annotation-1">Annotation</h3>
+<p>We now need to annotate sentiment, agenda setting, framing, priming, mobilizing.</p>
+<h3 id="paper-dumps---framing-evaluation-and-noun-encoding">Paper dumps - Framing Evaluation and Noun encoding</h3>
+<p>For that, we consider universal sentence encoder (USE) to encode frames. Because frames are noun phrases, as evident from the frames identified in <span class="citation" data-cites="morstatter2018identifying"></span> and <span class="citation" data-cites="pew2009framing"></span>. And according to Ajallouda et al., the best technique that can be used to represent noun phrases is USE <span class="citation" data-cites="ajallouda2022doc2vec"></span>. Next, we cluster these frames into a hierarchical structure using Agglomerative Clustering, ultimately isolating X top-level frames. We use silhouette score to find the optimal number of clusters to be X.</p>
+<p>According to <span class="citation" data-cites="morstatter2018identifying"></span>, framing is inherently nuanced. The intertwined nature of frames often leads to confusion among annotators, as a single news piece can contain multiple frames <span class="citation" data-cites="del2024human"></span>. This complexity makes it challenging to ensure that all frames are accurately captured during annotation. Additionally, a machine may detect a subset of frames or identify an overlapping but distinct set of frames. This scenario is best treated as a fuzzy or soft evaluation problem. A "soft match" occurs when a machine's prediction is considered correct if it matches any of the multiple frames identified by human annotators, even if the match is not exact or comprehensive. The Jaccard Index is used to estimate similarity between sets or sequences <span class="citation" data-cites="salvatore2020beware"></span>. And Binary indicators are also used across domains to represent true or false in a relationship between sets <span class="citation" data-cites="salvatore2020beware"></span>, <span class="citation" data-cites="baharav2020spectral"></span>. So we use Jaccard Index and Binary Indicator for match, here-forth called Binary Match Indicator as soft evaluation metric. In our case, BMI can be represented as: <br /><span class="math display">$$
+        \text{Binary Match Indicator} =
+        \begin{cases}
+        1, &amp; \text{if } \text{FrameX} \in \{ \text{Frame1}, \text{Frame2}, \ldots, \text{FrameN} \} \\
+        0, &amp; \text{otherwise}
+        \end{cases}
+    $$</span><br /></p>
+<p>This metric represents match or non-match between machine and human annotation. So we can now use regular formula to calculate human-machine agreement rate <span class="citation" data-cites="del2024human"></span>. In our case, if we evaluate over M articles, we can calculate the Average Agreement Rate using the binary match as follows: <br /><span class="math display">$$
+        \text{Agreement Rate} = \quad \frac{1}{M} \sum_{i=1}^{M} \text{Binary Match Indicator}_i
+    $$</span><br /></p>
+<p>Our human-machine agreement using Binary Match Indicator was 0.43. We also calculated Jaccard score to be 0.26. T</p>
+<h3 id="experiment---framing">Experiment - Framing</h3>
+<p>We annotated 109 articles for 5-type framing. Our agreement score was around 86.23%. Our result in 5-type framing using LLM is:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Acc</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1-score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gpt-3.5-turbo, llm-paper</td>
+<td>50</td>
+<td>49</td>
+<td>50</td>
+<td>47</td>
+</tr>
+<tr class="even">
+<td>gpt-4o-mini, combined</td>
+<td>58</td>
+<td>55</td>
+<td>58</td>
+<td>56</td>
+</tr>
+</tbody>
+</table>
+<p>We now annoate 109 articles for 16 core frames we identified earlier from 1626 frames. The agreement score was <code>ADITY</code>. Our result using LLM is:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Jaccard Index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gpt-4o-mini, combined</td>
+<td>0.371</td>
+</tr>
+</tbody>
+</table>
+<p>This metric measures the similarity between the predicted frame set and the actual frame set. Its also called Intersection over Union.</p>
+<pre class="text"><code>Jaccard Index=Number of common frames / Number of frames in union of actual and predicted sets.
+</code></pre>
+<p>The Jaccard Index ranges from 0 (no overlap) to 1 (perfect overlap), making it suitable for fuzzy evaluations. We use Jaccard Index because this scenario can be considered a fuzzy or soft evaluation problem since the predicted frames are not required to exactly match the actual frame list but are instead considered correct if they are present within the actual frames. To evaluate such scenarios, you can use metrics that account for partial matches and the degree of overlap between the predicted and actual frame lists.</p>
+<p>Despite the moderate Jaccard Index score, we still use LLM for frame identification because LLM can find most frames from an article. A human often overlooks and can't identify most frames, only focuses on few frames.</p>
+<p>We now annotate 10k articles to find these frames.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="https://drive.google.com/file/d/1lON-jhQ0I8VSz8a1lFO-Lh8niSg6hqGB/view?usp=sharing">General articles</a></td>
+<td>5000</td>
+</tr>
+<tr class="even">
+<td><a href="https://drive.google.com/file/d/1MJbsSGJjmWByBJNePJ6ETDs9dLiXLv82/view?usp=drive_link">Indigenous articles</a></td>
+<td>4892</td>
+</tr>
+</tbody>
+</table>
 <h2 id="survey">Survey</h2>
 <h3 id="literature">Literature</h3>
 <p>Atuel, Hazel et al first proves representation discrimination and then, tries to provide an explanation for it using sociological literature <a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>. Georgiou, Myria et al first performs interviews and then summarizes their findings by quoting what particiapnts have said about certain topics <a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>. However, they do support those participants' claims empirically.</p>
