@@ -2,6 +2,12 @@
 #+AUTHOR: Abhijit Paul
 #+DATE: <2024-08-01 বৃহঃ>
 
+Techniques for reasoning about system robustness have been investigated in prior works [23], [24], [25], [26], [27]. Most
+of these works adopt a quantitative notion of robustness (e.g.,
+given bounded perturbations in its input, a robust system
+should ensure bounded changes in the output), while we use
+a definition that is qualitative (i.e., additional behaviors that
+a deviating environment may exhibit)
 
 In this article, we perform a detailed literature review of Formal Verification of DNN methods. We first aim to list out the papers relevant to it. We plan to address all years - from 2027 to 2023. We cover a total of 9 FM and AI related conferences for it.
 

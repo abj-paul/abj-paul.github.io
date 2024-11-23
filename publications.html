@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@abj-paul | Publications</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .timeline {
+    position: relative;
+    padding: 20px 0;
+    }
+    .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 75px; /* Adjusted to align correctly */
+    height: 100%;
+    width: 2px;
+    background: #6c757d;
+    z-index: 1;
+    }
+    .timeline-year {
+    width: 100px;
+    text-align: right;
+    margin-right: 30px; /* Added spacing to separate from the timeline line */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6c757d;
+    z-index: 2; /* Ensures years are on top of the timeline line */
+    background: #fff; /* Ensures no visual overlap */
+    padding-right: 10px;
+    }
+    .timeline-content {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2; /* Ensures the content box is above the timeline */
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 30px;
+      align-items: flex-start;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-content h5 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    .timeline-content p {
+      margin: 0;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3">
+      <a class="navbar-brand" href="#">@abj-paul</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="data/cv.pdf">My CV</a></li>
+          <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="publications py-5">
+    <div class="container">
+      <h1 class="text-center mb-5">Publications</h1>
+
+      <div class="timeline">
+        <!-- Publication 1 -->
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h5><strong>Towards Bridging Formal Methods and Human Interpretability: Evaluating Human Comprehension of Labeled Transition System Designs</strong></h5>
+            <p><em><b>Abhijit Paul</b>, Proma Chowdhury, Kazi Sakib</em></p>
+            <p>On-Review: ICSE Design Workshop '25, Acceptance notification: December 18, 2024</p>
+            <p class="text-muted">Explores cognitive dimensions of formal design using temporal logic, emphasizing lightweight methods for practical application.</p>
+          </div>
+        </div>
+
+        <!-- Publication 2 -->
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h5><strong>Where Journalism Silenced Voices: Exploring Discrimination in the Representation of Indigenous Communities in Bangladesh</strong></h5>
+            <p><em><b>Abhijit Paul</b>, Adity Khisa, Sharif Md. Abdullah, Zarif Hossain, Dr. Ahmedul Kabir, Dr. Shebuti Rayana</em></p>
+            <p>Submitted to: CSCW (A), Revision notification: March 4, 2025</p>
+            <p class="text-muted">Analyzes media representation biases against indigenous minorities using machine learning and sociological frameworks.</p>
+          </div>
+        </div>
+
+        <!-- Publication 3 -->
+        <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-content">
+              <h5><strong>Bengali Document Layout Analysis -- A YOLOV8 Based Ensembling Approach</strong></h5>
+              <p><em>Nazmus Sakib Ahmed, Saad Sakib Noor, Ashraful Islam Shanto Sikder, <b>Abhijit Paul</b></em></p>
+              <p>Published in: Arxiv</p>
+              <p class="text-muted">Experimentation results on Bangla Document Layout Analysis on the BadLaD dataset in DLSprint’23 where we placed 2nd.</p>
+            </div>
+          </div>
+
+        <!-- Publication 4 -->
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <h5><strong>Stemming: Evolution and Current State with Focus on Bangla</strong></h5>
+            <p><em><b>Abhijit Paul</b>, Mashiat Amin Farin, Sharif Md. Abdullah, Zarif Hossain, Dr. Ahmedul Kabir, Dr. Shebuti Rayana</em></p>
+            <p>Target: NAACL (A*), Rejected due to irrelevane with conference</p>
+            <p class="text-muted">Comprehensive review of stemming methods with a focus on Bangla, highlighting linguistic challenges and future directions.</p>
+          </div>
+        </div>
+
+        <!-- Publication 4 -->
+        <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-content">
+              <h5><strong>Exploring Diverse Coping Mechanisms in 2023: A Comprehensive Survey Across Backgrounds and Cultures</strong></h5>
+              <p><em><b>Abhijit Paul</b>, Rony Majumder</em></p>
+              <p>Arxiv</p>
+              <p class="text-muted">Collected a dataset of coping mechanisms across culture for Gen-Z and Gen-Alpha age group. The findings provided interesting insight on the types of coping mechanism.</p>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <span class="text-muted">&copy; 2024 @abj-paul. All Rights Reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
