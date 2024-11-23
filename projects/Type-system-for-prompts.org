@@ -1,0 +1,60 @@
+#+TITLE: Type System for Prompts
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-11-01 শুক্র>
+
+
+Type system for prompts in hat architecture.
+** Abstract
+** Introduction
+** Related Works
+We discuss related works in 3 parts. First, we discuss on prompts and their role. Next, we discuss type systems. Finally, we inspect related works that combine prompts with type systems.
+*** Prompts
+Large Language Models (LLMs) have revolutionized various fields by enabling sophisticated text generation and understanding. The design and use of prompts play a crucial role in harnessing the full potential of these models. This section explores the different types of prompts used in LLMs, their applications, and the challenges associated with them.
+[1] proposes a general taxonomy that can be used to design prompts with specific properties in order to perform a wide range of complex task. They represent each prompt as a combination of Directive and Data. Assuming Data is fixed for a given goal task, the performance depends on the directive. The TELeR texonomy considers four factors, i.e., Turn, Expression, Level of Details and Role.
+[[file:~/abj-paul.github.io/data/TELeR Taxonomy.png]]
+White, Jules, et al. proposes 6 patterns of prompts for improved performance [2]. Among the 6 patterns, Meta Language Creation Pattern can enforce constraints on the output via symbolism. It also discusses that prompts should not introduce ambiguity. For example, “whenever I separate two things by commas, it means that the first thing precedes the second thing” will likely create significant potential for ambiguity and create the potential for unexpected semantics if punctuation involving commas is used in the prompt [2]. The persona pattern, question refinement pattern, alternative appraoch pattern and flipper interaction patterns require user interaction [2] and hence, not typically suitable as a hat. So we consider them out of scope. Fact check pattern is interesting since it tries to detect hallucination of LLM by telling it to provide facts on which its answer depends on. Users can verify those facts to ensure the answer provided is accurate. 
+
+Meanwhile Weber and Irene studies LLM-integrate application and finds that LLM is integrated as a control or calculation unit in 21 cases. Only in 2 cases was it used to read data from disk using SQL queries [3]. Some application preprocesses input data e.g., AutoDroid removes personal data, such as names, to ensure privacy before invoking the TaskExecutor; Honeycomb QueryAssistant incorporates a coded mechanism against prompt injection attacks. Some applications also post-processes output data. E.g., Honeycomb QueryAssistant corrects the query produced by the LLM before executing it [3].
+*** Prompt Vulnerability
+** Methodology
+*** Properties of prompt to protect via type system
+[1] also provides an example prompt for each level of the taxonomy for a meta-review task. Meta-reviewing is a critical part of the scientific peer-review process and is generally a complex task that involves summarizing expert reviews from multiple reviewers.
+Level 0 Prompt: <R1, R2, R3>
+- Level 1 Prompt: Prepare a meta-review by summarizing the reviewer comments: <R1, R2, R3>
+- Level 2 Prompt: Prepare a meta-review by summarizing the following reviewer comments. The final output should highlight the core contributions of the manuscript, common strengths/weaknesses mentioned by multiple reviewers, suggestions for improvement, and missing references (if any). The review texts are provided below: <R1, R2, R3>
+- Level 3 Prompt: Prepare a meta-review by answering the following questions from the reviewer comments (provided after the questions).
+  1. Based on the reviewer’s comments, what are the core contributions made by the authors?
+  2. What are the common strengths of this work, as mentioned by multiple reviewers?
+  3. What are the common weaknesses of this work, as highlighted by multiple reviewers?
+  4. What suggestions would you provide for improving this paper?
+  5. What are the missing references mentioned by the individual reviews?
+The review texts are below: <R1, R2, R3>
+- Level 4 Prompt: “Level 3 Prompt” + “A good output should be coherent, highlight major strengths/issues mentioned by multiple reviewers, be less than 400 words in length, and finally, the response should be in English only”.
+- Level 5 Prompt: “Level 4 Prompt” + “Below are additional information relevant to your goal task. <Information Fetched using Information Retrieval Techniques>”.
+- Level 6 Prompt: “Level 5 Prompt” + “Justify your response in detail by explaining why you made the choices you actually made”
+
+  Type systems usually verify data flow. In the case of prompts, we also need to verify the data. From the example of TELeR taxonomy, we identify the following dataflow for each prompt levels.
+  | Prompt Level   | Dataflow                    | Constraints defined in prompt |
+  |----------------+-----------------------------+-------------------------------|
+  | Level 1 Prompt | <R1,R2,R3>                  |                               |
+  | Level 2 Prompt | <R1,R2,R3>                  |                               |
+  | Level 3 Prompt | <R1,R2,R3>                  |                               |
+  | Level 4 Prompt | <R1,R2,R3>,                 | Evaluation Criteria           |
+  | Level 5 Prompt | <R1,R2,R3>,  Retrieved data | Evaluation Criteria           |
+  | Level 6 Prompt | <R1,R2,R3>,  Retrieved data | Evaluation Criteria           |
+
+  From [2], we can uncover safety properties of prompt.
+  | Prompt Pattern                 | Safety Property                                                                             |
+  |--------------------------------+---------------------------------------------------------------------------------------------|
+  | Meta Language Creation Pattern | Input data should also follow the constraints enforced by the pattern e.g. comma separation |
+  | Fact Check Pattern             | Provided facts / Lemmas are true                                                            |
+  | Use Security                   | Remove personal identifiable data                                                           |
+  | Prompt Injection Attack        | Coded mechanism                                                                             |
+  | Query or Code                  | Evaluate it                                                                                 |
+  
+** Result
+** Discussion
+** References
+[1] Santu, Shubhra Kanti Karmaker, and Dongji Feng. "Teler: A general taxonomy of llm prompts for benchmarking complex tasks." arXiv preprint arXiv:2305.11430 (2023).
+[2] White, Jules, et al. "A prompt pattern catalog to enhance prompt engineering with chatgpt." arXiv preprint arXiv:2302.11382 (2023).
+[3] Weber, Irene. "Large Language Models as Software Components: A Taxonomy for LLM-Integrated Applications." arXiv preprint arXiv:2406.10300 (2024).
