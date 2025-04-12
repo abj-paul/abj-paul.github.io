@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .small-icon {
+      height: 24px;
+      width: auto;
+      margin: 0 5px;
+      opacity: 0.7;
+    }
+    .more-button {
+      display: block;
+      margin: 20px auto 0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -62,14 +74,14 @@
       <h4 class="mb-4">Latest News</h4>
       <ul class="list-group">
         <li class="list-group-item">
+          <strong>🚀 Joined <a href="research.samsung.com/srbd">Samsung R&D Institute</a>, Bangladesh to work on Formal Ontology</strong><br>
+          <span class="text-muted">Collaboration with <a href="https://www.oxfordsemantic.tech/">Oxford Semantics, UK</a>. Acquired by Samsung.</span><br>
+          <span class="text-muted"><small>February 5, 2025</small></span>
+        </li>
+        <li class="list-group-item">
           <strong>🏆 Received <a href="https://www.scholarship.or.jp/english/program/contents/en_application.html">Mitsubishi UFJ Foundation Scholarship</a> Program FY 2024</strong><br>
           <span class="text-muted">A prestigious scholarship offered by Mitsubishi.</span><br>
           <span class="text-muted"><small>September 19, 2024</small></span>
-        </li>
-        <li class="list-group-item">
-          <strong>🤝 Meeting with CTO and CEO of <a href="https://softbdltd.com/">SoftBD Ltd.</a></strong><br>
-          <span class="text-muted">Industry collaboration for future projects.</span><br>
-          <span class="text-muted"><small>September 10, 2024</small></span>
         </li>
         <li class="list-group-item">
           <strong>📅 Joined <a href="https://fmeurope.org">Formal Method Europe (FME)</a> Business Meeting 2024</strong><br>
@@ -84,32 +96,22 @@
         <li class="list-group-item">
           <strong>🚀 Joining <a href="https://www.inferara.com/en/"> Inferara</a>, Japan</strong><br>
           <span class="text-muted">Inferara works on Smart contract Verification using Game Theory, CoQ etc. We also make FM accessible via dissemination of relevant tutorials.</span><br>
-          <span class="text-muted"><small>July 1, 2024</small></span>
+          <span class="text-muted"><small>July 1, 2024-Oct,2025</small></span>
         </li>
         <li class="list-group-item">
-          <strong>🏆 <a href="https://www.samsung.com/us/">Samsung</a> Best Innovator Team Award</strong><br>
+          <strong>🏆 Received <a href="https://www.samsung.com/us/">Samsung</a> Best Innovator Team Award</strong><br>
           <span class="text-muted">My team won "Best Innovator Team" award for Q1, 2024.</span><br>
           <span class="text-muted"><small>June 30, 2024</small></span>
         </li>
         <li class="list-group-item">
-          <strong>🌐 Joined Formal Method Europe (FME)</strong><br>
-          <span class="text-muted">Proud to join the community for advancing formal methods.</span><br>
-          <span class="text-muted"><small>June 15, 2024</small></span>
+          <strong>🏆 Received <a href="https://www.samsung.com/us/">Advanced Research Fund</a>, Samsung</strong><br>
+          <span class="text-muted">Further details are classified</span><br>
+          <span class="text-muted"><small>June, 2024</small></span>
         </li>
-       <li class="list-group-item">
-          <strong>🌐 Joined ICSE Score 2023</strong><br>
-          <span class="text-muted">Worked with researchers from Humanize lab at Monash University, Australia on Localization of Android Apks.</span><br>
-          <span class="text-muted"><small>September, 2022</small></span>
-        </li>
-       <li class="list-group-item">
-          <strong>🌐 Joined Bengali.AI 2023</strong><br>
-          <span class="text-muted">A prestigious event on Bangla NLP where we presented our project on Knowledge Graph.</span><br>
-          <span class="text-muted"><small>December, 2022</small></span>
-        </li>
+        <a href="data/cv.pdf" class="btn btn-primary more-button">More News & Achievements</a>
       </ul>
-      <a href="https://www.hitwebcounter.com" target="_blank">
-        <img src="https://hitwebcounter.com/counter/counter.php?page=15259081&style=0001&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0">
-      </a>
+      <!-- Added More button linking to CV -->
+    </div>
   </section>
 
   <section class="research-path py-5">
@@ -129,25 +131,41 @@
   <!-- Footer -->
   <footer class="footer bg-dark text-white py-4">
     <div class="container text-center">
+      <div class="mb-2">
+        <!-- ClusterMaps as small icon -->
+        <div id="clustrmaps-widget-container" style="display: inline-block;">
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=2SIz_oOF1_FmcS67s20u1BhGKH7FJre1YGxtkNfUHrA&cl=ffffff&w=a" data-no-script="true"></script>
+          <a href="//clustrmaps.com/site/1brqt" title="Visit tracker">
+            <img src="//clustrmaps.com/generated_files/map_icon.png" class="small-icon" alt="Visitor Map">
+          </a>
+        </div>
+        
+        <!-- Hit counter as small icon -->
+        <a href="https://www.hitwebcounter.com" target="_blank">
+          <img src="https://hitwebcounter.com/counter/counter.php?page=15259081&style=0001&nbdigits=5&type=ip&initCount=0" class="small-icon" title="Website Counter" alt="Web Counter">
+        </a>
+      </div>
       <span class="text-muted">&copy; 2024 @abj-paul. All Rights Reserved.</span>
     </div>
   </footer>
 
   <!-- Bootstrap JS and jQuery -->
-  <div class="clustrmaps-container" style="max-width: 300px; margin: 0 auto;">
-  	<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=2SIz_oOF1_FmcS67s20u1BhGKH7FJre1YGxtkNfUHrA&cl=ffffff&w=a"></script>
-  </div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  
   <script>
     // JavaScript to handle click-to-expand functionality
     $(document).ready(function() {
       $(".card-content").on("click", function() {
         $(this).toggleClass("expanded");
       });
+      
+      // Hide the original clustrmaps widget and counter
+      $("script#clustrmaps").parent().not("#clustrmaps-widget-container").hide();
+      $("a[href='https://www.hitwebcounter.com']").not(function() {
+        return $(this).children("img.small-icon").length > 0;
+      }).hide();
     });
   </script>
 </body>
