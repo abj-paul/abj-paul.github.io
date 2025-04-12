@@ -18,6 +18,23 @@
       display: block;
       margin: 20px auto 0;
     }
+    .clustrmaps-container {
+      display: inline-block;
+      width: 40px;
+      height: 30px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+    .clustrmaps-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(0.1);
+      transform-origin: 0 0;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -108,9 +125,9 @@
           <span class="text-muted">Further details are classified</span><br>
           <span class="text-muted"><small>June, 2024</small></span>
         </li>
-        <a href="data/cv.pdf" class="btn btn-primary more-button">More News & Achievements</a>
       </ul>
-      <!-- Added More button linking to CV -->
+      <!-- More button linking to CV -->
+      <a href="data/cv.pdf" class="btn btn-primary more-button">More News & Achievements</a>
     </div>
   </section>
 
@@ -132,12 +149,9 @@
   <footer class="footer bg-dark text-white py-4">
     <div class="container text-center">
       <div class="mb-2">
-        <!-- ClusterMaps as small icon -->
-        <div id="clustrmaps-widget-container" style="display: inline-block;">
-          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=2SIz_oOF1_FmcS67s20u1BhGKH7FJre1YGxtkNfUHrA&cl=ffffff&w=a" data-no-script="true"></script>
-          <a href="//clustrmaps.com/site/1brqt" title="Visit tracker">
-            <img src="//clustrmaps.com/generated_files/map_icon.png" class="small-icon" alt="Visitor Map">
-          </a>
+        <!-- ClusterMaps - small but functional -->
+        <div class="clustrmaps-container">
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=2SIz_oOF1_FmcS67s20u1BhGKH7FJre1YGxtkNfUHrA&cl=ffffff&w=a"></script>
         </div>
         
         <!-- Hit counter as small icon -->
@@ -160,12 +174,6 @@
       $(".card-content").on("click", function() {
         $(this).toggleClass("expanded");
       });
-      
-      // Hide the original clustrmaps widget and counter
-      $("script#clustrmaps").parent().not("#clustrmaps-widget-container").hide();
-      $("a[href='https://www.hitwebcounter.com']").not(function() {
-        return $(this).children("img.small-icon").length > 0;
-      }).hide();
     });
   </script>
 </body>
