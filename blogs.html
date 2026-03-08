@@ -1,255 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@abj-paul</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhijit Paul — Blogs</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8; --surface: #ffffff; --text: #1a1a18; --muted: #6b6b65;
+      --accent: #1a4a8a; --accent-light: #e8f0fb; --border: #e2e2dc; --tag-bg: #f0f0ea;
+      --serif: 'EB Garamond', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.65; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    a:hover { border-bottom-color: var(--accent); }
+    .page { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav { border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 100; }
+    nav .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .nav-brand { font-family: var(--serif); font-size: 1.1rem; color: var(--text); font-weight: 500; border-bottom: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; text-transform: uppercase; border-bottom: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── Page header ── */
+    .page-header { padding: 48px 0 36px; border-bottom: 1px solid var(--border); }
+    .page-header h1 { font-family: var(--serif); font-size: 2.2rem; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .page-header p { font-size: 0.95rem; color: var(--muted); max-width: 520px; }
+
+    /* ── Filter tabs ── */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; padding: 22px 0 0; }
+    .filter-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 4px 14px; border-radius: 20px; cursor: pointer; letter-spacing: 0.02em; transition: all 0.15s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+    /* ── Section heading ── */
+    section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; padding-bottom: 56px; }
+    h2 { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; margin-bottom: 20px; color: var(--text); display: flex; align-items: center; gap: 10px; }
+    h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .section-label { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); background: var(--tag-bg); padding: 2px 8px; border-radius: 3px; font-weight: 500; }
+
+    /* ── Blog grid ── */
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 700px) { .blog-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 701px) and (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── Blog card ── */
+    .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+    .blog-card:hover { border-color: #b0c4e0; box-shadow: 0 2px 12px rgba(26,74,138,0.07); }
+    .blog-card-img { width: 100%; height: 130px; object-fit: cover; background: var(--tag-bg); display: block; }
+    .blog-card-img-placeholder { width: 100%; height: 130px; background: linear-gradient(135deg, var(--tag-bg), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+    .blog-card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .blog-card-tag { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); font-weight: 500; }
+    .blog-card-title { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--text); line-height: 1.35; }
+    .blog-card-title a { color: var(--text); border-bottom: none; }
+    .blog-card-title a:hover { color: var(--accent); }
+    .blog-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; flex: 1; }
+    .blog-card-footer { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .blog-card-read { font-size: 0.78rem; font-weight: 500; color: var(--accent); border-bottom: none; }
+    .blog-card-read:hover { border-bottom: 1px solid var(--accent); }
+
+    footer { padding: 32px 0; text-align: center; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <a class="navbar-brand" href="#">@abj-paul</a>
-                <!-- Toggler/collapsible Button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Navbar links -->
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="data/cv.pdf">My CV</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="achievements.html">Achievements</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blogs.html">Blogs</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+<nav>
+  <div class="inner">
+    <a class="nav-brand" href="index.html">Abhijit Paul</a>
+    <ul class="nav-links">
+      <li><a href="index.html#publications">Publications</a></li>
+      <!-- <li><a href="index.html#collaborations">Research</a></li> -->
+      <li><a href="index.html#grants">Grants</a></li>
+      <li><a href="#" class="active">Blogs</a></li>
+      <li><a href="#">CV</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <!-- New Row for Cards -->
-        <div class="row mt-4 card-grid">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="data/voter-sys.png" alt="UML to LTS/FSP transformation analysis" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/Robustification of Behavioral Model against Environmental Deviation.html">
-                        <h5 class="card-title">Feasibility analysis of UML to LTS/FSP notation </h5>
-                      </a>
-                        <div class="card-content">
-                            <p class="card-text">We do case studies and surveys to analyze whether UML to LTS transformation is feasible or not.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0031320320301357-gr1.jpg" alt="Deadlines" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/How can we formally verify a neural network.html">
-                        <h5 class="card-title">How can we formally verify Deep Neural Network?</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">As AI is being increasingly adopted in industry and society, it is important to prove the robustness of the models before deploying them. In this article, we discuss how to do it.</p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://i.ytimg.com/vi/4or-eQ8fPl8/sddefault.jpg" alt="Fortis user aspect" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/How can we use Fortis in software industry.html">
-                          <h5 class="card-title">Extending Fortis from user perspective</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">PL and HCI are related. A strong correlation exist between PL and HCI. So we incorporate HCI into Fortis.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
+<div class="page">
 
-        <div class="row mt-4 card-grid">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://learnubuntumate.weebly.com/uploads/1/0/8/4/108446579/header_images/1579937755.jpg" alt="Make gnome hacky" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/Make-Gnome-Hacky.html">
-                          <h5 class="card-title">Make Gnome Hacky!</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">Gnome is an easy-to-use user friendly window manager. It can also be easily customized to be as powerful as other customizable WMs. We show an example workflow here.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://img.freepik.com/free-photo/deadline-text-blackboard-with-alarm-clock_23-2147943600.jpg" alt="Deadlines" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/Deadlines for Conferences & Journals.html">
-                          <h5 class="card-title">Personal deadlines to meet</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">Collection of deadlines I am trying to meet.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://www.thwink.org/sustain/glossary/images/EmergentBehavior_Diagram.png" alt="Make gnome hacky" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/What is intelligence.html">
-                          <h5 class="card-title">What is intelligence?</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">In this article, we look at the relation between intelligence and emergent behavior. We finally hypothesize that emergent behaviors are essentially intelligence. So we are very close to creating natural intelligence.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-
-        <div class="row mt-4 card-grid">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://sevenseasentertainment.com/wp-content/uploads/2023/02/siteheader_thousandAutumns_938%C3%97326.jpg" alt="Cultivation novel list" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/Daoist Cultivation Novels I have read.html">
-                          <h5 class="card-title">Daoist Cultivation Novels I have read... or a part of it</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">After 4 years, I have finally decided to log the progress of the novels I read. Better late than never I guess. And fellow daoist, if you wanna recommend me anything, feel free to email me!</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://images.slideplayer.com/21/6240746/slides/slide_5.jpg" alt="Lightweigh Formal Method" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/Introduction to Lightweight Formal Method.html">
-                          <h5 class="card-title">Introduction to Lightweight Formal Methods</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">Formal methods is an extremely useful tool that has seen critical application in industry. However, the complexity is a barrier. So we opt for lightweight formal methods.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                  <img src="https://aisera.com/wp-content/uploads/2024/03/Small-Language-Models-1024x538.png" alt="Chat apk" class="card-img-top">
-                  <div class="card-body">
-                      <a href="blogs/Host Small Language Model in your Low-End PC.html">
-                          <h5 class="card-title">Host Small Language Model in your Low-End PC</h5>
-                      </a>
-                      <div class="card-content">
-                          <p class="card-text">OuteAI published 300M and 65M parameter models, available in both instruct and base versions. 300M models have the Mistral architecture and 65M models have LLaMa architecture. So it made me wonder - can we use it as a simple chat assistant for low-end devices?</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <!-- New Row -->
-        <div class="row mt-4 card-grid">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://www.mathworks.com/products/deep-learning-verification-library/_jcr_content/mainParsys/band_2106714762_copy/mainParsys/columns/507537ca-afa8-41c5-806f-bbdd06667040/image_copy.adapt.full.medium.png/1719312357042.png" alt="NN Verification" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/Existing work on Formal Verification of DNN.html">
-                            <h5 class="card-title">Existing work on Formal Verification of DNN</h5>
-                        </a>
-                        <div class="card-content">
-                            <p class="card-text">Formal verification of DNN is a complex task. So it is necessary to properly define the state of the arts and methodologies for research community.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="data/demo.png" alt="demo gui" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/Emacs-Minimum-Configuration-2024.html">
-                            <h5 class="card-title">EXWM minimum configuration for 2024</h5>
-                        </a>
-                        <div class="card-content">
-                            <p class="card-text">While quite hacky and often hard to use for some task, EXWM does come with some added benefits. The most important of it being - extremely lightweight. As someone with low-end PC, i use EXWM for this reason.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-	    <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://s3-alpha.figma.com/hub/file/3798009157/03742d2c-1a33-4980-b380-22ecb7fa04de-cover.png" alt="demo gui" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/Formally-Verifying-Login-System.html">
-                            <h5 class="card-title">Formally Verifuing Login system and redesigning it</h5>
-                        </a>
-                        <div class="card-content">
-                            <p class="card-text">Login systems are used everywhere. Depending on use case scenario, login systems are required to contain a certain level of robustness. So we formally define a login system and its safety property and try to formally redesign it. The redesings are currently only informative.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-        <!-- New Row -->
-        <div class="row mt-4 card-grid">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://blog.statechannels.org/static/3ad433971da92cc6e1fc8ee00875fb47/d2cbc/front-running.png" alt="tlaplus" class="card-img-top">
-                    <div class="card-body">
-                        <a href="blogs/Introduction to TLA+.html">
-                            <h5 class="card-title">Introduction to TLA+</h5>
-                        </a>
-                        <div class="card-content">
-                            <p class="card-text">TLA+ is a famous formal specification language. It also creates sound thinking amoung users. Here we cover Leslie lamport's introduction to TLA+</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Row ends here -->
+  <div class="page-header">
+    <h1>Writings &amp; Blogs</h1>
+    <p>Technical notes, research commentary, and informal explorations across formal methods, AI, and software engineering.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCards('formal-methods', this)">Formal Methods</button>
+      <button class="filter-btn" onclick="filterCards('ai-ml', this)">AI &amp; ML</button>
+      <button class="filter-btn" onclick="filterCards('systems', this)">Systems</button>
+      <button class="filter-btn" onclick="filterCards('misc', this)">Misc</button>
     </div>
+  </div>
 
-    <!-- Bootstrap JS and jQuery (required for Bootstrap components) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Formal Methods -->
+  <section>
+    <h2><span class="section-label">Formal Methods</span></h2>
+    <div class="blog-grid">
 
-    <script>
-      // JavaScript to handle click-to-expand functionality
-      $(document).ready(function() {
-        $(".card-content").on("click", function() {
-          $(this).toggleClass("expanded");
-        });
-      });
-    </script>
+      <div class="blog-card" data-cat="formal-methods">
+        <img src="data/voter-sys.png" class="blog-card-img" alt="UML to LTS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="blog-card-img-placeholder" style="display:none">📐</div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Formal Methods</div>
+          <div class="blog-card-title"><a href="blogs/Robustification of Behavioral Model against Environmental Deviation.html">Feasibility Analysis of UML to LTS/FSP Notation</a></div>
+          <div class="blog-card-desc">Case studies and surveys analyzing whether UML to LTS transformation is feasible.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Robustification of Behavioral Model against Environmental Deviation.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="formal-methods">
+        <img src="https://i.ytimg.com/vi/4or-eQ8fPl8/sddefault.jpg" class="blog-card-img" alt="Fortis">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Formal Methods · HCI</div>
+          <div class="blog-card-title"><a href="blogs/How can we use Fortis in software industry.html">Extending Fortis from a User Perspective</a></div>
+          <div class="blog-card-desc">PL and HCI are deeply related. We incorporate human factors into the Fortis formal design tool.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/How can we use Fortis in software industry.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="formal-methods">
+        <img src="https://blog.statechannels.org/static/3ad433971da92cc6e1fc8ee00875fb47/d2cbc/front-running.png" class="blog-card-img" alt="TLA+">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Formal Methods · TLA+</div>
+          <div class="blog-card-title"><a href="blogs/Introduction to TLA+.html">Introduction to TLA+</a></div>
+          <div class="blog-card-desc">A walkthrough of Leslie Lamport's famous formal specification language and its role in building sound reasoning.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Introduction to TLA+.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="formal-methods">
+        <img src="https://images.slideplayer.com/21/6240746/slides/slide_5.jpg" class="blog-card-img" alt="Lightweight FM">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Formal Methods</div>
+          <div class="blog-card-title"><a href="blogs/Introduction to Lightweight Formal Method.html">Introduction to Lightweight Formal Methods</a></div>
+          <div class="blog-card-desc">Formal methods are powerful but complex. Lightweight variants lower the barrier while preserving rigor.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Introduction to Lightweight Formal Method.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="formal-methods">
+        <img src="https://s3-alpha.figma.com/hub/file/3798009157/03742d2c-1a33-4980-b380-22ecb7fa04de-cover.png" class="blog-card-img" alt="Login system">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Formal Methods · Security</div>
+          <div class="blog-card-title"><a href="blogs/Formally-Verifying-Login-System.html">Formally Verifying a Login System and Redesigning It</a></div>
+          <div class="blog-card-desc">We formally define a login system's safety properties and redesign it using formal method-guided rewrites.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Formally-Verifying-Login-System.html">Read →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AI & ML -->
+  <section>
+    <h2><span class="section-label">AI &amp; Machine Learning</span></h2>
+    <div class="blog-grid">
+
+      <div class="blog-card" data-cat="ai-ml">
+        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0031320320301357-gr1.jpg" class="blog-card-img" alt="DNN verification">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">AI · Formal Verification</div>
+          <div class="blog-card-title"><a href="blogs/How can we formally verify a neural network.html">How Can We Formally Verify a Deep Neural Network?</a></div>
+          <div class="blog-card-desc">As AI is deployed in critical systems, proving model robustness before deployment becomes essential.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/How can we formally verify a neural network.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="ai-ml">
+        <img src="https://www.mathworks.com/products/deep-learning-verification-library/_jcr_content/mainParsys/band_2106714762_copy/mainParsys/columns/507537ca-afa8-41c5-806f-bbdd06667040/image_copy.adapt.full.medium.png/1719312357042.png" class="blog-card-img" alt="DNN verification survey">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">AI · Survey</div>
+          <div class="blog-card-title"><a href="blogs/Existing work on Formal Verification of DNN.html">Existing Work on Formal Verification of DNNs</a></div>
+          <div class="blog-card-desc">A survey of state-of-the-art methodologies and tools for formally verifying deep neural networks.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Existing work on Formal Verification of DNN.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="ai-ml">
+        <img src="https://aisera.com/wp-content/uploads/2024/03/Small-Language-Models-1024x538.png" class="blog-card-img" alt="SLM">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">AI · SLM</div>
+          <div class="blog-card-title"><a href="blogs/Host Small Language Model in your Low-End PC.html">Host a Small Language Model on Your Low-End PC</a></div>
+          <div class="blog-card-desc">OuteAI's 65M–300M parameter models run on minimal hardware. Can they serve as practical chat assistants?</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Host Small Language Model in your Low-End PC.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="ai-ml">
+        <img src="https://www.thwink.org/sustain/glossary/images/EmergentBehavior_Diagram.png" class="blog-card-img" alt="Intelligence">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">AI · Philosophy</div>
+          <div class="blog-card-title"><a href="blogs/What is intelligence.html">What is Intelligence?</a></div>
+          <div class="blog-card-desc">Exploring the link between intelligence and emergent behavior — and what that means for artificial general intelligence.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/What is intelligence.html">Read →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Systems & Tools -->
+  <section>
+    <h2><span class="section-label">Systems &amp; Tools</span></h2>
+    <div class="blog-grid">
+
+      <div class="blog-card" data-cat="systems">
+        <img src="https://learnubuntumate.weebly.com/uploads/1/0/8/4/108446579/header_images/1579937755.jpg" class="blog-card-img" alt="Gnome">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Linux · Workflow</div>
+          <div class="blog-card-title"><a href="blogs/Make-Gnome-Hacky.html">Make Gnome Hacky!</a></div>
+          <div class="blog-card-desc">GNOME can be customized into a powerful, keyboard-driven workflow. Here's an example setup.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Make-Gnome-Hacky.html">Read →</a></div>
+        </div>
+      </div>
+
+      <div class="blog-card" data-cat="systems">
+        <img src="data/demo.png" class="blog-card-img" alt="EXWM" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="blog-card-img-placeholder" style="display:none">⌨️</div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Emacs · Linux</div>
+          <div class="blog-card-title"><a href="blogs/Emacs-Minimum-Configuration-2024.html">EXWM Minimum Configuration for 2024</a></div>
+          <div class="blog-card-desc">EXWM is extremely lightweight — ideal for low-end hardware. A minimal working configuration for 2024.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Emacs-Minimum-Configuration-2024.html">Read →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Misc -->
+  <section>
+    <h2><span class="section-label">Misc</span></h2>
+    <div class="blog-grid">
+
+      <div class="blog-card" data-cat="misc">
+        <img src="https://img.freepik.com/free-photo/deadline-text-blackboard-with-alarm-clock_23-2147943600.jpg" class="blog-card-img" alt="Deadlines">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Personal</div>
+          <div class="blog-card-title"><a href="blogs/Deadlines for Conferences & Journals.html">Personal Conference &amp; Journal Deadlines</a></div>
+          <div class="blog-card-desc">A running list of submission deadlines I'm tracking for conferences and journals.</div>
+          <div class="blog-card-footer"><a class="blog-card-read" href="blogs/Deadlines for Conferences & Journals.html">Read →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="page">
+    Abhijit Paul · <a href="https://research.samsung.com/srbd" target="_blank">Samsung R&D Institute, Bangladesh</a> · <a href="mailto:bsse1201@iit.du.ac.bd">bsse1201@iit.du.ac.bd</a> · © 2026
+  </div>
+</footer>
+
+<script>
+  function filterCards(cat, btn) {
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/hide cards
+    document.querySelectorAll('.blog-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Hide empty section headings
+    document.querySelectorAll('section').forEach(sec => {
+      if (cat === 'all') {
+        sec.style.display = '';
+        return;
+      }
+      const visible = [...sec.querySelectorAll('.blog-card')].some(c => c.style.display !== 'none');
+      sec.style.display = visible ? '' : 'none';
+    });
+  }
+</script>
+
 </body>
 </html>
