@@ -1,0 +1,20 @@
+#+TITLE: Existing work on Formal Verification of DNN
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-01 বৃহঃ>
+
+
+| Paper name                                                                                                     | Year | Conference |
+|----------------------------------------------------------------------------------------------------------------+------+------------|
+| Certifying the Fairness of KNN in the Presence of Dataset Bias                                                 | 2023 | CAV        |
+| Monitoring Algorithmic Fairness                                                                                | 2023 | CAV        |
+| nl2spec: Interactively Translating Unstructured Natural Language to Temporal Logics with Large Language Models | 2023 | CAV        |
+| NNV 2.0: The Neural Network Verification Tool                                                                  | 2023 | CAV        |
+| QEBVerif: Quantization Error Bound Verification of Neural Networks                                             | 2023 | CAV        |
+| Verifying Generalization in Deep Learning                                                                      | 2023 | CAV        |
+| Formal Methods for Trusted AI                                                                                  | 2023 | FMCAD      |
+| Formally Explaining Neural Networks within Reactive Systems                                                    | 2023 | FMCAD      |
+| Lightweight Online Learning for Sets of Related Problems in Automated Reasoning                                | 2023 | FMCAD      |
+| DelBugV: Delta-Debugging Neural Network Verifiers                                                              | 2023 | FMCAD      |
+
+*** Explorer Notes
+1. CAV and FMCAD has separate track for NNV papers

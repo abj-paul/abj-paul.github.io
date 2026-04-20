@@ -1,0 +1,4 @@
+* BSL
+1. MUÃŚOZ, DIEGO, SONJA PEDELL, and LEON STERLING. "Evaluating Engagement in Technology-Supported Social Interaction by People Living with Dementia in Residential Care." (2022).
+* ACOSUS
+1. Stureborg, Rickard, Bhuwan Dhingra, and Jun Yang. "Interface design for crowdsourcing hierarchical multi-label text annotations." Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. 2023.

@@ -1,0 +1,6 @@
+#+TITLE: VM Party!!
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-16 শুক্র>
+
+
+Running 26 Linux distributions as containers. How much RAM do you think it will consume? The answer might surprise you, my friends. Just 1.2Gi RAM used on the freshly rebooted machine. Of course, this is a test lab running Ubuntu fully patched 22.04 LTS. But you get the gist. This stuff is born for enterprise workload. Here is how to set up a lab using shell script for fun and profit https://www.cyberciti.biz/.../shell-script-to-set-up-an.../ #linux #devops #sysadmin #opensource

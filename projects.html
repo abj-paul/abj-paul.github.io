@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@abj-paul</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a class="navbar-brand" href="#">@abj-paul - UNDER Construction!</a>
+                <!-- Toggler/collapsible Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="data/cv.pdf">My CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="achievements.html">Achievements</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blogs.html">Blogs</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- New Row for Cards -->
+        <div class="row mt-4 card-grid">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="https://cloverdalelaw.com/wp-content/uploads/2015/04/employment-discrimination-2-300x229.jpg" alt="Preview" class="card-img-top">
+                    <div class="card-body">
+                        <a href="projects/Representation-Discrimination-in-Media.html">
+                        <h5 class="card-title">Representation Discrimination of Ethnic People in Media</h5>
+                      </a>
+                        <div class="card-content">
+                            <p class="card-text"> Representation discrimination refers to the systemic exclusion or underrepresentation of certain groups of people, including ethnic minorities, in various aspects of society, such as media, politics, education, and the workforce. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="https://thumbs.dreamstime.com/b/agile-icon-methodology-vector-development-scrum-flexible-software-logo-concept-206202942.jpg" alt="Preview" class="card-img-top">
+                    <div class="card-body">
+                        <a href="projects/Agile-Fortis.html">
+                        <h5 class="card-title">Making Fortis more suitable for Agile</h5>
+                      </a>
+                        <div class="card-content">
+                            <p class="card-text"> Agile is a Formal Method tool that relies on strong definitions and generation of solutions. However, we imagine agile as an assitive tool. To this end, we generate cost, recommend design BETTER suggestions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+	    <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*XlYZZdjTyrD-qhAASU4rHw.png" alt="Preview" class="card-img-top">
+                    <div class="card-body">
+                        <a href="projects/Type-system-for-prompts.html">
+                        <h5 class="card-title">Prompts are programs!</h5>
+                      </a>
+                        <div class="card-content">
+                            <p class="card-text">Prompts need to be checked, validated and kept safe as more complex applications rely on language models for everyday tasks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+
+        <!-- Row ends here -->
+    </div>
+
+    <!-- Bootstrap JS and jQuery (required for Bootstrap components) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // JavaScript to handle click-to-expand functionality
+      $(document).ready(function() {
+        $(".card-content").on("click", function() {
+          $(this).toggleClass("expanded");
+        });
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+#+TITLE: Deadlines for Conferences & Journals
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-06-23 রবি>
+
+The works and their corresponding deadlines can be seen below.
+
+| Research             | Conference                                | Deadline     |
+|----------------------+-------------------------------------------+--------------|
+| DuBTS - Bloom Filter | [[https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=25][IEEE Transactions on Vehicular Technology]] |              |
+| Coping Mechanism     | [[https://www.scimagojr.com/journalsearch.php?q=21101055964&tip=sid&clean=0][Journal of Health and Social Behavior]]     |              |
+| LTL and LLMs         | NFM                                       | Dec13, Nov11 |

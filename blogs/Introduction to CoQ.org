@@ -1,0 +1,7 @@
+#+TITLE: Introduction to CoQ
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-30 শুক্র>
+
+https://www.youtube.com/watch?v=56IIrBZy9Rc
+
+https://www.youtube.com/watch?v=5e7UdWzITyQ
