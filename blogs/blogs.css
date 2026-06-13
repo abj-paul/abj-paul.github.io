@@ -1,0 +1,116 @@
+/* General styles for Markdown content */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Container for Markdown content */
+.markdown-container {
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.markdown-container h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.markdown-container h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.markdown-container h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Paragraphs */
+.markdown-container p {
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Links */
+.markdown-container a {
+    color: #007bff; /* Bootstrap blue */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.markdown-container a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Images */
+.markdown-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Lists */
+.markdown-container ul,
+.markdown-container ol {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #555;
+}
+
+/* Code blocks */
+.markdown-container pre {
+    background-color: #f7f7f7; /* Light gray background for code blocks */
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    font-size: 0.9rem;
+}
+
+/* Tables */
+.markdown-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.markdown-container th,
+.markdown-container td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.markdown-container th {
+    background-color: #f2f2f2; /* Light gray background for table header */
+}
+
+/* Blockquotes */
+.markdown-container blockquote {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-left: 5px solid #007bff; /* Blue border for blockquote */
+    background-color: #f0f0f0; /* Light gray background for blockquote */
+}
+
+/* Horizontal rules */
+.markdown-container hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}

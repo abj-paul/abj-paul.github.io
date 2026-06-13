@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="blogs.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body class="markdown-container">
+<p>If you want a full-fledged markup based blogging site with github action to automatically update the site, checkout <code>master</code> branch. This <code>main</code> branch is about a minimal build that I like. By emacs, for emacs.</p>
+<h1 id="about">About</h1>
+<p>We will have the following activities in this github.</p>
+<ul>
+<li><p>[ ] Daily blogging in a portal /blog</p></li>
+<li><p>[ ] My portfolio at root</p></li>
+<li><p>[ ] And another portal on my IIT related documents e.g. shared drive, documents etc.</p>
+<p>Let us first get boiletplate for both. We will start customizing after setting up the boilerplate dummy site.</p></li>
+</ul>
+<h1 id="novel-structure">Novel Structure</h1>
+<p>We will post regularly so it is necessary to consider markdown format. We have found <code>showdownjs</code> that can convert markdown to js. We have also found that github api can return a file requested without requiring any backend. With these two information, following is our system design.</p>
+<p><img src="misc/blog-plan.png" /></p>
+<p>I have hit a blocker. <a href="https://stackoverflow.com/questions/78311952/showdownjs-setting-flavor-to-github-doesnt-affect-markdown-to-html-conversio">Posted question in stackoverflow</a>, hopefully I will get a solution.</p>
+</body>
+</html>

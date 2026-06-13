@@ -1,0 +1,36 @@
+#+TITLE: Getting Started with Coq
+#+AUTHOR: Abhijit Paul
+#+DATE: <2025-03-22 Sat>
+
+Coq is a proof assistant. What it means is - writing entire proofs on our own is tedious and error-prone. So we can get computer to help is in writing proofs! We are considering computer science now. Can we prove anything about computer?
+
+Axioms
+Proofs
+Formal System
+
+
+Paradox: This statement is not true.
+
+If its true, that means the statement is true.
+If its false, then the statement is true but i said the statement is false.
+
+Paradox: This statement is not true --> Provable. (The undefiniability theorem, "Arithmetical truth can't be defined in arithmetic".
+
+Goedl encoding. For decoding, prime number factorization
+
+Formal System with 1 free variable.
+Statement A => God (Statement A) = s
+Proof of A => God (Proof A) = p
+
+Proof (p,s) = P is a proof of S.
+Pr(s) = $\E p Proof(p,s)$ so Pr(s) is the set of goedl numbers of all provable statements.
+Let P(A) = Pr(s), P(A) means A is provable.
+
+Let us consider some formulas in natural number with 1 variable n. $F_1(n), F_2(n)$ where one function can be n+1, another can be n^2 + 3n-4 etc.
+
+Let's consider the formula  $\not P(F_n(n))$. It must be some Goedl number corresponding to a function F_j(n).
+
+F_j(n) = $\not P(F_n(n))$
+or $\all F_j(n) = \not P(F_n(n))$
+
+So we get $F_j(j) = \not P(F_n(j))$

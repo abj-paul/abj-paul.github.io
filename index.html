@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="W98pzTSokGlWN25UDrz_2b35IDMA1sYtXhuQl9qCtJc" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhijit Paul - Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfbf7; --surface: #ffffff; --text: #1a1a18; --muted: #686862;
+      --accent: #1b5a7a; --accent-light: #e6f2f4; --gold: #9b7b2f; --border: #e4e2da; --tag-bg: #f0f0ea;
+      --shadow: 0 12px 28px rgba(31, 43, 38, 0.07);
+      --serif: 'EB Garamond', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.65; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+    .page { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+
+    nav { background: rgba(255, 255, 255, 0.92); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(226, 226, 220, 0.55); }
+    nav .inner { max-width: 940px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; min-height: 58px; gap: 24px; }
+    .nav-brand { font-family: var(--serif); font-size: 1.2rem; color: var(--text); font-weight: 500; border-bottom: none; white-space: nowrap; }
+    .nav-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { font-size: 0.76rem; font-weight: 600; color: var(--muted); letter-spacing: 0.055em; text-transform: uppercase; border-bottom: none; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { padding: 64px 0 52px; display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 48px; align-items: center; }
+    .hero-name { font-family: var(--serif); font-size: 4.1rem; font-weight: 500; line-height: 0.98; margin-bottom: 10px; }
+    .hero-title { font-size: 0.78rem; color: var(--accent); letter-spacing: 0.11em; text-transform: uppercase; margin-bottom: 12px; font-weight: 700; }
+    .hero-bio { font-size: 1.02rem; line-height: 1.78; color: #343430; max-width: 640px; margin-bottom: 22px; }
+    .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border) !important; background: rgba(255, 255, 255, 0.68); padding: 6px 12px; border-radius: 6px; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+    .hero-link:hover { color: var(--accent); border-color: #a6c9d2 !important; background: var(--surface); }
+    .hero-right { display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0; }
+    .hero-photo-placeholder { width: 180px; height: 180px; border-radius: 8px; background: var(--accent-light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 2.5rem; color: var(--accent); overflow: hidden; box-shadow: var(--shadow); }
+    .hero-photo-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+    .hero-affiliation { font-size: 0.78rem; color: var(--muted); text-align: center; line-height: 1.5; max-width: 180px; }
+    .hero-affiliation strong { color: var(--text); display: block; font-size: 0.8rem; }
+    .hero-affiliation a { font-size: 0.78rem; border-bottom: none; }
+
+    .interests { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; margin-bottom: 22px; }
+    .tag { background: var(--tag-bg); color: var(--muted); font-size: 0.76rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.02em; }
+    .tag.accent { background: var(--accent-light); color: var(--accent); }
+
+    section { padding: 38px 0; }
+    h2 { font-family: var(--serif); font-size: 1.48rem; font-weight: 500; margin-bottom: 22px; color: var(--text); display: flex; align-items: center; gap: 12px; }
+    h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* News */
+    .news-list { list-style: none; }
+    .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 8px 0; }
+    .news-date { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); padding-top: 2px; white-space: nowrap; }
+    .news-text { font-size: 0.93rem; line-height: 1.6; }
+    .proof-link { display: inline-flex; align-items: center; gap: 3px; font-size: 0.74rem; color: var(--accent); background: var(--accent-light); padding: 1px 7px; border-radius: 3px; margin-left: 5px; border-bottom: none !important; font-weight: 500; vertical-align: middle; white-space: nowrap; }
+    .proof-link:hover { background: #d0e0f5; border-bottom: none !important; }
+    .more-btn { margin-top: 14px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-family: var(--sans); font-size: 0.82rem; font-weight: 600; padding: 7px 16px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .more-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Publications */
+    .pub-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .pub-item { padding: 17px 18px; border: 1px solid rgba(226, 226, 220, 0.9); border-radius: 8px; background: var(--surface); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+    .pub-item:hover { border-color: #b0c4e0; box-shadow: var(--shadow); transform: translateY(-1px); }
+    .pub-venue { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+    .pub-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 6px; }
+    .pub-title a { color: var(--text); border-bottom: 1px dashed var(--border); }
+    .pub-title a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .pub-authors { font-size: 0.83rem; color: var(--muted); margin-bottom: 8px; }
+    .pub-authors .me { color: var(--text); font-weight: 600; }
+    .pub-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .pub-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pub-links { display: flex; gap: 8px; }
+    .pub-link { font-size: 0.75rem; font-weight: 600; color: var(--accent); border: 1px solid var(--accent-light) !important; background: var(--accent-light); padding: 3px 9px; border-radius: 4px; border-bottom: none !important; }
+    .pub-link:hover { background: #d0e0f5; border-bottom: none !important; }
+
+    /* Publication subsection headers */
+    .pub-subsection-title { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; margin: 24px 0 12px; padding-bottom: 6px; }
+    .pub-subsection-title:first-child { margin-top: 0; }
+
+    /* Patents */
+    .patent-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .patent-item { padding: 15px 18px; border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 6px; background: var(--surface); }
+    .patent-status { font-family: var(--mono); font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+    .patent-title { font-family: var(--serif); font-size: 1.0rem; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 5px; }
+    .patent-meta { font-size: 0.82rem; color: var(--muted); }
+
+    /* Collaborations */
+    .collab-list { list-style: none; }
+    .collab-item { display: grid; grid-template-columns: 160px 1fr; gap: 20px; padding: 20px 0; }
+    .collab-period { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); padding-top: 3px; line-height: 1.6; }
+    .collab-content h3 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .collab-content .org { font-size: 0.85rem; color: var(--accent); margin-bottom: 6px; }
+    .collab-content p, .collab-content li { font-size: 0.88rem; color: #444440; line-height: 1.65; }
+    .collab-content ul { padding-left: 16px; margin-top: 4px; }
+    .collab-content li { margin-bottom: 3px; }
+
+    /* Past Collaborators */
+    .collaborators-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px; margin-top: 8px; }
+    .collaborator-card { padding: 15px 16px; border: 1px solid rgba(226, 226, 220, 0.9); border-radius: 8px; background: var(--surface); transition: border-color 0.15s, box-shadow 0.15s; }
+    .collaborator-card:hover { border-color: #b0c4e0; box-shadow: var(--shadow); }
+    .collaborator-inst { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .collaborator-name { font-size: 0.8rem; color: var(--accent); margin-bottom: 4px; }
+    .collaborator-note { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .collab-intro { font-size: 0.92rem; color: #444440; line-height: 1.7; margin-bottom: 20px; }
+    .collab-institutions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inst-tag { background: var(--tag-bg); color: var(--muted); font-size: 0.78rem; font-weight: 500; padding: 4px 11px; border-radius: 3px; }
+
+    /* Sessions */
+    .session-list { list-style: none; }
+    .session-item { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 6px 0; }
+    .session-date { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); padding-top: 2px; white-space: nowrap; }
+    .session-text { font-size: 0.9rem; color: #444440; line-height: 1.6; }
+
+    /* Grants */
+    .grant-subsection-title { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; margin: 0 0 12px; padding-bottom: 6px; }
+    .grant-group { margin-bottom: 28px; }
+    .grant-group:last-child { margin-bottom: 0; }
+    .grant-item { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 6px; padding: 15px 18px; margin-bottom: 12px; }
+    .grant-item:last-child { margin-bottom: 0; }
+    .grant-item.contributed { border-left-color: #7a9abf; }
+    .grant-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+    .grant-meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; }
+    .grant-desc { font-size: 0.88rem; color: #444; line-height: 1.6; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .skill-group h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+    .skill-group p { font-size: 0.83rem; color: #444; line-height: 1.7; }
+
+    footer { padding: 36px 0 42px; text-align: center; font-size: 0.82rem; color: var(--muted); margin-top: 8px; }
+    @media (max-width: 640px) {
+      .page { padding: 0 20px; }
+      nav .inner { padding: 10px 20px; align-items: flex-start; flex-direction: column; min-height: auto; gap: 8px; }
+      .nav-links { gap: 14px; justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; padding: 38px 0 36px; gap: 28px; }
+      .hero-name { font-size: 3rem; }
+      .hero-right { order: -1; align-items: flex-start; }
+      .hero-affiliation { text-align: left; }
+      .collab-item { grid-template-columns: 1fr; gap: 4px; }
+      .news-item { grid-template-columns: 76px 1fr; }
+      .session-item { grid-template-columns: 76px 1fr; }
+      .collaborators-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="nav-brand">Abhijit Paul</span>
+    <ul class="nav-links">
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#collaborations">Research</a></li>
+      <li><a href="#grants">Grants</a></li>
+      <!--<li><a href="#">CV</a></li>-->
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div>
+      <p class="hero-title">Researcher · Engineer</p>
+      <h1 class="hero-name">Abhijit Paul</h1>
+      <p class="hero-bio">
+        Innovator at <a href="https://research.samsung.com/srbd">Samsung Research</a> and Lead Researcher at <a href="https://barta-research-lab.github.io/">BARTA Lab</a>, University of Dhaka.
+        My research sits at the intersection of <strong>Provable Trustworthy Computing</strong>, <strong>AI</strong>, and <strong>HCI</strong> - with a focus on developing theory for practical applications.
+      </p>
+      <div class="interests">
+        <span class="tag accent">Privacy</span>
+        <span class="tag accent">AI Safety</span>
+        <span class="tag">Formal Methods</span>
+        <span class="tag">HCI</span>
+        <span class="tag">Systems</span>
+      </div>
+      <div class="hero-links">
+        <!--<a class="hero-link" href="mailto:bsse1201@iit.du.ac.bd">✉ bsse1201@iit.du.ac.bd</a>-->
+        <a class="hero-link" href="https://scholar.google.com/citations?user=abj-paul" target="_blank">◎ Google Scholar</a>
+        <a class="hero-link" href="https://barta-research-lab.github.io/" target="_blank">⬡ BARTA Lab</a>
+        <a class="hero-link" href="https://bus-koi.vercel.app/" target="_blank">🚌 Bus Koi</a>
+        <a class="hero-link" href="https://github.com/abj-paul" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-placeholder">
+        <img src="./data/passport-sized-photo.png" alt="Abhijit Paul">
+      </div>
+      <div class="hero-affiliation">
+        <strong>Innovator & Engineer</strong>
+        <a href="https://research.samsung.com/srbd" target="_blank">Samsung Research </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- News -->
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news-list" id="newsList">
+      <li class="news-item">
+        <span class="news-date">Feb 2026</span>
+        <span class="news-text">🎓 <a href="https://du.ac.bd/du_post_details/%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%A9-%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%A4%E0%A6%95-(%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A8)-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%B2%E0%A6%BE%E0%A6%AB%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%89%E0%A6%AA%E0%A6%B0-%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A7%8D%E0%A6%A4-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8-%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%A4%E0%A6%BF-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%BF/26613?fbclid=IwY2xjawQagHpleHRuA2FlbQIxMABicmlkETFBRDM4SE9ReERrR0xBeTYzc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHrhHIK5wbMEgva_MnApNiDzJCnVT-W80MtXZku-cqUfuULPqwkNWZaipFedr_aem_LzHAudMrsace__TkQ74YgA" target="_blank"><strong>Government Scholarship</strong></a> — Undergraduate, Bangladesh.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Nov 2025</span>
+        <span class="news-text"><strong>Excellence in Research Award</strong>, Q2 2025 — <a href="https://research.samsung.com/srbd" target="_blank">Samsung R&D Institute, Bangladesh</a>.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Jul 2025</span>
+        <span class="news-text"><strong>AI PoC received highest votes</strong> in Samsung R&D Institute Bangladesh's internal contest. Patent submitted on the final algorithm.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Feb 2025</span>
+        <span class="news-text">Joined <a href="https://research.samsung.com/srbd" target="_blank"><strong>Samsung R&D Institute, Bangladesh</strong></a> full-time. Working on Formal Ontology with <a href="https://www.oxfordsemantic.tech/" target="_blank">Oxford Semantics</a> (acquired by Samsung).</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Jun 2024</span>
+        <span class="news-text">Secured <strong>Innovation Fund</strong> from <a href="https://research.samsung.com/srbd" target="_blank">Samsung Research</a> (~3,000,000 BDT). Possibly the youngest innovator to have ever received this prestigious grant (Undergrad Intern).</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Sep 2024</span>
+        <span class="news-text">🎓 Awarded <a href="https://www.scholarship.or.jp/english/program/contents/en_application.html" target="_blank"><strong>Mitsubishi UFJ Foundation Scholarship</strong></a> Program FY 2024, Japan.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Jul 2024</span>
+        <span class="news-text">🏆 Team received <strong>Best Innovator Team Award Q1</strong> — <a href="https://research.samsung.com/srbd" target="_blank">Samsung R&D Institute, Bangladesh</a>.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Nov 2023</span>
+        <span class="news-text">🥈 <strong>1st Runners-Up</strong> — ITVerse 2.0 Blockchain Segment, University of Dhaka.
+          <a class="proof-link" href="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/398549755_1511682462961621_7590666262167286177_n.jpg" target="_blank">📷 Photo</a>
+        </span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Oct 2023</span>
+        <span class="news-text">🥉 <strong>2nd Runners-Up</strong> — Notre Dame Inter-University Ideathon Contest.
+          <a class="proof-link" href="https://i.ytimg.com/vi/qW80WSfjOVI/maxresdefault.jpg" target="_blank">📷 Photo</a>
+        </span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2023</span>
+        <span class="news-text">🥉 <strong>2nd Runners-Up</strong> — Inter-University Project Showcasing &amp; IEEE BUP Branch Fest.
+          <a class="proof-link" href="https://i.ytimg.com/vi/qW80WSfjOVI/maxresdefault.jpg" target="_blank">📷 Photo</a>
+        </span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Jun 2023</span>
+        <span class="news-text">🥈 <strong>1st Runners-Up</strong> — Deep Learning Sprint 2.0, BUET.
+          <a class="proof-link" href="https://scontent.fdac41-1.fna.fbcdn.net/v/t39.30808-6/367465264_691763452990736_3473055270327168481_n.jpg" target="_blank">📷 Photo</a>
+        </span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Dec 2020</span>
+        <span class="news-text">🏆 <strong>Champion</strong> — Datathon, Coding Object Private Limited, India.
+          <a class="proof-link" href="https://via.placeholder.com/250x200.png?text=Datathon+2020" target="_blank">📷 Photo</a>
+        </span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2020–24</span>
+        <span class="news-text">🎓 <strong>Government Scholarship</strong> — Higher Secondary Certification Examination, Bangladesh.</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2015–17</span>
+        <span class="news-text">🎓 <strong>Government Scholarship</strong> — Junior School Certification Examination, Bangladesh.</span>
+      </li>
+    </ul>
+    <button class="more-btn" id="moreBtn" onclick="toggleNews()">Show more ↓</button>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <p class="pub-subsection-title">Journal &amp; Conference Papers</p>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-venue">ECIR'26 · A-Ranked · 2026</div>
+        <div class="pub-title">How Information Retrieval Systems Construct and Amplify Biased Narratives</div>
+        <div class="pub-authors">Z. Masud, <span class="me">A. Paul</span>, I. Ahmed, I. Bagheri</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag accent">IR Fairness</span><span class="tag">Demographics</span><span class="tag">NLP</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://link.springer.com/chapter/10.1007/978-3-032-21324-2_36" target="_blank">Conference ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-venue">ACL-MeLLM · A* · 2026</div>
+        <div class="pub-title">Breaking the Silence: A Dataset and Benchmark for Bangla Text-to-Gloss Translation</div>
+        <div class="pub-authors">S.M. Abdullah, <span class="me">A. Paul</span> et al.</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag accent">Sign Language</span><span class="tag">Bangla NLP</span><span class="tag">Dataset</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://arxiv.org/pdf/2504.02293?" target="_blank">Workshop ↗</a></div>
+        </div>
+      </li>
+
+
+      <li class="pub-item">
+        <div class="pub-venue">TyDe @ ICFP'25 · A* · 2025 · Solo Author</div>
+        <div class="pub-title"><a href="https://conf.researchr.org/home/icfp-splash-2025/tyde-2025#event-overview" target="_blank">Type-Driven Prompt Programming: From Typed Interfaces to a Calculus of Constraints</a></div>
+        <div class="pub-authors"><span class="me">A. Paul</span></div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag accent">AI Safety</span><span class="tag">Formal Methods</span><span class="tag">PLT</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://conf.researchr.org/home/icfp-splash-2025/tyde-2025#event-overview" target="_blank">Workshop ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-venue">ICJR-I'25 · 2025</div>
+        <div class="pub-title">Temporal Analysis of the Gap Between Media Narratives and Public Sentiment During Bangladesh's July Revolution</div>
+        <div class="pub-authors"><span class="me">A. Paul</span>, S. Rahman, T.H. Abir, Z. Masud, A. Kabir, S. Rayana</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag">Computational Journalism</span><span class="tag">NLP</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://julyconference.com/app/assets/files/conference.pdf" target="_blank">Conference ↗</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-venue">Samsung Best Paper Award · Extended Abstract · 2024</div>
+        <div class="pub-title"></div>
+        <div class="pub-authors"><span class="me">A. Paul</span>, R. Tasnim</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag">Testing</span><span class="tag">Survey</span><span class="tag">Knowledge Graphs</span></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-venue">DLSprint'23 Technical Report · 2023 · 1 citation</div>
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2309.00848" target="_blank">Bengali Document Layout Analysis — A YOLOv8 Based Ensembling Approach</a></div>
+        <div class="pub-authors">N.S. Ahmed, S.S. Noor, A.I.S. Sikder, <span class="me">A. Paul</span></div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag">Computer Vision</span><span class="tag">Document AI</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://arxiv.org/pdf/2309.00848" target="_blank">Arxiv ↗</a></div>
+        </div>
+      </li>
+
+    </ul>
+
+    <p class="pub-subsection-title">Under Review</p>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-venue">Under Review · ICWSM'26 · A-Ranked</div>
+        <div class="pub-title">Emotional and Informational Trajectories of Immigrants: A Longitudinal Study of Reddit Communities</div>
+        <div class="pub-authors">Z. Masud, <span class="me">A. Paul</span>, I. Bagheri</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag accent">Computational Social Science</span><span class="tag">NLP</span><span class="tag">Communities</span></div>
+        </div>
+      </li>
+
+
+      <li class="pub-item">
+        <div class="pub-venue">Under Review · ACM TSC Special Issue · Feb 2026</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2506.09771" target="_blank">From Community-Grounded Accounts of Harm to AI-Based Analysis: Indigenous Representation in Bangladeshi News</a></div>
+        <div class="pub-authors"><span class="me">A. Paul</span>, A. Khisa, Z. Masud, S.M. Abdullah, A. Kabir, S. Rayana</div>
+        <div class="pub-footer">
+          <div class="pub-tags">
+            <span class="tag">Media Analysis</span>
+            <span class="tag">Fairness</span>
+            <span class="tag">NLP</span>
+          </div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://arxiv.org/abs/2506.09771" target="_blank">Preprint ↗</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-venue">arXiv · Rejected, ICSE Workshop · 2024</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2506.09759" target="_blank">Towards Bridging Formal Methods and Human Interpretability: Evaluating Human Comprehension of LTS Designs</a></div>
+        <div class="pub-authors"><span class="me">A. Paul</span>, P. Chowdhury, K. Sakib</div>
+        <div class="pub-footer">
+          <div class="pub-tags"><span class="tag accent">Formal Methods</span><span class="tag">HCI</span><span class="tag">Software Engineering</span></div>
+          <div class="pub-links"><a class="pub-link" href="https://arxiv.org/abs/2506.09759" target="_blank">arXiv ↗</a></div>
+        </div>
+      </li>
+
+    </ul>
+
+    <p class="pub-subsection-title">Patents (Ongoing)</p>
+    <ul class="patent-list">
+
+      <li class="patent-item">
+        <div class="patent-status">In Review · Samsung Research HQ, Suwon, South Korea · May 2026</div>
+        <div class="patent-title">A Method for Automated Anonymization</div>
+        <div class="patent-meta">Samsung R&D Institute, Bangladesh</div>
+      </li>
+
+      <li class="patent-item">
+        <div class="patent-status">Prior Art Search: Passed · Preparing for HQ Submission</div>
+        <div class="patent-title">An Optimization of dLoRA Architecture</div>
+        <div class="patent-meta">Samsung R&D Institute, Bangladesh</div>
+      </li>
+
+      <li class="patent-item">
+        <div class="patent-status">Prior Art Search: Ongoing</div>
+        <div class="patent-title">A Method to Reduce False Positives in Wearable Stress Detection</div>
+        <div class="patent-meta">Samsung R&D Institute, Bangladesh</div>
+      </li>
+
+    </ul>
+
+  </section>
+
+  <!-- Past Research Collaborations -->
+  <section id="collaborations">
+    <h2>Past Research Collaborations</h2>
+    <div class="collaborators-grid">
+      <div class="collaborator-card">
+        <div class="collaborator-inst">University of Toronto</div>
+        <div class="collaborator-name">Prof. Syed Ishtiaque Ahmed & Prof. Ebrahim Bagheri</div>
+        <div class="collaborator-note">Collaboration on IR fairness and the analysis of biased narratives in retrieval systems (ECIR'26).</div>
+      </div>
+      <div class="collaborator-card">
+        <div class="collaborator-inst">State University of New York, OW</div>
+        <div class="collaborator-name">Prof. Shebuti Rayana</div>
+        <div class="collaborator-note">Collaboration on NLP analysis of Reddit communities as part of the NSF-funded ACOSUS project (Award #2219623).</div>
+      </div>
+
+       <div class="collaborator-card">
+        <div class="collaborator-inst">Oxford Semantics</div>
+        <div class="collaborator-name">Prof. Ian Horrocks and his Team</div>
+        <div class="collaborator-note">Worked on Formal Ontology as part of internal Samsung Research project during my tenure at Samsung.</div>
+      </div>
+      <div class="collaborator-card">
+        <div class="collaborator-inst">Meta</div>
+        <div class="collaborator-name">Dr. Tanzir Pial</div>
+        <div class="collaborator-note">Mentor; Research Scientist at Meta. Collaborated on internal projects at BARTA Lab</div>
+      </div>
+      <div class="collaborator-card">
+        <div class="collaborator-inst">Stony Brook University</div>
+        <div class="collaborator-name">Shahreen Salim</div>
+        <div class="collaborator-note">Mentor; PhD in Computer Science, Stony Brook University, USA. Collaborated on ongoing research on Representation Discrimination (ACM TSC'26).</div>
+      </div>
+
+      <div class="collaborator-card">
+        <div class="collaborator-inst">Monash University</div>
+        <div class="collaborator-name">HumaniSE Lab</div>
+        <div class="collaborator-note">Collaboration on Automated Localization of Android Apk for ICSE (A*) SCORE 2023.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sessions -->
+  <section id="sessions">
+    <h2>Talks</h2>
+    <ul class="session-list">
+      <li class="session-item"><span class="session-date">2023</span><span class="session-text"><strong>How to Use Linux</strong> — sophomore undergraduate students.</span></li>
+      <li class="session-item"><span class="session-date">2023</span><span class="session-text"><strong>How to Maintain Large Projects in C</strong> — sophomore undergraduate students.</span></li>
+      <li class="session-item"><span class="session-date">2024, 2026</span><span class="session-text"><strong>Ongoing Bangla AI Research</strong> — senior undergraduate students.</span></li>
+    </ul>
+  </section>
+
+  <!-- Grants -->
+  <section id="grants">
+    <h2>Grants &amp; Funding</h2>
+
+    <div class="grant-group">
+      <p class="grant-subsection-title">Grants I secured</p>
+
+      <div class="grant-item">
+        <div class="grant-title">Innovation Fund — <a href="https://research.samsung.com/srbd" target="_blank">Samsung Research</a></div>
+        <div class="grant-meta">~3,000,000 BDT · 36 man-months · 2024</div>
+        <div class="grant-desc">Awarded for an innovative direction on Commercial AI Safety. Possibly the youngest innovator to have received this prestigious grant to-date (an undergraduate intern in 7th semester).</div>
+      </div>
+
+      <div class="grant-item">
+        <div class="grant-title">Seed Funding — <a href="https://bus-koi.vercel.app/" target="_blank">Bus Koi</a> (DU Bus Tracking System)</div>
+        <div class="grant-meta">20,000 BDT · Dr. Naushin Nower, University of Dhaka · 2024</div>
+        <div class="grant-desc">Low-cost privacy-preserving bus tracking for 5,000+ DU students. Version 1 being acquired by NCP Bangladesh for 170,000 BDT.</div>
+      </div>
+    </div>
+
+    <div class="grant-group">
+      <p class="grant-subsection-title">Grants I contributed to as a researcher</p>
+
+      <div class="grant-item contributed">
+        <div class="grant-title">International Mother Language Institute (IMLI) Grant — <a href="https://imli.org.bd/" target="_blank">IMLI, Bangladesh</a></div>
+        <div class="grant-meta">Received by BARTA Lab, University of Dhaka · 2025</div>
+        <div class="grant-desc">Contributed to design and implementation of an automated Bangla NLP tool with junior students, under Prof. Ahmedul Kabir. The tool is deployed at IMLI.</div>
+      </div>
+
+      <div class="grant-item contributed">
+        <div class="grant-title">NSF Grant — <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2219623&HistoricalAwards=false" target="_blank">ACOSUS (Award #2219623)</a></div>
+        <div class="grant-meta">Received by SUNY Old Westbury · Joint project across 5 US universities · 2024</div>
+        <div class="grant-desc">Contributed NLP analysis of Reddit communities as part of the AI-driven counseling system for underrepresented transfer students project.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Skills
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group"><h4>Formal Methods</h4><p>TLA+, Alloy, Coq, Maude, LTSA, SMT Solvers (Z3), FSP, LTS, First-Order Logic</p></div>
+      <div class="skill-group"><h4>Languages</h4><p>Python, C, C++, Rust, Java, JS/TS, SQL, Bash, R, Solidity, E-Lisp, PHP</p></div>
+      <div class="skill-group"><h4>ML / NLP</h4><p>PyTorch, Scikit-Learn, BNLTK, llama.cpp, Transformers, RAG, MCP, OpenCV</p></div>
+      <div class="skill-group"><h4>Systems &amp; Tools</h4><p>Docker Swarm, Linux/UNIX, Azure Cloud, MongoDB, MySQL, MEAN Stack, Git</p></div>
+    </div>
+  </section> -->
+
+</div>
+
+<footer>
+  <div class="page">
+    Abhijit Paul · <a href="https://research.samsung.com/srbd" target="_blank">Samsung R&D Institute, Bangladesh</a> · <a href="mailto:bsse1201@iit.du.ac.bd">bsse1201@iit.du.ac.bd</a> · © 2026
+  </div>
+</footer>
+
+<script>
+  let expanded = false;
+  const items = document.querySelectorAll('#newsList .news-item');
+  items.forEach((item, i) => { if (i >= 6) item.style.display = 'none'; });
+  function toggleNews() {
+    expanded = !expanded;
+    items.forEach((item, i) => { if (i >= 6) item.style.display = expanded ? 'grid' : 'none'; });
+    document.getElementById('moreBtn').textContent = expanded ? 'Show less ↑' : 'Show more ↓';
+  }
+</script>
+
+</body>
+</html>

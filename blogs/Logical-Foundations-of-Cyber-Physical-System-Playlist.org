@@ -1,0 +1,5 @@
+#+TITLE: Playlist: Logical Foundation of Cyber-Physical System
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-13 মঙ্গল>
+
+The book and materials can be found here. https://lfcps.org/lfcps/

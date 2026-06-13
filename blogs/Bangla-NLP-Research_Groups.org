@@ -1,0 +1,18 @@
+#+TITLE: Bangla NLP Research Groups
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-08-24 শনি>
+
+It is necessary to list all entities working on Bangla NLP to better collaborate and prosper.
+
+| Entity          | Link                                              | Personal comment                         |
+|-----------------+---------------------------------------------------+------------------------------------------|
+| CUET            | https://bangla.gov.bd/                            | Oldest. 16+ research tools, 12+ datasets |
+| BUET            | https://csebuetnlp.github.io/                     | Paper oriented.                          |
+| Sagor Sarker    | https://github.com/sagorbrur                      | Hishab, open source contributions        |
+| BRAC            | https://dspace.bracu.ac.bd/xmlui/handle/10361/101 | Found activity in 2003-2010              |
+| Google Research | [[https://research.google/pubs/tts-for-low-resource-languages-a-bangla-synthesizer/][Publication]]                                       | Found few paper on Bangla from GR.       |
+| Sudipta Kar     | https://sudiptakar.info/bangla_nlp_resources/     | Core contributor                         |
+| Bengali.ai      | https://bengali.ai/                               | Central organizers                       |
+| SBNLTK          | https://pypi.org/project/sbnltk/                  | The richest BNLP library.                |
+
+There are [[https://www.facebook.com/groups/513708729587386/][Facebook groups]] that contain many events, job openings and resource links. IMO while huge effort has been spent on sbnltk, it has no future if it does not take drastic measures and move away from tensorflow dependencies to pytorch and such. Even in current sbnltk, tensorflow version conflict makes it a nightmare to use it.

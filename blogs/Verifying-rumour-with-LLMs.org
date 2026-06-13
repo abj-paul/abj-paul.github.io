@@ -1,0 +1,3 @@
+#+TITLE: Verifying Rumours with the power of LLM
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-07-29 সোম>

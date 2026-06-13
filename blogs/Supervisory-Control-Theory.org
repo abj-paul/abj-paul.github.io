@@ -1,0 +1,6 @@
+#+TITLE: What is Supervisory Control Theory?
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-09-16 সোম>
+
+
+

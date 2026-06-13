@@ -1,0 +1,44 @@
+ Engineer at Samsung R&D Institute Bangladesh and Lead Researcher at BARTA Lab, University of Dhaka. My research sits at the intersection of Provable Trustworthy Computing, AI, and HCI — with a focus on developing theory for practical applications. 
+
+
+ -->
+
+ TODO:
+
+ 1. Update my bio at the top of the page with the following contents. Feel free to rephrase etc as you want.
+ I am a Privacy researcher - exploring AI and broader trustworthy requirements that our society needs. I am currently working as an engineer and AI Task Force of my team at Samsung R&D Institute, Bangladesh. My responsibility involves AI innovation and patenting. 
+
+ I am possibly the youngest recipient of the Innovation Grant (2024) from Samsung Research, Suwon, South Korea. I also received "Excellence in Research" Award (2025) and "Best Innovator Team" award (2024) from Samsung R&D Institute, Bangladesh, as well as a granted A1 patent in AI and camera technology.
+
+ I am also a Lead Researcher at BARTA Lab, with ongoing collaborative research with State University of New York at Old Westbury, University of Toronto, University of Maryland Collegepark Baltimore, Stony Brook University and Meta. I am grateful for the opportunity to work with Professor Ahmedul Kabir (DU), Professor Ebrahim Bhageri (UofT), Professor Syed Ishtiaque Ahmed (UofT) and Professor Shebuti Rayana (SUNY OW).
+ 
+ As a hobby, I love to read Novels, Game and tweak my emacs! I am a wannabe-emacs guy.
+ 
+ 
+ Create a new html page and link it from a "More" menu. This page will contain the following additional details.
+ 2. Mention my schools.
+
+    Bachelors of Science in Software Engineering (BSSE), Institute of Information Technology, Univeristy of Dhaka (2020-2025) CGPA: 3.93/4.00
+     Placed 3rd.
+     Received Government Scholarship due to outstanding results.
+
+    Higher Secondary Certification Exam, 2017-2019 Notre Dame College
+    Placed 50th.
+    Received Government Scholarship due to outstanding results.
+
+    Bright High School, 2013-2016 (approx)
+    Placed 1st
+    Received Government Scholarship due to outstanding results.
+    Received Local Scholarship.
+
+    Rais Nagar High School, (2005-2012)
+    Placed 1st.
+    Received 6 awards on Music.
+
+ 3. Research Experience section.
+
+11. [ ] Update Website: https://azminewasi.github.io/ https://www.youtube.com/watch?v=urcL86UpqZc
+https://oldpilluwu.github.io/
+
+Mentorship
+patents

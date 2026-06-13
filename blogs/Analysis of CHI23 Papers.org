@@ -1,0 +1,5 @@
+#+TITLE: Analysis of CHI23 Papers
+#+AUTHOR: Abhijit Paul
+#+DATE: <2024-06-23 রবি>
+
+[[https://dl.acm.org/doi/proceedings/10.1145/3544548][Proceedings of CHI23]]

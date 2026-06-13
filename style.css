@@ -1,0 +1,63 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #333;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ddd;
+}
+
+.intro {
+    background-color: #f9f9f9;
+}
+
+.intro img {
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.intro p {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.news-section .list-group-item {
+    border-left: 5px solid #333;
+    transition: border-color 0.3s;
+}
+
+.news-section .list-group-item:hover {
+    border-left-color: #007bff;
+}
+
+.research-path h4 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.footer {
+    background-color: #333;
+}
+
+.footer .text-muted {
+    color: #bbb;
+}
+
+.clustrmaps-container {
+  max-width: 300px;
+  margin: 20px 20px 20px auto; /* Adds space to the right */
+}
+
