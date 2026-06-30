@@ -4,6 +4,8 @@
   <meta name="google-site-verification" content="W98pzTSokGlWN25UDrz_2b35IDMA1sYtXhuQl9qCtJc" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script data-goatcounter="https://abjpaul.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
   <title>Abhijit Paul - Researcher</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -515,8 +517,23 @@
 <footer>
   <div class="page">
     Abhijit Paul · <a href="https://research.samsung.com/srbd" target="_blank">Samsung R&D Institute, Bangladesh</a> · <a href="mailto:bsse1201@iit.du.ac.bd">bsse1201@iit.du.ac.bd</a> · © 2026
+    <div style="margin-top: 10px;">
+      <a href="https://abjpaul.goatcounter.com" target="_blank" id="visit-counter"
+         style="font-family: var(--mono); font-size: 0.78rem; color: var(--muted); border-bottom: none;">
+        — visits
+      </a>
+    </div>
   </div>
 </footer>
+
+<script>
+  fetch('https://abjpaul.goatcounter.com/counter/TOTAL.json')
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('visit-counter').textContent = d.count_unique;
+    })
+    .catch(() => {});
+</script>
 
 <script>
   let expanded = false;
